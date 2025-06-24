@@ -90,7 +90,9 @@ export const addCommand = new Command("add")
         }
 
         writeFileSync(destPath, content);
-        console.log(`✅ Hook '${name}' added to ${path.relative(process.cwd(), destDir)}`);
+        console.log(
+          `✅ Hook '${name}' added to ${path.relative(process.cwd(), destDir)}`
+        );
       }
 
       if (type === "utils") {

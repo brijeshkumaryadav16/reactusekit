@@ -70,7 +70,9 @@ var addCommand = new Command("add").description("Add a hook or utility to your p
         continue;
       }
       writeFileSync(destPath, content);
-      console.log(`\u2705 Hook '${name2}' added to ${path.relative(process2.cwd(), destDir)}`);
+      console.log(
+        `\u2705 Hook '${name2}' added to ${path.relative(process2.cwd(), destDir)}`
+      );
     }
     if (type === "utils") {
       const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
