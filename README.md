@@ -70,8 +70,8 @@ $ react-usekit
 ? Choose language: › TypeScript
 ? Enter relative directory to place files (default: src/hooks): src/components/hooks
 ? Select hooks to add: › ◉ useLocalStorage
-                        ◉ useDebounce
-                        ◯ useClickOutside
+                         ◉ useDebounce
+                         ◯ useClickOutside
 
 ✅ Hook 'useLocalStorage' added to src/components/hooks
 ✅ Hook 'useDebounce' added to src/components/hooks
