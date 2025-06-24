@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const TEMPLATE_DIR = path.resolve(__dirname, "templates");
 
-export const listCommand = new Command("list")
+const list = new Command("list")
   .description("List available hooks and utilities")
   .option("--hooks", "Show only hooks")
   .option("--utils", "Show only utils")
@@ -56,3 +56,5 @@ export const listCommand = new Command("list")
       console.log(`${item.type.toUpperCase()} - ${item.name}`);
     });
   });
+
+export default list;

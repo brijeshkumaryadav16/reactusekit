@@ -15,7 +15,7 @@ This document outlines the recent updates, ongoing improvements, and planned enh
     - If **Hooks**: display a list of available hook names to choose from
     - If **Utils**: display a list of available utility function names
 
-- **File Placement Options:**
+- **File Placement Options(Prompting the user for custom file placement path):**
   - Choose to place the generated file in the default `src/` directory
   - OR specify a **custom directory path** (e.g. `src/helpers/hooks`, `src/lib/utils`, etc.)
 

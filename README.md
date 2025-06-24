@@ -12,7 +12,7 @@
 
 - ✨ Quickly scaffold common logic
 - 🧠 Avoid boilerplate
-- 📁 Organize code in `src/hooks` and `src/utils`
+- 📁 Organize code in `src/hooks` and `src/lib/utils`
 
 ---
 
@@ -28,91 +28,146 @@
 
 ## 🚀 Getting Started
 
-### 1. Install via NPX
+### Option 1: Install Globally (Recommended)
 
 ```bash
-npx react-usekit add useLocalStorage
+npm install -g react-usekit
 ```
 
-### 2. Result
+Then use it in any project:
 
-Creates:
-
-```
-src/hooks/useLocalStorage.ts
+```bash
+react-usekit
 ```
 
-(Or `.js` if your project is JavaScript-based)
+### Option 2: Use with NPX (No Installation)
+
+```bash
+npx react-usekit
+```
+
+> **When to choose?**
+>
+> - Use **global installation** if you plan to use `react-usekit` frequently across multiple projects.
+> - Use **NPX** for quick, one-off usage without installing anything globally.
 
 ---
 
-## 📚 Available Commands
+## 🎯 How it works
 
-### ➕ `add <name>`
+1. **Run the command** in your React project directory
+2. **Choose what to add**: Select between hooks or utilities
+3. **Pick your language**: TypeScript or JavaScript
+4. **Choose directory**: Specify where to place files (or use defaults)
+5. **Select items**: Multi-select from available templates (use spacebar to select)
+6. **Done!** Files are created in your chosen directories
 
-Installs a reusable hook or utility:
-
-```bash
-npx react-usekit add useDebounce
-npx react-usekit add formatDate
-```
-
-### 📋 `list`
-
-Lists all available logic drops:
+### Example Flow:
 
 ```bash
-npx react-usekit list
+$ react-usekit
+? What would you like to add? › hooks
+? Choose language: › TypeScript
+? Enter relative directory to place files (default: src/hooks): src/components/hooks
+? Select hooks to add: › ◉ useLocalStorage
+                         ◉ useDebounce
+                         ◯ useClickOutside
+
+✅ Hook 'useLocalStorage' added to src/components/hooks
+✅ Hook 'useDebounce' added to src/components/hooks
 ```
 
 ---
 
-## 📦 Logic Included (v1)
+## 📂 What Gets Created
+
+### Default Structure:
+
+```
+your-project/
+├── src/
+│   ├── hooks/           # Individual hook files
+│   │   ├── useLocalStorage.ts
+│   │   └── useDebounce.ts
+│   └── lib/
+│       └── utils.ts     # All utilities in one file
+```
+
+### Custom Directory Example:
+
+```
+your-project/
+├── src/
+│   ├── components/
+│   │   └── hooks/       # Your custom hooks location
+│   │       ├── useLocalStorage.ts
+│   │       └── useDebounce.ts
+│   └── utils/
+│       └── helpers.ts   # Your custom utils location
+```
+
+---
+
+## 📦 Available Logic
 
 ### 🔁 Hooks
 
-- `useLocalStorage`
-- `useDebounce`
-- `useClickOutside`
-- `useThrottle`
-- `usePrevious`
+- `useLocalStorage` - Persist state in localStorage
+- `useDebounce` - Debounce values with customizable delay
+- `useClickOutside` - Detect clicks outside an element
+- `useThrottle` - Throttle values to limit execution frequency
+- `usePrevious` - Access previous value of a state
 
 ### 🧮 Utilities
 
-- `formatDate`
-- `formatCurrency`
-- `truncateText`
-- `capitalize`
-- `sleep`
+- `formatDate` - Format dates with customizable patterns
+- `formatCurrency` - Format numbers as currency
+- `truncateText` - Truncate text with ellipsis
+- `capitalize` - Capitalize first letter of strings
+- `sleep` - Promise-based delay utility
 
 ---
 
-## 📂 File Placement
+## 💡 Quick Example
 
-| Logic Type | Destination     |
-| ---------- | --------------- |
-| Hooks      | `src/hooks/`    |
-| Utilities  | `src/lib/utils` |
+After adding a hook:
+
+```jsx
+import { useLocalStorage } from "./src/hooks/useLocalStorage";
+
+function App() {
+  const [name, setName] = useLocalStorage("username", "");
+
+  return (
+    <input
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      placeholder="Your name will be saved automatically"
+    />
+  );
+}
+```
+
+After adding utilities:
+
+```jsx
+import { formatCurrency, truncateText } from "./src/lib/utils";
+
+function ProductCard({ price, description }) {
+  return (
+    <div>
+      <p>{formatCurrency(price)}</p>
+      <p>{truncateText(description, 100)}</p>
+    </div>
+  );
+}
+```
 
 ---
 
 ## 🤝 Contributing
 
 Coming soon. Want to contribute early? DM or open an issue!
-
----
-
-## 🧪 Example Usage
-
-```bash
-npx react-usekit add useClickOutside
-# ➔ ✅ useClickOutside added to src/hooks/
-```
-
-```bash
-npx react-usekit add formatCurrency
-# ➔ ✅ formatCurrency added in src/lib/utils.ts
-```
 
 ---
 
