@@ -44,6 +44,23 @@ var addCommand = new Command("add").description("Add a hook or utility to your p
     console.error(`\u274C No templates found in ${templateFolder}`);
     process2.exit(1);
   }
+  const defaultPath = type === "hooks" ? "src/hooks" : "src/lib";
+  const { customPath } = await inquirer.prompt([
+    {
+      type: "input",
+      name: "customPath",
+      message: `Enter relative directory to place files (default: ${defaultPath}):`,
+      validate: (input) => {
+        if (input.trim() === "") return true;
+        if (path.isAbsolute(input))
+          return "\u274C Please enter a *relative* path.";
+        return true;
+      }
+    }
+  ]);
+  const finalPath = customPath.trim() !== "" ? customPath.trim() : defaultPath;
+  const resolvedDir = path.resolve(finalPath);
+  if (!existsSync(resolvedDir)) mkdirSync(resolvedDir, { recursive: true });
   const allFiles = readdirSync(templateFolder).filter((file) => file.endsWith(`.${langExt}`)).map((file) => path.basename(file, `.${langExt}`));
   if (allFiles.length === 0) {
     console.error(`\u274C No .${langExt} templates found in ${type}`);
@@ -61,30 +78,34 @@ var addCommand = new Command("add").description("Add a hook or utility to your p
   for (const name2 of selectedItems) {
     const templatePath = path.join(templateFolder, `${name2}.${langExt}`);
     const content = readFileSync(templatePath, "utf-8");
+    const fileName = type === "hooks" ? `${name2}.${langExt}` : `utils.${langExt}`;
+    const fullPath = path.join(resolvedDir, fileName);
     if (type === "hooks") {
-      const destDir = path.resolve("src/hooks");
-      const destPath = path.join(destDir, `${name2}.${langExt}`);
-      if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
-      if (existsSync(destPath)) {
-        console.warn(`\u26A0\uFE0F Skipped: ${destPath} already exists.`);
+      if (existsSync(fullPath)) {
+        console.warn(
+          `\u26A0\uFE0F Skipped: ${path.relative(
+            process2.cwd(),
+            fullPath
+          )} already exists.`
+        );
         continue;
       }
-      writeFileSync(destPath, content);
+      writeFileSync(fullPath, content);
       console.log(
-        `\u2705 Hook '${name2}' added to ${path.relative(process2.cwd(), destDir)}`
+        `\u2705 Hook '${name2}' added to ${path.relative(process2.cwd(), fullPath)}`
       );
     }
     if (type === "utils") {
-      const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
-      const libDir = path.dirname(utilsPath);
-      if (!existsSync(libDir)) mkdirSync(libDir, { recursive: true });
-      if (!existsSync(utilsPath)) writeFileSync(utilsPath, "");
-      appendFileSync(utilsPath, `
+      if (!existsSync(fullPath)) writeFileSync(fullPath, "");
+      appendFileSync(fullPath, `
 // ---- ${name2} ----
 ${content}
 `);
       console.log(
-        `\u2705 Utility '${name2}' appended to src/lib/utils.${langExt}`
+        `\u2705 Utility '${name2}' appended to ${path.relative(
+          process2.cwd(),
+          fullPath
+        )}`
       );
     }
   }
