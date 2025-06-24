@@ -1,4 +1,5 @@
 import { Command } from "commander";
+import inquirer from "inquirer";
 import {
   appendFileSync,
   existsSync,
@@ -19,7 +20,7 @@ export const addCommand = new Command("add")
   .argument("<name>", "Name of the hook or utility")
   .option("--hooks", "Add from hooks")
   .option("--utils", "Add from utils")
-  .action((name, options) => {
+  .action(async (name, options) => {
     const type = options.hooks ? "hooks" : options.utils ? "utils" : null;
 
     if (!type) {
@@ -27,7 +28,22 @@ export const addCommand = new Command("add")
       process.exit(1);
     }
 
-    const templatePath = path.resolve(`${TEMPLATE_DIR}/${type}/${name}.ts`);
+    // 🧠 Prompt user for language
+    const { language } = await inquirer.prompt([
+      {
+        type: "list",
+        name: "language",
+        message: "Choose language:",
+        choices: ["TypeScript", "JavaScript"],
+        default: "TypeScript",
+      },
+    ]);
+
+    const langExt = language === "TypeScript" ? "ts" : "js";
+
+    const templatePath = path.resolve(
+      `${TEMPLATE_DIR}/${type}/${name}.${langExt}`
+    );
     if (!existsSync(templatePath)) {
       console.error(`❌ Template '${name}' not found in ${type}`);
       process.exit(1);
@@ -37,7 +53,7 @@ export const addCommand = new Command("add")
 
     if (type === "hooks") {
       const destDir = path.resolve("src/hooks");
-      const destPath = path.join(destDir, `${name}.ts`);
+      const destPath = path.join(destDir, `${name}.${langExt}`);
 
       if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
       if (existsSync(destPath)) {
@@ -50,13 +66,13 @@ export const addCommand = new Command("add")
     }
 
     if (type === "utils") {
-      const utilsPath = path.resolve("src/lib/utils.ts");
+      const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
 
       const libDir = path.dirname(utilsPath);
       if (!existsSync(libDir)) mkdirSync(libDir, { recursive: true });
 
       if (!existsSync(utilsPath)) writeFileSync(utilsPath, "");
       appendFileSync(utilsPath, `\n// ---- ${name} ----\n${content}\n`);
-      console.log(`✅ Utility '${name}' appended to src/lib/utils.ts`);
+      console.log(`✅ Utility '${name}' appended to src/lib/utils.${langExt}`);
     }
   });

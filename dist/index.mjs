@@ -5,6 +5,7 @@ import { Command as Command3 } from "commander";
 
 // src/commands/add.ts
 import { Command } from "commander";
+import inquirer from "inquirer";
 import {
   appendFileSync,
   existsSync,
@@ -18,13 +19,25 @@ import { fileURLToPath } from "url";
 var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
 var TEMPLATE_DIR = path.resolve(__dirname, "templates");
-var addCommand = new Command("add").description("Add a hook or utility to your project").argument("<name>", "Name of the hook or utility").option("--hooks", "Add from hooks").option("--utils", "Add from utils").action((name, options) => {
+var addCommand = new Command("add").description("Add a hook or utility to your project").argument("<name>", "Name of the hook or utility").option("--hooks", "Add from hooks").option("--utils", "Add from utils").action(async (name, options) => {
   const type = options.hooks ? "hooks" : options.utils ? "utils" : null;
   if (!type) {
     console.error("\u274C Please specify --hooks or --utils");
     process2.exit(1);
   }
-  const templatePath = path.resolve(`${TEMPLATE_DIR}/${type}/${name}.ts`);
+  const { language } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "language",
+      message: "Choose language:",
+      choices: ["TypeScript", "JavaScript"],
+      default: "TypeScript"
+    }
+  ]);
+  const langExt = language === "TypeScript" ? "ts" : "js";
+  const templatePath = path.resolve(
+    `${TEMPLATE_DIR}/${type}/${name}.${langExt}`
+  );
   if (!existsSync(templatePath)) {
     console.error(`\u274C Template '${name}' not found in ${type}`);
     process2.exit(1);
@@ -32,7 +45,7 @@ var addCommand = new Command("add").description("Add a hook or utility to your p
   const content = readFileSync(templatePath, "utf-8");
   if (type === "hooks") {
     const destDir = path.resolve("src/hooks");
-    const destPath = path.join(destDir, `${name}.ts`);
+    const destPath = path.join(destDir, `${name}.${langExt}`);
     if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
     if (existsSync(destPath)) {
       console.error(`\u274C ${destPath} already exists.`);
@@ -42,7 +55,7 @@ var addCommand = new Command("add").description("Add a hook or utility to your p
     console.log(`\u2705 Hook '${name}' added to ${destDir}`);
   }
   if (type === "utils") {
-    const utilsPath = path.resolve("src/lib/utils.ts");
+    const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
     const libDir = path.dirname(utilsPath);
     if (!existsSync(libDir)) mkdirSync(libDir, { recursive: true });
     if (!existsSync(utilsPath)) writeFileSync(utilsPath, "");
@@ -50,7 +63,7 @@ var addCommand = new Command("add").description("Add a hook or utility to your p
 // ---- ${name} ----
 ${content}
 `);
-    console.log(`\u2705 Utility '${name}' appended to src/lib/utils.ts`);
+    console.log(`\u2705 Utility '${name}' appended to src/lib/utils.${langExt}`);
   }
 });
 
