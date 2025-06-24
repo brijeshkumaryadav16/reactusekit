@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 // src/index.ts
-import { Command as Command3 } from "commander";
+import { Command as Command2 } from "commander";
 
 // src/commands/add.ts
-import { Command } from "commander";
 import inquirer from "inquirer";
 import {
   appendFileSync,
@@ -20,85 +19,99 @@ import { fileURLToPath } from "url";
 var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
 var TEMPLATE_DIR = path.resolve(__dirname, "templates");
-var addCommand = new Command("add").description("Add a hook or utility to your project").action(async (name, options) => {
-  const { type } = await inquirer.prompt([
-    {
-      type: "list",
-      name: "type",
-      message: "What would you like to add?",
-      choices: ["hooks", "utils"]
-    }
-  ]);
-  const { language } = await inquirer.prompt([
-    {
-      type: "list",
-      name: "language",
-      message: "Choose language:",
-      choices: ["TypeScript", "JavaScript"],
-      default: "TypeScript"
-    }
-  ]);
-  const langExt = language === "TypeScript" ? "ts" : "js";
-  const templateFolder = path.resolve(`${TEMPLATE_DIR}/${type}`);
-  if (!existsSync(templateFolder)) {
-    console.error(`\u274C No templates found in ${templateFolder}`);
-    process2.exit(1);
-  }
-  const allFiles = readdirSync(templateFolder).filter((file) => file.endsWith(`.${langExt}`)).map((file) => path.basename(file, `.${langExt}`));
-  if (allFiles.length === 0) {
-    console.error(`\u274C No .${langExt} templates found in ${type}`);
-    process2.exit(1);
-  }
-  const { selectedItems } = await inquirer.prompt([
-    {
-      type: "checkbox",
-      name: "selectedItems",
-      message: `Select ${type} to add:`,
-      choices: allFiles,
-      validate: (selected) => selected.length > 0 ? true : "You must select at least one item."
-    }
-  ]);
-  for (const name2 of selectedItems) {
-    const templatePath = path.join(templateFolder, `${name2}.${langExt}`);
-    const content = readFileSync(templatePath, "utf-8");
-    if (type === "hooks") {
-      const destDir = path.resolve("src/hooks");
-      const destPath = path.join(destDir, `${name2}.${langExt}`);
-      if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
-      if (existsSync(destPath)) {
-        console.warn(`\u26A0\uFE0F Skipped: ${destPath} already exists.`);
-        continue;
+async function add() {
+  try {
+    const { type } = await inquirer.prompt([
+      {
+        type: "list",
+        name: "type",
+        message: "What would you like to add?",
+        choices: ["hooks", "utils"]
       }
-      writeFileSync(destPath, content);
-      console.log(
-        `\u2705 Hook '${name2}' added to ${path.relative(process2.cwd(), destDir)}`
-      );
+    ]);
+    const { language } = await inquirer.prompt([
+      {
+        type: "list",
+        name: "language",
+        message: "Choose language:",
+        choices: ["TypeScript", "JavaScript"],
+        default: "TypeScript"
+      }
+    ]);
+    const langExt = language === "TypeScript" ? "ts" : "js";
+    const templateFolder = path.resolve(`${TEMPLATE_DIR}/${type}`);
+    if (!existsSync(templateFolder)) {
+      console.error(`\u274C No templates found in ${templateFolder}`);
+      process2.exit(1);
     }
-    if (type === "utils") {
-      const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
-      const libDir = path.dirname(utilsPath);
-      if (!existsSync(libDir)) mkdirSync(libDir, { recursive: true });
-      if (!existsSync(utilsPath)) writeFileSync(utilsPath, "");
-      appendFileSync(utilsPath, `
-// ---- ${name2} ----
+    const allFiles = readdirSync(templateFolder).filter((file) => file.endsWith(`.${langExt}`)).map((file) => path.basename(file, `.${langExt}`));
+    if (allFiles.length === 0) {
+      console.error(`\u274C No .${langExt} templates found in ${type}`);
+      process2.exit(1);
+    }
+    const { selectedItems } = await inquirer.prompt([
+      {
+        type: "checkbox",
+        name: "selectedItems",
+        message: `Select ${type} to add:`,
+        choices: allFiles,
+        validate: (selected) => selected.length > 0 ? true : "You must select at least one item."
+      }
+    ]);
+    for (const name of selectedItems) {
+      const templatePath = path.join(templateFolder, `${name}.${langExt}`);
+      const content = readFileSync(templatePath, "utf-8");
+      if (type === "hooks") {
+        const destDir = path.resolve("src/hooks");
+        const destPath = path.join(destDir, `${name}.${langExt}`);
+        if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
+        if (existsSync(destPath)) {
+          console.warn(`\u26A0\uFE0F Skipped: ${destPath} already exists.`);
+          continue;
+        }
+        writeFileSync(destPath, content);
+        console.log(
+          `\u2705 Hook '${name}' added to ${path.relative(process2.cwd(), destDir)}`
+        );
+      }
+      if (type === "utils") {
+        const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
+        const libDir = path.dirname(utilsPath);
+        if (!existsSync(libDir)) mkdirSync(libDir, { recursive: true });
+        if (!existsSync(utilsPath)) writeFileSync(utilsPath, "");
+        appendFileSync(utilsPath, `
+// ---- ${name} ----
 ${content}
 `);
-      console.log(
-        `\u2705 Utility '${name2}' appended to src/lib/utils.${langExt}`
+        console.log(
+          `\u2705 Utility '${name}' appended to src/lib/utils.${langExt}`
+        );
+      }
+    }
+  } catch (error) {
+    if (error instanceof Error && error.name === "ExitPromptError") {
+      console.log("\n\u{1F44B} Operation cancelled by user.");
+      process2.exit(0);
+    } else {
+      console.error(
+        "\u274C An error occurred:",
+        error instanceof Error ? error.message : String(error)
       );
+      process2.exit(1);
     }
   }
-});
+}
+var add_default = add;
 
 // src/commands/list.ts
-import { Command as Command2 } from "commander";
+import { Command } from "commander";
 import fs from "fs";
 import path2 from "path";
 import { fileURLToPath as fileURLToPath2 } from "url";
 var __filename2 = fileURLToPath2(import.meta.url);
 var __dirname2 = path2.dirname(__filename2);
 var TEMPLATE_DIR2 = path2.resolve(__dirname2, "templates");
-var listCommand = new Command2("list").description("List available hooks and utilities").option("--hooks", "Show only hooks").option("--utils", "Show only utils").action(() => {
+var list = new Command("list").description("List available hooks and utilities").option("--hooks", "Show only hooks").option("--utils", "Show only utils").action(() => {
   const result = [];
   if (!fs.existsSync(TEMPLATE_DIR2)) {
     console.log("No templates found.");
@@ -130,10 +143,11 @@ var listCommand = new Command2("list").description("List available hooks and uti
     console.log(`${item.type.toUpperCase()} - ${item.name}`);
   });
 });
+var list_default = list;
 
 // src/index.ts
-var program = new Command3();
+var program = new Command2();
 program.name("react-usekit").description("CLI to add reusable hooks and utils").version("1.0.0-alpha.1");
-program.addCommand(listCommand);
-program.addCommand(addCommand);
+program.action(add_default);
+program.addCommand(list_default);
 program.parse();
