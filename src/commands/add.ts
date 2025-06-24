@@ -15,16 +15,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const TEMPLATE_DIR = path.resolve(__dirname, "templates");
 
-<<<<<<< HEAD
-export const addCommand = new Command("add")
-  .description("Add a hook or utility to your project")
-  .action(async (name, options) => {
-    // ✅ Step 1: Prompt for type: hooks or utils
-=======
 async function add() {
   try {
     // ✅ Prompt for type: hooks or utils
->>>>>>> c0be01f348731529b18e105b06b37c6c6c4d8bb9
     const { type } = await inquirer.prompt([
       {
         type: "list",
