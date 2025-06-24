@@ -10,6 +10,7 @@ import {
   appendFileSync,
   existsSync,
   mkdirSync,
+  readdirSync,
   readFileSync,
   writeFileSync
 } from "fs";
@@ -19,12 +20,15 @@ import { fileURLToPath } from "url";
 var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
 var TEMPLATE_DIR = path.resolve(__dirname, "templates");
-var addCommand = new Command("add").description("Add a hook or utility to your project").argument("<name>", "Name of the hook or utility").option("--hooks", "Add from hooks").option("--utils", "Add from utils").action(async (name, options) => {
-  const type = options.hooks ? "hooks" : options.utils ? "utils" : null;
-  if (!type) {
-    console.error("\u274C Please specify --hooks or --utils");
-    process2.exit(1);
-  }
+var addCommand = new Command("add").description("Add a hook or utility to your project").action(async (name, options) => {
+  const { type } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "type",
+      message: "What would you like to add?",
+      choices: ["hooks", "utils"]
+    }
+  ]);
   const { language } = await inquirer.prompt([
     {
       type: "list",
@@ -35,35 +39,52 @@ var addCommand = new Command("add").description("Add a hook or utility to your p
     }
   ]);
   const langExt = language === "TypeScript" ? "ts" : "js";
-  const templatePath = path.resolve(
-    `${TEMPLATE_DIR}/${type}/${name}.${langExt}`
-  );
-  if (!existsSync(templatePath)) {
-    console.error(`\u274C Template '${name}' not found in ${type}`);
+  const templateFolder = path.resolve(`${TEMPLATE_DIR}/${type}`);
+  if (!existsSync(templateFolder)) {
+    console.error(`\u274C No templates found in ${templateFolder}`);
     process2.exit(1);
   }
-  const content = readFileSync(templatePath, "utf-8");
-  if (type === "hooks") {
-    const destDir = path.resolve("src/hooks");
-    const destPath = path.join(destDir, `${name}.${langExt}`);
-    if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
-    if (existsSync(destPath)) {
-      console.error(`\u274C ${destPath} already exists.`);
-      process2.exit(1);
-    }
-    writeFileSync(destPath, content);
-    console.log(`\u2705 Hook '${name}' added to ${destDir}`);
+  const allFiles = readdirSync(templateFolder).filter((file) => file.endsWith(`.${langExt}`)).map((file) => path.basename(file, `.${langExt}`));
+  if (allFiles.length === 0) {
+    console.error(`\u274C No .${langExt} templates found in ${type}`);
+    process2.exit(1);
   }
-  if (type === "utils") {
-    const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
-    const libDir = path.dirname(utilsPath);
-    if (!existsSync(libDir)) mkdirSync(libDir, { recursive: true });
-    if (!existsSync(utilsPath)) writeFileSync(utilsPath, "");
-    appendFileSync(utilsPath, `
-// ---- ${name} ----
+  const { selectedItems } = await inquirer.prompt([
+    {
+      type: "checkbox",
+      name: "selectedItems",
+      message: `Select ${type} to add:`,
+      choices: allFiles,
+      validate: (selected) => selected.length > 0 ? true : "You must select at least one item."
+    }
+  ]);
+  for (const name2 of selectedItems) {
+    const templatePath = path.join(templateFolder, `${name2}.${langExt}`);
+    const content = readFileSync(templatePath, "utf-8");
+    if (type === "hooks") {
+      const destDir = path.resolve("src/hooks");
+      const destPath = path.join(destDir, `${name2}.${langExt}`);
+      if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
+      if (existsSync(destPath)) {
+        console.warn(`\u26A0\uFE0F Skipped: ${destPath} already exists.`);
+        continue;
+      }
+      writeFileSync(destPath, content);
+      console.log(`\u2705 Hook '${name2}' added to ${destDir}`);
+    }
+    if (type === "utils") {
+      const utilsPath = path.resolve(`src/lib/utils.${langExt}`);
+      const libDir = path.dirname(utilsPath);
+      if (!existsSync(libDir)) mkdirSync(libDir, { recursive: true });
+      if (!existsSync(utilsPath)) writeFileSync(utilsPath, "");
+      appendFileSync(utilsPath, `
+// ---- ${name2} ----
 ${content}
 `);
-    console.log(`\u2705 Utility '${name}' appended to src/lib/utils.${langExt}`);
+      console.log(
+        `\u2705 Utility '${name2}' appended to src/lib/utils.${langExt}`
+      );
+    }
   }
 });
 
