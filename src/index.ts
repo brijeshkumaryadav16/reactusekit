@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import { addCommand } from "./commands/add.js";
-import { listCommand } from "./commands/list.js";
+import add from "./commands/add";
+import list from "./commands/list";
 
 const program = new Command();
 
@@ -9,7 +9,6 @@ program
   .description("CLI to add reusable hooks and utils")
   .version("1.0.0-alpha.1");
 
-program.addCommand(listCommand);
-program.addCommand(addCommand);
-
+program.action(add);
+program.addCommand(list);
 program.parse();

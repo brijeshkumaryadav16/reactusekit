@@ -8,7 +8,7 @@ To test this package locally in another project, follow these steps:
    pnpm build
    ```
 
-2. After building, create a global link:
+2. Create a global link:
 
    ```bash
    pnpm link --global
@@ -17,26 +17,18 @@ To test this package locally in another project, follow these steps:
 3. Now you can run the CLI in your test project:
 
    ```bash
-   # Show help
-   react-usekit --help
+   # Show version
+   react-usekit --version
+
+   # Add a new utility and hook
+   react-usekit
 
    # List all utilities
    react-usekit list
-
-   # Add a new utility and hook
-   react-usekit add <utility-and-hooks-name>
    ```
 
-To unlink the package when done testing:
+To unlink when done testing:
 
-1. In your test project:
-
-   ```bash
-   pnpm unlink react-usekit
-   ```
-
-2. In the package directory:
-
-   ```bash
-   pnpm unlink
-   ```
+```bash
+pnpm remove -g react-usekit
+```
