@@ -7,7 +7,7 @@ const program = new Command();
 program
   .name("react-usekit")
   .description("CLI to add reusable hooks and utils")
-  .version("1.0.0-alpha.1");
+  .version("1.0.0-alpha.2");
 
 program.action(add);
 program.addCommand(list);
