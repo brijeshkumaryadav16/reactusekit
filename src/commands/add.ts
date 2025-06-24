@@ -17,7 +17,7 @@ const TEMPLATE_DIR = path.resolve(__dirname, "templates");
 
 async function add() {
   try {
-    // ✅ Prompt for type: hooks or utils
+    // ✅ Step 1: Prompt for type: hooks or utils
     const { type } = await inquirer.prompt([
       {
         type: "list",
