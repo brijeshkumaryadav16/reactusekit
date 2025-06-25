@@ -174,3 +174,9 @@ Coming soon. Want to contribute early? DM or open an issue!
 ## 📬 License
 
 MIT — use freely, modify openly.
+
+## 🚧 Current Development
+
+- See [Phase 1 Development Plan](./PHASE1.md) for current roadmap and progress.
+- See [Phase 2 Development Plan](./PHASE2.md) for current roadmap and progress.
+- See [Phase 3 Development Plan](./PHASE3.md) for current roadmap and progress.
