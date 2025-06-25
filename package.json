@@ -1,0 +1,18 @@
+{
+  "name": "react-usekit",
+  "version": "1.0.0",
+  "description": "Drop-in React hooks and utility functions — zero boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "cli",
+    "utilities"
+  ],
+  "author": "Brijeshkumar Yadav",
+  "license": "MIT",
+  "packageManager": "pnpm@10.12.1"
+}

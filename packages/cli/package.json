@@ -1,0 +1,58 @@
+{
+  "name": "react-usekit",
+  "version": "1.0.0-alpha.3",
+  "description": "CLI tool for react-usekit",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "dist/index.js",
+  "bin": {
+    "react-usekit": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "node dist/index.js --help",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm clean && pnpm build",
+    "version:alpha": "npm version prerelease --preid=alpha",
+    "version:beta": "npm version prerelease --preid=beta",
+    "version:patch": "npm version patch",
+    "publish:alpha": "pnpm version:alpha && npm publish --tag alpha",
+    "publish:beta": "pnpm version:beta && npm publish --tag beta",
+    "publish:stable": "pnpm version:patch && npm publish"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "prompts": "^2.4.2",
+    "chalk": "^5.3.0",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/prompts": "^2.4.9"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "cli",
+    "utilities",
+    "typescript"
+  ],
+  "author": "Brijeshkumar Yadav",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
