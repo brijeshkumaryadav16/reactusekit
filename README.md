@@ -31,19 +31,19 @@
 ### Option 1: Install Globally (Recommended)
 
 ```bash
-npm install -g react-usekit
+npm install -g react-usekit init
 ```
 
 Then use it in any project:
 
 ```bash
-react-usekit
+react-usekit init
 ```
 
 ### Option 2: Use with NPX (No Installation)
 
 ```bash
-npx react-usekit
+npx react-usekit init
 ```
 
 > **When to choose?**
@@ -65,7 +65,7 @@ npx react-usekit
 ### Example Flow:
 
 ```bash
-$ react-usekit
+$ react-usekit init
 ? What would you like to add? › hooks
 ? Choose language: › TypeScript
 ? Enter relative directory to place files (default: src/hooks): src/components/hooks
@@ -174,9 +174,3 @@ Coming soon. Want to contribute early? DM or open an issue!
 ## 📬 License
 
 MIT — use freely, modify openly.
-
-## 🚧 Current Development
-
-- See [Phase 1 Development Plan](./PHASE1.md) for current roadmap and progress.
-- See [Phase 2 Development Plan](./PHASE2.md) for current roadmap and progress.
-- See [Phase 3 Development Plan](./PHASE3.md) for current roadmap and progress.
