@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// Hook to persist state in localStorage with automatic sync
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {

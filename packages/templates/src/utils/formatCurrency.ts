@@ -1,3 +1,4 @@
+// Format a number as currency with locale support
 export function formatCurrency(
   amount: number,
   currency = "USD",
