@@ -101,4 +101,5 @@ gh pr list --author "dependabot[bot]" --json number --jq '.[].number' | head -5 
 - **Manual review** recommended for all updates
 - **Review** major updates carefully
 
-This configuration provides a good balance between staying updated and not being overwhelmed with PRs! 🎉
+This configuration provides a good balance between staying updated and not being overwhelmed with
+PRs! 🎉
