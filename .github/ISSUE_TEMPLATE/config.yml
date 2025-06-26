@@ -1,8 +1,6 @@
-blank_issues_enabled: false
-contact_links:
-  - name: 💬 Discussions
-    url: https://github.com/brijeshb42/react-usekit/discussions
-    about: Ask questions and discuss ideas with the community
-  - name: 📖 Documentation
-    url: https://react-usekit.com
-    about: Read the comprehensive documentation and guides
+# Issue template configuration
+# This configuration is currently being developed.
+
+blank_issues_enabled: true
+
+# Coming soon: Issue templates and contact links will be added in the future

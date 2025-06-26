@@ -17,15 +17,6 @@
     "build:cli": "pnpm -F react-usekit build",
     "link:cli": "cd packages/cli && pnpm link --global",
     "unlink:cli": "pnpm remove -g react-usekit",
-    "lint": "echo 'Linting temporarily disabled - will fix in future PR'",
-    "lint:fix": "echo 'Linting temporarily disabled - will fix in future PR'",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "type-check": "echo 'Type checking temporarily disabled - will fix in future PR'",
-    "prepare": "husky install",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:coverage": "vitest --coverage",
     "clean": "rm -rf node_modules/.cache && rm -rf apps/docs/.next && rm -rf packages/*/dist"
   },
   "keywords": [
@@ -52,22 +43,7 @@
   },
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^19.8.1",
     "@types/node": "^24.0.4",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "@vitest/coverage-v8": "^1.6.1",
-    "eslint": "^8.54.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.1.2",
-    "prettier": "^3.1.0",
-    "typescript": "^5.3.2",
-    "vitest": "^1.6.1"
+    "typescript": "^5.3.2"
   }
 }
