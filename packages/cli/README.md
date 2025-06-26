@@ -76,7 +76,7 @@ $ react-usekit init
 
 For detailed examples, all available templates, and advanced usage:
 
-**👉 [Complete Documentation](https://github.com/brijeshkumaryadav16/react-usekit?tab=readme-ov-file)**
+**👉 [Complete Documentation](https://www.react-usekit.com)**
 
 ## 📄 License
 

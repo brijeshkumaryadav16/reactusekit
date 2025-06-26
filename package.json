@@ -2,13 +2,13 @@
   "name": "react-usekit",
   "version": "1.0.0",
   "description": "Drop-in React hooks and utility functions — zero boilerplate, maximum productivity",
-  "homepage": "https://react-usekit.dev",
+  "homepage": "https://www.react-usekit.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brijeshkumaryadav/react-usekit.git"
+    "url": "https://github.com/brijeshkumaryadav16/react-usekit.git"
   },
   "bugs": {
-    "url": "https://github.com/brijeshkumaryadav/react-usekit/issues"
+    "url": "https://github.com/brijeshkumaryadav16/react-usekit/issues"
   },
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,7 @@
   ],
   "author": {
     "name": "Brijeshkumar Yadav",
-    "url": "https://github.com/brijeshkumaryadav"
+    "url": "https://github.com/brijeshkumaryadav16"
   },
   "license": "MIT",
   "engines": {

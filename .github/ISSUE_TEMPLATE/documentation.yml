@@ -30,7 +30,7 @@ body:
     attributes:
       label: Page URL (if applicable)
       description: Link to the documentation page with the issue
-      placeholder: https://react-usekit.com/docs/hooks/use-local-storage
+      placeholder: https://www.react-usekit.com/docs/hooks/use-local-storage
 
   - type: textarea
     id: issue-description

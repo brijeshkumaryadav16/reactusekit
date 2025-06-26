@@ -345,11 +345,11 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🆘 Support & Community
 
-- 📖 **Documentation**: [Full docs](https://github.com/brijeshkumaryadav16/react-usekit#readme)
+- 📖 **Documentation**: [Full docs](https://www.react-usekit.com)
 - 🐛 **Issues**: [Bug reports](https://github.com/brijeshkumaryadav16/react-usekit/issues)
 - 💬 **Discussions**:
   [Community forum](https://github.com/brijeshkumaryadav16/react-usekit/discussions)
-- � **Updates**: Follow [@brijeshkumaryadav16](https://linkedin.com/in/brijeshkumaryadav16) for
+- 📱 **Updates**: Follow [@brijeshkumaryadav16](https://linkedin.com/in/brijeshkumaryadav16) for
   updates
 
 ---
@@ -370,6 +370,6 @@ See [LICENSE](LICENSE) for full details.
 
 [Report Bug](https://github.com/brijeshkumaryadav16/react-usekit/issues) •
 [Request Feature](https://github.com/brijeshkumaryadav16/react-usekit/issues) •
-[Documentation](https://github.com/brijeshkumaryadav16/react-usekit#readme)
+[Documentation](https://www.react-usekit.com)
 
 </div>
