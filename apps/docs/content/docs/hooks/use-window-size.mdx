@@ -1,0 +1,274 @@
+---
+title: useWindowSize
+description: Track window dimensions with responsive breakpoints
+---
+
+# useWindowSize
+
+The `useWindowSize` hook tracks the current window dimensions and provides an easy way to create
+responsive React components. It automatically updates when the window is resized.
+
+## Usage
+
+```tsx
+import { useWindowSize } from './hooks/useWindowSize';
+
+function ResponsiveComponent() {
+  const { width, height } = useWindowSize();
+
+  return (
+    <div>
+      <p>
+        Window size: {width} x {height}
+      </p>
+      {width < 768 ? <MobileLayout /> : <DesktopLayout />}
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Parameters
+
+This hook takes no parameters.
+
+### Returns
+
+- `width` (number): The current window width in pixels
+- `height` (number): The current window height in pixels
+
+## Examples
+
+### Responsive Navigation
+
+```tsx
+function Navigation() {
+  const { width } = useWindowSize();
+  const isMobile = width < 768;
+
+  return <nav className="navigation">{isMobile ? <MobileNav /> : <DesktopNav />}</nav>;
+}
+
+function MobileNav() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <div className="mobile-nav">
+      <button onClick={() => setIsMenuOpen(!isMenuOpen)}>☰ Menu</button>
+      {isMenuOpen && (
+        <ul className="mobile-menu">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function DesktopNav() {
+  return (
+    <ul className="desktop-nav">
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/about">About</a>
+      </li>
+      <li>
+        <a href="/contact">Contact</a>
+      </li>
+    </ul>
+  );
+}
+```
+
+### Grid Layout
+
+```tsx
+function PhotoGrid({ photos }) {
+  const { width } = useWindowSize();
+
+  const getColumns = () => {
+    if (width < 576) return 1;
+    if (width < 768) return 2;
+    if (width < 992) return 3;
+    return 4;
+  };
+
+  const columns = getColumns();
+
+  return (
+    <div
+      className="photo-grid"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gap: '1rem',
+      }}
+    >
+      {photos.map(photo => (
+        <div key={photo.id} className="photo-item">
+          <img src={photo.url} alt={photo.alt} />
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### Chart Responsiveness
+
+```tsx
+function Chart({ data }) {
+  const { width, height } = useWindowSize();
+
+  const chartWidth = Math.min(width - 40, 800);
+  const chartHeight = Math.min(height - 200, 400);
+
+  return (
+    <div className="chart-container">
+      <ResponsiveChart data={data} width={chartWidth} height={chartHeight} />
+    </div>
+  );
+}
+```
+
+### Breakpoint Hook
+
+```tsx
+function useBreakpoint() {
+  const { width } = useWindowSize();
+
+  return {
+    isMobile: width < 768,
+    isTablet: width >= 768 && width < 1024,
+    isDesktop: width >= 1024,
+    isLarge: width >= 1200,
+  };
+}
+
+function ResponsiveCard() {
+  const { isMobile, isTablet, isDesktop } = useBreakpoint();
+
+  return (
+    <div className={`card ${isMobile ? 'card-mobile' : ''}`}>
+      <h2>Responsive Card</h2>
+      {isMobile && <p>Mobile layout</p>}
+      {isTablet && <p>Tablet layout</p>}
+      {isDesktop && <p>Desktop layout</p>}
+    </div>
+  );
+}
+```
+
+### Conditional Rendering
+
+```tsx
+function Sidebar() {
+  const { width } = useWindowSize();
+  const showSidebar = width >= 1024;
+
+  if (!showSidebar) return null;
+
+  return (
+    <aside className="sidebar">
+      <nav>
+        <ul>
+          <li>
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/profile">Profile</a>
+          </li>
+          <li>
+            <a href="/settings">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  );
+}
+
+function Layout({ children }) {
+  const { width } = useWindowSize();
+  const hasSidebar = width >= 1024;
+
+  return (
+    <div className={`layout ${hasSidebar ? 'with-sidebar' : ''}`}>
+      <Sidebar />
+      <main className="main-content">{children}</main>
+    </div>
+  );
+}
+```
+
+### Modal Sizing
+
+```tsx
+function Modal({ isOpen, onClose, children }) {
+  const { width, height } = useWindowSize();
+
+  if (!isOpen) return null;
+
+  const modalStyle = {
+    width: width < 768 ? '90%' : '500px',
+    maxHeight: height < 600 ? '80vh' : '600px',
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: 'white',
+    borderRadius: '8px',
+    padding: '2rem',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    overflow: 'auto',
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div style={modalStyle} onClick={e => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>
+  );
+}
+```
+
+### Performance Optimization
+
+```tsx
+function OptimizedComponent() {
+  const { width } = useWindowSize();
+
+  // Memoize expensive calculations based on width
+  const layout = useMemo(() => {
+    return calculateLayout(width);
+  }, [width]);
+
+  // Only render expensive components on larger screens
+  const shouldRenderChart = width >= 768;
+
+  return (
+    <div>
+      <SimpleContent />
+      {shouldRenderChart && <ExpensiveChart layout={layout} />}
+    </div>
+  );
+}
+```
+
+## Notes
+
+- The hook automatically handles adding and removing resize event listeners
+- Window dimensions are updated in real-time as the user resizes their browser
+- Consider debouncing resize events for performance if you have expensive calculations
+- Server-side rendering: window dimensions will be `0` on the server
+- Use this hook to create truly responsive components that adapt to screen size changes

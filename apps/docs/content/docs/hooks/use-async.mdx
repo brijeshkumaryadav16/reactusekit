@@ -1,0 +1,623 @@
+---
+title: useAsync
+description: Handle async operations with loading, error, and data states
+---
+
+import { Callout } from "fumadocs-ui/components/callout"; import { Tab, Tabs } from
+"fumadocs-ui/components/tabs";
+
+# useAsync
+
+<div className="flex gap-2 mb-4">
+  <span className="px-2 py-1 text-xs bg-secondary rounded-md">
+    Async Operations
+  </span>
+  <span className="px-2 py-1 text-xs bg-secondary rounded-md">API Calls</span>
+  <span className="px-2 py-1 text-xs bg-secondary rounded-md">
+    Loading States
+  </span>
+</div>
+
+A React hook for handling async operations with automatic loading, error, and data state management.
+
+<Callout title="Why Use This Hook?">
+  - ✅ **Complete State Management** - Handles loading, error, and data states -
+  ✅ **Automatic Cleanup** - Prevents memory leaks and race conditions - ✅
+  **Flexible Execution** - Immediate or manual execution - ✅ **Error Handling**
+  - Built-in error catching and reporting - ✅ **TypeScript Ready** - Full type
+  safety with generics
+</Callout>
+
+## Installation
+
+Generate this hook in your project:
+
+```bash
+react-usekit init
+# Select "hooks" → Choose language → Select "useAsync"
+```
+
+## Usage
+
+### Basic API Call
+
+<Tabs items={['TypeScript', 'JavaScript']}> <Tab value="TypeScript">
+
+```tsx
+import { useAsync } from './hooks/useAsync';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+function UserProfile({ userId }: { userId: number }) {
+  const {
+    data: user,
+    loading,
+    error,
+    execute,
+    reset,
+  } = useAsync<User>(() => fetch(`/api/users/${userId}`).then(res => res.json()), {
+    immediate: true,
+  });
+
+  if (loading) return <div>Loading user...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!user) return <div>No user found</div>;
+
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <p>{user.email}</p>
+      <button onClick={execute}>Refresh</button>
+      <button onClick={reset}>Clear</button>
+    </div>
+  );
+}
+```
+
+</Tab>
+<Tab value="JavaScript">
+```jsx
+import { useAsync } from './hooks/useAsync';
+
+function UserProfile({ userId }) { const { data: user, loading, error, execute, reset } = useAsync(
+() => fetch(`/api/users/${userId}`).then(res => res.json()), { immediate: true } );
+
+if (loading) return <div>Loading user...</div>; if (error) return <div>Error: {error.message}</div>;
+if (!user) return <div>No user found</div>;
+
+return ( <div> <h1>{user.name}</h1> <p>{user.email}</p> <button onClick={execute}>Refresh</button>
+<button onClick={reset}>Clear</button> </div> ); }
+
+````
+
+</Tab>
+</Tabs>
+
+### Manual Execution
+
+```tsx
+function CreateUserForm() {
+  const {
+    data: newUser,
+    loading,
+    error,
+    execute: createUser,
+  } = useAsync(
+    (userData: UserData) =>
+      fetch("/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      }).then((res) => res.json()),
+    {
+      immediate: false,
+      onSuccess: (user) => {
+        console.log("User created:", user);
+        // Redirect or show success message
+      },
+      onError: (error) => {
+        console.error("Failed to create user:", error);
+      },
+    }
+  );
+
+  const handleSubmit = (formData: UserData) => {
+    createUser(formData);
+  };
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit(getFormData());
+      }}
+    >
+      {/* Form fields */}
+      <button type="submit" disabled={loading}>
+        {loading ? "Creating..." : "Create User"}
+      </button>
+      {error && <div className="error">{error.message}</div>}
+      {newUser && <div className="success">User created successfully!</div>}
+    </form>
+  );
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Parameter       | Type               | Description                      |
+| --------------- | ------------------ | -------------------------------- |
+| `asyncFunction` | `() => Promise<T>` | The async function to execute    |
+| `options`       | `AsyncOptions<T>`  | Configuration options (optional) |
+
+### Options
+
+| Option      | Type                     | Default | Description                             |
+| ----------- | ------------------------ | ------- | --------------------------------------- |
+| `immediate` | `boolean`                | `false` | Execute the function immediately        |
+| `onSuccess` | `(data: T) => void`      | -       | Callback called on successful execution |
+| `onError`   | `(error: Error) => void` | -       | Callback called on error                |
+
+### Returns
+
+Returns an object with the following properties:
+
+| Property  | Type                  | Description                           |
+| --------- | --------------------- | ------------------------------------- |
+| `data`    | `T \| null`           | The resolved data from async function |
+| `loading` | `boolean`             | Whether the async function is running |
+| `error`   | `Error \| null`       | Any error that occurred               |
+| `execute` | `() => Promise<void>` | Function to manually execute async op |
+| `reset`   | `() => void`          | Function to reset all states          |
+
+### Type Definition
+
+```tsx
+interface AsyncOptions<T> {
+  immediate?: boolean;
+  onSuccess?: (data: T) => void;
+  onError?: (error: Error) => void;
+}
+
+function useAsync<T = any>(
+  asyncFunction: () => Promise<T>,
+  options?: AsyncOptions<T>
+): {
+  data: T | null;
+  loading: boolean;
+  error: Error | null;
+  execute: () => Promise<void>;
+  reset: () => void;
+};
+```
+
+## Real-World Examples
+
+### Data Dashboard with Refresh
+
+```tsx
+interface DashboardData {
+  stats: {
+    users: number;
+    orders: number;
+    revenue: number;
+  };
+  recentActivity: Activity[];
+}
+
+function Dashboard() {
+  const {
+    data: dashboardData,
+    loading,
+    error,
+    execute: refreshData,
+  } = useAsync<DashboardData>(
+    () => fetch("/api/dashboard").then((res) => res.json()),
+    {
+      immediate: true,
+      onError: (error) => {
+        // Send error to logging service
+        console.error("Dashboard load failed:", error);
+      },
+    }
+  );
+
+  // Auto-refresh every 5 minutes
+  useEffect(() => {
+    const interval = setInterval(refreshData, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [refreshData]);
+
+  if (loading && !dashboardData) {
+    return <DashboardSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <div className="error-state">
+        <h2>Failed to load dashboard</h2>
+        <p>{error.message}</p>
+        <button onClick={refreshData}>Try Again</button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="dashboard">
+      <div className="dashboard-header">
+        <h1>Dashboard</h1>
+        <button
+          onClick={refreshData}
+          disabled={loading}
+          className={loading ? "loading" : ""}
+        >
+          {loading ? "Refreshing..." : "Refresh"}
+        </button>
+      </div>
+
+      <div className="stats-grid">
+        <StatCard title="Users" value={dashboardData?.stats.users} />
+        <StatCard title="Orders" value={dashboardData?.stats.orders} />
+        <StatCard title="Revenue" value={dashboardData?.stats.revenue} />
+      </div>
+
+      <div className="recent-activity">
+        <h2>Recent Activity</h2>
+        {dashboardData?.recentActivity.map((activity) => (
+          <ActivityItem key={activity.id} activity={activity} />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Search with Debouncing
+
+```tsx
+import { useAsync } from "./hooks/useAsync";
+import { useDebounce } from "./hooks/useDebounce";
+
+interface SearchResult {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+}
+
+function SearchComponent() {
+  const [query, setQuery] = useState("");
+  const debouncedQuery = useDebounce(query, 300);
+
+  const {
+    data: results,
+    loading,
+    error,
+  } = useAsync<SearchResult[]>(
+    () => {
+      if (!debouncedQuery.trim()) return Promise.resolve([]);
+
+      return fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}`).then(
+        (res) => res.json()
+      );
+    },
+    {
+      immediate: true,
+      onError: (error) => {
+        // Handle search errors gracefully
+        console.error("Search failed:", error);
+      },
+    }
+  );
+
+  // Re-trigger search when debounced query changes
+  useEffect(() => {
+    if (debouncedQuery !== query) return; // Still debouncing
+    // Search will be triggered by the useAsync hook
+  }, [debouncedQuery]);
+
+  return (
+    <div className="search-component">
+      <div className="search-input-container">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search..."
+          className="search-input"
+        />
+        {loading && <div className="search-spinner">🔍</div>}
+      </div>
+
+      {error && (
+        <div className="search-error">Search failed. Please try again.</div>
+      )}
+
+      {results && results.length > 0 && (
+        <div className="search-results">
+          {results.map((result) => (
+            <div key={result.id} className="search-result">
+              <h3>{result.title}</h3>
+              <p>{result.description}</p>
+              <a href={result.url} target="_blank" rel="noopener noreferrer">
+                Visit →
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {results && results.length === 0 && query.trim() && !loading && (
+        <div className="no-results">No results found for "{query}"</div>
+      )}
+    </div>
+  );
+}
+```
+
+### Form Submission with Validation
+
+```tsx
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+function ContactForm() {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const {
+    data: response,
+    loading: submitting,
+    error: submitError,
+    execute: submitForm,
+    reset: resetSubmission,
+  } = useAsync(
+    () => {
+      // Validate form data
+      if (!formData.name.trim()) {
+        throw new Error("Name is required");
+      }
+      if (!formData.email.trim()) {
+        throw new Error("Email is required");
+      }
+      if (!formData.message.trim()) {
+        throw new Error("Message is required");
+      }
+
+      return fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }).then(async (res) => {
+        if (!res.ok) {
+          const error = await res.json();
+          throw new Error(error.message || "Submission failed");
+        }
+        return res.json();
+      });
+    },
+    {
+      immediate: false,
+      onSuccess: () => {
+        // Clear form on success
+        setFormData({ name: "", email: "", message: "" });
+        // Show success message for 3 seconds
+        setTimeout(resetSubmission, 3000);
+      },
+    }
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    submitForm();
+  };
+
+  const handleInputChange = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    // Clear previous submission state when user starts typing
+    if (submitError || response) {
+      resetSubmission();
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="contact-form">
+      <div className="form-group">
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          value={formData.name}
+          onChange={(e) => handleInputChange("name", e.target.value)}
+          disabled={submitting}
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          value={formData.email}
+          onChange={(e) => handleInputChange("email", e.target.value)}
+          disabled={submitting}
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          value={formData.message}
+          onChange={(e) => handleInputChange("message", e.target.value)}
+          disabled={submitting}
+          rows={4}
+          required
+        />
+      </div>
+
+      <button type="submit" disabled={submitting} className="submit-button">
+        {submitting ? "Sending..." : "Send Message"}
+      </button>
+
+      {submitError && (
+        <div className="error-message">
+          <strong>Error:</strong> {submitError.message}
+        </div>
+      )}
+
+      {response && (
+        <div className="success-message">
+          <strong>Success!</strong> Your message has been sent. We'll get back
+          to you soon!
+        </div>
+      )}
+    </form>
+  );
+}
+```
+
+## Best Practices
+
+<Callout type="info" title="Performance & UX Tips">
+  - Always handle loading states to improve perceived performance - Provide
+  meaningful error messages to users - Use the `reset` function to clear states
+  when needed - Consider using optimistic updates for better UX - Implement
+  retry mechanisms for failed requests
+</Callout>
+
+### Do's and Don'ts
+
+**✅ Do:**
+
+- Handle all three states: loading, error, and success
+- Use TypeScript for better error catching
+- Implement proper error boundaries for critical operations
+- Show loading indicators for better UX
+- Use meaningful error messages
+
+**❌ Don't:**
+
+- Ignore error states
+- Make requests without loading indicators
+- Forget to handle race conditions (the hook handles this)
+- Use for synchronous operations
+- Ignore the cleanup that the hook provides
+
+### Error Handling Patterns
+
+```tsx
+// Global error handler
+const { data, loading, error, execute } = useAsync(fetchData, {
+  onError: (error) => {
+    // Log to error reporting service
+    errorReportingService.log(error);
+
+    // Show toast notification
+    toast.error("Something went wrong. Please try again.");
+  },
+});
+
+// Retry pattern
+const [retryCount, setRetryCount] = useState(0);
+const maxRetries = 3;
+
+const { data, loading, error, execute } = useAsync(fetchData, {
+  onError: async (error) => {
+    if (retryCount < maxRetries) {
+      console.log(`Retrying... (${retryCount + 1}/${maxRetries})`);
+      setRetryCount((prev) => prev + 1);
+      // Retry after delay
+      setTimeout(execute, 1000 * Math.pow(2, retryCount));
+    }
+  },
+  onSuccess: () => {
+    setRetryCount(0); // Reset retry count on success
+  },
+});
+```
+
+## Integration Examples
+
+### With React Query Migration
+
+```tsx
+// Before (React Query)
+const { data, isLoading, error } = useQuery({
+  queryKey: ["user", userId],
+  queryFn: () => fetchUser(userId),
+});
+
+// After (useAsync)
+const { data, loading, error } = useAsync(() => fetchUser(userId), {
+  immediate: true,
+});
+```
+
+### With SWR Migration
+
+```tsx
+// Before (SWR)
+const { data, error, isLoading } = useSWR(`/api/users/${userId}`, fetcher);
+
+// After (useAsync)
+const { data, error, loading } = useAsync(
+  () => fetcher(`/api/users/${userId}`),
+  { immediate: true }
+);
+```
+
+## Related Hooks
+
+- **useDebounce** - Delay API calls for search functionality
+- **useLocalStorage** - Cache API responses locally
+- **useToggle** - Manage boolean states in async operations
+
+## Troubleshooting
+
+### Common Issues
+
+**Memory leaks with component unmounting:**
+
+```tsx
+// The hook automatically handles cleanup, but you can also:
+useEffect(() => {
+  return () => {
+    // Component is unmounting
+    reset(); // Clear any pending states
+  };
+}, [reset]);
+```
+
+**Race conditions:**
+
+```tsx
+// The hook automatically cancels previous requests
+// when a new one is triggered. No additional code needed.
+```
+
+**Error boundary integration:**
+
+```tsx
+// For critical errors that should crash the component
+const { error } = useAsync(criticalOperation);
+
+if (error && error.critical) {
+  throw error; // This will be caught by error boundary
+}
+```
+````

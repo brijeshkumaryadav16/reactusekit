@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://react-usekit.dev/sitemap.xml
+
+# Disallow crawling of API routes
+Disallow: /api/
+
+# Allow crawling of documentation
+Allow: /docs/
+Allow: /docs/*
+
+# Allow crawling of main pages
+Allow: /
+Allow: /docs
+Allow: /docs/installation
+Allow: /docs/hooks
+Allow: /docs/utilities
+Allow: /docs/examples

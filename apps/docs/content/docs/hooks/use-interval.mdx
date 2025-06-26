@@ -1,0 +1,489 @@
+---
+title: useInterval
+description: Set up intervals with automatic cleanup and pause/resume functionality
+---
+
+# useInterval
+
+The `useInterval` hook provides a declarative way to set up intervals in React with automatic
+cleanup and the ability to pause/resume. It's perfect for creating timers, periodic updates, and
+scheduled tasks.
+
+## Usage
+
+```tsx
+import { useInterval } from './hooks/useInterval';
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useInterval(() => {
+    setCount(count => count + 1);
+  }, 1000); // Runs every second
+
+  return <div>Count: {count}</div>;
+}
+```
+
+## API Reference
+
+### Parameters
+
+- `callback` (function): The function to call on each interval
+- `delay` (number | null): The interval delay in milliseconds. Pass `null` to pause the interval
+
+### Returns
+
+This hook doesn't return any value.
+
+## Examples
+
+### Simple Timer
+
+```tsx
+function CountdownTimer({ initialTime = 60 }) {
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+  const [isRunning, setIsRunning] = useState(false);
+
+  useInterval(
+    () => {
+      setTimeLeft(time => {
+        if (time <= 1) {
+          setIsRunning(false);
+          return 0;
+        }
+        return time - 1;
+      });
+    },
+    isRunning ? 1000 : null
+  );
+
+  const start = () => setIsRunning(true);
+  const pause = () => setIsRunning(false);
+  const reset = () => {
+    setTimeLeft(initialTime);
+    setIsRunning(false);
+  };
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  return (
+    <div className="countdown-timer">
+      <div className="time-display">{formatTime(timeLeft)}</div>
+      <div className="controls">
+        <button onClick={start} disabled={isRunning || timeLeft === 0}>
+          Start
+        </button>
+        <button onClick={pause} disabled={!isRunning}>
+          Pause
+        </button>
+        <button onClick={reset}>Reset</button>
+      </div>
+    </div>
+  );
+}
+```
+
+### Live Clock
+
+```tsx
+function LiveClock() {
+  const [time, setTime] = useState(new Date());
+
+  useInterval(() => {
+    setTime(new Date());
+  }, 1000);
+
+  return (
+    <div className="live-clock">
+      <div className="time">{time.toLocaleTimeString()}</div>
+      <div className="date">{time.toLocaleDateString()}</div>
+    </div>
+  );
+}
+```
+
+### Auto-refresh Data
+
+```tsx
+function LiveDataFeed() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [autoRefresh, setAutoRefresh] = useState(true);
+  const [refreshInterval, setRefreshInterval] = useState(5000);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/live-data');
+      const newData = await response.json();
+      setData(newData);
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Auto-refresh when enabled
+  useInterval(
+    () => {
+      fetchData();
+    },
+    autoRefresh ? refreshInterval : null
+  );
+
+  // Initial fetch
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div className="live-data-feed">
+      <div className="controls">
+        <label>
+          <input
+            type="checkbox"
+            checked={autoRefresh}
+            onChange={e => setAutoRefresh(e.target.checked)}
+          />
+          Auto-refresh
+        </label>
+
+        <select
+          value={refreshInterval}
+          onChange={e => setRefreshInterval(Number(e.target.value))}
+          disabled={!autoRefresh}
+        >
+          <option value={1000}>1 second</option>
+          <option value={5000}>5 seconds</option>
+          <option value={10000}>10 seconds</option>
+          <option value={30000}>30 seconds</option>
+        </select>
+
+        <button onClick={fetchData} disabled={loading}>
+          {loading ? 'Refreshing...' : 'Refresh Now'}
+        </button>
+      </div>
+
+      <div className="data-display">
+        {data.map(item => (
+          <div key={item.id} className="data-item">
+            {item.name}: {item.value}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Typing Animation
+
+```tsx
+function TypingAnimation({ text, speed = 100 }) {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+
+  useInterval(
+    () => {
+      if (currentIndex < text.length) {
+        setDisplayText(text.slice(0, currentIndex + 1));
+        setCurrentIndex(prev => prev + 1);
+      } else {
+        setIsComplete(true);
+      }
+    },
+    isComplete ? null : speed
+  );
+
+  const restart = () => {
+    setDisplayText('');
+    setCurrentIndex(0);
+    setIsComplete(false);
+  };
+
+  return (
+    <div className="typing-animation">
+      <div className="text">
+        {displayText}
+        {!isComplete && <span className="cursor">|</span>}
+      </div>
+      <button onClick={restart}>Restart Animation</button>
+    </div>
+  );
+}
+```
+
+### Progress Bar
+
+```tsx
+function ProgressBar({ duration = 10000 }) {
+  const [progress, setProgress] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [startTime, setStartTime] = useState<number | null>(null);
+
+  useInterval(
+    () => {
+      if (startTime) {
+        const elapsed = Date.now() - startTime;
+        const newProgress = Math.min((elapsed / duration) * 100, 100);
+        setProgress(newProgress);
+
+        if (newProgress >= 100) {
+          setIsRunning(false);
+        }
+      }
+    },
+    isRunning ? 50 : null
+  );
+
+  const start = () => {
+    setStartTime(Date.now());
+    setIsRunning(true);
+    setProgress(0);
+  };
+
+  const pause = () => {
+    setIsRunning(false);
+  };
+
+  const reset = () => {
+    setProgress(0);
+    setStartTime(null);
+    setIsRunning(false);
+  };
+
+  return (
+    <div className="progress-bar-container">
+      <div className="progress-bar">
+        <div className="progress-fill" style={{ width: `${progress}%` }} />
+      </div>
+      <div className="progress-text">{Math.round(progress)}% Complete</div>
+      <div className="controls">
+        <button onClick={start} disabled={isRunning}>
+          Start
+        </button>
+        <button onClick={pause} disabled={!isRunning}>
+          Pause
+        </button>
+        <button onClick={reset}>Reset</button>
+      </div>
+    </div>
+  );
+}
+```
+
+### Health Check Monitor
+
+```tsx
+function HealthMonitor() {
+  const [services, setServices] = useState([
+    { name: 'API Server', url: '/api/health', status: 'unknown' },
+    { name: 'Database', url: '/api/db-health', status: 'unknown' },
+    { name: 'Cache', url: '/api/cache-health', status: 'unknown' },
+  ]);
+  const [isMonitoring, setIsMonitoring] = useState(true);
+
+  const checkHealth = async () => {
+    const updatedServices = await Promise.all(
+      services.map(async service => {
+        try {
+          const response = await fetch(service.url);
+          return {
+            ...service,
+            status: response.ok ? 'healthy' : 'unhealthy',
+            lastChecked: new Date().toISOString(),
+          };
+        } catch (error) {
+          return {
+            ...service,
+            status: 'error',
+            lastChecked: new Date().toISOString(),
+          };
+        }
+      })
+    );
+    setServices(updatedServices);
+  };
+
+  useInterval(
+    () => {
+      checkHealth();
+    },
+    isMonitoring ? 10000 : null
+  ); // Check every 10 seconds
+
+  useEffect(() => {
+    checkHealth(); // Initial check
+  }, []);
+
+  return (
+    <div className="health-monitor">
+      <div className="monitor-header">
+        <h3>System Health</h3>
+        <label>
+          <input
+            type="checkbox"
+            checked={isMonitoring}
+            onChange={e => setIsMonitoring(e.target.checked)}
+          />
+          Auto-monitor
+        </label>
+      </div>
+
+      <div className="services">
+        {services.map(service => (
+          <div key={service.name} className={`service ${service.status}`}>
+            <div className="service-name">{service.name}</div>
+            <div className="service-status">
+              <span className={`status-indicator ${service.status}`} />
+              {service.status}
+            </div>
+            {service.lastChecked && (
+              <div className="last-checked">
+                Last checked: {new Date(service.lastChecked).toLocaleTimeString()}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Notification System
+
+```tsx
+function NotificationSystem() {
+  const [notifications, setNotifications] = useState<
+    Array<{
+      id: string;
+      message: string;
+      type: 'info' | 'success' | 'warning' | 'error';
+      duration: number;
+      createdAt: number;
+    }>
+  >([]);
+
+  // Auto-remove notifications after their duration
+  useInterval(() => {
+    const now = Date.now();
+    setNotifications(prev =>
+      prev.filter(notification => now - notification.createdAt < notification.duration)
+    );
+  }, 1000);
+
+  const addNotification = (
+    message: string,
+    type: 'info' | 'success' | 'warning' | 'error' = 'info',
+    duration = 5000
+  ) => {
+    const notification = {
+      id: generateId(),
+      message,
+      type,
+      duration,
+      createdAt: Date.now(),
+    };
+    setNotifications(prev => [...prev, notification]);
+  };
+
+  const removeNotification = (id: string) => {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  };
+
+  return (
+    <div className="notification-system">
+      <div className="notification-controls">
+        <button onClick={() => addNotification('This is an info message', 'info')}>Add Info</button>
+        <button onClick={() => addNotification('Success message!', 'success')}>Add Success</button>
+        <button onClick={() => addNotification('Warning message!', 'warning')}>Add Warning</button>
+        <button onClick={() => addNotification('Error message!', 'error')}>Add Error</button>
+      </div>
+
+      <div className="notifications">
+        {notifications.map(notification => (
+          <div key={notification.id} className={`notification ${notification.type}`}>
+            <span>{notification.message}</span>
+            <button onClick={() => removeNotification(notification.id)}>×</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Auto-save Editor
+
+```tsx
+function AutoSaveEditor() {
+  const [content, setContent] = useState('');
+  const [lastSaved, setLastSaved] = useState<Date | null>(null);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+
+  const saveContent = async () => {
+    try {
+      await fetch('/api/save-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content }),
+      });
+      setLastSaved(new Date());
+      setHasUnsavedChanges(false);
+    } catch (error) {
+      console.error('Failed to save:', error);
+    }
+  };
+
+  // Auto-save every 30 seconds if there are unsaved changes
+  useInterval(() => {
+    if (hasUnsavedChanges) {
+      saveContent();
+    }
+  }, 30000);
+
+  const handleContentChange = (newContent: string) => {
+    setContent(newContent);
+    setHasUnsavedChanges(true);
+  };
+
+  return (
+    <div className="auto-save-editor">
+      <div className="editor-header">
+        <span className="save-status">
+          {hasUnsavedChanges ? 'Unsaved changes' : 'All changes saved'}
+        </span>
+        {lastSaved && (
+          <span className="last-saved">Last saved: {lastSaved.toLocaleTimeString()}</span>
+        )}
+        <button onClick={saveContent}>Save Now</button>
+      </div>
+
+      <textarea
+        value={content}
+        onChange={e => handleContentChange(e.target.value)}
+        placeholder="Start typing..."
+        rows={10}
+        cols={50}
+      />
+    </div>
+  );
+}
+```
+
+## Notes
+
+- Automatically cleans up the interval when the component unmounts
+- Pass `null` as the delay to pause the interval
+- The callback function is automatically updated when it changes
+- Perfect for timers, periodic updates, and scheduled tasks
+- More reliable than `setInterval` in React due to proper cleanup
+- Consider performance implications for short intervals or heavy operations

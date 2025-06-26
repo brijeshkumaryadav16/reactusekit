@@ -1,0 +1,19 @@
+{
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2023,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "es2023": true
+  },
+  "ignorePatterns": [
+    "dist",
+    "build",
+    ".next",
+    "node_modules",
+    "coverage",
+    "*.min.js"
+  ]
+}

@@ -1,0 +1,120 @@
+---
+title: useClickOutside
+description: Detect clicks outside a specific element
+---
+
+# useClickOutside
+
+The `useClickOutside` hook detects when a user clicks outside of a specified element. This is
+commonly used for closing modals, dropdowns, or other overlays when clicking outside of them.
+
+## Usage
+
+```tsx
+import { useClickOutside } from './hooks/useClickOutside';
+import { useRef, useState } from 'react';
+
+function DropdownMenu() {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(dropdownRef, () => {
+    setIsOpen(false);
+  });
+
+  return (
+    <div>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle Menu</button>
+      {isOpen && (
+        <div ref={dropdownRef} className="dropdown-menu">
+          <ul>
+            <li>Option 1</li>
+            <li>Option 2</li>
+            <li>Option 3</li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Parameters
+
+- `ref` (RefObject\<HTMLElement\>): A ref object pointing to the element
+- `handler` (function): Callback function to execute when clicking outside
+
+### Returns
+
+This hook doesn't return any value.
+
+## Examples
+
+### Modal Dialog
+
+```tsx
+function Modal({ isOpen, onClose, children }) {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(modalRef, () => {
+    if (isOpen) {
+      onClose();
+    }
+  });
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay">
+      <div ref={modalRef} className="modal-content">
+        {children}
+      </div>
+    </div>
+  );
+}
+```
+
+### Search Dropdown
+
+```tsx
+function SearchBox() {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(searchRef, () => {
+    setShowResults(false);
+  });
+
+  const handleSearch = (value: string) => {
+    setQuery(value);
+    setShowResults(true);
+    // Perform search logic
+  };
+
+  return (
+    <div ref={searchRef} className="search-container">
+      <input value={query} onChange={e => handleSearch(e.target.value)} placeholder="Search..." />
+      {showResults && results.length > 0 && (
+        <div className="search-results">
+          {results.map((result, index) => (
+            <div key={index} className="search-item">
+              {result}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Notes
+
+- The hook automatically adds and removes event listeners when the component mounts and unmounts
+- Make sure the ref is properly attached to the DOM element
+- The handler will only be called when clicking outside the referenced element
+- Works with both mouse clicks and touch events

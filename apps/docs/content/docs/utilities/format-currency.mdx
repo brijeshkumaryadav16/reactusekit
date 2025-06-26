@@ -1,0 +1,522 @@
+---
+title: formatCurrency
+description: Format numbers as currency with locale support
+---
+
+import { Callout } from "fumadocs-ui/components/callout"; import { Tab, Tabs } from
+"fumadocs-ui/components/tabs";
+
+# formatCurrency
+
+<div className="flex gap-2 mb-4">
+  <span className="px-2 py-1 text-xs bg-secondary rounded-md">Formatting</span>
+  <span className="px-2 py-1 text-xs bg-secondary rounded-md">
+    Internationalization
+  </span>
+  <span className="px-2 py-1 text-xs bg-secondary rounded-md">Currency</span>
+</div>
+
+A utility function that formats numbers as currency using the Intl.NumberFormat API with locale
+support.
+
+<Callout title="Why Use This Utility?">
+  - ✅ **Locale Aware** - Supports different currency formats by region - ✅
+  **Currency Support** - Works with any ISO currency code - ✅ **Consistent
+  Formatting** - Uses browser's built-in Intl API - ✅ **Zero Dependencies** -
+  No external libraries required - ✅ **TypeScript Ready** - Full type safety
+  included
+</Callout>
+
+## Installation
+
+Generate this utility in your project:
+
+```bash
+react-usekit init
+# Select "utilities" → Choose language → Select "formatCurrency"
+```
+
+## Usage
+
+### Basic Examples
+
+<Tabs items={['TypeScript', 'JavaScript']}> <Tab value="TypeScript">
+
+```tsx
+import { formatCurrency } from './lib/utils';
+
+// Basic usage - USD by default
+const price = formatCurrency(29.99);
+// Result: "$29.99"
+
+// Different currencies
+const euroPrice = formatCurrency(29.99, 'EUR');
+// Result: "€29.99"
+
+const yenPrice = formatCurrency(2999, 'JPY');
+// Result: "¥2,999"
+
+// With specific locale
+const germanPrice = formatCurrency(1234.56, 'EUR', 'de-DE');
+// Result: "1.234,56 €"
+
+const indianPrice = formatCurrency(1234.56, 'INR', 'en-IN');
+// Result: "₹1,234.56"
+```
+
+</Tab>
+<Tab value="JavaScript">
+```jsx
+import { formatCurrency } from './lib/utils';
+
+// Basic usage - USD by default const price = formatCurrency(29.99); // Result: "$29.99"
+
+// Different currencies const euroPrice = formatCurrency(29.99, 'EUR'); // Result: "€29.99"
+
+const yenPrice = formatCurrency(2999, 'JPY'); // Result: "¥2,999"
+
+// With specific locale const germanPrice = formatCurrency(1234.56, 'EUR', 'de-DE'); // Result:
+"1.234,56 €"
+
+const indianPrice = formatCurrency(1234.56, 'INR', 'en-IN'); // Result: "₹1,234.56"
+
+````
+
+</Tab>
+</Tabs>
+
+### In React Components
+
+```tsx
+import { formatCurrency } from "./lib/utils";
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  currency: string;
+}
+
+function ProductCard({ product }: { product: Product }) {
+  return (
+    <div className="product-card">
+      <h3>{product.name}</h3>
+      <p className="price">{formatCurrency(product.price, product.currency)}</p>
+    </div>
+  );
+}
+
+function PriceComparison() {
+  const basePrice = 99.99;
+
+  return (
+    <div className="price-comparison">
+      <h3>Global Pricing</h3>
+      <div className="price-grid">
+        <div>🇺🇸 US: {formatCurrency(basePrice, "USD", "en-US")}</div>
+        <div>🇪🇺 EU: {formatCurrency(basePrice * 0.85, "EUR", "de-DE")}</div>
+        <div>🇬🇧 UK: {formatCurrency(basePrice * 0.75, "GBP", "en-GB")}</div>
+        <div>🇯🇵 JP: {formatCurrency(basePrice * 110, "JPY", "ja-JP")}</div>
+        <div>🇮🇳 IN: {formatCurrency(basePrice * 75, "INR", "en-IN")}</div>
+      </div>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Parameter  | Type     | Default   | Description                      |
+| ---------- | -------- | --------- | -------------------------------- |
+| `amount`   | `number` | Required  | The number to format as currency |
+| `currency` | `string` | `"USD"`   | ISO 4217 currency code           |
+| `locale`   | `string` | `"en-US"` | BCP 47 locale identifier         |
+
+### Returns
+
+| Type     | Description               |
+| -------- | ------------------------- |
+| `string` | Formatted currency string |
+
+### Type Definition
+
+```tsx
+function formatCurrency(
+  amount: number,
+  currency?: string,
+  locale?: string
+): string;
+```
+
+## Real-World Examples
+
+### E-commerce Product Listing
+
+```tsx
+import { formatCurrency } from "./lib/utils";
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  currency: string;
+}
+
+function ProductGrid({ products }: { products: Product[] }) {
+  return (
+    <div className="product-grid">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
+}
+
+function ProductCard({ product }: { product: Product }) {
+  const hasDiscount =
+    product.originalPrice && product.originalPrice > product.price;
+  const discountPercent = hasDiscount
+    ? Math.round(
+        ((product.originalPrice! - product.price) / product.originalPrice!) *
+          100
+      )
+    : 0;
+
+  return (
+    <div className="product-card">
+      <h3>{product.name}</h3>
+
+      <div className="price-section">
+        <span className="current-price">
+          {formatCurrency(product.price, product.currency)}
+        </span>
+
+        {hasDiscount && (
+          <>
+            <span className="original-price">
+              {formatCurrency(product.originalPrice!, product.currency)}
+            </span>
+            <span className="discount-badge">{discountPercent}% OFF</span>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+### Multi-Currency Dashboard
+
+```tsx
+import { formatCurrency } from "./lib/utils";
+
+interface SalesData {
+  region: string;
+  currency: string;
+  locale: string;
+  revenue: number;
+  orders: number;
+}
+
+function SalesDashboard() {
+  const salesData: SalesData[] = [
+    {
+      region: "North America",
+      currency: "USD",
+      locale: "en-US",
+      revenue: 125000,
+      orders: 1250,
+    },
+    {
+      region: "Europe",
+      currency: "EUR",
+      locale: "en-EU",
+      revenue: 98000,
+      orders: 980,
+    },
+    {
+      region: "United Kingdom",
+      currency: "GBP",
+      locale: "en-GB",
+      revenue: 67000,
+      orders: 670,
+    },
+    {
+      region: "Japan",
+      currency: "JPY",
+      locale: "ja-JP",
+      revenue: 8900000,
+      orders: 890,
+    },
+    {
+      region: "India",
+      currency: "INR",
+      locale: "en-IN",
+      revenue: 4500000,
+      orders: 1100,
+    },
+  ];
+
+  const totalRevenueUSD = salesData.reduce((total, data) => {
+    // Convert to USD for total (simplified conversion)
+    const conversionRates = {
+      USD: 1,
+      EUR: 1.1,
+      GBP: 1.25,
+      JPY: 0.007,
+      INR: 0.012,
+    };
+    return (
+      total +
+      data.revenue *
+        conversionRates[data.currency as keyof typeof conversionRates]
+    );
+  }, 0);
+
+  return (
+    <div className="sales-dashboard">
+      <div className="dashboard-header">
+        <h1>Global Sales Dashboard</h1>
+        <div className="total-revenue">
+          <span>Total Revenue (USD): </span>
+          <strong>{formatCurrency(totalRevenueUSD, "USD")}</strong>
+        </div>
+      </div>
+
+      <div className="regions-grid">
+        {salesData.map((data) => (
+          <div key={data.region} className="region-card">
+            <h3>{data.region}</h3>
+            <div className="metrics">
+              <div className="metric">
+                <label>Revenue:</label>
+                <span>
+                  {formatCurrency(data.revenue, data.currency, data.locale)}
+                </span>
+              </div>
+              <div className="metric">
+                <label>Orders:</label>
+                <span>{data.orders.toLocaleString(data.locale)}</span>
+              </div>
+              <div className="metric">
+                <label>Avg Order Value:</label>
+                <span>
+                  {formatCurrency(
+                    data.revenue / data.orders,
+                    data.currency,
+                    data.locale
+                  )}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Shopping Cart with Taxes
+
+```tsx
+import { formatCurrency } from "./lib/utils";
+
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+interface CartProps {
+  items: CartItem[];
+  currency: string;
+  locale: string;
+  taxRate: number;
+}
+
+function ShoppingCart({ items, currency, locale, taxRate }: CartProps) {
+  const subtotal = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+  const tax = subtotal * taxRate;
+  const total = subtotal + tax;
+
+  return (
+    <div className="shopping-cart">
+      <h2>Shopping Cart</h2>
+
+      <div className="cart-items">
+        {items.map((item) => (
+          <div key={item.id} className="cart-item">
+            <span className="item-name">{item.name}</span>
+            <span className="item-quantity">× {item.quantity}</span>
+            <span className="item-price">
+              {formatCurrency(item.price * item.quantity, currency, locale)}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="cart-summary">
+        <div className="summary-line">
+          <span>Subtotal:</span>
+          <span>{formatCurrency(subtotal, currency, locale)}</span>
+        </div>
+        <div className="summary-line">
+          <span>Tax ({(taxRate * 100).toFixed(1)}%):</span>
+          <span>{formatCurrency(tax, currency, locale)}</span>
+        </div>
+        <div className="summary-line total">
+          <span>
+            <strong>Total:</strong>
+          </span>
+          <span>
+            <strong>{formatCurrency(total, currency, locale)}</strong>
+          </span>
+        </div>
+      </div>
+
+      <button className="checkout-button">Proceed to Checkout</button>
+    </div>
+  );
+}
+```
+
+## Supported Currencies
+
+The utility supports all ISO 4217 currency codes. Here are some common examples:
+
+| Currency          | Code | Symbol | Example Output    |
+| ----------------- | ---- | ------ | ----------------- |
+| US Dollar         | USD  | $      | $1,234.56         |
+| Euro              | EUR  | €      | €1.234,56 (de-DE) |
+| British Pound     | GBP  | £      | £1,234.56         |
+| Japanese Yen      | JPY  | ¥      | ¥1,235            |
+| Indian Rupee      | INR  | ₹      | ₹1,234.56         |
+| Chinese Yuan      | CNY  | ¥      | ¥1,234.56         |
+| Canadian Dollar   | CAD  | CA$    | CA$1,234.56       |
+| Australian Dollar | AUD  | A$     | A$1,234.56        |
+| Swiss Franc       | CHF  | CHF    | CHF 1'234.56      |
+| Swedish Krona     | SEK  | kr     | 1 234,56 kr       |
+
+## Locale Examples
+
+Different locales format the same currency differently:
+
+```tsx
+const amount = 1234.56;
+
+// US formatting
+formatCurrency(amount, "USD", "en-US"); // "$1,234.56"
+
+// European formatting
+formatCurrency(amount, "EUR", "de-DE"); // "1.234,56 €"
+formatCurrency(amount, "EUR", "fr-FR"); // "1 234,56 €"
+
+// Indian formatting (lakhs/crores system)
+formatCurrency(amount, "INR", "en-IN"); // "₹1,234.56"
+formatCurrency(123456, "INR", "en-IN"); // "₹1,23,456.00"
+```
+
+## Best Practices
+
+<Callout type="info" title="Formatting Guidelines">
+  - Always specify the currency explicitly rather than relying on defaults - Use
+  the appropriate locale for your target audience - Consider storing currency
+  and locale preferences in user settings - Handle edge cases like zero,
+  negative numbers, and very large amounts
+</Callout>
+
+### Do's and Don'ts
+
+**✅ Do:**
+
+- Use consistent currency formatting across your app
+- Store currency code with monetary values in your data
+- Consider user's locale preferences
+- Handle decimal precision appropriately for each currency
+
+**❌ Don't:**
+
+- Hard-code currency symbols
+- Assume all currencies use the same decimal places
+- Ignore locale differences in number formatting
+- Mix different currency formats in the same interface
+
+### Performance Considerations
+
+```tsx
+// ✅ Good - cache formatter for repeated use
+const useCurrencyFormatter = (currency: string, locale: string) => {
+  return useMemo(
+    () => new Intl.NumberFormat(locale, { style: "currency", currency }),
+    [currency, locale]
+  );
+};
+
+function PriceList({ items, currency, locale }) {
+  const formatter = useCurrencyFormatter(currency, locale);
+
+  return (
+    <div>
+      {items.map((item) => (
+        <div key={item.id}>{formatter.format(item.price)}</div>
+      ))}
+    </div>
+  );
+}
+
+// ❌ Avoid - creates new formatter each time
+function PriceList({ items, currency, locale }) {
+  return (
+    <div>
+      {items.map((item) => (
+        <div key={item.id}>{formatCurrency(item.price, currency, locale)}</div>
+      ))}
+    </div>
+  );
+}
+```
+
+## Browser Support
+
+- ✅ All modern browsers (Chrome 24+, Firefox 29+, Safari 10+)
+- ✅ Internet Explorer 11+
+- ✅ Node.js 12+ (for SSR)
+- ✅ React Native (with polyfill)
+
+## Related Utilities
+
+- **formatDate** - For formatting dates with locale support
+- **truncateText** - For truncating long currency descriptions
+- **isEmpty** - For validating price values before formatting
+
+## Migration Guide
+
+### From Manual Formatting
+
+```tsx
+// Before
+const formatPrice = (price) => `$${price.toFixed(2)}`;
+
+// After
+const formatPrice = (price) => formatCurrency(price, "USD");
+```
+
+### From Other Libraries
+
+```tsx
+// Before (with currency.js or similar)
+import currency from "currency.js";
+const formatted = currency(price).format();
+
+// After
+const formatted = formatCurrency(price, "USD");
+```
+````

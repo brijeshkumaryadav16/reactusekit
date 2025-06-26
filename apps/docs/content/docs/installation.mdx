@@ -1,0 +1,242 @@
+---
+title: Installation
+description: Get react-usekit set up in your project
+---
+
+import { Callout } from "fumadocs-ui/components/callout"; import { Tab, Tabs } from
+"fumadocs-ui/components/tabs"; import { Steps, Step } from "fumadocs-ui/components/steps";
+
+# Installation
+
+<Callout title="Quick Start">
+  react-usekit can be installed globally, used with NPX, or added to your
+  project. Choose the method that works best for your workflow.
+</Callout>
+
+## Installation Options
+
+<Tabs items={['Global (Recommended)', 'NPX (One-time)', 'Project-specific']}>
+<Tab value="Global (Recommended)">
+
+### Global Installation
+
+Best for developers who work on multiple React projects.
+
+```bash
+npm install -g react-usekit
+```
+
+**Usage:**
+
+```bash
+cd your-react-project
+react-usekit init
+```
+
+**Pros:**
+
+- ✅ Use in any React project
+- ✅ Always available
+- ✅ Easy to update globally
+- ✅ Fastest execution
+
+**Cons:**
+
+- ❌ Requires global installation
+- ❌ May have version conflicts
+
+</Tab>
+
+<Tab value="NPX (One-time)">
+### NPX Usage
+
+Perfect for occasional use or trying out react-usekit.
+
+```bash
+cd your-react-project
+npx react-usekit init
+```
+
+**Pros:**
+
+- ✅ No installation required
+- ✅ Always uses latest version
+- ✅ No global dependencies
+- ✅ Great for CI/CD
+
+**Cons:**
+
+- ❌ Slower first run (downloads package)
+- ❌ Downloads package each time
+
+</Tab>
+
+<Tab value="Project-specific">
+### Project Installation
+
+Add react-usekit as a development dependency to your project.
+
+```bash
+npm install --save-dev react-usekit
+```
+
+**Add to package.json scripts:**
+
+```json
+{
+  "scripts": {
+    "add-hooks": "react-usekit init",
+    "add-utils": "react-usekit init"
+  }
+}
+```
+
+**Usage:**
+
+```bash
+npm run add-hooks
+```
+
+**Pros:**
+
+- ✅ Version locked to project
+- ✅ Consistent across team
+- ✅ Works in CI/CD
+- ✅ No global installation
+
+**Cons:**
+
+- ❌ Must install per project
+- ❌ Takes up space in node_modules
+
+</Tab>
+</Tabs>
+
+## Verify Installation
+
+After installation, verify react-usekit is working:
+
+<Tabs items={["Global", "NPX", "Project"]}> <Tab value="Global">`bash react-usekit --version `</Tab>
+<Tab value="NPX">`bash npx react-usekit --version `</Tab> <Tab value="Project">
+`bash npx react-usekit --version # or npm run add-hooks -- --version ` </Tab> </Tabs>
+
+## Setup Guide
+
+<Steps>
+<Step>
+### 1. Navigate to Your React Project
+
+```bash
+cd your-react-project
+```
+
+<Callout type="info">
+Make sure you're in a React project directory with a `package.json` file.
+</Callout>
+</Step>
+
+<Step>
+### 2. Run the Interactive CLI
+
+```bash
+react-usekit init
+```
+
+The CLI will guide you through:
+
+- **Type Selection**: Choose between hooks or utilities
+- **Language**: TypeScript or JavaScript
+- **Directory**: Where to place the files
+- **Template Selection**: Multi-select the items you want
+- **Confirmation**: Review before generating
+
+</Step>
+
+<Step>
+### 3. Start Using Your Templates
+
+Once generated, import and use your new hooks/utilities:
+
+```tsx
+// Import your new hook
+import { useLocalStorage } from './src/hooks/useLocalStorage';
+
+function App() {
+  const [name, setName] = useLocalStorage('userName', '');
+
+  return (
+    <input
+      value={name}
+      onChange={e => setName(e.target.value)}
+      placeholder="Your name will be saved automatically"
+    />
+  );
+}
+```
+
+</Step>
+</Steps>
+
+## Project Requirements
+
+<Callout type="warn" title="System Requirements">
+  - **Node.js** 18.0.0 or higher - **React** 16.8+ (for hooks support) -
+  **TypeScript** 4.5+ (optional, for TypeScript projects)
+</Callout>
+
+### Framework Compatibility
+
+| Framework           | Status          | Notes                                      |
+| ------------------- | --------------- | ------------------------------------------ |
+| ⚛️ Create React App | ✅ Full Support | Works out of the box                       |
+| ⚡ Vite             | ✅ Full Support | Perfect integration                        |
+| 🏗️ Next.js          | ✅ Full Support | App Router & Pages Router                  |
+| 📱 React Native     | ⚠️ Partial      | Hooks work, some utils may need adaptation |
+| 🔧 Custom Webpack   | ✅ Full Support | Framework agnostic                         |
+
+## Troubleshooting
+
+### Common Issues
+
+**"Command not found" error:**
+
+```bash
+# If using global installation
+npm install -g react-usekit
+
+# If using NPX
+npx react-usekit init
+```
+
+**Permission errors on macOS/Linux:**
+
+```bash
+# Use sudo for global installation
+sudo npm install -g react-usekit
+
+# Or use NPX (no permissions needed)
+npx react-usekit init
+```
+
+**TypeScript errors:**
+
+- Ensure TypeScript 4.5+ is installed
+- Check your `tsconfig.json` includes the generated files
+- Verify React types are installed: `npm install --save-dev @types/react`
+
+### Getting Help
+
+If you encounter issues:
+
+1. Check the [GitHub Issues](https://github.com/brijeshkumaryadav16/react-usekit/issues)
+2. Review the [Examples](/docs/examples) for usage patterns
+3. Ensure your project meets the [requirements](#project-requirements)
+
+## Next Steps
+
+Now that react-usekit is installed, explore what's available:
+
+- 🪝 [React Hooks](/docs/hooks) - Discover all available hooks
+- 🛠️ [Utilities](/docs/utilities) - Browse utility functions
+- 💡 [Examples](/docs/examples) - See real-world usage patterns
+- 📚 [API Reference](/docs/api) - Complete API documentation

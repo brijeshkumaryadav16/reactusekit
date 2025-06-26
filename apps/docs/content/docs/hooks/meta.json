@@ -1,0 +1,13 @@
+{
+  "title": "React Hooks",
+  "pages": [
+    "use-local-storage",
+    "use-click-outside",
+    "use-toggle",
+    "use-debounce",
+    "use-async",
+    "use-event-listener",
+    "use-interval",
+    "use-window-size"
+  ]
+}
