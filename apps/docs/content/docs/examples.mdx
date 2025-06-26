@@ -3,13 +3,13 @@ title: Examples
 description: Real-world examples and patterns using react-usekit hooks and utilities
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Card, Cards } from "fumadocs-ui/components/card";
+import { Callout } from "fumadocs-ui/components/callout"; import { Tab, Tabs } from
+"fumadocs-ui/components/tabs"; import { Card, Cards } from "fumadocs-ui/components/card";
 
 # 💡 Real-World Examples
 
-This page showcases practical examples of how to use react-usekit hooks and utilities in real applications.
+This page showcases practical examples of how to use react-usekit hooks and utilities in real
+applications.
 
 <Callout title="Complete Examples">
   Each example includes complete, copy-pasteable code that you can use as a
@@ -53,10 +53,11 @@ This page showcases practical examples of how to use react-usekit hooks and util
 
 ## Search with Debouncing
 
-A search component that combines `useAsync`, `useDebounce`, and `useLocalStorage` for a smooth search experience.
+A search component that combines `useAsync`, `useDebounce`, and `useLocalStorage` for a smooth
+search experience.
 
-<Tabs items={['Complete Example', 'Component Breakdown']}>
-<Tab value="Complete Example">
+<Tabs items={['Complete Example', 'Component Breakdown']}> <Tab value="Complete Example">
+
 ```tsx
 import { useState, useEffect } from 'react';
 import { useAsync } from './hooks/useAsync';
@@ -65,33 +66,33 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { isEmpty, truncateText } from './lib/utils';
 
 interface SearchResult {
-id: string;
-title: string;
-description: string;
-url: string;
-category: string;
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  category: string;
 }
 
 interface SearchHistory {
-query: string;
-timestamp: number;
+  query: string;
+  timestamp: number;
 }
 
 function SmartSearch() {
-const [query, setQuery] = useState('');
-const [searchHistory, setSearchHistory] = useLocalStorage<SearchHistory[]>('searchHistory', []);
-const debouncedQuery = useDebounce(query, 300);
+  const [query, setQuery] = useState('');
+  const [searchHistory, setSearchHistory] = useLocalStorage<SearchHistory[]>('searchHistory', []);
+  const debouncedQuery = useDebounce(query, 300);
 
-const {
-data: results,
-loading,
-error,
-execute: search
-} = useAsync<SearchResult[]>(
-async () => {
-if (isEmpty(debouncedQuery.trim())) {
-return [];
-}
+  const {
+    data: results,
+    loading,
+    error,
+    execute: search,
+  } = useAsync<SearchResult[]>(
+    async () => {
+      if (isEmpty(debouncedQuery.trim())) {
+        return [];
+      }
 
       const response = await fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}&limit=10`);
 
@@ -104,7 +105,7 @@ return [];
       // Save to search history
       const historyEntry: SearchHistory = {
         query: debouncedQuery,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
 
       setSearchHistory(prev => {
@@ -115,48 +116,42 @@ return [];
       return data.results;
     },
     { immediate: false }
+  );
 
-);
+  // Trigger search when debounced query changes
+  useEffect(() => {
+    if (debouncedQuery.length >= 2) {
+      search();
+    }
+  }, [debouncedQuery, search]);
 
-// Trigger search when debounced query changes
-useEffect(() => {
-if (debouncedQuery.length >= 2) {
-search();
-}
-}, [debouncedQuery, search]);
+  const clearHistory = () => {
+    setSearchHistory([]);
+  };
 
-const clearHistory = () => {
-setSearchHistory([]);
-};
+  const selectFromHistory = (historicalQuery: string) => {
+    setQuery(historicalQuery);
+  };
 
-const selectFromHistory = (historicalQuery: string) => {
-setQuery(historicalQuery);
-};
+  const showHistory = isEmpty(query) && !isEmpty(searchHistory);
+  const showResults = !isEmpty(query) && !loading;
+  const showNoResults = showResults && !isEmpty(query) && isEmpty(results);
 
-const showHistory = isEmpty(query) && !isEmpty(searchHistory);
-const showResults = !isEmpty(query) && !loading;
-const showNoResults = showResults && !isEmpty(query) && isEmpty(results);
+  return (
+    <div className="smart-search">
+      <div className="search-container">
+        <div className="search-input-wrapper">
+          <input
+            type="text"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder="Search articles, tutorials, and more..."
+            className="search-input"
+          />
+          {loading && <div className="search-spinner">🔍</div>}
+        </div>
 
-return (
-
-<div className="smart-search">
-<div className="search-container">
-<div className="search-input-wrapper">
-<input
-type="text"
-value={query}
-onChange={(e) => setQuery(e.target.value)}
-placeholder="Search articles, tutorials, and more..."
-className="search-input"
-/>
-{loading && <div className="search-spinner">🔍</div>}
-</div>
-
-        {error && (
-          <div className="search-error">
-            ❌ {error.message}
-          </div>
-        )}
+        {error && <div className="search-error">❌ {error.message}</div>}
 
         {showHistory && (
           <div className="search-history">
@@ -167,7 +162,7 @@ className="search-input"
               </button>
             </div>
             <div className="history-list">
-              {searchHistory.map((item) => (
+              {searchHistory.map(item => (
                 <button
                   key={item.timestamp}
                   onClick={() => selectFromHistory(item.query)}
@@ -184,20 +179,16 @@ className="search-input"
         {showResults && results && results.length > 0 && (
           <div className="search-results">
             <div className="results-header">
-              <span>{results.length} results for "{query}"</span>
+              <span>
+                {results.length} results for "{query}"
+              </span>
             </div>
             <div className="results-list">
-              {results.map((result) => (
-                <a
-                  key={result.id}
-                  href={result.url}
-                  className="result-item"
-                >
+              {results.map(result => (
+                <a key={result.id} href={result.url} className="result-item">
                   <div className="result-category">{result.category}</div>
                   <h3 className="result-title">{result.title}</h3>
-                  <p className="result-description">
-                    {truncateText(result.description, 120)}
-                  </p>
+                  <p className="result-description">{truncateText(result.description, 120)}</p>
                 </a>
               ))}
             </div>
@@ -212,12 +203,12 @@ className="search-input"
         )}
       </div>
     </div>
-
-);
+  );
 }
 
 export default SmartSearch;
 ```
+
 </Tab>
 <Tab value="Component Breakdown">
 **Hooks Used:**
@@ -252,8 +243,8 @@ export default SmartSearch;
 
 A complete shopping cart implementation with persistence, formatting, and complex state management.
 
-<Tabs items={['Cart Component', 'Cart Hook', 'Item Component']}>
-<Tab value="Cart Component">
+<Tabs items={['Cart Component', 'Cart Hook', 'Item Component']}> <Tab value="Cart Component">
+
 ```tsx
 import { useShoppingCart } from './hooks/useShoppingCart';
 import { formatCurrency, isEmpty } from './lib/utils';
@@ -402,38 +393,24 @@ return (
 );
 }
 
-````
+```
+
 </Tab>
 <Tab value="Cart Hook">
 ```tsx
 import { useLocalStorage } from './useLocalStorage';
 import { generateId, deepClone, isEmpty } from '../lib/utils';
 
-interface CartItem {
-  id: string;
-  productId: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-  category: string;
-  addedAt: number;
-}
+interface CartItem { id: string; productId: string; name: string; price: number; quantity: number;
+image: string; category: string; addedAt: number; }
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-}
+interface Product { id: string; name: string; price: number; image: string; category: string; }
 
-export function useShoppingCart() {
-  const [items, setItems] = useLocalStorage<CartItem[]>('shoppingCart', []);
+export function useShoppingCart() { const [items, setItems] =
+useLocalStorage<CartItem[]>('shoppingCart', []);
 
-  const addItem = (product: Product, quantity: number = 1) => {
-    setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.productId === product.id);
+const addItem = (product: Product, quantity: number = 1) => { setItems(prevItems => { const
+existingItem = prevItems.find(item => item.productId === product.id);
 
       if (existingItem) {
         // Update existing item quantity
@@ -458,53 +435,35 @@ export function useShoppingCart() {
 
       return [...prevItems, newItem];
     });
-  };
 
-  const removeItem = (itemId: string) => {
-    setItems(prevItems => prevItems.filter(item => item.id !== itemId));
-  };
+};
 
-  const updateQuantity = (itemId: string, newQuantity: number) => {
-    if (newQuantity <= 0) {
-      removeItem(itemId);
-      return;
-    }
+const removeItem = (itemId: string) => { setItems(prevItems => prevItems.filter(item => item.id !==
+itemId)); };
+
+const updateQuantity = (itemId: string, newQuantity: number) => { if (newQuantity <= 0) {
+removeItem(itemId); return; }
 
     setItems(prevItems =>
       prevItems.map(item =>
         item.id === itemId ? { ...item, quantity: newQuantity } : item
       )
     );
-  };
 
-  const clearCart = () => {
-    setItems([]);
-  };
+};
 
-  const getItemQuantity = (productId: string): number => {
-    const item = items.find(item => item.productId === productId);
-    return item ? item.quantity : 0;
-  };
+const clearCart = () => { setItems([]); };
 
-  // Computed values
-  const cartTotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
-  const itemCount = items.reduce((count, item) => count + item.quantity, 0);
-  const isCartEmpty = isEmpty(items);
-  const uniqueItemCount = items.length;
+const getItemQuantity = (productId: string): number => { const item = items.find(item =>
+item.productId === productId); return item ? item.quantity : 0; };
 
-  return {
-    items,
-    addItem,
-    removeItem,
-    updateQuantity,
-    clearCart,
-    getItemQuantity,
-    cartTotal,
-    itemCount,
-    uniqueItemCount,
-    isCartEmpty
-  };
-}
+// Computed values const cartTotal = items.reduce((total, item) => total + (item.price \*
+item.quantity), 0); const itemCount = items.reduce((count, item) => count + item.quantity, 0); const
+isCartEmpty = isEmpty(items); const uniqueItemCount = items.length;
+
+return { items, addItem, removeItem, updateQuantity, clearCart, getItemQuantity, cartTotal,
+itemCount, uniqueItemCount, isCartEmpty }; }
+
 ````
 
 </Tab>
@@ -603,6 +562,7 @@ return (
 }
 
 ````
+
 </Tab>
 </Tabs>
 
@@ -633,7 +593,7 @@ function BlogEditor({ postId }: { postId?: string }) {
     content: '',
     category: '',
     tags: [],
-    status: 'draft'
+    status: 'draft',
   });
 
   const [lastSaved, setLastSaved] = useState<number | null>(null);
@@ -647,19 +607,19 @@ function BlogEditor({ postId }: { postId?: string }) {
   const {
     loading: saving,
     error: saveError,
-    execute: saveToServer
+    execute: saveToServer,
   } = useAsync(
     async () => {
       const postData = {
         ...debouncedPost,
         id: debouncedPost.id || generateId(),
-        lastSaved: Date.now()
+        lastSaved: Date.now(),
       };
 
       const response = await fetch(`/api/posts/${postData.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(postData)
+        body: JSON.stringify(postData),
       });
 
       if (!response.ok) {
@@ -673,7 +633,7 @@ function BlogEditor({ postId }: { postId?: string }) {
       onSuccess: () => {
         setLastSaved(Date.now());
         setHasUnsavedChanges(false);
-      }
+      },
     }
   );
 
@@ -706,7 +666,7 @@ function BlogEditor({ postId }: { postId?: string }) {
   const addTag = () => {
     if (!isEmpty(tagInput.trim()) && !post.tags.includes(tagInput.trim())) {
       updatePost({
-        tags: [...post.tags, tagInput.trim().toLowerCase()]
+        tags: [...post.tags, tagInput.trim().toLowerCase()],
       });
       setTagInput('');
     }
@@ -714,7 +674,7 @@ function BlogEditor({ postId }: { postId?: string }) {
 
   const removeTag = (tagToRemove: string) => {
     updatePost({
-      tags: post.tags.filter(tag => tag !== tagToRemove)
+      tags: post.tags.filter(tag => tag !== tagToRemove),
     });
   };
 
@@ -743,9 +703,7 @@ function BlogEditor({ postId }: { postId?: string }) {
           {saving && <span className="saving">💾 Saving...</span>}
           {saveError && <span className="error">❌ Save failed</span>}
           {lastSaved && !saving && !saveError && (
-            <span className="saved">
-              ✅ Saved {new Date(lastSaved).toLocaleTimeString()}
-            </span>
+            <span className="saved">✅ Saved {new Date(lastSaved).toLocaleTimeString()}</span>
           )}
         </div>
       </div>
@@ -757,7 +715,7 @@ function BlogEditor({ postId }: { postId?: string }) {
             id="title"
             type="text"
             value={post.title}
-            onChange={(e) => updatePost({ title: e.target.value })}
+            onChange={e => updatePost({ title: e.target.value })}
             placeholder="Enter your blog post title..."
             className="title-input"
           />
@@ -768,7 +726,7 @@ function BlogEditor({ postId }: { postId?: string }) {
           <select
             id="category"
             value={post.category}
-            onChange={(e) => updatePost({ category: e.target.value })}
+            onChange={e => updatePost({ category: e.target.value })}
             className="category-select"
           >
             <option value="">Select a category</option>
@@ -785,7 +743,7 @@ function BlogEditor({ postId }: { postId?: string }) {
             <input
               type="text"
               value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
+              onChange={e => setTagInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Add tags..."
               className="tag-input"
@@ -811,7 +769,7 @@ function BlogEditor({ postId }: { postId?: string }) {
           <textarea
             id="content"
             value={post.content}
-            onChange={(e) => updatePost({ content: e.target.value })}
+            onChange={e => updatePost({ content: e.target.value })}
             placeholder="Write your blog post content here..."
             className="content-textarea"
             rows={15}
@@ -839,7 +797,7 @@ function BlogEditor({ postId }: { postId?: string }) {
     </div>
   );
 }
-````
+```
 
 ## Best Practices Summary
 
@@ -871,4 +829,5 @@ These examples demonstrate several important patterns:
 4. **Cleanup Side Effects** - Most hooks handle this automatically
 5. **Use TypeScript** - Catch errors early and improve developer experience
 
-Want to see more examples? Check out the individual hook and utility documentation pages for specific use cases and implementation details!
+Want to see more examples? Check out the individual hook and utility documentation pages for
+specific use cases and implementation details!

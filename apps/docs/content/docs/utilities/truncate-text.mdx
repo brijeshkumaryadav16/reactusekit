@@ -5,14 +5,16 @@ description: Truncate text to a specified length with ellipsis
 
 # truncateText
 
-The `truncateText` utility function truncates text to a specified length and adds an ellipsis (...) to indicate that the text has been shortened. It's perfect for displaying previews, card descriptions, or any text that needs to fit within specific UI constraints.
+The `truncateText` utility function truncates text to a specified length and adds an ellipsis (...)
+to indicate that the text has been shortened. It's perfect for displaying previews, card
+descriptions, or any text that needs to fit within specific UI constraints.
 
 ## Usage
 
 ```javascript
-import { truncateText } from "./utils/truncateText";
+import { truncateText } from './utils/truncateText';
 
-const longText = "This is a very long text that needs to be shortened";
+const longText = 'This is a very long text that needs to be shortened';
 const shortened = truncateText(longText, 20);
 console.log(shortened); // "This is a very long..."
 ```
@@ -76,7 +78,7 @@ function CommentPreview({ comment, expanded, onToggle }) {
       </p>
       {comment.text.length > previewLength && (
         <button onClick={onToggle} className="toggle-button">
-          {expanded ? "Show less" : "Show more"}
+          {expanded ? 'Show less' : 'Show more'}
         </button>
       )}
     </div>
@@ -90,9 +92,7 @@ function CommentPreview({ comment, expanded, onToggle }) {
 function NotificationItem({ notification }) {
   return (
     <div className="notification-item">
-      <div className="notification-icon">
-        {getNotificationIcon(notification.type)}
-      </div>
+      <div className="notification-icon">{getNotificationIcon(notification.type)}</div>
       <div className="notification-content">
         <h4>{notification.title}</h4>
         <p>{truncateText(notification.message, 60)}</p>
@@ -126,7 +126,7 @@ function UserProfile({ user, isCompact = false }) {
   const bioLength = isCompact ? 50 : 200;
 
   return (
-    <div className={`user-profile ${isCompact ? "compact" : ""}`}>
+    <div className={`user-profile ${isCompact ? 'compact' : ''}`}>
       <img src={user.avatar} alt={user.name} className="avatar" />
       <div className="user-info">
         <h3>{user.name}</h3>
@@ -152,12 +152,10 @@ function DataTable({ data }) {
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => (
+        {data.map(item => (
           <tr key={item.id}>
             <td>{item.name}</td>
-            <td title={item.description}>
-              {truncateText(item.description, 50)}
-            </td>
+            <td title={item.description}>{truncateText(item.description, 50)}</td>
             <td>{item.status}</td>
           </tr>
         ))}
@@ -177,15 +175,11 @@ function ChatMessage({ message, isPreview = false }) {
     <div className="chat-message">
       <div className="message-header">
         <span className="sender">{message.sender}</span>
-        <span className="timestamp">
-          {formatDate(message.timestamp, "HH:mm")}
-        </span>
+        <span className="timestamp">{formatDate(message.timestamp, 'HH:mm')}</span>
       </div>
       <div className="message-content">
         {isPreview ? (
-          <span className="preview">
-            {truncateText(message.text, messageLength)}
-          </span>
+          <span className="preview">{truncateText(message.text, messageLength)}</span>
         ) : (
           <p>{message.text}</p>
         )}
@@ -266,12 +260,10 @@ function SocialPost({ post }) {
         </div>
       </div>
       <div className="post-content">
-        <p>
-          {expanded ? post.content : truncateText(post.content, previewLength)}
-        </p>
+        <p>{expanded ? post.content : truncateText(post.content, previewLength)}</p>
         {post.content.length > previewLength && (
           <button onClick={() => setExpanded(!expanded)}>
-            {expanded ? "Show less" : "Show more"}
+            {expanded ? 'Show less' : 'Show more'}
           </button>
         )}
       </div>

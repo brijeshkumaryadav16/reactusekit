@@ -5,21 +5,23 @@ description: Add and remove event listeners with automatic cleanup
 
 # useEventListener
 
-The `useEventListener` hook provides a simple way to add event listeners to DOM elements, the window, or document with automatic cleanup when the component unmounts. It handles all the boilerplate of adding and removing event listeners safely.
+The `useEventListener` hook provides a simple way to add event listeners to DOM elements, the
+window, or document with automatic cleanup when the component unmounts. It handles all the
+boilerplate of adding and removing event listeners safely.
 
 ## Usage
 
 ```tsx
-import { useEventListener } from "./hooks/useEventListener";
+import { useEventListener } from './hooks/useEventListener';
 
 function Component() {
   const handleKeyPress = (event: KeyboardEvent) => {
-    if (event.key === "Escape") {
-      console.log("Escape key pressed!");
+    if (event.key === 'Escape') {
+      console.log('Escape key pressed!');
     }
   };
 
-  useEventListener("keydown", handleKeyPress);
+  useEventListener('keydown', handleKeyPress);
 
   return <div>Press Escape key</div>;
 }
@@ -48,31 +50,29 @@ function App() {
 
   const handleKeyDown = (event: KeyboardEvent) => {
     // Escape key closes modals
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       setIsModalOpen(false);
       setIsSidebarOpen(false);
     }
 
     // Ctrl/Cmd + K opens search
-    if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
       event.preventDefault();
       openSearch();
     }
 
     // Ctrl/Cmd + B toggles sidebar
-    if ((event.ctrlKey || event.metaKey) && event.key === "b") {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'b') {
       event.preventDefault();
-      setIsSidebarOpen((prev) => !prev);
+      setIsSidebarOpen(prev => !prev);
     }
   };
 
-  useEventListener("keydown", handleKeyDown);
+  useEventListener('keydown', handleKeyDown);
 
   return (
     <div className="app">
-      <button onClick={() => setIsModalOpen(true)}>
-        Open Modal (Escape to close)
-      </button>
+      <button onClick={() => setIsModalOpen(true)}>Open Modal (Escape to close)</button>
 
       <div className="shortcuts">
         <p>Keyboard Shortcuts:</p>
@@ -106,16 +106,14 @@ function ResponsiveComponent() {
     });
   };
 
-  useEventListener("resize", handleResize);
+  useEventListener('resize', handleResize);
 
   return (
     <div>
       <p>
         Window size: {windowSize.width} x {windowSize.height}
       </p>
-      <div
-        className={windowSize.width < 768 ? "mobile-layout" : "desktop-layout"}
-      >
+      <div className={windowSize.width < 768 ? 'mobile-layout' : 'desktop-layout'}>
         Content adapts to screen size
       </div>
     </div>
@@ -131,13 +129,12 @@ function ScrollProgress() {
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset;
-    const docHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / docHeight) * 100;
     setScrollProgress(scrollPercent);
   };
 
-  useEventListener("scroll", handleScroll);
+  useEventListener('scroll', handleScroll);
 
   return (
     <div className="scroll-progress">
@@ -161,7 +158,7 @@ function MouseTracker() {
     });
   };
 
-  useEventListener("mousemove", handleMouseMove);
+  useEventListener('mousemove', handleMouseMove);
 
   return (
     <div className="mouse-tracker">
@@ -171,14 +168,14 @@ function MouseTracker() {
       <div
         className="cursor-dot"
         style={{
-          position: "fixed",
+          position: 'fixed',
           left: mousePosition.x,
           top: mousePosition.y,
-          width: "10px",
-          height: "10px",
-          backgroundColor: "red",
-          borderRadius: "50%",
-          pointerEvents: "none",
+          width: '10px',
+          height: '10px',
+          backgroundColor: 'red',
+          borderRadius: '50%',
+          pointerEvents: 'none',
           zIndex: 9999,
         }}
       />
@@ -195,15 +192,12 @@ function DropdownMenu() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    ) {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsOpen(false);
     }
   };
 
-  useEventListener("mousedown", handleClickOutside, document);
+  useEventListener('mousedown', handleClickOutside, document);
 
   return (
     <div ref={dropdownRef} className="dropdown">
@@ -232,13 +226,13 @@ function OnlineStatus() {
   const handleOnline = () => setIsOnline(true);
   const handleOffline = () => setIsOnline(false);
 
-  useEventListener("online", handleOnline);
-  useEventListener("offline", handleOffline);
+  useEventListener('online', handleOnline);
+  useEventListener('offline', handleOffline);
 
   return (
-    <div className={`status ${isOnline ? "online" : "offline"}`}>
+    <div className={`status ${isOnline ? 'online' : 'offline'}`}>
       <span className="indicator" />
-      {isOnline ? "Online" : "Offline"}
+      {isOnline ? 'Online' : 'Offline'}
     </div>
   );
 }
@@ -248,21 +242,20 @@ function OnlineStatus() {
 
 ```tsx
 function AutoSaveForm() {
-  const [formData, setFormData] = useState({ title: "", content: "" });
+  const [formData, setFormData] = useState({ title: '', content: '' });
   const [isDirty, setIsDirty] = useState(false);
 
   const handleBeforeUnload = (event: BeforeUnloadEvent) => {
     if (isDirty) {
       event.preventDefault();
-      event.returnValue =
-        "You have unsaved changes. Are you sure you want to leave?";
+      event.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
     }
   };
 
-  useEventListener("beforeunload", handleBeforeUnload);
+  useEventListener('beforeunload', handleBeforeUnload);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData(prev => ({ ...prev, [field]: value }));
     setIsDirty(true);
   };
 
@@ -275,18 +268,18 @@ function AutoSaveForm() {
     <form className="auto-save-form">
       <input
         value={formData.title}
-        onChange={(e) => handleInputChange("title", e.target.value)}
+        onChange={e => handleInputChange('title', e.target.value)}
         placeholder="Title"
       />
       <textarea
         value={formData.content}
-        onChange={(e) => handleInputChange("content", e.target.value)}
+        onChange={e => handleInputChange('content', e.target.value)}
         placeholder="Content"
       />
 
       <div className="form-actions">
         <button type="button" onClick={handleSave}>
-          Save {isDirty && "(unsaved changes)"}
+          Save {isDirty && '(unsaved changes)'}
         </button>
       </div>
     </form>
@@ -305,12 +298,12 @@ function CustomElementListener() {
     setCustomEventData(event.detail);
   };
 
-  useEventListener("customEvent", handleCustomEvent, elementRef.current);
+  useEventListener('customEvent', handleCustomEvent, elementRef.current);
 
   const triggerCustomEvent = () => {
     if (elementRef.current) {
-      const event = new CustomEvent("customEvent", {
-        detail: { message: "Custom event triggered!", timestamp: Date.now() },
+      const event = new CustomEvent('customEvent', {
+        detail: { message: 'Custom event triggered!', timestamp: Date.now() },
       });
       elementRef.current.dispatchEvent(event);
     }
@@ -339,13 +332,13 @@ function FocusManager() {
   const handleFocusIn = (event: FocusEvent) => {
     const target = event.target as HTMLElement;
     const elementInfo = `${target.tagName.toLowerCase()}${
-      target.id ? `#${target.id}` : ""
-    }${target.className ? `.${target.className}` : ""}`;
+      target.id ? `#${target.id}` : ''
+    }${target.className ? `.${target.className}` : ''}`;
 
-    setFocusHistory((prev) => [...prev.slice(-4), elementInfo]);
+    setFocusHistory(prev => [...prev.slice(-4), elementInfo]);
   };
 
-  useEventListener("focusin", handleFocusIn, document);
+  useEventListener('focusin', handleFocusIn, document);
 
   return (
     <div className="focus-manager">
@@ -380,9 +373,9 @@ function MediaQueryListener() {
 
   useEffect(() => {
     const mediaQueries = {
-      mobile: window.matchMedia("(max-width: 767px)"),
-      tablet: window.matchMedia("(min-width: 768px) and (max-width: 1023px)"),
-      desktop: window.matchMedia("(min-width: 1024px)"),
+      mobile: window.matchMedia('(max-width: 767px)'),
+      tablet: window.matchMedia('(min-width: 768px) and (max-width: 1023px)'),
+      desktop: window.matchMedia('(min-width: 1024px)'),
     };
 
     const updateMatches = () => {
@@ -397,13 +390,13 @@ function MediaQueryListener() {
     updateMatches();
 
     // Add listeners
-    Object.values(mediaQueries).forEach((mq) => {
-      mq.addEventListener("change", updateMatches);
+    Object.values(mediaQueries).forEach(mq => {
+      mq.addEventListener('change', updateMatches);
     });
 
     return () => {
-      Object.values(mediaQueries).forEach((mq) => {
-        mq.removeEventListener("change", updateMatches);
+      Object.values(mediaQueries).forEach(mq => {
+        mq.removeEventListener('change', updateMatches);
       });
     };
   }, []);
@@ -412,9 +405,9 @@ function MediaQueryListener() {
     <div className="media-query-listener">
       <h3>Current Breakpoint</h3>
       <ul>
-        <li>Mobile: {matches.mobile ? "✓" : "✗"}</li>
-        <li>Tablet: {matches.tablet ? "✓" : "✗"}</li>
-        <li>Desktop: {matches.desktop ? "✓" : "✗"}</li>
+        <li>Mobile: {matches.mobile ? '✓' : '✗'}</li>
+        <li>Tablet: {matches.tablet ? '✓' : '✗'}</li>
+        <li>Desktop: {matches.desktop ? '✓' : '✗'}</li>
       </ul>
     </div>
   );

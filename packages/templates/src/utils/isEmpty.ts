@@ -6,7 +6,7 @@ export function isEmpty(value: any): boolean {
   }
 
   // String (including whitespace-only strings)
-  if (typeof value === "string") {
+  if (typeof value === 'string') {
     return value.trim().length === 0;
   }
 
@@ -16,7 +16,7 @@ export function isEmpty(value: any): boolean {
   }
 
   // Object (plain objects only)
-  if (typeof value === "object" && value.constructor === Object) {
+  if (typeof value === 'object' && value.constructor === Object) {
     return Object.keys(value).length === 0;
   }
 

@@ -3,9 +3,8 @@ title: Installation
 description: Get react-usekit set up in your project
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Steps, Step } from "fumadocs-ui/components/steps";
+import { Callout } from "fumadocs-ui/components/callout"; import { Tab, Tabs } from
+"fumadocs-ui/components/tabs"; import { Steps, Step } from "fumadocs-ui/components/steps";
 
 # Installation
 
@@ -18,6 +17,7 @@ import { Steps, Step } from "fumadocs-ui/components/steps";
 
 <Tabs items={['Global (Recommended)', 'NPX (One-time)', 'Project-specific']}>
 <Tab value="Global (Recommended)">
+
 ### Global Installation
 
 Best for developers who work on multiple React projects.
@@ -116,13 +116,9 @@ npm run add-hooks
 
 After installation, verify react-usekit is working:
 
-<Tabs items={["Global", "NPX", "Project"]}>
-  <Tab value="Global">```bash react-usekit --version ```</Tab>
-  <Tab value="NPX">```bash npx react-usekit --version ```</Tab>
-  <Tab value="Project">
-    ```bash npx react-usekit --version # or npm run add-hooks -- --version ```
-  </Tab>
-</Tabs>
+<Tabs items={["Global", "NPX", "Project"]}> <Tab value="Global">`bash react-usekit --version `</Tab>
+<Tab value="NPX">`bash npx react-usekit --version `</Tab> <Tab value="Project">
+`bash npx react-usekit --version # or npm run add-hooks -- --version ` </Tab> </Tabs>
 
 ## Setup Guide
 
@@ -163,15 +159,15 @@ Once generated, import and use your new hooks/utilities:
 
 ```tsx
 // Import your new hook
-import { useLocalStorage } from "./src/hooks/useLocalStorage";
+import { useLocalStorage } from './src/hooks/useLocalStorage';
 
 function App() {
-  const [name, setName] = useLocalStorage("userName", "");
+  const [name, setName] = useLocalStorage('userName', '');
 
   return (
     <input
       value={name}
-      onChange={(e) => setName(e.target.value)}
+      onChange={e => setName(e.target.value)}
       placeholder="Your name will be saved automatically"
     />
   );

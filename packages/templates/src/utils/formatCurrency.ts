@@ -1,10 +1,10 @@
 // Format a number as currency with locale support
 export function formatCurrency(
   amount: number,
-  currency = "USD",
-  locale = "en-US"
+  currency = 'USD',
+  locale = 'en-US'
 ): string {
-  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(
+  return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(
     amount
   );
 }

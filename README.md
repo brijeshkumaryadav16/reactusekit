@@ -6,13 +6,16 @@
 
 > **Drop-in React hooks and utility functions — zero boilerplate, maximum productivity.**
 
-A developer-friendly CLI that instantly adds battle-tested React hooks and JavaScript/TypeScript utilities to your project. No more copy-pasting from StackOverflow or reinventing the wheel.
+A developer-friendly CLI that instantly adds battle-tested React hooks and JavaScript/TypeScript
+utilities to your project. No more copy-pasting from StackOverflow or reinventing the wheel.
 
 ---
 
 ## ✨ What is react-usekit?
 
-**react-usekit** is a powerful CLI tool that instantly scaffolds production-ready React hooks and utility functions directly into your project. Instead of managing dependencies or searching for solutions online, get the exact code you need in seconds.
+**react-usekit** is a powerful CLI tool that instantly scaffolds production-ready React hooks and
+utility functions directly into your project. Instead of managing dependencies or searching for
+solutions online, get the exact code you need in seconds.
 
 ### 🎯 **Key Features**
 
@@ -81,7 +84,8 @@ npm install --save-dev react-usekit
 }
 ```
 
-> 💡 **Recommendation**: Use global installation if you work on multiple React projects. Use NPX for quick one-off usage.
+> 💡 **Recommendation**: Use global installation if you work on multiple React projects. Use NPX for
+> quick one-off usage.
 
 ---
 
@@ -210,26 +214,24 @@ your-react-project/
 #### **useLocalStorage** - Persistent State
 
 ```jsx
-import { useLocalStorage } from "./src/hooks/useLocalStorage";
+import { useLocalStorage } from './src/hooks/useLocalStorage';
 
 function UserProfile() {
-  const [user, setUser] = useLocalStorage("user-profile", {
-    name: "",
-    email: "",
+  const [user, setUser] = useLocalStorage('user-profile', {
+    name: '',
+    email: '',
   });
 
   return (
     <form>
       <input
         value={user.name}
-        onChange={(e) => setUser((prev) => ({ ...prev, name: e.target.value }))}
+        onChange={e => setUser(prev => ({ ...prev, name: e.target.value }))}
         placeholder="Name (saved automatically)"
       />
       <input
         value={user.email}
-        onChange={(e) =>
-          setUser((prev) => ({ ...prev, email: e.target.value }))
-        }
+        onChange={e => setUser(prev => ({ ...prev, email: e.target.value }))}
         placeholder="Email (saved automatically)"
       />
     </form>
@@ -240,7 +242,7 @@ function UserProfile() {
 #### **useAsync** - API Data Fetching
 
 ```jsx
-import { useAsync } from "./src/hooks/useAsync";
+import { useAsync } from './src/hooks/useAsync';
 
 function UserList() {
   const {
@@ -248,7 +250,7 @@ function UserList() {
     loading,
     error,
     execute,
-  } = useAsync(() => fetch("/api/users").then((res) => res.json()), {
+  } = useAsync(() => fetch('/api/users').then(res => res.json()), {
     immediate: true,
   });
 
@@ -257,7 +259,7 @@ function UserList() {
 
   return (
     <div>
-      {users?.map((user) => (
+      {users?.map(user => (
         <div key={user.id}>{user.name}</div>
       ))}
       <button onClick={execute}>Refresh</button>
@@ -271,13 +273,13 @@ function UserList() {
 #### **Multiple Utilities** - Text & Currency Formatting
 
 ```jsx
-import { formatCurrency, truncateText, capitalize } from "./src/lib/utils";
+import { formatCurrency, truncateText, capitalize } from './src/lib/utils';
 
 function ProductCard({ product }) {
   return (
     <div className="product-card">
       <h3>{capitalize(product.name)}</h3>
-      <p className="price">{formatCurrency(product.price, "USD")}</p>
+      <p className="price">{formatCurrency(product.price, 'USD')}</p>
       <p className="description">{truncateText(product.description, 150)}</p>
     </div>
   );
@@ -287,27 +289,27 @@ function ProductCard({ product }) {
 #### **Form Validation** - isEmpty Utility
 
 ```jsx
-import { isEmpty } from "./src/lib/utils";
+import { isEmpty } from './src/lib/utils';
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
 
   const validate = () => {
     const newErrors = {};
-    if (isEmpty(form.name)) newErrors.name = "Name is required";
-    if (isEmpty(form.email)) newErrors.email = "Email is required";
-    if (isEmpty(form.message)) newErrors.message = "Message is required";
+    if (isEmpty(form.name)) newErrors.name = 'Name is required';
+    if (isEmpty(form.email)) newErrors.email = 'Email is required';
+    if (isEmpty(form.message)) newErrors.message = 'Message is required';
 
     setErrors(newErrors);
     return isEmpty(newErrors);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (validate()) {
       // Submit form
-      console.log("Form is valid!", form);
+      console.log('Form is valid!', form);
     }
   };
 
@@ -345,8 +347,10 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 - 📖 **Documentation**: [Full docs](https://github.com/brijeshkumaryadav16/react-usekit#readme)
 - 🐛 **Issues**: [Bug reports](https://github.com/brijeshkumaryadav16/react-usekit/issues)
-- 💬 **Discussions**: [Community forum](https://github.com/brijeshkumaryadav16/react-usekit/discussions)
-- � **Updates**: Follow [@brijeshkumaryadav16](https://linkedin.com/in/brijeshkumaryadav16) for updates
+- 💬 **Discussions**:
+  [Community forum](https://github.com/brijeshkumaryadav16/react-usekit/discussions)
+- � **Updates**: Follow [@brijeshkumaryadav16](https://linkedin.com/in/brijeshkumaryadav16) for
+  updates
 
 ---
 
@@ -364,6 +368,8 @@ See [LICENSE](LICENSE) for full details.
 
 ⭐ **Star us on GitHub** if this project helped you!
 
-[Report Bug](https://github.com/your-username/react-usekit/issues) • [Request Feature](https://github.com/your-username/react-usekit/issues) • [Documentation](https://github.com/your-username/react-usekit#readme)
+[Report Bug](https://github.com/your-username/react-usekit/issues) •
+[Request Feature](https://github.com/your-username/react-usekit/issues) •
+[Documentation](https://github.com/your-username/react-usekit#readme)
 
 </div>

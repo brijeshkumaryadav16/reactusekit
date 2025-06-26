@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 // Hook for adding and removing event listeners with automatic cleanup
 export function useEventListener<T extends keyof WindowEventMap>(

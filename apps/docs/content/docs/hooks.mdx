@@ -3,8 +3,8 @@ title: React Hooks
 description: 8 essential React hooks for common patterns and functionality
 ---
 
-import { Card, Cards } from "fumadocs-ui/components/card";
-import { Callout } from "fumadocs-ui/components/callout";
+import { Card, Cards } from "fumadocs-ui/components/card"; import { Callout } from
+"fumadocs-ui/components/callout";
 
 # 🪝 React Hooks
 
@@ -28,12 +28,11 @@ import { Callout } from "fumadocs-ui/components/callout";
     </div>
   </Card>
 
-{" "}
-<Card
-  title="useAsync"
-  href="/docs/hooks/use-async"
-  description="Handle async operations with loading, error, and data states"
+{" "} <Card title="useAsync" href="/docs/hooks/use-async" description="Handle async operations with
+loading, error, and data states"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">
       API
@@ -44,12 +43,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="useToggle"
-  href="/docs/hooks/use-toggle"
-  description="Boolean state with toggle, setTrue, and setFalse methods"
+{" "} <Card title="useToggle" href="/docs/hooks/use-toggle" description="Boolean state with toggle,
+setTrue, and setFalse methods"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
       State
@@ -60,12 +58,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="useDebounce"
-  href="/docs/hooks/use-debounce"
-  description="Debounce values with configurable delay"
+{" "} <Card title="useDebounce" href="/docs/hooks/use-debounce" description="Debounce values with
+configurable delay"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
       Performance
@@ -76,12 +73,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="useClickOutside"
-  href="/docs/hooks/use-click-outside"
-  description="Detect clicks outside target elements"
+{" "} <Card title="useClickOutside" href="/docs/hooks/use-click-outside" description="Detect clicks
+outside target elements"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
       UI
@@ -92,12 +88,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="useEventListener"
-  href="/docs/hooks/use-event-listener"
-  description="Add/remove event listeners with automatic cleanup"
+{" "} <Card title="useEventListener" href="/docs/hooks/use-event-listener" description="Add/remove
+event listeners with automatic cleanup"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
       Events
@@ -108,12 +103,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="useWindowSize"
-  href="/docs/hooks/use-window-size"
-  description="Track window dimensions with debounce"
+{" "} <Card title="useWindowSize" href="/docs/hooks/use-window-size" description="Track window
+dimensions with debounce"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
       Responsive
@@ -124,15 +118,16 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-  <Card
-    title="useInterval"
-    href="/docs/hooks/use-interval"
-    description="setInterval with cleanup and pause/resume controls"
-  >
+<Card title="useInterval" href="/docs/hooks/use-interval" description="setInterval with cleanup and
+pause/resume controls"
+
+>
+
     <div className="flex gap-2 mt-2">
       <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Timer</span>
       <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Animation</span>
     </div>
+
   </Card>
 </Cards>
 
@@ -171,13 +166,13 @@ Hooks for timing-based operations and side effects.
 ### Simple State with Persistence
 
 ```tsx
-import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 function UserPreferences() {
-  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
 
   return (
-    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
       Current theme: {theme}
     </button>
   );
@@ -187,14 +182,14 @@ function UserPreferences() {
 ### API Data Fetching
 
 ```tsx
-import { useAsync } from "./hooks/useAsync";
+import { useAsync } from './hooks/useAsync';
 
 function UserProfile({ userId }) {
   const {
     data: user,
     loading,
     error,
-  } = useAsync(() => fetch(`/api/users/${userId}`).then((res) => res.json()), {
+  } = useAsync(() => fetch(`/api/users/${userId}`).then(res => res.json()), {
     immediate: true,
   });
 
@@ -207,8 +202,8 @@ function UserProfile({ userId }) {
 ### Modal with Click Outside
 
 ```tsx
-import { useToggle } from "./hooks/useToggle";
-import { useClickOutside } from "./hooks/useClickOutside";
+import { useToggle } from './hooks/useToggle';
+import { useClickOutside } from './hooks/useClickOutside';
 
 function Modal() {
   const [isOpen, { toggle, setFalse }] = useToggle();
@@ -252,7 +247,7 @@ function Modal() {
 ```tsx
 // Combine hooks for powerful patterns
 function SearchComponent() {
-  const [query, setQuery] = useLocalStorage("searchQuery", "");
+  const [query, setQuery] = useLocalStorage('searchQuery', '');
   const debouncedQuery = useDebounce(query, 300);
 
   const { data: results, loading } = useAsync(() => searchAPI(debouncedQuery), {
@@ -261,13 +256,9 @@ function SearchComponent() {
 
   return (
     <div>
-      <input
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search..."
-      />
+      <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search..." />
       {loading && <div>Searching...</div>}
-      {results?.map((item) => (
+      {results?.map(item => (
         <div key={item.id}>{item.title}</div>
       ))}
     </div>
@@ -282,4 +273,5 @@ function SearchComponent() {
 3. **Import and use**: Start building with your new hooks
 4. **Explore examples**: Check out [Examples](/docs/examples) for inspiration
 
-Ready to dive deeper? Pick a hook from the list above or start with the most popular ones: `useLocalStorage`, `useAsync`, and `useToggle`.
+Ready to dive deeper? Pick a hook from the list above or start with the most popular ones:
+`useLocalStorage`, `useAsync`, and `useToggle`.

@@ -5,17 +5,19 @@ description: Generate unique identifiers for components and elements
 
 # generateId
 
-The `generateId` utility function generates unique identifiers that can be used for HTML elements, React keys, or any scenario where you need a unique string identifier. It's perfect for accessibility, form controls, and dynamic content.
+The `generateId` utility function generates unique identifiers that can be used for HTML elements,
+React keys, or any scenario where you need a unique string identifier. It's perfect for
+accessibility, form controls, and dynamic content.
 
 ## Usage
 
 ```javascript
-import { generateId } from "./utils/generateId";
+import { generateId } from './utils/generateId';
 
 const uniqueId = generateId();
 console.log(uniqueId); // "id-abc123def456"
 
-const prefixedId = generateId("input");
+const prefixedId = generateId('input');
 console.log(prefixedId); // "input-abc123def456"
 ```
 
@@ -34,8 +36,8 @@ console.log(prefixedId); // "input-abc123def456"
 ### Form Elements
 
 ```javascript
-function FormField({ label, type = "text", ...props }) {
-  const [id] = useState(() => generateId("field"));
+function FormField({ label, type = 'text', ...props }) {
+  const [id] = useState(() => generateId('field'));
 
   return (
     <div className="form-field">
@@ -60,8 +62,8 @@ function ContactForm() {
 
 ```javascript
 function Modal({ title, children, isOpen, onClose }) {
-  const [titleId] = useState(() => generateId("modal-title"));
-  const [descId] = useState(() => generateId("modal-desc"));
+  const [titleId] = useState(() => generateId('modal-title'));
+  const [descId] = useState(() => generateId('modal-desc'));
 
   if (!isOpen) return null;
 
@@ -87,27 +89,25 @@ function Modal({ title, children, isOpen, onClose }) {
 ```javascript
 function TodoList() {
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState("");
+  const [newTodo, setNewTodo] = useState('');
 
   const addTodo = () => {
     if (newTodo.trim()) {
-      setTodos((prev) => [
+      setTodos(prev => [
         ...prev,
         {
-          id: generateId("todo"),
+          id: generateId('todo'),
           text: newTodo,
           completed: false,
         },
       ]);
-      setNewTodo("");
+      setNewTodo('');
     }
   };
 
-  const toggleTodo = (id) => {
-    setTodos((prev) =>
-      prev.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+  const toggleTodo = id => {
+    setTodos(prev =>
+      prev.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
     );
   };
 
@@ -116,14 +116,14 @@ function TodoList() {
       <div>
         <input
           value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
+          onChange={e => setNewTodo(e.target.value)}
           placeholder="Add new todo"
         />
         <button onClick={addTodo}>Add</button>
       </div>
 
       <ul>
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <li key={todo.id}>
             <input
               type="checkbox"
@@ -147,8 +147,8 @@ function Tabs({ tabs }) {
   const [activeTab, setActiveTab] = useState(0);
   const [tabIds] = useState(() =>
     tabs.map(() => ({
-      tab: generateId("tab"),
-      panel: generateId("panel"),
+      tab: generateId('tab'),
+      panel: generateId('panel'),
     }))
   );
 
@@ -163,7 +163,7 @@ function Tabs({ tabs }) {
             aria-controls={tabIds[index].panel}
             aria-selected={activeTab === index}
             onClick={() => setActiveTab(index)}
-            className={`tab ${activeTab === index ? "active" : ""}`}
+            className={`tab ${activeTab === index ? 'active' : ''}`}
           >
             {tab.label}
           </button>
@@ -194,13 +194,13 @@ function Accordion({ items }) {
   const [openItems, setOpenItems] = useState(new Set());
   const [itemIds] = useState(() =>
     items.map(() => ({
-      header: generateId("accordion-header"),
-      panel: generateId("accordion-panel"),
+      header: generateId('accordion-header'),
+      panel: generateId('accordion-panel'),
     }))
   );
 
-  const toggleItem = (index) => {
-    setOpenItems((prev) => {
+  const toggleItem = index => {
+    setOpenItems(prev => {
       const newSet = new Set(prev);
       if (newSet.has(index)) {
         newSet.delete(index);
@@ -243,8 +243,8 @@ function Accordion({ items }) {
 
 ```javascript
 function RadioGroup({ options, value, onChange, name }) {
-  const [groupId] = useState(() => generateId("radio-group"));
-  const [optionIds] = useState(() => options.map(() => generateId("radio")));
+  const [groupId] = useState(() => generateId('radio-group'));
+  const [optionIds] = useState(() => options.map(() => generateId('radio')));
 
   return (
     <fieldset className="radio-group">
@@ -257,7 +257,7 @@ function RadioGroup({ options, value, onChange, name }) {
             name={name || groupId}
             value={option.value}
             checked={value === option.value}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={e => onChange(e.target.value)}
           />
           <label htmlFor={optionIds[index]}>{option.label}</label>
         </div>
@@ -271,7 +271,7 @@ function RadioGroup({ options, value, onChange, name }) {
 
 ```javascript
 function Tooltip({ children, content }) {
-  const [tooltipId] = useState(() => generateId("tooltip"));
+  const [tooltipId] = useState(() => generateId('tooltip'));
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -300,9 +300,9 @@ function Tooltip({ children, content }) {
 ```javascript
 function FormBuilder({ fields }) {
   const [fieldIds] = useState(() =>
-    fields.map((field) => ({
+    fields.map(field => ({
       id: generateId(`field-${field.type}`),
-      errorId: generateId("error"),
+      errorId: generateId('error'),
     }))
   );
 
@@ -318,9 +318,9 @@ function FormBuilder({ fields }) {
               {field.required && <span aria-label="required">*</span>}
             </label>
 
-            {field.type === "select" ? (
+            {field.type === 'select' ? (
               <select id={id} aria-describedby={errorId}>
-                {field.options?.map((option) => (
+                {field.options?.map(option => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -352,9 +352,9 @@ function FormBuilder({ fields }) {
 
 ```javascript
 function Chart({ data, title }) {
-  const [chartId] = useState(() => generateId("chart"));
-  const [titleId] = useState(() => generateId("chart-title"));
-  const [descId] = useState(() => generateId("chart-desc"));
+  const [chartId] = useState(() => generateId('chart'));
+  const [titleId] = useState(() => generateId('chart-title'));
+  const [descId] = useState(() => generateId('chart-desc'));
 
   return (
     <div className="chart-container">

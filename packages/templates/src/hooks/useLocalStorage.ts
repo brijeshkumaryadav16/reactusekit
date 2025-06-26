@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 // Hook to persist state in localStorage with automatic sync
 export function useLocalStorage<T>(key: string, initialValue: T) {
@@ -16,7 +16,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       setStoredValue(value);
       localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      console.error("Error setting localStorage key:", error);
+      console.error('Error setting localStorage key:', error);
     }
   };
 

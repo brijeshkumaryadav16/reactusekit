@@ -3,9 +3,8 @@ title: Introduction
 description: Drop-in React hooks and utility functions — zero boilerplate, maximum productivity
 ---
 
-import { Card, Cards } from "fumadocs-ui/components/card";
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Card, Cards } from "fumadocs-ui/components/card"; import { Callout } from
+"fumadocs-ui/components/callout"; import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 # 📦 react-usekit
 
@@ -29,6 +28,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 <Tabs items={['Global Installation', 'NPX (One-time)', 'Project Installation']}>
 <Tab value="Global Installation">
+
 ```bash
 # Install once, use everywhere
 npm install -g react-usekit
@@ -38,7 +38,8 @@ npm install -g react-usekit
 cd your-react-project
 react-usekit init
 
-````
+```
+
 </Tab>
 <Tab value="NPX (One-time)">
 ```bash
@@ -55,11 +56,7 @@ npm install --save-dev react-usekit
 
 # Add to package.json scripts
 
-{
-"scripts": {
-"add-hooks": "react-usekit init"
-}
-}
+{ "scripts": { "add-hooks": "react-usekit init" } }
 
 ````
 </Tab>

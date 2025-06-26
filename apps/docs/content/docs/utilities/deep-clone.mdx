@@ -5,25 +5,27 @@ description: Create deep copies of objects and arrays safely
 
 # deepClone
 
-The `deepClone` utility function creates a deep copy of objects and arrays, ensuring that nested properties are also cloned rather than referenced. This is essential for state management, data manipulation, and avoiding unintended mutations.
+The `deepClone` utility function creates a deep copy of objects and arrays, ensuring that nested
+properties are also cloned rather than referenced. This is essential for state management, data
+manipulation, and avoiding unintended mutations.
 
 ## Usage
 
 ```javascript
-import { deepClone } from "./utils/deepClone";
+import { deepClone } from './utils/deepClone';
 
 const original = {
-  name: "John",
+  name: 'John',
   address: {
-    street: "123 Main St",
-    city: "New York",
+    street: '123 Main St',
+    city: 'New York',
   },
-  hobbies: ["reading", "gaming"],
+  hobbies: ['reading', 'gaming'],
 };
 
 const cloned = deepClone(original);
-cloned.address.city = "Boston";
-cloned.hobbies.push("cooking");
+cloned.address.city = 'Boston';
+cloned.hobbies.push('cooking');
 
 console.log(original.address.city); // 'New York' (unchanged)
 console.log(cloned.address.city); // 'Boston'
@@ -47,29 +49,27 @@ console.log(cloned.address.city); // 'Boston'
 function UserProfileEditor() {
   const [originalProfile, setOriginalProfile] = useState({
     personal: {
-      name: "John Doe",
-      email: "john@example.com",
-      avatar: "avatar.jpg",
+      name: 'John Doe',
+      email: 'john@example.com',
+      avatar: 'avatar.jpg',
     },
     settings: {
       notifications: true,
-      privacy: "public",
-      theme: "light",
+      privacy: 'public',
+      theme: 'light',
     },
     preferences: {
-      language: "en",
-      timezone: "UTC",
-      dateFormat: "MM/DD/YYYY",
+      language: 'en',
+      timezone: 'UTC',
+      dateFormat: 'MM/DD/YYYY',
     },
   });
 
-  const [editingProfile, setEditingProfile] = useState(() =>
-    deepClone(originalProfile)
-  );
+  const [editingProfile, setEditingProfile] = useState(() => deepClone(originalProfile));
   const [hasChanges, setHasChanges] = useState(false);
 
   const updateProfile = (section, field, value) => {
-    setEditingProfile((prev) => {
+    setEditingProfile(prev => {
       const updated = deepClone(prev);
       updated[section][field] = value;
       return updated;
@@ -93,12 +93,12 @@ function UserProfileEditor() {
         <h3>Personal Information</h3>
         <input
           value={editingProfile.personal.name}
-          onChange={(e) => updateProfile("personal", "name", e.target.value)}
+          onChange={e => updateProfile('personal', 'name', e.target.value)}
           placeholder="Name"
         />
         <input
           value={editingProfile.personal.email}
-          onChange={(e) => updateProfile("personal", "email", e.target.value)}
+          onChange={e => updateProfile('personal', 'email', e.target.value)}
           placeholder="Email"
         />
       </div>
@@ -109,15 +109,13 @@ function UserProfileEditor() {
           <input
             type="checkbox"
             checked={editingProfile.settings.notifications}
-            onChange={(e) =>
-              updateProfile("settings", "notifications", e.target.checked)
-            }
+            onChange={e => updateProfile('settings', 'notifications', e.target.checked)}
           />
           Enable Notifications
         </label>
         <select
           value={editingProfile.settings.theme}
-          onChange={(e) => updateProfile("settings", "theme", e.target.value)}
+          onChange={e => updateProfile('settings', 'theme', e.target.value)}
         >
           <option value="light">Light</option>
           <option value="dark">Dark</option>
@@ -147,26 +145,26 @@ function useUndoRedo(initialState) {
   const currentState = history[currentIndex];
 
   const setState = useCallback(
-    (newState) => {
-      setHistory((prev) => {
+    newState => {
+      setHistory(prev => {
         const newHistory = prev.slice(0, currentIndex + 1);
         newHistory.push(deepClone(newState));
         return newHistory;
       });
-      setCurrentIndex((prev) => prev + 1);
+      setCurrentIndex(prev => prev + 1);
     },
     [currentIndex]
   );
 
   const undo = useCallback(() => {
     if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
+      setCurrentIndex(prev => prev - 1);
     }
   }, [currentIndex]);
 
   const redo = useCallback(() => {
     if (currentIndex < history.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
+      setCurrentIndex(prev => prev + 1);
     }
   }, [currentIndex, history.length]);
 
@@ -186,12 +184,12 @@ function useUndoRedo(initialState) {
 function DrawingApp() {
   const [drawing, setDrawing] = useUndoRedo({
     shapes: [],
-    selectedTool: "pen",
-    strokeColor: "#000000",
+    selectedTool: 'pen',
+    strokeColor: '#000000',
     strokeWidth: 2,
   });
 
-  const addShape = (shape) => {
+  const addShape = shape => {
     setDrawing({
       ...drawing,
       shapes: [...drawing.shapes, shape],
@@ -219,30 +217,30 @@ function DrawingApp() {
 ```javascript
 function MultiStepForm() {
   const [formData, setFormData] = useState({
-    step1: { name: "", email: "" },
-    step2: { address: "", city: "", zipCode: "" },
+    step1: { name: '', email: '' },
+    step2: { address: '', city: '', zipCode: '' },
     step3: { preferences: [], notifications: true },
   });
   const [currentStep, setCurrentStep] = useState(1);
 
   const updateStepData = (step, data) => {
-    setFormData((prev) => {
+    setFormData(prev => {
       const updated = deepClone(prev);
       updated[`step${step}`] = { ...updated[`step${step}`], ...data };
       return updated;
     });
   };
 
-  const addPreference = (preference) => {
-    setFormData((prev) => {
+  const addPreference = preference => {
+    setFormData(prev => {
       const updated = deepClone(prev);
       updated.step3.preferences.push(preference);
       return updated;
     });
   };
 
-  const removePreference = (index) => {
-    setFormData((prev) => {
+  const removePreference = index => {
+    setFormData(prev => {
       const updated = deepClone(prev);
       updated.step3.preferences.splice(index, 1);
       return updated;
@@ -251,8 +249,8 @@ function MultiStepForm() {
 
   const resetForm = () => {
     setFormData({
-      step1: { name: "", email: "" },
-      step2: { address: "", city: "", zipCode: "" },
+      step1: { name: '', email: '' },
+      step2: { address: '', city: '', zipCode: '' },
       step3: { preferences: [], notifications: true },
     });
     setCurrentStep(1);
@@ -263,7 +261,7 @@ function MultiStepForm() {
       {currentStep === 1 && (
         <Step1
           data={formData.step1}
-          onUpdate={(data) => updateStepData(1, data)}
+          onUpdate={data => updateStepData(1, data)}
           onNext={() => setCurrentStep(2)}
         />
       )}
@@ -279,7 +277,7 @@ function MultiStepForm() {
 function useApiCache() {
   const [cache, setCache] = useState({});
 
-  const getCachedData = (key) => {
+  const getCachedData = key => {
     const cached = cache[key];
     if (cached && Date.now() - cached.timestamp < 5 * 60 * 1000) {
       // 5 minutes
@@ -289,7 +287,7 @@ function useApiCache() {
   };
 
   const setCachedData = (key, data) => {
-    setCache((prev) => ({
+    setCache(prev => ({
       ...prev,
       [key]: {
         data: deepClone(data),
@@ -323,8 +321,8 @@ function DataFetcher({ url }) {
     }
 
     fetch(url)
-      .then((response) => response.json())
-      .then((responseData) => {
+      .then(response => response.json())
+      .then(responseData => {
         setCachedData(url, responseData);
         setData(deepClone(responseData));
       })
@@ -344,7 +342,7 @@ function DataTransformer({ sourceData }) {
   useEffect(() => {
     if (!sourceData) return;
 
-    const transformed = sourceData.map((item) => {
+    const transformed = sourceData.map(item => {
       const cloned = deepClone(item);
 
       // Add computed fields
@@ -353,12 +351,9 @@ function DataTransformer({ sourceData }) {
 
       // Transform nested arrays
       if (cloned.orders) {
-        cloned.orders = cloned.orders.map((order) => ({
+        cloned.orders = cloned.orders.map(order => ({
           ...order,
-          total: order.items.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          ),
+          total: order.items.reduce((sum, item) => sum + item.price * item.quantity, 0),
           itemCount: order.items.length,
         }));
       }
@@ -366,7 +361,7 @@ function DataTransformer({ sourceData }) {
       // Add metadata
       cloned.metadata = {
         processedAt: new Date().toISOString(),
-        version: "1.0",
+        version: '1.0',
       };
 
       return cloned;
@@ -377,7 +372,7 @@ function DataTransformer({ sourceData }) {
 
   return (
     <div className="data-table">
-      {transformedData.map((item) => (
+      {transformedData.map(item => (
         <div key={item.id} className="data-row">
           <span>{item.fullName}</span>
           <span>{item.age} years old</span>
@@ -397,7 +392,7 @@ function useStateComparison(initialState) {
   const [previousState, setPreviousState] = useState(null);
 
   const updateState = useCallback(
-    (newState) => {
+    newState => {
       setPreviousState(deepClone(currentState));
       setCurrentState(deepClone(newState));
     },
@@ -405,14 +400,14 @@ function useStateComparison(initialState) {
   );
 
   const hasChanged = useCallback(
-    (path) => {
+    path => {
       if (!previousState) return false;
 
       const getCurrentValue = (obj, pathArray) => {
         return pathArray.reduce((acc, key) => acc?.[key], obj);
       };
 
-      const pathArray = path.split(".");
+      const pathArray = path.split('.');
       const currentValue = getCurrentValue(currentState, pathArray);
       const previousValue = getCurrentValue(previousState, pathArray);
 
@@ -425,13 +420,13 @@ function useStateComparison(initialState) {
     if (!previousState) return {};
 
     const changes = {};
-    const findChanges = (current, previous, path = "") => {
-      Object.keys(current).forEach((key) => {
+    const findChanges = (current, previous, path = '') => {
+      Object.keys(current).forEach(key => {
         const currentPath = path ? `${path}.${key}` : key;
         const currentValue = current[key];
         const previousValue = previous?.[key];
 
-        if (typeof currentValue === "object" && currentValue !== null) {
+        if (typeof currentValue === 'object' && currentValue !== null) {
           findChanges(currentValue, previousValue, currentPath);
         } else if (currentValue !== previousValue) {
           changes[currentPath] = {
@@ -463,7 +458,7 @@ function TemplateEngine() {
   const [templates, setTemplates] = useState({});
 
   const createTemplate = (name, template) => {
-    setTemplates((prev) => ({
+    setTemplates(prev => ({
       ...prev,
       [name]: deepClone(template),
     }));
@@ -477,9 +472,9 @@ function TemplateEngine() {
 
     // Apply overrides recursively
     const applyOverrides = (target, source) => {
-      Object.keys(source).forEach((key) => {
+      Object.keys(source).forEach(key => {
         if (
-          typeof source[key] === "object" &&
+          typeof source[key] === 'object' &&
           source[key] !== null &&
           !Array.isArray(source[key])
         ) {

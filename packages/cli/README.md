@@ -30,7 +30,8 @@ This interactive command will guide you through:
 
 1. **Type Selection**: Choose between adding `hooks` or `utils`
 2. **Language Choice**: Select `TypeScript` or `JavaScript`
-3. **File Placement**: Specify where to place the files (default: `src/hooks` for hooks, `src/lib` for utils)
+3. **File Placement**: Specify where to place the files (default: `src/hooks` for hooks, `src/lib`
+   for utils)
 4. **Template Selection**: Multi-select from available templates
 
 ### Examples

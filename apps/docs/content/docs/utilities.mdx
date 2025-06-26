@@ -3,8 +3,8 @@ title: Utility Functions
 description: 8 essential JavaScript/TypeScript utilities for common operations
 ---
 
-import { Card, Cards } from "fumadocs-ui/components/card";
-import { Callout } from "fumadocs-ui/components/callout";
+import { Card, Cards } from "fumadocs-ui/components/card"; import { Callout } from
+"fumadocs-ui/components/callout";
 
 # 🛠️ Utility Functions
 
@@ -28,12 +28,11 @@ import { Callout } from "fumadocs-ui/components/callout";
     </div>
   </Card>
 
-{" "}
-<Card
-  title="isEmpty"
-  href="/docs/utilities/is-empty"
-  description="Check if values are empty (objects, arrays, strings)"
+{" "} <Card title="isEmpty" href="/docs/utilities/is-empty" description="Check if values are empty
+(objects, arrays, strings)"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
       Validation
@@ -44,12 +43,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="deepClone"
-  href="/docs/utilities/deep-clone"
-  description="Deep copy objects and arrays safely"
+{" "} <Card title="deepClone" href="/docs/utilities/deep-clone" description="Deep copy objects and
+arrays safely"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
       Objects
@@ -60,12 +58,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="slugify"
-  href="/docs/utilities/slugify"
-  description="Create URL-friendly slugs from text"
+{" "} <Card title="slugify" href="/docs/utilities/slugify" description="Create URL-friendly slugs
+from text"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
       Text
@@ -76,12 +73,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="capitalize"
-  href="/docs/utilities/capitalize"
-  description="Capitalize the first letter of strings"
+{" "} <Card title="capitalize" href="/docs/utilities/capitalize" description="Capitalize the first
+letter of strings"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
       Text
@@ -92,12 +88,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="truncateText"
-  href="/docs/utilities/truncate-text"
-  description="Truncate text with ellipsis support"
+{" "} <Card title="truncateText" href="/docs/utilities/truncate-text" description="Truncate text
+with ellipsis support"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
       Text
@@ -108,12 +103,11 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-{" "}
-<Card
-  title="formatDate"
-  href="/docs/utilities/format-date"
-  description="Consistent date formatting with options"
+{" "} <Card title="formatDate" href="/docs/utilities/format-date" description="Consistent date
+formatting with options"
+
 >
+
   <div className="flex gap-2 mt-2">
     <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
       Date
@@ -124,15 +118,16 @@ import { Callout } from "fumadocs-ui/components/callout";
   </div>
 </Card>
 
-  <Card
-    title="generateId"
-    href="/docs/utilities/generate-id"
-    description="Generate unique identifiers"
-  >
+<Card title="generateId" href="/docs/utilities/generate-id" description="Generate unique
+identifiers"
+
+>
+
     <div className="flex gap-2 mt-2">
       <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">ID</span>
       <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Random</span>
     </div>
+
   </Card>
 </Cards>
 
@@ -171,7 +166,7 @@ Utilities for working with complex data structures.
 ### Text Processing Pipeline
 
 ```tsx
-import { capitalize, truncateText, slugify } from "./lib/utils";
+import { capitalize, truncateText, slugify } from './lib/utils';
 
 function BlogPostCard({ post }) {
   const title = capitalize(post.title);
@@ -191,7 +186,7 @@ function BlogPostCard({ post }) {
 ### Form Validation
 
 ```tsx
-import { isEmpty, formatCurrency } from "./lib/utils";
+import { isEmpty, formatCurrency } from './lib/utils';
 
 function ProductForm({ product, onSave }) {
   const [errors, setErrors] = useState({});
@@ -200,11 +195,11 @@ function ProductForm({ product, onSave }) {
     const newErrors = {};
 
     if (isEmpty(product.name)) {
-      newErrors.name = "Product name is required";
+      newErrors.name = 'Product name is required';
     }
 
     if (isEmpty(product.price) || product.price <= 0) {
-      newErrors.price = "Valid price is required";
+      newErrors.price = 'Valid price is required';
     }
 
     setErrors(newErrors);
@@ -215,7 +210,7 @@ function ProductForm({ product, onSave }) {
     if (validate()) {
       onSave({
         ...product,
-        formattedPrice: formatCurrency(product.price, "USD"),
+        formattedPrice: formatCurrency(product.price, 'USD'),
       });
     }
   };
@@ -224,7 +219,7 @@ function ProductForm({ product, onSave }) {
     <form onSubmit={handleSubmit}>
       <input
         value={product.name}
-        onChange={(e) => setProduct({ ...product, name: e.target.value })}
+        onChange={e => setProduct({ ...product, name: e.target.value })}
         placeholder="Product name"
       />
       {errors.name && <span className="error">{errors.name}</span>}
@@ -232,9 +227,7 @@ function ProductForm({ product, onSave }) {
       <input
         type="number"
         value={product.price}
-        onChange={(e) =>
-          setProduct({ ...product, price: parseFloat(e.target.value) })
-        }
+        onChange={e => setProduct({ ...product, price: parseFloat(e.target.value) })}
         placeholder="Price"
       />
       {errors.price && <span className="error">{errors.price}</span>}
@@ -248,17 +241,15 @@ function ProductForm({ product, onSave }) {
 ### Data Processing
 
 ```tsx
-import { deepClone, generateId, isEmpty } from "./lib/utils";
+import { deepClone, generateId, isEmpty } from './lib/utils';
 
 function useShoppingCart() {
   const [cart, setCart] = useState([]);
 
-  const addItem = (product) => {
-    setCart((prevCart) => {
+  const addItem = product => {
+    setCart(prevCart => {
       const newCart = deepClone(prevCart);
-      const existingItem = newCart.find(
-        (item) => item.productId === product.id
-      );
+      const existingItem = newCart.find(item => item.productId === product.id);
 
       if (existingItem) {
         existingItem.quantity += 1;
@@ -276,8 +267,8 @@ function useShoppingCart() {
     });
   };
 
-  const removeItem = (itemId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+  const removeItem = itemId => {
+    setCart(prevCart => prevCart.filter(item => item.id !== itemId));
   };
 
   const isCartEmpty = isEmpty(cart);
@@ -301,10 +292,10 @@ function useShoppingCart() {
 
    ```tsx
    // ✅ Good - tree-shakeable
-   import { formatCurrency } from "./lib/utils";
+   import { formatCurrency } from './lib/utils';
 
    // ❌ Avoid - imports entire module
-   import * as utils from "./lib/utils";
+   import * as utils from './lib/utils';
    ```
 
 2. **Memoization** - Cache expensive operations:
@@ -316,7 +307,7 @@ function useShoppingCart() {
 3. **Batch Operations** - Process arrays efficiently:
    ```tsx
    // ✅ Process once
-   const processedItems = items.map((item) => ({
+   const processedItems = items.map(item => ({
      ...item,
      slug: slugify(item.title),
      excerpt: truncateText(item.content, 100),
@@ -331,9 +322,9 @@ function useShoppingCart() {
 function validateUser(user) {
   const errors = [];
 
-  if (isEmpty(user.name)) errors.push("Name is required");
-  if (isEmpty(user.email)) errors.push("Email is required");
-  if (isEmpty(user.phone)) errors.push("Phone is required");
+  if (isEmpty(user.name)) errors.push('Name is required');
+  if (isEmpty(user.email)) errors.push('Email is required');
+  if (isEmpty(user.phone)) errors.push('Phone is required');
 
   return isEmpty(errors) ? null : errors;
 }
@@ -344,8 +335,8 @@ function validateUser(user) {
 ```tsx
 function processArticles(articles) {
   return articles
-    .filter((article) => !isEmpty(article.title))
-    .map((article) => ({
+    .filter(article => !isEmpty(article.title))
+    .map(article => ({
       ...article,
       id: article.id || generateId(),
       slug: slugify(article.title),
@@ -361,15 +352,15 @@ function processArticles(articles) {
 ### With Forms
 
 ```tsx
-import { isEmpty, capitalize } from "./lib/utils";
+import { isEmpty, capitalize } from './lib/utils';
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
 
   const validate = () => {
     const newErrors = {};
-    Object.keys(form).forEach((key) => {
+    Object.keys(form).forEach(key => {
       if (isEmpty(form[key])) {
         newErrors[key] = `${capitalize(key)} is required`;
       }
@@ -385,7 +376,7 @@ function ContactForm() {
 ### With Data Display
 
 ```tsx
-import { formatCurrency, formatDate, truncateText } from "./lib/utils";
+import { formatCurrency, formatDate, truncateText } from './lib/utils';
 
 function OrderSummary({ order }) {
   return (
@@ -430,4 +421,5 @@ src/
     └── MyComponent.tsx   # Import: import { formatCurrency } from '../lib/formatCurrency'
 ```
 
-Ready to explore? Pick a utility from the list above or check out our [Examples](/docs/examples) section for real-world usage patterns!
+Ready to explore? Pick a utility from the list above or check out our [Examples](/docs/examples)
+section for real-world usage patterns!

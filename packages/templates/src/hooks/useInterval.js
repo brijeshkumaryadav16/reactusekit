@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Hook for using setInterval with declarative API and automatic cleanup
 export function useInterval(callback, delay, options = {}) {
@@ -54,7 +54,7 @@ export function useInterval(callback, delay, options = {}) {
   }, []);
 
   const toggle = useCallback(() => {
-    setIsActive((prev) => !prev);
+    setIsActive(prev => !prev);
   }, []);
 
   const reset = useCallback(() => {

@@ -5,18 +5,20 @@ description: Set up intervals with automatic cleanup and pause/resume functional
 
 # useInterval
 
-The `useInterval` hook provides a declarative way to set up intervals in React with automatic cleanup and the ability to pause/resume. It's perfect for creating timers, periodic updates, and scheduled tasks.
+The `useInterval` hook provides a declarative way to set up intervals in React with automatic
+cleanup and the ability to pause/resume. It's perfect for creating timers, periodic updates, and
+scheduled tasks.
 
 ## Usage
 
 ```tsx
-import { useInterval } from "./hooks/useInterval";
+import { useInterval } from './hooks/useInterval';
 
 function Timer() {
   const [count, setCount] = useState(0);
 
   useInterval(() => {
-    setCount((count) => count + 1);
+    setCount(count => count + 1);
   }, 1000); // Runs every second
 
   return <div>Count: {count}</div>;
@@ -45,7 +47,7 @@ function CountdownTimer({ initialTime = 60 }) {
 
   useInterval(
     () => {
-      setTimeLeft((time) => {
+      setTimeLeft(time => {
         if (time <= 1) {
           setIsRunning(false);
           return 0;
@@ -66,9 +68,7 @@ function CountdownTimer({ initialTime = 60 }) {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, "0")}:${secs
-      .toString()
-      .padStart(2, "0")}`;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -119,11 +119,11 @@ function LiveDataFeed() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/live-data");
+      const response = await fetch('/api/live-data');
       const newData = await response.json();
       setData(newData);
     } catch (error) {
-      console.error("Failed to fetch data:", error);
+      console.error('Failed to fetch data:', error);
     } finally {
       setLoading(false);
     }
@@ -149,14 +149,14 @@ function LiveDataFeed() {
           <input
             type="checkbox"
             checked={autoRefresh}
-            onChange={(e) => setAutoRefresh(e.target.checked)}
+            onChange={e => setAutoRefresh(e.target.checked)}
           />
           Auto-refresh
         </label>
 
         <select
           value={refreshInterval}
-          onChange={(e) => setRefreshInterval(Number(e.target.value))}
+          onChange={e => setRefreshInterval(Number(e.target.value))}
           disabled={!autoRefresh}
         >
           <option value={1000}>1 second</option>
@@ -166,12 +166,12 @@ function LiveDataFeed() {
         </select>
 
         <button onClick={fetchData} disabled={loading}>
-          {loading ? "Refreshing..." : "Refresh Now"}
+          {loading ? 'Refreshing...' : 'Refresh Now'}
         </button>
       </div>
 
       <div className="data-display">
-        {data.map((item) => (
+        {data.map(item => (
           <div key={item.id} className="data-item">
             {item.name}: {item.value}
           </div>
@@ -186,7 +186,7 @@ function LiveDataFeed() {
 
 ```tsx
 function TypingAnimation({ text, speed = 100 }) {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -194,7 +194,7 @@ function TypingAnimation({ text, speed = 100 }) {
     () => {
       if (currentIndex < text.length) {
         setDisplayText(text.slice(0, currentIndex + 1));
-        setCurrentIndex((prev) => prev + 1);
+        setCurrentIndex(prev => prev + 1);
       } else {
         setIsComplete(true);
       }
@@ -203,7 +203,7 @@ function TypingAnimation({ text, speed = 100 }) {
   );
 
   const restart = () => {
-    setDisplayText("");
+    setDisplayText('');
     setCurrentIndex(0);
     setIsComplete(false);
   };
@@ -284,26 +284,26 @@ function ProgressBar({ duration = 10000 }) {
 ```tsx
 function HealthMonitor() {
   const [services, setServices] = useState([
-    { name: "API Server", url: "/api/health", status: "unknown" },
-    { name: "Database", url: "/api/db-health", status: "unknown" },
-    { name: "Cache", url: "/api/cache-health", status: "unknown" },
+    { name: 'API Server', url: '/api/health', status: 'unknown' },
+    { name: 'Database', url: '/api/db-health', status: 'unknown' },
+    { name: 'Cache', url: '/api/cache-health', status: 'unknown' },
   ]);
   const [isMonitoring, setIsMonitoring] = useState(true);
 
   const checkHealth = async () => {
     const updatedServices = await Promise.all(
-      services.map(async (service) => {
+      services.map(async service => {
         try {
           const response = await fetch(service.url);
           return {
             ...service,
-            status: response.ok ? "healthy" : "unhealthy",
+            status: response.ok ? 'healthy' : 'unhealthy',
             lastChecked: new Date().toISOString(),
           };
         } catch (error) {
           return {
             ...service,
-            status: "error",
+            status: 'error',
             lastChecked: new Date().toISOString(),
           };
         }
@@ -331,14 +331,14 @@ function HealthMonitor() {
           <input
             type="checkbox"
             checked={isMonitoring}
-            onChange={(e) => setIsMonitoring(e.target.checked)}
+            onChange={e => setIsMonitoring(e.target.checked)}
           />
           Auto-monitor
         </label>
       </div>
 
       <div className="services">
-        {services.map((service) => (
+        {services.map(service => (
           <div key={service.name} className={`service ${service.status}`}>
             <div className="service-name">{service.name}</div>
             <div className="service-status">
@@ -347,8 +347,7 @@ function HealthMonitor() {
             </div>
             {service.lastChecked && (
               <div className="last-checked">
-                Last checked:{" "}
-                {new Date(service.lastChecked).toLocaleTimeString()}
+                Last checked: {new Date(service.lastChecked).toLocaleTimeString()}
               </div>
             )}
           </div>
@@ -367,7 +366,7 @@ function NotificationSystem() {
     Array<{
       id: string;
       message: string;
-      type: "info" | "success" | "warning" | "error";
+      type: 'info' | 'success' | 'warning' | 'error';
       duration: number;
       createdAt: number;
     }>
@@ -376,16 +375,14 @@ function NotificationSystem() {
   // Auto-remove notifications after their duration
   useInterval(() => {
     const now = Date.now();
-    setNotifications((prev) =>
-      prev.filter(
-        (notification) => now - notification.createdAt < notification.duration
-      )
+    setNotifications(prev =>
+      prev.filter(notification => now - notification.createdAt < notification.duration)
     );
   }, 1000);
 
   const addNotification = (
     message: string,
-    type: "info" | "success" | "warning" | "error" = "info",
+    type: 'info' | 'success' | 'warning' | 'error' = 'info',
     duration = 5000
   ) => {
     const notification = {
@@ -395,42 +392,27 @@ function NotificationSystem() {
       duration,
       createdAt: Date.now(),
     };
-    setNotifications((prev) => [...prev, notification]);
+    setNotifications(prev => [...prev, notification]);
   };
 
   const removeNotification = (id: string) => {
-    setNotifications((prev) => prev.filter((n) => n.id !== id));
+    setNotifications(prev => prev.filter(n => n.id !== id));
   };
 
   return (
     <div className="notification-system">
       <div className="notification-controls">
-        <button
-          onClick={() => addNotification("This is an info message", "info")}
-        >
-          Add Info
-        </button>
-        <button onClick={() => addNotification("Success message!", "success")}>
-          Add Success
-        </button>
-        <button onClick={() => addNotification("Warning message!", "warning")}>
-          Add Warning
-        </button>
-        <button onClick={() => addNotification("Error message!", "error")}>
-          Add Error
-        </button>
+        <button onClick={() => addNotification('This is an info message', 'info')}>Add Info</button>
+        <button onClick={() => addNotification('Success message!', 'success')}>Add Success</button>
+        <button onClick={() => addNotification('Warning message!', 'warning')}>Add Warning</button>
+        <button onClick={() => addNotification('Error message!', 'error')}>Add Error</button>
       </div>
 
       <div className="notifications">
-        {notifications.map((notification) => (
-          <div
-            key={notification.id}
-            className={`notification ${notification.type}`}
-          >
+        {notifications.map(notification => (
+          <div key={notification.id} className={`notification ${notification.type}`}>
             <span>{notification.message}</span>
-            <button onClick={() => removeNotification(notification.id)}>
-              ×
-            </button>
+            <button onClick={() => removeNotification(notification.id)}>×</button>
           </div>
         ))}
       </div>
@@ -443,21 +425,21 @@ function NotificationSystem() {
 
 ```tsx
 function AutoSaveEditor() {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
   const saveContent = async () => {
     try {
-      await fetch("/api/save-content", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      await fetch('/api/save-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content }),
       });
       setLastSaved(new Date());
       setHasUnsavedChanges(false);
     } catch (error) {
-      console.error("Failed to save:", error);
+      console.error('Failed to save:', error);
     }
   };
 
@@ -477,19 +459,17 @@ function AutoSaveEditor() {
     <div className="auto-save-editor">
       <div className="editor-header">
         <span className="save-status">
-          {hasUnsavedChanges ? "Unsaved changes" : "All changes saved"}
+          {hasUnsavedChanges ? 'Unsaved changes' : 'All changes saved'}
         </span>
         {lastSaved && (
-          <span className="last-saved">
-            Last saved: {lastSaved.toLocaleTimeString()}
-          </span>
+          <span className="last-saved">Last saved: {lastSaved.toLocaleTimeString()}</span>
         )}
         <button onClick={saveContent}>Save Now</button>
       </div>
 
       <textarea
         value={content}
-        onChange={(e) => handleContentChange(e.target.value)}
+        onChange={e => handleContentChange(e.target.value)}
         placeholder="Start typing..."
         rows={10}
         cols={50}

@@ -5,13 +5,14 @@ description: Detect clicks outside a specific element
 
 # useClickOutside
 
-The `useClickOutside` hook detects when a user clicks outside of a specified element. This is commonly used for closing modals, dropdowns, or other overlays when clicking outside of them.
+The `useClickOutside` hook detects when a user clicks outside of a specified element. This is
+commonly used for closing modals, dropdowns, or other overlays when clicking outside of them.
 
 ## Usage
 
 ```tsx
-import { useClickOutside } from "./hooks/useClickOutside";
-import { useRef, useState } from "react";
+import { useClickOutside } from './hooks/useClickOutside';
+import { useRef, useState } from 'react';
 
 function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +80,7 @@ function Modal({ isOpen, onClose, children }) {
 
 ```tsx
 function SearchBox() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
@@ -96,11 +97,7 @@ function SearchBox() {
 
   return (
     <div ref={searchRef} className="search-container">
-      <input
-        value={query}
-        onChange={(e) => handleSearch(e.target.value)}
-        placeholder="Search..."
-      />
+      <input value={query} onChange={e => handleSearch(e.target.value)} placeholder="Search..." />
       {showResults && results.length > 0 && (
         <div className="search-results">
           {results.map((result, index) => (

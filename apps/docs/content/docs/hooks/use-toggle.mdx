@@ -5,19 +5,20 @@ description: Manage boolean state with toggle functionality
 
 # useToggle
 
-The `useToggle` hook provides a simple way to manage boolean state with toggle functionality. It's perfect for handling UI states like modals, dropdowns, or any on/off functionality.
+The `useToggle` hook provides a simple way to manage boolean state with toggle functionality. It's
+perfect for handling UI states like modals, dropdowns, or any on/off functionality.
 
 ## Usage
 
 ```tsx
-import { useToggle } from "./hooks/useToggle";
+import { useToggle } from './hooks/useToggle';
 
 function Modal() {
   const [isOpen, toggleOpen] = useToggle(false);
 
   return (
     <div>
-      <button onClick={toggleOpen}>{isOpen ? "Close" : "Open"} Modal</button>
+      <button onClick={toggleOpen}>{isOpen ? 'Close' : 'Open'} Modal</button>
       {isOpen && (
         <div className="modal">
           <p>Modal content here!</p>
@@ -81,7 +82,7 @@ function AccordionItem({ title, children }) {
   return (
     <div className="accordion-item">
       <button onClick={toggleExpanded} className="accordion-header">
-        {title} {isExpanded ? "−" : "+"}
+        {title} {isExpanded ? '−' : '+'}
       </button>
       {isExpanded && <div className="accordion-content">{children}</div>}
     </div>
@@ -95,9 +96,7 @@ function FAQ() {
         <p>React is a JavaScript library for building user interfaces.</p>
       </AccordionItem>
       <AccordionItem title="How do I get started?">
-        <p>
-          You can start by installing React and creating your first component.
-        </p>
+        <p>You can start by installing React and creating your first component.</p>
       </AccordionItem>
     </div>
   );
@@ -111,15 +110,15 @@ function ThemeProvider({ children }) {
   const [isDarkMode, toggleTheme] = useToggle(false);
 
   useEffect(() => {
-    document.body.className = isDarkMode ? "dark-theme" : "light-theme";
+    document.body.className = isDarkMode ? 'dark-theme' : 'light-theme';
   }, [isDarkMode]);
 
   return (
     <div>
       <header>
         <button onClick={toggleTheme}>
-          {isDarkMode ? "☀️" : "🌙"}
-          {isDarkMode ? "Light" : "Dark"} Mode
+          {isDarkMode ? '☀️' : '🌙'}
+          {isDarkMode ? 'Light' : 'Dark'} Mode
         </button>
       </header>
       <main>{children}</main>
@@ -133,22 +132,18 @@ function ThemeProvider({ children }) {
 ```tsx
 function PasswordInput() {
   const [isVisible, toggleVisibility] = useToggle(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
 
   return (
     <div className="password-input">
       <input
-        type={isVisible ? "text" : "password"}
+        type={isVisible ? 'text' : 'password'}
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
         placeholder="Enter password"
       />
-      <button
-        type="button"
-        onClick={toggleVisibility}
-        className="visibility-toggle"
-      >
-        {isVisible ? "🙈" : "👁️"}
+      <button type="button" onClick={toggleVisibility} className="visibility-toggle">
+        {isVisible ? '🙈' : '👁️'}
       </button>
     </div>
   );
@@ -165,11 +160,11 @@ function DataFetcher() {
   const fetchData = async () => {
     toggleLoading(true);
     try {
-      const response = await fetch("/api/data");
+      const response = await fetch('/api/data');
       const result = await response.json();
       setData(result);
     } catch (error) {
-      console.error("Failed to fetch data:", error);
+      console.error('Failed to fetch data:', error);
     } finally {
       toggleLoading(false);
     }
@@ -178,7 +173,7 @@ function DataFetcher() {
   return (
     <div>
       <button onClick={fetchData} disabled={isLoading}>
-        {isLoading ? "Loading..." : "Fetch Data"}
+        {isLoading ? 'Loading...' : 'Fetch Data'}
       </button>
       {data && (
         <div>
@@ -198,7 +193,7 @@ function AdvancedToggle() {
 
   return (
     <div>
-      <p>Feature is {isEnabled ? "enabled" : "disabled"}</p>
+      <p>Feature is {isEnabled ? 'enabled' : 'disabled'}</p>
 
       <button onClick={() => toggle()}>Toggle</button>
       <button onClick={() => toggle(true)}>Enable</button>

@@ -5,16 +5,18 @@ description: Debounce a value to limit how often a function is called
 
 # useDebounce
 
-The `useDebounce` hook delays updating a value until after a specified delay has passed since the last time it was updated. This is useful for optimizing performance in scenarios like search inputs or API calls.
+The `useDebounce` hook delays updating a value until after a specified delay has passed since the
+last time it was updated. This is useful for optimizing performance in scenarios like search inputs
+or API calls.
 
 ## Usage
 
 ```tsx
-import { useDebounce } from "./hooks/useDebounce";
-import { useState, useEffect } from "react";
+import { useDebounce } from './hooks/useDebounce';
+import { useState, useEffect } from 'react';
 
 function SearchComponent() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
@@ -30,7 +32,7 @@ function SearchComponent() {
       <input
         type="text"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={e => setSearchTerm(e.target.value)}
         placeholder="Search..."
       />
       <div>
@@ -60,7 +62,7 @@ function SearchComponent() {
 
 ```tsx
 function UserForm() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isValidating, setIsValidating] = useState(false);
   const [isValid, setIsValid] = useState(null);
   const debouncedEmail = useDebounce(email, 300);
@@ -79,7 +81,7 @@ function UserForm() {
       <input
         type="email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
         placeholder="Enter email"
       />
       {isValidating && <span>Validating...</span>}
@@ -94,15 +96,15 @@ function UserForm() {
 
 ```tsx
 function Editor() {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const debouncedContent = useDebounce(content, 2000);
 
   useEffect(() => {
-    if (debouncedContent && content !== "") {
+    if (debouncedContent && content !== '') {
       setIsSaving(true);
       saveDocument(debouncedContent)
-        .then(() => console.log("Document saved"))
+        .then(() => console.log('Document saved'))
         .finally(() => setIsSaving(false));
     }
   }, [debouncedContent]);
@@ -111,7 +113,7 @@ function Editor() {
     <div>
       <textarea
         value={content}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={e => setContent(e.target.value)}
         placeholder="Start typing..."
       />
       {isSaving && <span>Saving...</span>}
@@ -138,13 +140,13 @@ function ResponsiveComponent() {
       });
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
     // Expensive operations only run after resize stops
-    console.log("Window resized to:", debouncedSize);
+    console.log('Window resized to:', debouncedSize);
   }, [debouncedSize]);
 
   return (

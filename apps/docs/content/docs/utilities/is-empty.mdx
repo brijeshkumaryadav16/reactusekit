@@ -5,20 +5,22 @@ description: Check if values are empty (objects, arrays, strings, null, undefine
 
 # isEmpty
 
-The `isEmpty` utility function checks if a value is considered empty. It handles various data types including objects, arrays, strings, null, and undefined values, making it perfect for form validation, conditional rendering, and data processing.
+The `isEmpty` utility function checks if a value is considered empty. It handles various data types
+including objects, arrays, strings, null, and undefined values, making it perfect for form
+validation, conditional rendering, and data processing.
 
 ## Usage
 
 ```javascript
-import { isEmpty } from "./utils/isEmpty";
+import { isEmpty } from './utils/isEmpty';
 
-console.log(isEmpty("")); // true
+console.log(isEmpty('')); // true
 console.log(isEmpty({})); // true
 console.log(isEmpty([])); // true
 console.log(isEmpty(null)); // true
 console.log(isEmpty(undefined)); // true
-console.log(isEmpty("hello")); // false
-console.log(isEmpty({ name: "John" })); // false
+console.log(isEmpty('hello')); // false
+console.log(isEmpty({ name: 'John' })); // false
 console.log(isEmpty([1, 2, 3])); // false
 ```
 
@@ -39,9 +41,9 @@ console.log(isEmpty([1, 2, 3])); // false
 ```javascript
 function ContactForm() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
   const [errors, setErrors] = useState({});
 
@@ -49,26 +51,26 @@ function ContactForm() {
     const newErrors = {};
 
     if (isEmpty(formData.name)) {
-      newErrors.name = "Name is required";
+      newErrors.name = 'Name is required';
     }
 
     if (isEmpty(formData.email)) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required';
     }
 
     if (isEmpty(formData.message)) {
-      newErrors.message = "Message is required";
+      newErrors.message = 'Message is required';
     }
 
     setErrors(newErrors);
     return isEmpty(newErrors);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (validateForm()) {
       // Submit form
-      console.log("Form is valid", formData);
+      console.log('Form is valid', formData);
     }
   };
 
@@ -78,9 +80,7 @@ function ContactForm() {
         <label>Name</label>
         <input
           value={formData.name}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, name: e.target.value }))
-          }
+          onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
         />
         {errors.name && <span className="error">{errors.name}</span>}
       </div>
@@ -90,9 +90,7 @@ function ContactForm() {
         <input
           type="email"
           value={formData.email}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, email: e.target.value }))
-          }
+          onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
         />
         {errors.email && <span className="error">{errors.email}</span>}
       </div>
@@ -101,9 +99,7 @@ function ContactForm() {
         <label>Message</label>
         <textarea
           value={formData.message}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, message: e.target.value }))
-          }
+          onChange={e => setFormData(prev => ({ ...prev, message: e.target.value }))}
         />
         {errors.message && <span className="error">{errors.message}</span>}
       </div>
@@ -130,7 +126,7 @@ function UserProfile({ user }) {
         <div className="skills">
           <h3>Skills</h3>
           <ul>
-            {user.skills.map((skill) => (
+            {user.skills.map(skill => (
               <li key={skill}>{skill}</li>
             ))}
           </ul>
@@ -141,12 +137,7 @@ function UserProfile({ user }) {
         <div className="social-links">
           <h3>Connect</h3>
           {Object.entries(user.socialLinks).map(([platform, url]) => (
-            <a
-              key={platform}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a key={platform} href={url} target="_blank" rel="noopener noreferrer">
               {platform}
             </a>
           ))}
@@ -167,14 +158,14 @@ function ProductList() {
 
   useEffect(() => {
     fetchProducts()
-      .then((response) => {
+      .then(response => {
         if (isEmpty(response.data)) {
-          setError("No products found");
+          setError('No products found');
         } else {
           setProducts(response.data);
         }
       })
-      .catch((err) => setError("Failed to load products"))
+      .catch(err => setError('Failed to load products'))
       .finally(() => setLoading(false));
   }, []);
 
@@ -188,7 +179,7 @@ function ProductList() {
 
   return (
     <div className="product-grid">
-      {products.map((product) => (
+      {products.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
@@ -206,7 +197,7 @@ function SearchableList({ items, searchTerm, filters }) {
     // Apply search filter
     if (!isEmpty(searchTerm)) {
       result = result.filter(
-        (item) =>
+        item =>
           item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           item.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -214,15 +205,13 @@ function SearchableList({ items, searchTerm, filters }) {
 
     // Apply category filter
     if (!isEmpty(filters.category)) {
-      result = result.filter((item) => item.category === filters.category);
+      result = result.filter(item => item.category === filters.category);
     }
 
     // Apply price range filter
     if (!isEmpty(filters.priceRange)) {
       result = result.filter(
-        (item) =>
-          item.price >= filters.priceRange.min &&
-          item.price <= filters.priceRange.max
+        item => item.price >= filters.priceRange.min && item.price <= filters.priceRange.max
       );
     }
 
@@ -234,13 +223,11 @@ function SearchableList({ items, searchTerm, filters }) {
       {isEmpty(filteredItems) ? (
         <div className="no-results">
           <p>No items match your criteria</p>
-          <button onClick={() => window.location.reload()}>
-            Clear Filters
-          </button>
+          <button onClick={() => window.location.reload()}>Clear Filters</button>
         </div>
       ) : (
         <div className="results">
-          {filteredItems.map((item) => (
+          {filteredItems.map(item => (
             <ItemCard key={item.id} item={item} />
           ))}
         </div>
@@ -258,8 +245,8 @@ function DataProcessor({ rawData }) {
     if (isEmpty(rawData)) return [];
 
     return rawData
-      .filter((item) => !isEmpty(item.name) && !isEmpty(item.value))
-      .map((item) => ({
+      .filter(item => !isEmpty(item.name) && !isEmpty(item.value))
+      .map(item => ({
         ...item,
         hasMetadata: !isEmpty(item.metadata),
         hasChildren: !isEmpty(item.children),
@@ -285,12 +272,12 @@ function DataProcessor({ rawData }) {
             </tr>
           </thead>
           <tbody>
-            {processedData.map((item) => (
+            {processedData.map(item => (
               <tr key={item.id}>
                 <td>{item.displayName}</td>
                 <td>{item.value}</td>
-                <td>{item.hasMetadata ? "Yes" : "No"}</td>
-                <td>{item.hasChildren ? "Yes" : "No"}</td>
+                <td>{item.hasMetadata ? 'Yes' : 'No'}</td>
+                <td>{item.hasChildren ? 'Yes' : 'No'}</td>
               </tr>
             ))}
           </tbody>
@@ -311,17 +298,13 @@ function useFormValidation(initialValues, validationRules) {
   const validate = useCallback(
     (fieldName, value) => {
       const rules = validationRules[fieldName];
-      if (!rules) return "";
+      if (!rules) return '';
 
       if (rules.required && isEmpty(value)) {
         return `${fieldName} is required`;
       }
 
-      if (
-        rules.minLength &&
-        !isEmpty(value) &&
-        value.length < rules.minLength
-      ) {
+      if (rules.minLength && !isEmpty(value) && value.length < rules.minLength) {
         return `${fieldName} must be at least ${rules.minLength} characters`;
       }
 
@@ -329,17 +312,17 @@ function useFormValidation(initialValues, validationRules) {
         return rules.customMessage || `${fieldName} is invalid`;
       }
 
-      return "";
+      return '';
     },
     [validationRules]
   );
 
   const setValue = useCallback(
     (fieldName, value) => {
-      setValues((prev) => ({ ...prev, [fieldName]: value }));
+      setValues(prev => ({ ...prev, [fieldName]: value }));
 
       const error = validate(fieldName, value);
-      setErrors((prev) => ({
+      setErrors(prev => ({
         ...prev,
         [fieldName]: error,
       }));
@@ -350,7 +333,7 @@ function useFormValidation(initialValues, validationRules) {
   const validateAll = useCallback(() => {
     const newErrors = {};
 
-    Object.keys(validationRules).forEach((fieldName) => {
+    Object.keys(validationRules).forEach(fieldName => {
       const error = validate(fieldName, values[fieldName]);
       if (!isEmpty(error)) {
         newErrors[fieldName] = error;
@@ -377,8 +360,8 @@ function useFormValidation(initialValues, validationRules) {
 function ConfigProvider({ config, children }) {
   const processedConfig = useMemo(() => {
     const defaults = {
-      theme: "light",
-      language: "en",
+      theme: 'light',
+      language: 'en',
       features: {
         notifications: true,
         analytics: false,
@@ -407,11 +390,7 @@ function ConfigProvider({ config, children }) {
     };
   }, [config]);
 
-  return (
-    <ConfigContext.Provider value={processedConfig}>
-      {children}
-    </ConfigContext.Provider>
-  );
+  return <ConfigContext.Provider value={processedConfig}>{children}</ConfigContext.Provider>;
 }
 ```
 

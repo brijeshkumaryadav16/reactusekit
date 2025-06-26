@@ -3,8 +3,8 @@ title: useAsync
 description: Handle async operations with loading, error, and data states
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Callout } from "fumadocs-ui/components/callout"; import { Tab, Tabs } from
+"fumadocs-ui/components/tabs";
 
 # useAsync
 
@@ -41,60 +41,27 @@ react-usekit init
 
 ### Basic API Call
 
-<Tabs items={['TypeScript', 'JavaScript']}>
-<Tab value="TypeScript">
+<Tabs items={['TypeScript', 'JavaScript']}> <Tab value="TypeScript">
+
 ```tsx
 import { useAsync } from './hooks/useAsync';
 
 interface User {
-id: number;
-name: string;
-email: string;
+  id: number;
+  name: string;
+  email: string;
 }
 
 function UserProfile({ userId }: { userId: number }) {
-const {
-data: user,
-loading,
-error,
-execute,
-reset
-} = useAsync<User>(
-() => fetch(`/api/users/${userId}`).then(res => res.json()),
-{ immediate: true }
-);
-
-if (loading) return <div>Loading user...</div>;
-if (error) return <div>Error: {error.message}</div>;
-if (!user) return <div>No user found</div>;
-
-return (
-
-<div>
-  <h1>{user.name}</h1>
-  <p>{user.email}</p>
-  <button onClick={execute}>Refresh</button>
-  <button onClick={reset}>Clear</button>
-</div>
-); }
-
-````
-</Tab>
-<Tab value="JavaScript">
-```jsx
-import { useAsync } from './hooks/useAsync';
-
-function UserProfile({ userId }) {
   const {
     data: user,
     loading,
     error,
     execute,
-    reset
-  } = useAsync(
-    () => fetch(`/api/users/${userId}`).then(res => res.json()),
-    { immediate: true }
-  );
+    reset,
+  } = useAsync<User>(() => fetch(`/api/users/${userId}`).then(res => res.json()), {
+    immediate: true,
+  });
 
   if (loading) return <div>Loading user...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -109,6 +76,22 @@ function UserProfile({ userId }) {
     </div>
   );
 }
+```
+
+</Tab>
+<Tab value="JavaScript">
+```jsx
+import { useAsync } from './hooks/useAsync';
+
+function UserProfile({ userId }) { const { data: user, loading, error, execute, reset } = useAsync(
+() => fetch(`/api/users/${userId}`).then(res => res.json()), { immediate: true } );
+
+if (loading) return <div>Loading user...</div>; if (error) return <div>Error: {error.message}</div>;
+if (!user) return <div>No user found</div>;
+
+return ( <div> <h1>{user.name}</h1> <p>{user.email}</p> <button onClick={execute}>Refresh</button>
+<button onClick={reset}>Clear</button> </div> ); }
+
 ````
 
 </Tab>
@@ -637,3 +620,4 @@ if (error && error.critical) {
   throw error; // This will be caught by error boundary
 }
 ```
+````

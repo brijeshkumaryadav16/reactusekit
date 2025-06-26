@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 // Simple SVG icons as components
 const ArrowRightIcon = ({ className }: { className?: string }) => (
@@ -147,7 +147,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-            The essential collection of <strong>8 React hooks</strong> and{" "}
+            The essential collection of <strong>8 React hooks</strong> and{' '}
             <strong>8 utility functions</strong>
             every developer needs. Copy, paste, own your code.
           </p>
@@ -283,35 +283,35 @@ export default function HomePage() {
               <div className="space-y-3">
                 {[
                   {
-                    name: "useLocalStorage",
-                    desc: "Persistent state with localStorage",
+                    name: 'useLocalStorage',
+                    desc: 'Persistent state with localStorage',
                   },
                   {
-                    name: "useAsync",
-                    desc: "Handle async operations gracefully",
+                    name: 'useAsync',
+                    desc: 'Handle async operations gracefully',
                   },
                   {
-                    name: "useClickOutside",
-                    desc: "Detect clicks outside elements",
+                    name: 'useClickOutside',
+                    desc: 'Detect clicks outside elements',
                   },
                   {
-                    name: "useDebounce",
-                    desc: "Debounce values and callbacks",
+                    name: 'useDebounce',
+                    desc: 'Debounce values and callbacks',
                   },
                   {
-                    name: "useEventListener",
-                    desc: "Attach event listeners safely",
+                    name: 'useEventListener',
+                    desc: 'Attach event listeners safely',
                   },
                   {
-                    name: "useInterval",
-                    desc: "Declarative intervals in React",
+                    name: 'useInterval',
+                    desc: 'Declarative intervals in React',
                   },
-                  { name: "useToggle", desc: "Boolean state management" },
+                  { name: 'useToggle', desc: 'Boolean state management' },
                   {
-                    name: "useWindowSize",
-                    desc: "Responsive window dimensions",
+                    name: 'useWindowSize',
+                    desc: 'Responsive window dimensions',
                   },
-                ].map((hook) => (
+                ].map(hook => (
                   <div
                     key={hook.name}
                     className="flex items-start p-4 rounded-lg border bg-card/50"
@@ -341,20 +341,20 @@ export default function HomePage() {
               <div className="space-y-3">
                 {[
                   {
-                    name: "capitalize",
-                    desc: "Capitalize first letter of strings",
+                    name: 'capitalize',
+                    desc: 'Capitalize first letter of strings',
                   },
-                  { name: "truncateText", desc: "Truncate text with ellipsis" },
+                  { name: 'truncateText', desc: 'Truncate text with ellipsis' },
                   {
-                    name: "formatCurrency",
-                    desc: "Format numbers as currency",
+                    name: 'formatCurrency',
+                    desc: 'Format numbers as currency',
                   },
-                  { name: "formatDate", desc: "Consistent date formatting" },
-                  { name: "isEmpty", desc: "Check if values are empty" },
-                  { name: "deepClone", desc: "Deep copy objects safely" },
-                  { name: "slugify", desc: "Create URL-friendly slugs" },
-                  { name: "generateId", desc: "Generate unique identifiers" },
-                ].map((util) => (
+                  { name: 'formatDate', desc: 'Consistent date formatting' },
+                  { name: 'isEmpty', desc: 'Check if values are empty' },
+                  { name: 'deepClone', desc: 'Deep copy objects safely' },
+                  { name: 'slugify', desc: 'Create URL-friendly slugs' },
+                  { name: 'generateId', desc: 'Generate unique identifiers' },
+                ].map(util => (
                   <div
                     key={util.name}
                     className="flex items-start p-4 rounded-lg border bg-card/50"

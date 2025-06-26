@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { useDebounce } from "./useDebounce";
+import { useEffect, useState } from 'react';
+import { useDebounce } from './useDebounce';
 
 // Hook for tracking window dimensions with optional debouncing
 export function useWindowSize(debounceDelay = 100) {
   const [windowSize, setWindowSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
+    width: typeof window !== 'undefined' ? window.innerWidth : 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0,
   });
 
   // Debounce the window size to avoid excessive re-renders
@@ -19,13 +19,13 @@ export function useWindowSize(debounceDelay = 100) {
       });
     }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     // Set initial size
     handleResize();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

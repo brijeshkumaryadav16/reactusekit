@@ -1,4 +1,4 @@
-import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 /**
  * Shared layout configurations
@@ -66,12 +66,12 @@ export const baseOptions: BaseLayoutProps = {
   },
   links: [
     {
-      text: "Documentation",
-      url: "/docs",
+      text: 'Documentation',
+      url: '/docs',
     },
     {
-      text: "GitHub",
-      url: "https://github.com/brijeshkumaryadav/react-usekit",
+      text: 'GitHub',
+      url: 'https://github.com/brijeshkumaryadav/react-usekit',
       external: true,
     },
   ],

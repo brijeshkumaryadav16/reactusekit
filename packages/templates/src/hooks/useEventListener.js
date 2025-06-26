@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 // Hook for adding and removing event listeners with automatic cleanup
 export function useEventListener(
@@ -16,7 +16,7 @@ export function useEventListener(
   useEffect(() => {
     if (!element) return;
 
-    const eventListener = (event) => savedHandler.current(event);
+    const eventListener = event => savedHandler.current(event);
 
     element.addEventListener(eventName, eventListener, options);
 

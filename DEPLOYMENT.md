@@ -1,6 +1,7 @@
 # 🚀 Deploying react-usekit to Vercel
 
-This guide will help you deploy the react-usekit documentation site to Vercel with a custom GoDaddy domain.
+This guide will help you deploy the react-usekit documentation site to Vercel with a custom GoDaddy
+domain.
 
 ## Prerequisites
 
@@ -64,14 +65,12 @@ vercel
 3. Add the DNS records provided by Vercel:
 
    **For subdomain (e.g., react-usekit.yourdomain.com):**
-
    - Type: `CNAME`
    - Name: `react-usekit` (or your chosen subdomain)
    - Value: `cname.vercel-dns.com`
    - TTL: `600` (10 minutes)
 
    **For root domain (e.g., yourdomain.com):**
-
    - Type: `A`
    - Name: `@`
    - Value: `76.76.19.19`
@@ -81,7 +80,8 @@ vercel
 
 ## Step 4: SSL Certificate
 
-Vercel automatically provides SSL certificates for custom domains. Wait 24-48 hours for DNS propagation.
+Vercel automatically provides SSL certificates for custom domains. Wait 24-48 hours for DNS
+propagation.
 
 ## Step 5: Verify Deployment
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Hook for using setInterval with declarative API and automatic cleanup
 export function useInterval(

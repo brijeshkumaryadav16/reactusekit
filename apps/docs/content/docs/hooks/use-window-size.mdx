@@ -5,12 +5,13 @@ description: Track window dimensions with responsive breakpoints
 
 # useWindowSize
 
-The `useWindowSize` hook tracks the current window dimensions and provides an easy way to create responsive React components. It automatically updates when the window is resized.
+The `useWindowSize` hook tracks the current window dimensions and provides an easy way to create
+responsive React components. It automatically updates when the window is resized.
 
 ## Usage
 
 ```tsx
-import { useWindowSize } from "./hooks/useWindowSize";
+import { useWindowSize } from './hooks/useWindowSize';
 
 function ResponsiveComponent() {
   const { width, height } = useWindowSize();
@@ -46,11 +47,7 @@ function Navigation() {
   const { width } = useWindowSize();
   const isMobile = width < 768;
 
-  return (
-    <nav className="navigation">
-      {isMobile ? <MobileNav /> : <DesktopNav />}
-    </nav>
-  );
+  return <nav className="navigation">{isMobile ? <MobileNav /> : <DesktopNav />}</nav>;
 }
 
 function MobileNav() {
@@ -112,12 +109,12 @@ function PhotoGrid({ photos }) {
     <div
       className="photo-grid"
       style={{
-        display: "grid",
+        display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gap: "1rem",
+        gap: '1rem',
       }}
     >
-      {photos.map((photo) => (
+      {photos.map(photo => (
         <div key={photo.id} className="photo-item">
           <img src={photo.url} alt={photo.alt} />
         </div>
@@ -162,7 +159,7 @@ function ResponsiveCard() {
   const { isMobile, isTablet, isDesktop } = useBreakpoint();
 
   return (
-    <div className={`card ${isMobile ? "card-mobile" : ""}`}>
+    <div className={`card ${isMobile ? 'card-mobile' : ''}`}>
       <h2>Responsive Card</h2>
       {isMobile && <p>Mobile layout</p>}
       {isTablet && <p>Tablet layout</p>}
@@ -205,7 +202,7 @@ function Layout({ children }) {
   const hasSidebar = width >= 1024;
 
   return (
-    <div className={`layout ${hasSidebar ? "with-sidebar" : ""}`}>
+    <div className={`layout ${hasSidebar ? 'with-sidebar' : ''}`}>
       <Sidebar />
       <main className="main-content">{children}</main>
     </div>
@@ -222,22 +219,22 @@ function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
   const modalStyle = {
-    width: width < 768 ? "90%" : "500px",
-    maxHeight: height < 600 ? "80vh" : "600px",
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "white",
-    borderRadius: "8px",
-    padding: "2rem",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-    overflow: "auto",
+    width: width < 768 ? '90%' : '500px',
+    maxHeight: height < 600 ? '80vh' : '600px',
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: 'white',
+    borderRadius: '8px',
+    padding: '2rem',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    overflow: 'auto',
   };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
+      <div style={modalStyle} onClick={e => e.stopPropagation()}>
         {children}
       </div>
     </div>

@@ -5,15 +5,16 @@ description: Format dates into readable strings with various options
 
 # formatDate
 
-The `formatDate` utility function formats dates into readable strings with various formatting options. It provides a simple way to display dates consistently across your application.
+The `formatDate` utility function formats dates into readable strings with various formatting
+options. It provides a simple way to display dates consistently across your application.
 
 ## Usage
 
 ```javascript
-import { formatDate } from "./utils/formatDate";
+import { formatDate } from './utils/formatDate';
 
-const date = new Date("2024-01-15T10:30:00");
-const formatted = formatDate(date, "MM/DD/YYYY");
+const date = new Date('2024-01-15T10:30:00');
+const formatted = formatDate(date, 'MM/DD/YYYY');
 console.log(formatted); // "01/15/2024"
 ```
 
@@ -46,9 +47,7 @@ function BlogPost({ post }) {
   return (
     <article>
       <h2>{post.title}</h2>
-      <p className="post-meta">
-        Published on {formatDate(post.publishedAt, "MM/DD/YYYY")}
-      </p>
+      <p className="post-meta">Published on {formatDate(post.publishedAt, 'MM/DD/YYYY')}</p>
       <div>{post.content}</div>
     </article>
   );
@@ -63,8 +62,8 @@ function EventCard({ event }) {
     <div className="event-card">
       <h3>{event.title}</h3>
       <div className="event-details">
-        <p>Date: {formatDate(event.date, "YYYY-MM-DD")}</p>
-        <p>Time: {formatDate(event.date, "HH:mm")}</p>
+        <p>Date: {formatDate(event.date, 'YYYY-MM-DD')}</p>
+        <p>Time: {formatDate(event.date, 'HH:mm')}</p>
         <p>Location: {event.location}</p>
       </div>
     </div>
@@ -79,12 +78,10 @@ function ActivityLog({ activities }) {
   return (
     <div className="activity-log">
       <h3>Recent Activity</h3>
-      {activities.map((activity) => (
+      {activities.map(activity => (
         <div key={activity.id} className="activity-item">
           <p>{activity.description}</p>
-          <span className="timestamp">
-            {formatDate(activity.timestamp, "MM/DD/YYYY HH:mm")}
-          </span>
+          <span className="timestamp">{formatDate(activity.timestamp, 'MM/DD/YYYY HH:mm')}</span>
         </div>
       ))}
     </div>
@@ -96,18 +93,18 @@ function ActivityLog({ activities }) {
 
 ```javascript
 function Comment({ comment }) {
-  const getRelativeTime = (date) => {
+  const getRelativeTime = date => {
     const now = new Date();
     const commentDate = new Date(date);
     const diffInHours = (now - commentDate) / (1000 * 60 * 60);
 
     if (diffInHours < 24) {
-      return formatDate(commentDate, "HH:mm");
+      return formatDate(commentDate, 'HH:mm');
     } else if (diffInHours < 168) {
       // 7 days
-      return formatDate(commentDate, "MM/DD");
+      return formatDate(commentDate, 'MM/DD');
     } else {
-      return formatDate(commentDate, "MM/DD/YYYY");
+      return formatDate(commentDate, 'MM/DD/YYYY');
     }
   };
 
@@ -137,9 +134,9 @@ function TransactionTable({ transactions }) {
         </tr>
       </thead>
       <tbody>
-        {transactions.map((transaction) => (
+        {transactions.map(transaction => (
           <tr key={transaction.id}>
-            <td>{formatDate(transaction.date, "MM/DD/YYYY")}</td>
+            <td>{formatDate(transaction.date, 'MM/DD/YYYY')}</td>
             <td>{transaction.description}</td>
             <td>${transaction.amount}</td>
           </tr>
@@ -156,24 +153,22 @@ function TransactionTable({ transactions }) {
 function Calendar({ events }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const getDayEvents = (date) => {
-    const dateStr = formatDate(date, "YYYY-MM-DD");
-    return events.filter(
-      (event) => formatDate(event.date, "YYYY-MM-DD") === dateStr
-    );
+  const getDayEvents = date => {
+    const dateStr = formatDate(date, 'YYYY-MM-DD');
+    return events.filter(event => formatDate(event.date, 'YYYY-MM-DD') === dateStr);
   };
 
   return (
     <div className="calendar">
       <div className="calendar-header">
-        <h2>{formatDate(selectedDate, "MM/YYYY")}</h2>
+        <h2>{formatDate(selectedDate, 'MM/YYYY')}</h2>
       </div>
       <div className="calendar-grid">{/* Calendar grid implementation */}</div>
       <div className="selected-date-events">
-        <h3>Events for {formatDate(selectedDate, "MM/DD/YYYY")}</h3>
-        {getDayEvents(selectedDate).map((event) => (
+        <h3>Events for {formatDate(selectedDate, 'MM/DD/YYYY')}</h3>
+        {getDayEvents(selectedDate).map(event => (
           <div key={event.id}>
-            {event.title} - {formatDate(event.date, "HH:mm")}
+            {event.title} - {formatDate(event.date, 'HH:mm')}
           </div>
         ))}
       </div>
@@ -188,12 +183,12 @@ function Calendar({ events }) {
 function FileList({ files }) {
   return (
     <div className="file-list">
-      {files.map((file) => (
+      {files.map(file => (
         <div key={file.id} className="file-item">
           <span className="file-name">{file.name}</span>
           <span className="file-size">{file.size} KB</span>
           <span className="file-date">
-            Modified: {formatDate(file.lastModified, "MM/DD/YYYY HH:mm")}
+            Modified: {formatDate(file.lastModified, 'MM/DD/YYYY HH:mm')}
           </span>
         </div>
       ))}
@@ -206,7 +201,7 @@ function FileList({ files }) {
 
 ```javascript
 function DatePicker({ value, onChange, label }) {
-  const handleDateChange = (e) => {
+  const handleDateChange = e => {
     const date = new Date(e.target.value);
     onChange(date);
   };
@@ -214,12 +209,8 @@ function DatePicker({ value, onChange, label }) {
   return (
     <div className="date-picker">
       <label>{label}</label>
-      <input
-        type="date"
-        value={formatDate(value, "YYYY-MM-DD")}
-        onChange={handleDateChange}
-      />
-      <p>Selected: {formatDate(value, "MM/DD/YYYY")}</p>
+      <input type="date" value={formatDate(value, 'YYYY-MM-DD')} onChange={handleDateChange} />
+      <p>Selected: {formatDate(value, 'MM/DD/YYYY')}</p>
     </div>
   );
 }
@@ -228,16 +219,16 @@ function DatePicker({ value, onChange, label }) {
 ### Internationalization Support
 
 ```javascript
-function LocalizedDate({ date, locale = "en-US" }) {
+function LocalizedDate({ date, locale = 'en-US' }) {
   const formatByLocale = (date, locale) => {
-    if (locale === "en-US") {
-      return formatDate(date, "MM/DD/YYYY");
-    } else if (locale === "en-GB") {
-      return formatDate(date, "DD/MM/YYYY");
-    } else if (locale === "ISO") {
-      return formatDate(date, "YYYY-MM-DD");
+    if (locale === 'en-US') {
+      return formatDate(date, 'MM/DD/YYYY');
+    } else if (locale === 'en-GB') {
+      return formatDate(date, 'DD/MM/YYYY');
+    } else if (locale === 'ISO') {
+      return formatDate(date, 'YYYY-MM-DD');
     }
-    return formatDate(date, "MM/DD/YYYY");
+    return formatDate(date, 'MM/DD/YYYY');
   };
 
   return <span className="localized-date">{formatByLocale(date, locale)}</span>;
