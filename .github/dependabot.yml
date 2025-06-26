@@ -4,10 +4,10 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
       day: 'monday'
       time: '09:00'
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     reviewers:
       - 'brijeshkumaryadav'
     assignees:
@@ -23,10 +23,10 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/packages/cli'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
       day: 'monday'
       time: '09:00'
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     reviewers:
       - 'brijeshkumaryadav'
     assignees:
@@ -43,10 +43,10 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/apps/docs'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
       day: 'monday'
       time: '09:00'
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     reviewers:
       - 'brijeshkumaryadav'
     assignees:
@@ -63,10 +63,10 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
       day: 'monday'
       time: '09:00'
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     reviewers:
       - 'brijeshkumaryadav'
     assignees:
