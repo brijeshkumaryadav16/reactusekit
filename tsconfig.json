@@ -7,7 +7,12 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@react-usekit/templates": ["packages/templates/src"],
+      "@react-usekit/config": ["packages/config"]
+    }
   },
-  "exclude": ["dist"]
+  "exclude": ["dist", "node_modules"]
 }

@@ -37,13 +37,13 @@ npm install -g react-usekit
 Then use it in any project:
 
 ```bash
-react-usekit
+react-usekit init
 ```
 
 ### Option 2: Use with NPX (No Installation)
 
 ```bash
-npx react-usekit
+npx react-usekit init
 ```
 
 > **When to choose?**
@@ -65,7 +65,7 @@ npx react-usekit
 ### Example Flow:
 
 ```bash
-$ react-usekit
+$ react-usekit init
 ? What would you like to add? › hooks
 ? Choose language: › TypeScript
 ? Enter relative directory to place files (default: src/hooks): src/components/hooks

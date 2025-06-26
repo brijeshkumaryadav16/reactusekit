@@ -1,0 +1,17 @@
+{
+  "name": "@react-usekit/templates",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "description": "",
+  "exports": {
+    "./hooks": "./hooks",
+    "./utils": "./utils"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1"
+}

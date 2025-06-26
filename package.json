@@ -1,57 +1,22 @@
 {
   "name": "react-usekit",
-  "version": "1.0.0-alpha.2",
-  "type": "module",
-  "description": "Instantly install useful React hooks and JS/TS utilities into your project. CLI-first, zero config.",
-  "main": "dist/index.mjs",
-  "bin": {
-    "react-usekit": "./dist/index.mjs"
-  },
-  "exports": {
-    ".": "./dist/index.mjs"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
+  "version": "1.0.0",
+  "description": "Drop-in React hooks and utility functions — zero boilerplate",
+  "main": "index.js",
   "scripts": {
-    "build": "tsup",
-    "postbuild": "rimraf dist/templates && cpx \"src/templates/**/*\" dist/templates"
+    "dev:docs": "pnpm -F docs dev",
+    "build:docs": "pnpm -F docs build",
+    "build:cli": "pnpm -F react-usekit build",
+    "link:cli": "cd packages/cli && pnpm link --global",
+    "unlink:cli": "pnpm remove -g react-usekit"
   },
-  "files": [
-    "dist"
-  ],
   "keywords": [
     "react",
-    "javascript",
-    "typescript",
     "hooks",
-    "nextjs",
-    "react-hooks"
+    "cli",
+    "utilities"
   ],
   "author": "Brijeshkumar Yadav",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brijeshkumaryadav16/react-usekit.git"
-  },
-  "homepage": "https://github.com/brijeshkumaryadav16/react-usekit#readme",
-  "bugs": {
-    "url": "https://github.com/brijeshkumaryadav16/react-usekit/issues"
-  },
-  "packageManager": "pnpm@10.12.1",
-  "dependencies": {
-    "chalk": "^5.4.1",
-    "commander": "^14.0.0",
-    "inquirer": "^12.6.3"
-  },
-  "devDependencies": {
-    "@types/node": "^24.0.3",
-    "@types/react": "^19.1.8",
-    "cpx": "^1.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "rimraf": "^5.0.5",
-    "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
-  }
+  "packageManager": "pnpm@10.12.1"
 }
