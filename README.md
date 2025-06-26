@@ -31,7 +31,7 @@
 ### Option 1: Install Globally (Recommended)
 
 ```bash
-npm install -g react-usekit init
+npm install -g react-usekit
 ```
 
 Then use it in any project:
