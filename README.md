@@ -368,8 +368,8 @@ See [LICENSE](LICENSE) for full details.
 
 ⭐ **Star us on GitHub** if this project helped you!
 
-[Report Bug](https://github.com/your-username/react-usekit/issues) •
-[Request Feature](https://github.com/your-username/react-usekit/issues) •
-[Documentation](https://github.com/your-username/react-usekit#readme)
+[Report Bug](https://github.com/brijeshkumaryadav16/react-usekit/issues) •
+[Request Feature](https://github.com/brijeshkumaryadav16/react-usekit/issues) •
+[Documentation](https://github.com/brijeshkumaryadav16/react-usekit#readme)
 
 </div>
