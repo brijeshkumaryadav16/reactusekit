@@ -4,7 +4,11 @@
   "description": "Drop-in React hooks and utility functions — zero boilerplate",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:docs": "pnpm -F docs dev",
+    "build:docs": "pnpm -F docs build",
+    "build:cli": "pnpm -F react-usekit build",
+    "link:cli": "cd packages/cli && pnpm link --global",
+    "unlink:cli": "pnpm remove -g react-usekit"
   },
   "keywords": [
     "react",

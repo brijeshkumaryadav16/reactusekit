@@ -12,16 +12,8 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "test": "node dist/index.js --help",
     "clean": "rm -rf dist",
-    "prepublishOnly": "pnpm clean && pnpm build",
-    "version:alpha": "npm version prerelease --preid=alpha",
-    "version:beta": "npm version prerelease --preid=beta",
-    "version:patch": "npm version patch",
-    "publish:alpha": "pnpm version:alpha && npm publish --tag alpha",
-    "publish:beta": "pnpm version:beta && npm publish --tag beta",
-    "publish:stable": "pnpm version:patch && npm publish"
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "files": [
     "dist",

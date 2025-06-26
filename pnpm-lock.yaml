@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  apps/react-usekit:
+  apps/docs:
     dependencies:
       fumadocs-core:
         specifier: 15.5.4
