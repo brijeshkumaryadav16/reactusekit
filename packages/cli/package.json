@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "commander": "^12.1.0",
+    "commander": "^14.0.0",
     "prompts": "^2.4.2",
     "chalk": "^5.3.0",
     "fs-extra": "^11.2.0"
