@@ -1,0 +1,290 @@
+---
+title: truncateText
+description: Truncate text to a specified length with ellipsis
+---
+
+# truncateText
+
+The `truncateText` utility function truncates text to a specified length and adds an ellipsis (...) to indicate that the text has been shortened. It's perfect for displaying previews, card descriptions, or any text that needs to fit within specific UI constraints.
+
+## Usage
+
+```javascript
+import { truncateText } from "./utils/truncateText";
+
+const longText = "This is a very long text that needs to be shortened";
+const shortened = truncateText(longText, 20);
+console.log(shortened); // "This is a very long..."
+```
+
+## API Reference
+
+### Parameters
+
+- `text` (string): The text to truncate
+- `maxLength` (number): The maximum length of the text
+
+### Returns
+
+- `string`: The truncated text with ellipsis if needed
+
+## Examples
+
+### Blog Post Previews
+
+```javascript
+function BlogCard({ post }) {
+  return (
+    <div className="blog-card">
+      <h3>{post.title}</h3>
+      <p className="excerpt">{truncateText(post.content, 150)}</p>
+      <a href={`/blog/${post.slug}`}>Read more</a>
+    </div>
+  );
+}
+```
+
+### Product Descriptions
+
+```javascript
+function ProductCard({ product }) {
+  return (
+    <div className="product-card">
+      <img src={product.image} alt={product.name} />
+      <h3>{product.name}</h3>
+      <p className="description">{truncateText(product.description, 100)}</p>
+      <div className="price">${product.price}</div>
+    </div>
+  );
+}
+```
+
+### Comment Previews
+
+```javascript
+function CommentPreview({ comment, expanded, onToggle }) {
+  const previewLength = 80;
+
+  return (
+    <div className="comment-preview">
+      <div className="comment-header">
+        <span className="author">{comment.author}</span>
+        <span className="date">{formatDate(comment.date)}</span>
+      </div>
+      <p className="comment-text">
+        {expanded ? comment.text : truncateText(comment.text, previewLength)}
+      </p>
+      {comment.text.length > previewLength && (
+        <button onClick={onToggle} className="toggle-button">
+          {expanded ? "Show less" : "Show more"}
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+### Notification Messages
+
+```javascript
+function NotificationItem({ notification }) {
+  return (
+    <div className="notification-item">
+      <div className="notification-icon">
+        {getNotificationIcon(notification.type)}
+      </div>
+      <div className="notification-content">
+        <h4>{notification.title}</h4>
+        <p>{truncateText(notification.message, 60)}</p>
+        <span className="timestamp">{formatDate(notification.timestamp)}</span>
+      </div>
+    </div>
+  );
+}
+```
+
+### Search Results
+
+```javascript
+function SearchResult({ result }) {
+  return (
+    <div className="search-result">
+      <h3>
+        <a href={result.url}>{result.title}</a>
+      </h3>
+      <p className="url">{result.url}</p>
+      <p className="snippet">{truncateText(result.description, 160)}</p>
+    </div>
+  );
+}
+```
+
+### User Bio Display
+
+```javascript
+function UserProfile({ user, isCompact = false }) {
+  const bioLength = isCompact ? 50 : 200;
+
+  return (
+    <div className={`user-profile ${isCompact ? "compact" : ""}`}>
+      <img src={user.avatar} alt={user.name} className="avatar" />
+      <div className="user-info">
+        <h3>{user.name}</h3>
+        <p className="title">{user.title}</p>
+        {user.bio && <p className="bio">{truncateText(user.bio, bioLength)}</p>}
+      </div>
+    </div>
+  );
+}
+```
+
+### Table Cell Content
+
+```javascript
+function DataTable({ data }) {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((item) => (
+          <tr key={item.id}>
+            <td>{item.name}</td>
+            <td title={item.description}>
+              {truncateText(item.description, 50)}
+            </td>
+            <td>{item.status}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+```
+
+### Chat Messages
+
+```javascript
+function ChatMessage({ message, isPreview = false }) {
+  const messageLength = isPreview ? 30 : Infinity;
+
+  return (
+    <div className="chat-message">
+      <div className="message-header">
+        <span className="sender">{message.sender}</span>
+        <span className="timestamp">
+          {formatDate(message.timestamp, "HH:mm")}
+        </span>
+      </div>
+      <div className="message-content">
+        {isPreview ? (
+          <span className="preview">
+            {truncateText(message.text, messageLength)}
+          </span>
+        ) : (
+          <p>{message.text}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+### Breadcrumb Navigation
+
+```javascript
+function Breadcrumb({ path }) {
+  const maxPathLength = 25;
+
+  return (
+    <nav className="breadcrumb">
+      {path.map((item, index) => (
+        <span key={index}>
+          {index > 0 && <span className="separator"> / </span>}
+          <a href={item.url} title={item.name}>
+            {truncateText(item.name, maxPathLength)}
+          </a>
+        </span>
+      ))}
+    </nav>
+  );
+}
+```
+
+### Tooltip Content
+
+```javascript
+function TooltipWrapper({ children, content, maxLength = 100 }) {
+  return (
+    <div className="tooltip-wrapper">
+      {children}
+      <div className="tooltip">{truncateText(content, maxLength)}</div>
+    </div>
+  );
+}
+```
+
+### File Name Display
+
+```javascript
+function FileItem({ file }) {
+  const maxNameLength = 30;
+
+  return (
+    <div className="file-item">
+      <div className="file-icon">{getFileIcon(file.type)}</div>
+      <div className="file-info">
+        <span className="file-name" title={file.name}>
+          {truncateText(file.name, maxNameLength)}
+        </span>
+        <span className="file-size">{formatFileSize(file.size)}</span>
+      </div>
+    </div>
+  );
+}
+```
+
+### Social Media Posts
+
+```javascript
+function SocialPost({ post }) {
+  const [expanded, setExpanded] = useState(false);
+  const previewLength = 280;
+
+  return (
+    <div className="social-post">
+      <div className="post-header">
+        <img src={post.author.avatar} alt={post.author.name} />
+        <div>
+          <h4>{post.author.name}</h4>
+          <span className="handle">@{post.author.handle}</span>
+        </div>
+      </div>
+      <div className="post-content">
+        <p>
+          {expanded ? post.content : truncateText(post.content, previewLength)}
+        </p>
+        {post.content.length > previewLength && (
+          <button onClick={() => setExpanded(!expanded)}>
+            {expanded ? "Show less" : "Show more"}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+## Notes
+
+- The function preserves the original text if it's shorter than the specified length
+- Ellipsis (...) is only added when text is actually truncated
+- Consider using the `title` attribute to show the full text on hover
+- For word-boundary truncation, consider extending the function to avoid cutting words
+- The function handles empty strings and null values gracefully
+- Useful for maintaining consistent UI layouts with varying content lengths

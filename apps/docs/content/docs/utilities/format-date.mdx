@@ -1,0 +1,254 @@
+---
+title: formatDate
+description: Format dates into readable strings with various options
+---
+
+# formatDate
+
+The `formatDate` utility function formats dates into readable strings with various formatting options. It provides a simple way to display dates consistently across your application.
+
+## Usage
+
+```javascript
+import { formatDate } from "./utils/formatDate";
+
+const date = new Date("2024-01-15T10:30:00");
+const formatted = formatDate(date, "MM/DD/YYYY");
+console.log(formatted); // "01/15/2024"
+```
+
+## API Reference
+
+### Parameters
+
+- `date` (Date | string | number): The date to format
+- `format` (string): The format pattern to use
+
+### Returns
+
+- `string`: The formatted date string
+
+### Format Patterns
+
+- `YYYY` - 4-digit year
+- `MM` - 2-digit month
+- `DD` - 2-digit day
+- `HH` - 2-digit hour (24-hour)
+- `mm` - 2-digit minute
+- `ss` - 2-digit second
+
+## Examples
+
+### Blog Post Dates
+
+```javascript
+function BlogPost({ post }) {
+  return (
+    <article>
+      <h2>{post.title}</h2>
+      <p className="post-meta">
+        Published on {formatDate(post.publishedAt, "MM/DD/YYYY")}
+      </p>
+      <div>{post.content}</div>
+    </article>
+  );
+}
+```
+
+### Event Listings
+
+```javascript
+function EventCard({ event }) {
+  return (
+    <div className="event-card">
+      <h3>{event.title}</h3>
+      <div className="event-details">
+        <p>Date: {formatDate(event.date, "YYYY-MM-DD")}</p>
+        <p>Time: {formatDate(event.date, "HH:mm")}</p>
+        <p>Location: {event.location}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+### User Activity Log
+
+```javascript
+function ActivityLog({ activities }) {
+  return (
+    <div className="activity-log">
+      <h3>Recent Activity</h3>
+      {activities.map((activity) => (
+        <div key={activity.id} className="activity-item">
+          <p>{activity.description}</p>
+          <span className="timestamp">
+            {formatDate(activity.timestamp, "MM/DD/YYYY HH:mm")}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### Comment Timestamps
+
+```javascript
+function Comment({ comment }) {
+  const getRelativeTime = (date) => {
+    const now = new Date();
+    const commentDate = new Date(date);
+    const diffInHours = (now - commentDate) / (1000 * 60 * 60);
+
+    if (diffInHours < 24) {
+      return formatDate(commentDate, "HH:mm");
+    } else if (diffInHours < 168) {
+      // 7 days
+      return formatDate(commentDate, "MM/DD");
+    } else {
+      return formatDate(commentDate, "MM/DD/YYYY");
+    }
+  };
+
+  return (
+    <div className="comment">
+      <div className="comment-header">
+        <span className="author">{comment.author}</span>
+        <span className="timestamp">{getRelativeTime(comment.createdAt)}</span>
+      </div>
+      <p>{comment.text}</p>
+    </div>
+  );
+}
+```
+
+### Data Tables
+
+```javascript
+function TransactionTable({ transactions }) {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {transactions.map((transaction) => (
+          <tr key={transaction.id}>
+            <td>{formatDate(transaction.date, "MM/DD/YYYY")}</td>
+            <td>{transaction.description}</td>
+            <td>${transaction.amount}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+```
+
+### Calendar Component
+
+```javascript
+function Calendar({ events }) {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const getDayEvents = (date) => {
+    const dateStr = formatDate(date, "YYYY-MM-DD");
+    return events.filter(
+      (event) => formatDate(event.date, "YYYY-MM-DD") === dateStr
+    );
+  };
+
+  return (
+    <div className="calendar">
+      <div className="calendar-header">
+        <h2>{formatDate(selectedDate, "MM/YYYY")}</h2>
+      </div>
+      <div className="calendar-grid">{/* Calendar grid implementation */}</div>
+      <div className="selected-date-events">
+        <h3>Events for {formatDate(selectedDate, "MM/DD/YYYY")}</h3>
+        {getDayEvents(selectedDate).map((event) => (
+          <div key={event.id}>
+            {event.title} - {formatDate(event.date, "HH:mm")}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### File Timestamps
+
+```javascript
+function FileList({ files }) {
+  return (
+    <div className="file-list">
+      {files.map((file) => (
+        <div key={file.id} className="file-item">
+          <span className="file-name">{file.name}</span>
+          <span className="file-size">{file.size} KB</span>
+          <span className="file-date">
+            Modified: {formatDate(file.lastModified, "MM/DD/YYYY HH:mm")}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### Form Date Inputs
+
+```javascript
+function DatePicker({ value, onChange, label }) {
+  const handleDateChange = (e) => {
+    const date = new Date(e.target.value);
+    onChange(date);
+  };
+
+  return (
+    <div className="date-picker">
+      <label>{label}</label>
+      <input
+        type="date"
+        value={formatDate(value, "YYYY-MM-DD")}
+        onChange={handleDateChange}
+      />
+      <p>Selected: {formatDate(value, "MM/DD/YYYY")}</p>
+    </div>
+  );
+}
+```
+
+### Internationalization Support
+
+```javascript
+function LocalizedDate({ date, locale = "en-US" }) {
+  const formatByLocale = (date, locale) => {
+    if (locale === "en-US") {
+      return formatDate(date, "MM/DD/YYYY");
+    } else if (locale === "en-GB") {
+      return formatDate(date, "DD/MM/YYYY");
+    } else if (locale === "ISO") {
+      return formatDate(date, "YYYY-MM-DD");
+    }
+    return formatDate(date, "MM/DD/YYYY");
+  };
+
+  return <span className="localized-date">{formatByLocale(date, locale)}</span>;
+}
+```
+
+## Notes
+
+- The function handles Date objects, timestamp numbers, and date strings
+- Invalid dates will return "Invalid Date"
+- The format patterns are case-sensitive
+- For more complex date formatting, consider using libraries like date-fns or moment.js
+- Always validate date inputs before formatting
+- Consider timezone handling for international applications

@@ -1,0 +1,285 @@
+---
+title: React Hooks
+description: 8 essential React hooks for common patterns and functionality
+---
+
+import { Card, Cards } from "fumadocs-ui/components/card";
+import { Callout } from "fumadocs-ui/components/callout";
+
+# 🪝 React Hooks
+
+<Callout title="Production-Ready Hooks">
+  All hooks are battle-tested, optimized, and follow React best practices. They
+  include TypeScript support and handle edge cases you might miss in custom
+  implementations.
+</Callout>
+
+## Available Hooks
+
+<Cards>
+  <Card
+    title="useLocalStorage"
+    href="/docs/hooks/use-local-storage"
+    description="Persist state in localStorage with automatic sync"
+  >
+    <div className="flex gap-2 mt-2">
+      <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">State</span>
+      <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Storage</span>
+    </div>
+  </Card>
+
+{" "}
+<Card
+  title="useAsync"
+  href="/docs/hooks/use-async"
+  description="Handle async operations with loading, error, and data states"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">
+      API
+    </span>
+    <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">
+      Loading
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="useToggle"
+  href="/docs/hooks/use-toggle"
+  description="Boolean state with toggle, setTrue, and setFalse methods"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+      State
+    </span>
+    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+      UI
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="useDebounce"
+  href="/docs/hooks/use-debounce"
+  description="Debounce values with configurable delay"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
+      Performance
+    </span>
+    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
+      Input
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="useClickOutside"
+  href="/docs/hooks/use-click-outside"
+  description="Detect clicks outside target elements"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
+      UI
+    </span>
+    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
+      Events
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="useEventListener"
+  href="/docs/hooks/use-event-listener"
+  description="Add/remove event listeners with automatic cleanup"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+      Events
+    </span>
+    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+      DOM
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="useWindowSize"
+  href="/docs/hooks/use-window-size"
+  description="Track window dimensions with debounce"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
+      Responsive
+    </span>
+    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
+      Layout
+    </span>
+  </div>
+</Card>
+
+  <Card
+    title="useInterval"
+    href="/docs/hooks/use-interval"
+    description="setInterval with cleanup and pause/resume controls"
+  >
+    <div className="flex gap-2 mt-2">
+      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Timer</span>
+      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Animation</span>
+    </div>
+  </Card>
+</Cards>
+
+## Hook Categories
+
+### 🏪 State Management
+
+Hooks for managing and persisting component state.
+
+- **useLocalStorage** - Sync state with localStorage
+- **useToggle** - Boolean state with convenience methods
+
+### 📡 Async & Data
+
+Hooks for handling asynchronous operations and data fetching.
+
+- **useAsync** - Complete async operation management
+- **useDebounce** - Delay expensive operations
+
+### 🎯 UI & Interaction
+
+Hooks for user interface and interaction patterns.
+
+- **useClickOutside** - Modal and dropdown patterns
+- **useEventListener** - Custom event handling
+- **useWindowSize** - Responsive design patterns
+
+### ⏰ Timing & Effects
+
+Hooks for timing-based operations and side effects.
+
+- **useInterval** - Declarative intervals with controls
+
+## Quick Examples
+
+### Simple State with Persistence
+
+```tsx
+import { useLocalStorage } from "./hooks/useLocalStorage";
+
+function UserPreferences() {
+  const [theme, setTheme] = useLocalStorage("theme", "light");
+
+  return (
+    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+      Current theme: {theme}
+    </button>
+  );
+}
+```
+
+### API Data Fetching
+
+```tsx
+import { useAsync } from "./hooks/useAsync";
+
+function UserProfile({ userId }) {
+  const {
+    data: user,
+    loading,
+    error,
+  } = useAsync(() => fetch(`/api/users/${userId}`).then((res) => res.json()), {
+    immediate: true,
+  });
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  return <div>Hello, {user?.name}!</div>;
+}
+```
+
+### Modal with Click Outside
+
+```tsx
+import { useToggle } from "./hooks/useToggle";
+import { useClickOutside } from "./hooks/useClickOutside";
+
+function Modal() {
+  const [isOpen, { toggle, setFalse }] = useToggle();
+  const modalRef = useClickOutside(setFalse);
+
+  return (
+    <>
+      <button onClick={toggle}>Open Modal</button>
+      {isOpen && (
+        <div className="modal-overlay">
+          <div ref={modalRef} className="modal">
+            <h2>Modal Content</h2>
+            <button onClick={setFalse}>Close</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+```
+
+## Best Practices
+
+<Callout type="info" title="Hook Guidelines">
+  - Always follow the [Rules of
+  Hooks](https://react.dev/reference/rules/rules-of-hooks) - Use TypeScript for
+  better development experience - Handle loading and error states in async
+  operations - Clean up side effects properly (most hooks handle this
+  automatically)
+</Callout>
+
+### Performance Tips
+
+1. **useDebounce** - Use for expensive operations like API calls
+2. **useCallback** - Combine with hooks that accept callback dependencies
+3. **useMemo** - Memoize expensive computations that depend on hook values
+4. **useWindowSize** - Use debouncing to avoid excessive re-renders
+
+### Common Patterns
+
+```tsx
+// Combine hooks for powerful patterns
+function SearchComponent() {
+  const [query, setQuery] = useLocalStorage("searchQuery", "");
+  const debouncedQuery = useDebounce(query, 300);
+
+  const { data: results, loading } = useAsync(() => searchAPI(debouncedQuery), {
+    immediate: debouncedQuery.length > 2,
+  });
+
+  return (
+    <div>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search..."
+      />
+      {loading && <div>Searching...</div>}
+      {results?.map((item) => (
+        <div key={item.id}>{item.title}</div>
+      ))}
+    </div>
+  );
+}
+```
+
+## Getting Started
+
+1. **Install react-usekit**: See [Installation Guide](/docs/installation)
+2. **Generate hooks**: Run `react-usekit init` and select hooks
+3. **Import and use**: Start building with your new hooks
+4. **Explore examples**: Check out [Examples](/docs/examples) for inspiration
+
+Ready to dive deeper? Pick a hook from the list above or start with the most popular ones: `useLocalStorage`, `useAsync`, and `useToggle`.

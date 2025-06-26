@@ -1,0 +1,386 @@
+---
+title: generateId
+description: Generate unique identifiers for components and elements
+---
+
+# generateId
+
+The `generateId` utility function generates unique identifiers that can be used for HTML elements, React keys, or any scenario where you need a unique string identifier. It's perfect for accessibility, form controls, and dynamic content.
+
+## Usage
+
+```javascript
+import { generateId } from "./utils/generateId";
+
+const uniqueId = generateId();
+console.log(uniqueId); // "id-abc123def456"
+
+const prefixedId = generateId("input");
+console.log(prefixedId); // "input-abc123def456"
+```
+
+## API Reference
+
+### Parameters
+
+- `prefix` (string, optional): A prefix for the generated ID
+
+### Returns
+
+- `string`: A unique identifier string
+
+## Examples
+
+### Form Elements
+
+```javascript
+function FormField({ label, type = "text", ...props }) {
+  const [id] = useState(() => generateId("field"));
+
+  return (
+    <div className="form-field">
+      <label htmlFor={id}>{label}</label>
+      <input id={id} type={type} {...props} />
+    </div>
+  );
+}
+
+function ContactForm() {
+  return (
+    <form>
+      <FormField label="Name" name="name" />
+      <FormField label="Email" type="email" name="email" />
+      <FormField label="Phone" type="tel" name="phone" />
+    </form>
+  );
+}
+```
+
+### Accessibility IDs
+
+```javascript
+function Modal({ title, children, isOpen, onClose }) {
+  const [titleId] = useState(() => generateId("modal-title"));
+  const [descId] = useState(() => generateId("modal-desc"));
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-labelledby={titleId}
+      aria-describedby={descId}
+    >
+      <div className="modal-content">
+        <h2 id={titleId}>{title}</h2>
+        <div id={descId}>{children}</div>
+        <button onClick={onClose}>Close</button>
+      </div>
+    </div>
+  );
+}
+```
+
+### Dynamic Lists
+
+```javascript
+function TodoList() {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
+
+  const addTodo = () => {
+    if (newTodo.trim()) {
+      setTodos((prev) => [
+        ...prev,
+        {
+          id: generateId("todo"),
+          text: newTodo,
+          completed: false,
+        },
+      ]);
+      setNewTodo("");
+    }
+  };
+
+  const toggleTodo = (id) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  return (
+    <div>
+      <div>
+        <input
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          placeholder="Add new todo"
+        />
+        <button onClick={addTodo}>Add</button>
+      </div>
+
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <input
+              type="checkbox"
+              id={`checkbox-${todo.id}`}
+              checked={todo.completed}
+              onChange={() => toggleTodo(todo.id)}
+            />
+            <label htmlFor={`checkbox-${todo.id}`}>{todo.text}</label>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+### Tabbed Interface
+
+```javascript
+function Tabs({ tabs }) {
+  const [activeTab, setActiveTab] = useState(0);
+  const [tabIds] = useState(() =>
+    tabs.map(() => ({
+      tab: generateId("tab"),
+      panel: generateId("panel"),
+    }))
+  );
+
+  return (
+    <div className="tabs">
+      <div className="tab-list" role="tablist">
+        {tabs.map((tab, index) => (
+          <button
+            key={tabIds[index].tab}
+            id={tabIds[index].tab}
+            role="tab"
+            aria-controls={tabIds[index].panel}
+            aria-selected={activeTab === index}
+            onClick={() => setActiveTab(index)}
+            className={`tab ${activeTab === index ? "active" : ""}`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {tabs.map((tab, index) => (
+        <div
+          key={tabIds[index].panel}
+          id={tabIds[index].panel}
+          role="tabpanel"
+          aria-labelledby={tabIds[index].tab}
+          hidden={activeTab !== index}
+          className="tab-panel"
+        >
+          {tab.content}
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### Accordion Component
+
+```javascript
+function Accordion({ items }) {
+  const [openItems, setOpenItems] = useState(new Set());
+  const [itemIds] = useState(() =>
+    items.map(() => ({
+      header: generateId("accordion-header"),
+      panel: generateId("accordion-panel"),
+    }))
+  );
+
+  const toggleItem = (index) => {
+    setOpenItems((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
+  return (
+    <div className="accordion">
+      {items.map((item, index) => (
+        <div key={index} className="accordion-item">
+          <button
+            id={itemIds[index].header}
+            aria-controls={itemIds[index].panel}
+            aria-expanded={openItems.has(index)}
+            onClick={() => toggleItem(index)}
+            className="accordion-header"
+          >
+            {item.title}
+          </button>
+          <div
+            id={itemIds[index].panel}
+            aria-labelledby={itemIds[index].header}
+            hidden={!openItems.has(index)}
+            className="accordion-panel"
+          >
+            {item.content}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### Radio Group
+
+```javascript
+function RadioGroup({ options, value, onChange, name }) {
+  const [groupId] = useState(() => generateId("radio-group"));
+  const [optionIds] = useState(() => options.map(() => generateId("radio")));
+
+  return (
+    <fieldset className="radio-group">
+      <legend>Choose an option:</legend>
+      {options.map((option, index) => (
+        <div key={optionIds[index]} className="radio-option">
+          <input
+            type="radio"
+            id={optionIds[index]}
+            name={name || groupId}
+            value={option.value}
+            checked={value === option.value}
+            onChange={(e) => onChange(e.target.value)}
+          />
+          <label htmlFor={optionIds[index]}>{option.label}</label>
+        </div>
+      ))}
+    </fieldset>
+  );
+}
+```
+
+### Tooltip Component
+
+```javascript
+function Tooltip({ children, content }) {
+  const [tooltipId] = useState(() => generateId("tooltip"));
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div className="tooltip-wrapper">
+      <div
+        aria-describedby={tooltipId}
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+        onFocus={() => setIsVisible(true)}
+        onBlur={() => setIsVisible(false)}
+      >
+        {children}
+      </div>
+      {isVisible && (
+        <div id={tooltipId} role="tooltip" className="tooltip">
+          {content}
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### Dynamic Form Builder
+
+```javascript
+function FormBuilder({ fields }) {
+  const [fieldIds] = useState(() =>
+    fields.map((field) => ({
+      id: generateId(`field-${field.type}`),
+      errorId: generateId("error"),
+    }))
+  );
+
+  return (
+    <form>
+      {fields.map((field, index) => {
+        const { id, errorId } = fieldIds[index];
+
+        return (
+          <div key={id} className="form-field">
+            <label htmlFor={id}>
+              {field.label}
+              {field.required && <span aria-label="required">*</span>}
+            </label>
+
+            {field.type === "select" ? (
+              <select id={id} aria-describedby={errorId}>
+                {field.options?.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <input
+                id={id}
+                type={field.type}
+                aria-describedby={errorId}
+                placeholder={field.placeholder}
+              />
+            )}
+
+            {field.error && (
+              <div id={errorId} className="error-message" role="alert">
+                {field.error}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </form>
+  );
+}
+```
+
+### Chart Components
+
+```javascript
+function Chart({ data, title }) {
+  const [chartId] = useState(() => generateId("chart"));
+  const [titleId] = useState(() => generateId("chart-title"));
+  const [descId] = useState(() => generateId("chart-desc"));
+
+  return (
+    <div className="chart-container">
+      <h3 id={titleId}>{title}</h3>
+      <div
+        id={chartId}
+        role="img"
+        aria-labelledby={titleId}
+        aria-describedby={descId}
+        className="chart"
+      >
+        {/* Chart visualization */}
+      </div>
+      <div id={descId} className="chart-description">
+        Chart showing data from {data.length} data points
+      </div>
+    </div>
+  );
+}
+```
+
+## Notes
+
+- Always generates unique IDs even across multiple component instances
+- Perfect for accessibility attributes like `aria-labelledby`, `aria-describedby`
+- Use `useState` with a function to generate IDs only once per component instance
+- Essential for proper form labeling and screen reader support
+- Can be prefixed for better debugging and organization
+- Ensures HTML ID uniqueness across the entire page

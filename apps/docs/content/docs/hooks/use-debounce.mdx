@@ -1,0 +1,163 @@
+---
+title: useDebounce
+description: Debounce a value to limit how often a function is called
+---
+
+# useDebounce
+
+The `useDebounce` hook delays updating a value until after a specified delay has passed since the last time it was updated. This is useful for optimizing performance in scenarios like search inputs or API calls.
+
+## Usage
+
+```tsx
+import { useDebounce } from "./hooks/useDebounce";
+import { useState, useEffect } from "react";
+
+function SearchComponent() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      // API call only happens after user stops typing for 500ms
+      searchAPI(debouncedSearchTerm).then(setResults);
+    }
+  }, [debouncedSearchTerm]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search..."
+      />
+      <div>
+        {results.map((result, index) => (
+          <div key={index}>{result}</div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Parameters
+
+- `value` (T): The value to debounce
+- `delay` (number): The delay in milliseconds
+
+### Returns
+
+- `T`: The debounced value
+
+## Examples
+
+### Form Validation
+
+```tsx
+function UserForm() {
+  const [email, setEmail] = useState("");
+  const [isValidating, setIsValidating] = useState(false);
+  const [isValid, setIsValid] = useState(null);
+  const debouncedEmail = useDebounce(email, 300);
+
+  useEffect(() => {
+    if (debouncedEmail) {
+      setIsValidating(true);
+      validateEmail(debouncedEmail)
+        .then(setIsValid)
+        .finally(() => setIsValidating(false));
+    }
+  }, [debouncedEmail]);
+
+  return (
+    <div>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter email"
+      />
+      {isValidating && <span>Validating...</span>}
+      {isValid === false && <span>Invalid email</span>}
+      {isValid === true && <span>Valid email</span>}
+    </div>
+  );
+}
+```
+
+### Auto-save Feature
+
+```tsx
+function Editor() {
+  const [content, setContent] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+  const debouncedContent = useDebounce(content, 2000);
+
+  useEffect(() => {
+    if (debouncedContent && content !== "") {
+      setIsSaving(true);
+      saveDocument(debouncedContent)
+        .then(() => console.log("Document saved"))
+        .finally(() => setIsSaving(false));
+    }
+  }, [debouncedContent]);
+
+  return (
+    <div>
+      <textarea
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="Start typing..."
+      />
+      {isSaving && <span>Saving...</span>}
+    </div>
+  );
+}
+```
+
+### Resize Handler
+
+```tsx
+function ResponsiveComponent() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  const debouncedSize = useDebounce(windowSize, 250);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    // Expensive operations only run after resize stops
+    console.log("Window resized to:", debouncedSize);
+  }, [debouncedSize]);
+
+  return (
+    <div>
+      Window size: {debouncedSize.width} x {debouncedSize.height}
+    </div>
+  );
+}
+```
+
+## Notes
+
+- The debounced value will only update after the specified delay
+- Each new value resets the timer
+- Useful for performance optimization with expensive operations
+- Common use cases include search inputs, form validation, and API calls

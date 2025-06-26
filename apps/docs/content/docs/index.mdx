@@ -1,13 +1,166 @@
 ---
-title: Hello World
-description: Your first document
+title: Introduction
+description: Drop-in React hooks and utility functions — zero boilerplate, maximum productivity
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+import { Card, Cards } from "fumadocs-ui/components/card";
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-## What is Next?
+# 📦 react-usekit
+
+<Callout title="What is react-usekit?">
+  A developer-friendly CLI tool that instantly scaffolds production-ready React
+  hooks and utility functions directly into your project. Instead of managing
+  dependencies or searching for solutions online, get the exact code you need in
+  seconds.
+</Callout>
+
+## ✨ Key Features
+
+- 🚀 **Instant Setup** - One command, ready-to-use code
+- 🧠 **Zero Dependencies** - Copy code, not packages
+- 📁 **Smart Organization** - Follows React best practices (`src/hooks`, `src/lib`)
+- 🔧 **Language Flexible** - Full TypeScript and JavaScript support
+- 🎨 **Interactive CLI** - Beautiful, intuitive command-line experience
+- ⚡ **Production Ready** - Battle-tested, optimized implementations
+
+## 🚀 Quick Start
+
+<Tabs items={['Global Installation', 'NPX (One-time)', 'Project Installation']}>
+<Tab value="Global Installation">
+```bash
+# Install once, use everywhere
+npm install -g react-usekit
+
+# Use in any React project
+
+cd your-react-project
+react-usekit init
+
+````
+</Tab>
+<Tab value="NPX (One-time)">
+```bash
+# No installation required
+cd your-react-project
+npx react-usekit init
+````
+
+</Tab>
+<Tab value="Project Installation">
+```bash
+# Add to your project
+npm install --save-dev react-usekit
+
+# Add to package.json scripts
+
+{
+"scripts": {
+"add-hooks": "react-usekit init"
+}
+}
+
+````
+</Tab>
+</Tabs>
+
+## 📦 What's Available
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+  <div className="border rounded-lg p-4">
+    <h3 className="text-lg font-semibold mb-2">🪝 React Hooks</h3>
+    <p className="text-sm text-muted-foreground mb-3">8 essential hooks for common React patterns</p>
+    <ul className="text-sm space-y-1">
+      <li>• useLocalStorage - Persistent state</li>
+      <li>• useAsync - API calls & data fetching</li>
+      <li>• useToggle - Boolean state management</li>
+      <li>• useDebounce - Input debouncing</li>
+      <li>• And 4 more...</li>
+    </ul>
+  </div>
+
+  <div className="border rounded-lg p-4">
+    <h3 className="text-lg font-semibold mb-2">🛠️ Utility Functions</h3>
+    <p className="text-sm text-muted-foreground mb-3">8 essential utilities for common operations</p>
+    <ul className="text-sm space-y-1">
+      <li>• formatCurrency - Money formatting</li>
+      <li>• isEmpty - Validation helpers</li>
+      <li>• deepClone - Object copying</li>
+      <li>• slugify - URL-friendly strings</li>
+      <li>• And 4 more...</li>
+    </ul>
+  </div>
+</div>
+
+## 🎯 How It Works
+
+1. **🚀 Launch** - Run `react-usekit init` in your React project
+2. **🎯 Choose Type** - Select between hooks or utils
+3. **💻 Pick Language** - TypeScript or JavaScript
+4. **📁 Set Location** - Specify directory (or use smart defaults)
+5. **✅ Multi-Select** - Choose from available templates
+6. **👀 Review** - Preview exactly what will be created
+7. **🎉 Generate** - Watch as files are created
+
+## 🎬 Example Session
+
+```bash
+$ react-usekit init
+🚀 React UseKit CLI - Template Generator
+
+? What would you like to add? › 🪝 hooks
+? Choose language: › TypeScript
+? Enter relative directory: src/hooks
+? Select hooks to add: › ◉ useLocalStorage
+                         ◉ useToggle
+                         ◉ useAsync
+
+🔄 Processing templates...
+✅ Hook 'useLocalStorage' added to src/hooks/useLocalStorage.ts
+✅ Hook 'useToggle' added to src/hooks/useToggle.ts
+✅ Hook 'useAsync' added to src/hooks/useAsync.ts
+
+🎉 Operation completed successfully!
+````
+
+## 🚨 Requirements
+
+- **Node.js** 18.0.0 or higher
+- **React** 16.8+ (for hooks support)
+- **TypeScript** 4.5+ (optional, for TypeScript projects)
+
+## 🔧 Framework Compatibility
+
+| Framework           | Status          | Notes                                      |
+| ------------------- | --------------- | ------------------------------------------ |
+| ⚛️ Create React App | ✅ Full Support | Works out of the box                       |
+| ⚡ Vite             | ✅ Full Support | Perfect integration                        |
+| 🏗️ Next.js          | ✅ Full Support | App Router & Pages Router                  |
+| 📱 React Native     | ⚠️ Partial      | Hooks work, some utils may need adaptation |
+| 🔧 Custom Webpack   | ✅ Full Support | Framework agnostic                         |
+
+## 🎯 Next Steps
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+  <Card
+    title="📖 Installation Guide"
+    href="/docs/installation"
+    description="Get react-usekit set up in your project"
+  />
+  <Card
+    title="🪝 Explore Hooks"
+    href="/docs/hooks"
+    description="Discover all available React hooks"
+  />
+  <Card
+    title="🛠️ Browse Utilities"
+    href="/docs/utilities"
+    description="Check out utility functions"
+  />
+  <Card
+    title="💡 View Examples"
+    href="/docs/examples"
+    description="See real-world usage examples"
+  />
 </Cards>

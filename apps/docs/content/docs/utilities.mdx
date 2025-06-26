@@ -1,0 +1,433 @@
+---
+title: Utility Functions
+description: 8 essential JavaScript/TypeScript utilities for common operations
+---
+
+import { Card, Cards } from "fumadocs-ui/components/card";
+import { Callout } from "fumadocs-ui/components/callout";
+
+# 🛠️ Utility Functions
+
+<Callout title="Production-Ready Utils">
+  All utilities are optimized, well-tested, and include comprehensive TypeScript
+  support. They handle edge cases and provide consistent behavior across
+  different environments.
+</Callout>
+
+## Available Utilities
+
+<Cards>
+  <Card
+    title="formatCurrency"
+    href="/docs/utilities/format-currency"
+    description="Format numbers as currency with locale support"
+  >
+    <div className="flex gap-2 mt-2">
+      <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">Formatting</span>
+      <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">i18n</span>
+    </div>
+  </Card>
+
+{" "}
+<Card
+  title="isEmpty"
+  href="/docs/utilities/is-empty"
+  description="Check if values are empty (objects, arrays, strings)"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
+      Validation
+    </span>
+    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
+      Type Checking
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="deepClone"
+  href="/docs/utilities/deep-clone"
+  description="Deep copy objects and arrays safely"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+      Objects
+    </span>
+    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+      Immutability
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="slugify"
+  href="/docs/utilities/slugify"
+  description="Create URL-friendly slugs from text"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+      Text
+    </span>
+    <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+      URL
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="capitalize"
+  href="/docs/utilities/capitalize"
+  description="Capitalize the first letter of strings"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+      Text
+    </span>
+    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+      Formatting
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="truncateText"
+  href="/docs/utilities/truncate-text"
+  description="Truncate text with ellipsis support"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
+      Text
+    </span>
+    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
+      UI
+    </span>
+  </div>
+</Card>
+
+{" "}
+<Card
+  title="formatDate"
+  href="/docs/utilities/format-date"
+  description="Consistent date formatting with options"
+>
+  <div className="flex gap-2 mt-2">
+    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
+      Date
+    </span>
+    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
+      i18n
+    </span>
+  </div>
+</Card>
+
+  <Card
+    title="generateId"
+    href="/docs/utilities/generate-id"
+    description="Generate unique identifiers"
+  >
+    <div className="flex gap-2 mt-2">
+      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">ID</span>
+      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Random</span>
+    </div>
+  </Card>
+</Cards>
+
+## Utility Categories
+
+### 📝 Text & Formatting
+
+Utilities for text manipulation and formatting.
+
+- **capitalize** - Capitalize first letter of strings
+- **truncateText** - Truncate long text with ellipsis
+- **slugify** - Create URL-friendly slugs
+
+### 💰 Data Formatting
+
+Utilities for formatting data for display.
+
+- **formatCurrency** - Currency formatting with locale
+- **formatDate** - Date formatting with locale
+
+### ✅ Validation & Checking
+
+Utilities for data validation and type checking.
+
+- **isEmpty** - Check if values are empty/falsy
+
+### 🔧 Data Manipulation
+
+Utilities for working with complex data structures.
+
+- **deepClone** - Deep copy objects and arrays
+- **generateId** - Generate unique identifiers
+
+## Quick Examples
+
+### Text Processing Pipeline
+
+```tsx
+import { capitalize, truncateText, slugify } from "./lib/utils";
+
+function BlogPostCard({ post }) {
+  const title = capitalize(post.title);
+  const excerpt = truncateText(post.content, 150);
+  const slug = slugify(post.title);
+
+  return (
+    <article>
+      <h2>{title}</h2>
+      <p>{excerpt}</p>
+      <a href={`/blog/${slug}`}>Read more →</a>
+    </article>
+  );
+}
+```
+
+### Form Validation
+
+```tsx
+import { isEmpty, formatCurrency } from "./lib/utils";
+
+function ProductForm({ product, onSave }) {
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (isEmpty(product.name)) {
+      newErrors.name = "Product name is required";
+    }
+
+    if (isEmpty(product.price) || product.price <= 0) {
+      newErrors.price = "Valid price is required";
+    }
+
+    setErrors(newErrors);
+    return isEmpty(newErrors);
+  };
+
+  const handleSubmit = () => {
+    if (validate()) {
+      onSave({
+        ...product,
+        formattedPrice: formatCurrency(product.price, "USD"),
+      });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        value={product.name}
+        onChange={(e) => setProduct({ ...product, name: e.target.value })}
+        placeholder="Product name"
+      />
+      {errors.name && <span className="error">{errors.name}</span>}
+
+      <input
+        type="number"
+        value={product.price}
+        onChange={(e) =>
+          setProduct({ ...product, price: parseFloat(e.target.value) })
+        }
+        placeholder="Price"
+      />
+      {errors.price && <span className="error">{errors.price}</span>}
+
+      <button type="submit">Save Product</button>
+    </form>
+  );
+}
+```
+
+### Data Processing
+
+```tsx
+import { deepClone, generateId, isEmpty } from "./lib/utils";
+
+function useShoppingCart() {
+  const [cart, setCart] = useState([]);
+
+  const addItem = (product) => {
+    setCart((prevCart) => {
+      const newCart = deepClone(prevCart);
+      const existingItem = newCart.find(
+        (item) => item.productId === product.id
+      );
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        newCart.push({
+          id: generateId(),
+          productId: product.id,
+          name: product.name,
+          price: product.price,
+          quantity: 1,
+        });
+      }
+
+      return newCart;
+    });
+  };
+
+  const removeItem = (itemId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+  };
+
+  const isCartEmpty = isEmpty(cart);
+
+  return { cart, addItem, removeItem, isCartEmpty };
+}
+```
+
+## Best Practices
+
+<Callout type="info" title="Usage Guidelines">
+  - Import only the utilities you need to keep bundle size small - Use
+  TypeScript for better type safety and IDE support - Consider performance
+  implications for large datasets - Handle edge cases appropriately in your
+  application logic
+</Callout>
+
+### Performance Tips
+
+1. **Tree Shaking** - Import individual functions:
+
+   ```tsx
+   // ✅ Good - tree-shakeable
+   import { formatCurrency } from "./lib/utils";
+
+   // ❌ Avoid - imports entire module
+   import * as utils from "./lib/utils";
+   ```
+
+2. **Memoization** - Cache expensive operations:
+
+   ```tsx
+   const memoizedSlug = useMemo(() => slugify(title), [title]);
+   ```
+
+3. **Batch Operations** - Process arrays efficiently:
+   ```tsx
+   // ✅ Process once
+   const processedItems = items.map((item) => ({
+     ...item,
+     slug: slugify(item.title),
+     excerpt: truncateText(item.content, 100),
+   }));
+   ```
+
+### Common Patterns
+
+#### Validation Chain
+
+```tsx
+function validateUser(user) {
+  const errors = [];
+
+  if (isEmpty(user.name)) errors.push("Name is required");
+  if (isEmpty(user.email)) errors.push("Email is required");
+  if (isEmpty(user.phone)) errors.push("Phone is required");
+
+  return isEmpty(errors) ? null : errors;
+}
+```
+
+#### Data Transformation Pipeline
+
+```tsx
+function processArticles(articles) {
+  return articles
+    .filter((article) => !isEmpty(article.title))
+    .map((article) => ({
+      ...article,
+      id: article.id || generateId(),
+      slug: slugify(article.title),
+      title: capitalize(article.title),
+      excerpt: truncateText(article.content, 200),
+      publishedAt: formatDate(new Date(article.publishedAt)),
+    }));
+}
+```
+
+## Integration Examples
+
+### With Forms
+
+```tsx
+import { isEmpty, capitalize } from "./lib/utils";
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+    Object.keys(form).forEach((key) => {
+      if (isEmpty(form[key])) {
+        newErrors[key] = `${capitalize(key)} is required`;
+      }
+    });
+    setErrors(newErrors);
+    return isEmpty(newErrors);
+  };
+
+  // ... rest of component
+}
+```
+
+### With Data Display
+
+```tsx
+import { formatCurrency, formatDate, truncateText } from "./lib/utils";
+
+function OrderSummary({ order }) {
+  return (
+    <div>
+      <h3>Order #{order.id}</h3>
+      <p>{formatDate(order.createdAt)}</p>
+      <p>Total: {formatCurrency(order.total, order.currency)}</p>
+      {order.notes && <p>{truncateText(order.notes, 100)}</p>}
+    </div>
+  );
+}
+```
+
+## Getting Started
+
+1. **Install react-usekit**: See [Installation Guide](/docs/installation)
+2. **Generate utilities**: Run `react-usekit init` and select utilities
+3. **Import and use**: Start using utilities in your components
+4. **Explore examples**: Check out [Examples](/docs/examples) for more patterns
+
+## File Organization
+
+react-usekit generates utilities in a single file for easy management:
+
+```
+src/
+├── lib/
+│   └── utils.ts          # All utilities in one file
+└── components/
+    └── MyComponent.tsx   # Import: import { formatCurrency } from '../lib/utils'
+```
+
+Or you can organize them separately:
+
+```
+src/
+├── lib/
+│   ├── formatCurrency.ts
+│   ├── isEmpty.ts
+│   └── slugify.ts
+└── components/
+    └── MyComponent.tsx   # Import: import { formatCurrency } from '../lib/formatCurrency'
+```
+
+Ready to explore? Pick a utility from the list above or check out our [Examples](/docs/examples) section for real-world usage patterns!

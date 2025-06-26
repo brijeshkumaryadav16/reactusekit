@@ -1,0 +1,216 @@
+---
+title: useToggle
+description: Manage boolean state with toggle functionality
+---
+
+# useToggle
+
+The `useToggle` hook provides a simple way to manage boolean state with toggle functionality. It's perfect for handling UI states like modals, dropdowns, or any on/off functionality.
+
+## Usage
+
+```tsx
+import { useToggle } from "./hooks/useToggle";
+
+function Modal() {
+  const [isOpen, toggleOpen] = useToggle(false);
+
+  return (
+    <div>
+      <button onClick={toggleOpen}>{isOpen ? "Close" : "Open"} Modal</button>
+      {isOpen && (
+        <div className="modal">
+          <p>Modal content here!</p>
+          <button onClick={toggleOpen}>Close</button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Parameters
+
+- `initialValue` (boolean, optional): The initial boolean value. Defaults to `false`.
+
+### Returns
+
+- `[value, toggle]` (tuple):
+  - `value` (boolean): The current boolean state
+  - `toggle` (function): Function to toggle the state or set it to a specific value
+
+## Examples
+
+### Navigation Menu
+
+```tsx
+function NavigationMenu() {
+  const [isMenuOpen, toggleMenu] = useToggle();
+
+  return (
+    <nav>
+      <button onClick={toggleMenu} className="menu-button">
+        ☰ Menu
+      </button>
+      {isMenuOpen && (
+        <ul className="menu-items">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      )}
+    </nav>
+  );
+}
+```
+
+### Accordion Component
+
+```tsx
+function AccordionItem({ title, children }) {
+  const [isExpanded, toggleExpanded] = useToggle(false);
+
+  return (
+    <div className="accordion-item">
+      <button onClick={toggleExpanded} className="accordion-header">
+        {title} {isExpanded ? "−" : "+"}
+      </button>
+      {isExpanded && <div className="accordion-content">{children}</div>}
+    </div>
+  );
+}
+
+function FAQ() {
+  return (
+    <div>
+      <AccordionItem title="What is React?">
+        <p>React is a JavaScript library for building user interfaces.</p>
+      </AccordionItem>
+      <AccordionItem title="How do I get started?">
+        <p>
+          You can start by installing React and creating your first component.
+        </p>
+      </AccordionItem>
+    </div>
+  );
+}
+```
+
+### Theme Switcher
+
+```tsx
+function ThemeProvider({ children }) {
+  const [isDarkMode, toggleTheme] = useToggle(false);
+
+  useEffect(() => {
+    document.body.className = isDarkMode ? "dark-theme" : "light-theme";
+  }, [isDarkMode]);
+
+  return (
+    <div>
+      <header>
+        <button onClick={toggleTheme}>
+          {isDarkMode ? "☀️" : "🌙"}
+          {isDarkMode ? "Light" : "Dark"} Mode
+        </button>
+      </header>
+      <main>{children}</main>
+    </div>
+  );
+}
+```
+
+### Password Visibility
+
+```tsx
+function PasswordInput() {
+  const [isVisible, toggleVisibility] = useToggle(false);
+  const [password, setPassword] = useState("");
+
+  return (
+    <div className="password-input">
+      <input
+        type={isVisible ? "text" : "password"}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter password"
+      />
+      <button
+        type="button"
+        onClick={toggleVisibility}
+        className="visibility-toggle"
+      >
+        {isVisible ? "🙈" : "👁️"}
+      </button>
+    </div>
+  );
+}
+```
+
+### Loading States
+
+```tsx
+function DataFetcher() {
+  const [isLoading, toggleLoading] = useToggle(false);
+  const [data, setData] = useState(null);
+
+  const fetchData = async () => {
+    toggleLoading(true);
+    try {
+      const response = await fetch("/api/data");
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    } finally {
+      toggleLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={fetchData} disabled={isLoading}>
+        {isLoading ? "Loading..." : "Fetch Data"}
+      </button>
+      {data && (
+        <div>
+          <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### Advanced Toggle with Specific Values
+
+```tsx
+function AdvancedToggle() {
+  const [isEnabled, toggle] = useToggle(true);
+
+  return (
+    <div>
+      <p>Feature is {isEnabled ? "enabled" : "disabled"}</p>
+
+      <button onClick={() => toggle()}>Toggle</button>
+      <button onClick={() => toggle(true)}>Enable</button>
+      <button onClick={() => toggle(false)}>Disable</button>
+    </div>
+  );
+}
+```
+
+## Notes
+
+- The toggle function can be called without arguments to flip the current state
+- You can also pass a specific boolean value to set the state directly
+- Perfect for managing UI states that have only two possible values
+- Works well with other hooks for complex state management scenarios
