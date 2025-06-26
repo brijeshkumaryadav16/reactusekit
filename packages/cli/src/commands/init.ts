@@ -1,5 +1,5 @@
-import chalk from 'chalk';
-import { Command } from 'commander';
+import chalk from "chalk";
+import { Command } from "commander";
 import {
   appendFileSync,
   existsSync,
@@ -7,20 +7,20 @@ import {
   readdirSync,
   readFileSync,
   writeFileSync,
-} from 'node:fs';
-import path from 'node:path';
-import process from 'process';
-import prompts from 'prompts';
-import { fileURLToPath } from 'url';
+} from "node:fs";
+import path from "node:path";
+import process from "process";
+import prompts from "prompts";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const TEMPLATE_DIR = path.resolve(__dirname, 'templates');
+const TEMPLATE_DIR = path.resolve(__dirname, "templates");
 
 // Types for better type safety
 interface TemplateConfig {
-  type: 'hooks' | 'utils';
-  language: 'TypeScript' | 'JavaScript';
+  type: "hooks" | "utils";
+  language: "TypeScript" | "JavaScript";
   path: string;
   items: string[];
 }
@@ -33,14 +33,14 @@ interface ProcessResult {
 
 // Utility functions for better code organization
 function validatePath(input: string): string | true {
-  if (input.trim() === '') return true;
+  if (input.trim() === "") return true;
   if (path.isAbsolute(input))
-    return chalk.red('❌ Please enter a *relative* path.');
+    return chalk.red("❌ Please enter a *relative* path.");
 
   // Additional validation: check for invalid characters
   const invalidChars = /[<>:"|?*]/;
   if (invalidChars.test(input)) {
-    return chalk.red('❌ Path contains invalid characters.');
+    return chalk.red("❌ Path contains invalid characters.");
   }
 
   return true;
@@ -52,60 +52,60 @@ function getTemplateFiles(templateFolder: string, langExt: string): string[] {
   }
 
   return readdirSync(templateFolder)
-    .filter(file => file.endsWith(`.${langExt}`))
-    .map(file => path.basename(file, `.${langExt}`));
+    .filter((file) => file.endsWith(`.${langExt}`))
+    .map((file) => path.basename(file, `.${langExt}`));
 }
 
-async function promptForType(): Promise<'hooks' | 'utils'> {
+async function promptForType(): Promise<"hooks" | "utils"> {
   const { type } = await prompts({
-    name: 'type',
-    type: 'select',
-    message: 'What would you like to add?',
+    name: "type",
+    type: "select",
+    message: "What would you like to add?",
     choices: [
       {
-        title: '🪝 hooks',
-        value: 'hooks',
-        description: 'React hooks for state management and side effects',
+        title: "🪝 hooks",
+        value: "hooks",
+        description: "React hooks for state management and side effects",
       },
       {
-        title: '🛠️  utils',
-        value: 'utils',
-        description: 'Utility functions for common operations',
+        title: "🛠️  utils",
+        value: "utils",
+        description: "Utility functions for common operations",
       },
     ],
     initial: 0,
   });
 
   if (!type) {
-    console.log(chalk.blue('\n👋 Operation cancelled by user.'));
+    console.log(chalk.blue("\n👋 Operation cancelled by user."));
     process.exit(0);
   }
 
   return type;
 }
 
-async function promptForLanguage(): Promise<'TypeScript' | 'JavaScript'> {
+async function promptForLanguage(): Promise<"TypeScript" | "JavaScript"> {
   const { language } = await prompts({
-    name: 'language',
-    type: 'select',
-    message: 'Choose language:',
+    name: "language",
+    type: "select",
+    message: "Choose language:",
     choices: [
       {
-        title: 'TypeScript',
-        value: 'TypeScript',
-        description: 'Strongly typed JavaScript',
+        title: "TypeScript",
+        value: "TypeScript",
+        description: "Strongly typed JavaScript",
       },
       {
-        title: 'JavaScript',
-        value: 'JavaScript',
-        description: 'Classic JavaScript',
+        title: "JavaScript",
+        value: "JavaScript",
+        description: "Classic JavaScript",
       },
     ],
     initial: 0,
   });
 
   if (!language) {
-    console.log(chalk.blue('\n👋 Operation cancelled by user.'));
+    console.log(chalk.blue("\n👋 Operation cancelled by user."));
     process.exit(0);
   }
 
@@ -113,17 +113,17 @@ async function promptForLanguage(): Promise<'TypeScript' | 'JavaScript'> {
 }
 
 async function promptForPath(type: string): Promise<string> {
-  const defaultPath = type === 'hooks' ? 'src/hooks' : 'src/lib';
+  const defaultPath = type === "hooks" ? "src/hooks" : "src/lib";
 
   const { customPath } = await prompts({
-    name: 'customPath',
-    type: 'text',
+    name: "customPath",
+    type: "text",
     message: `Enter relative directory to place files (default: ${defaultPath}):`,
     initial: defaultPath,
     validate: validatePath,
   });
 
-  return typeof customPath === 'string' && customPath.trim() !== ''
+  return typeof customPath === "string" && customPath.trim() !== ""
     ? customPath.trim()
     : defaultPath;
 }
@@ -133,20 +133,20 @@ async function promptForItems(
   type: string
 ): Promise<number[]> {
   const { selectedItems } = await prompts({
-    name: 'selectedItems',
-    type: 'multiselect',
+    name: "selectedItems",
+    type: "multiselect",
     message: `Select ${type} to add:`,
     choices: allFiles.map((f, i) => ({
       title: f,
       value: i,
     })),
     min: 1,
-    hint: 'Space to select, Enter to confirm',
+    hint: "Space to select, Enter to confirm",
     instructions: false,
   });
 
   if (!selectedItems || selectedItems.length === 0) {
-    console.error(chalk.red('❌ You must select at least one item.'));
+    console.error(chalk.red("❌ You must select at least one item."));
     process.exit(1);
   }
 
@@ -154,10 +154,10 @@ async function promptForItems(
 }
 
 async function confirmOperation(config: TemplateConfig): Promise<boolean> {
-  const itemNames = config.items.join(', ');
-  const langExt = config.language === 'TypeScript' ? 'ts' : 'js';
+  const itemNames = config.items.join(", ");
+  const langExt = config.language === "TypeScript" ? "ts" : "js";
 
-  console.log(chalk.cyan('\n📋 Operation Summary:'));
+  console.log(chalk.cyan("\n📋 Operation Summary:"));
   console.log(chalk.gray(`   Type: ${chalk.white(config.type)}`));
   console.log(
     chalk.gray(`   Language: ${chalk.white(config.language)} (.${langExt})`)
@@ -166,9 +166,9 @@ async function confirmOperation(config: TemplateConfig): Promise<boolean> {
   console.log(chalk.gray(`   Items: ${chalk.white(itemNames)}`));
 
   const { confirm } = await prompts({
-    name: 'confirm',
-    type: 'confirm',
-    message: 'Proceed with the operation?',
+    name: "confirm",
+    type: "confirm",
+    message: "Proceed with the operation?",
     initial: true,
   });
 
@@ -187,7 +187,7 @@ function processHook(
   if (existsSync(fullPath)) {
     return {
       success: false,
-      message: `${chalk.yellow('⚠️ Skipped:')} ${chalk.gray(
+      message: `${chalk.yellow("⚠️ Skipped:")} ${chalk.gray(
         path.relative(process.cwd(), fullPath)
       )} already exists.`,
       filePath: fullPath,
@@ -197,8 +197,8 @@ function processHook(
   writeFileSync(fullPath, content);
   return {
     success: true,
-    message: `${chalk.green('✅ Hook')} ${chalk.cyan(`'${name}'`)} ${chalk.gray(
-      'added to'
+    message: `${chalk.green("✅ Hook")} ${chalk.cyan(`'${name}'`)} ${chalk.gray(
+      "added to"
     )} ${chalk.white(path.relative(process.cwd(), fullPath))}`,
     filePath: fullPath,
   };
@@ -215,28 +215,28 @@ function processUtil(
 
   // Check if utility already exists in the file
   if (existsSync(fullPath)) {
-    const existingContent = readFileSync(fullPath, 'utf-8');
+    const existingContent = readFileSync(fullPath, "utf-8");
     if (existingContent.includes(`// ---- ${name} ----`)) {
       return {
         success: false,
-        message: `${chalk.yellow('⚠️ Skipped:')} ${chalk.gray(
-          'Utility'
+        message: `${chalk.yellow("⚠️ Skipped:")} ${chalk.gray(
+          "Utility"
         )} ${chalk.cyan(`'${name}'`)} ${chalk.gray(
-          'already exists in'
+          "already exists in"
         )} ${chalk.white(path.relative(process.cwd(), fullPath))}`,
         filePath: fullPath,
       };
     }
   } else {
-    writeFileSync(fullPath, '');
+    writeFileSync(fullPath, "");
   }
 
   appendFileSync(fullPath, `\n// ---- ${name} ----\n${content}\n`);
   return {
     success: true,
-    message: `${chalk.green('✅ Utility')} ${chalk.cyan(
+    message: `${chalk.green("✅ Utility")} ${chalk.cyan(
       `'${name}'`
-    )} ${chalk.gray('appended to')} ${chalk.white(
+    )} ${chalk.gray("appended to")} ${chalk.white(
       path.relative(process.cwd(), fullPath)
     )}`,
     filePath: fullPath,
@@ -244,7 +244,7 @@ function processUtil(
 }
 
 async function processTemplates(config: TemplateConfig): Promise<void> {
-  const langExt = config.language === 'TypeScript' ? 'ts' : 'js';
+  const langExt = config.language === "TypeScript" ? "ts" : "js";
   const templateFolder = path.resolve(`${TEMPLATE_DIR}/${config.type}`);
   const resolvedDir = path.resolve(config.path);
 
@@ -252,7 +252,7 @@ async function processTemplates(config: TemplateConfig): Promise<void> {
   if (!existsSync(resolvedDir)) {
     mkdirSync(resolvedDir, { recursive: true });
     console.log(
-      `${chalk.blue('📁 Created directory:')} ${chalk.white(
+      `${chalk.blue("📁 Created directory:")} ${chalk.white(
         path.relative(process.cwd(), resolvedDir)
       )}`
     );
@@ -268,10 +268,10 @@ async function processTemplates(config: TemplateConfig): Promise<void> {
       continue;
     }
 
-    const content = readFileSync(templatePath, 'utf-8');
+    const content = readFileSync(templatePath, "utf-8");
 
     const result =
-      config.type === 'hooks'
+      config.type === "hooks"
         ? processHook(itemName, content, resolvedDir, langExt)
         : processUtil(itemName, content, resolvedDir, langExt);
 
@@ -280,8 +280,8 @@ async function processTemplates(config: TemplateConfig): Promise<void> {
   }
 
   // Summary
-  const successful = results.filter(r => r.success);
-  const skipped = results.filter(r => !r.success);
+  const successful = results.filter((r) => r.success);
+  const skipped = results.filter((r) => !r.success);
 
   console.log(
     chalk.magenta(
@@ -293,12 +293,12 @@ async function processTemplates(config: TemplateConfig): Promise<void> {
 }
 
 export const init = new Command()
-  .name('init')
-  .description('Initialize a new project with hooks or utils')
+  .name("init")
+  .description("Initialize a new project with hooks or utils")
   .action(async () => {
     try {
       console.log(
-        chalk.bold.cyan('🚀 React UseKit CLI - Hooks and Utils Generator\n')
+        chalk.bold.cyan("🚀 React UseKit CLI - Hooks and Utils Generator\n")
       );
 
       // Step 1: Prompt for type
@@ -311,7 +311,7 @@ export const init = new Command()
       const finalPath = await promptForPath(type);
 
       // Step 4: Get available templates
-      const langExt = language === 'TypeScript' ? 'ts' : 'js';
+      const langExt = language === "TypeScript" ? "ts" : "js";
       const templateFolder = path.resolve(`${TEMPLATE_DIR}/${type}`);
 
       let allFiles: string[];
@@ -335,11 +335,13 @@ export const init = new Command()
 
       // Step 5: Prompt for items to add
       const selectedIndexes = await promptForItems(allFiles, type);
-      const selectedItems = selectedIndexes.map(idx => allFiles[idx]);
+      const selectedItems = selectedIndexes
+        .map((idx) => allFiles[idx])
+        .filter((item): item is string => typeof item === "string");
 
       // Step 6: Create configuration
       const config: TemplateConfig = {
-        type: type as 'hooks' | 'utils',
+        type: type as "hooks" | "utils",
         language,
         path: finalPath,
         items: selectedItems,
@@ -348,18 +350,18 @@ export const init = new Command()
       // Step 7: Confirm operation
       const confirmed = await confirmOperation(config);
       if (!confirmed) {
-        console.log(chalk.blue('\n👋 Operation cancelled by user.'));
+        console.log(chalk.blue("\n👋 Operation cancelled by user."));
         process.exit(0);
       }
 
       // Step 8: Process templates
-      console.log(chalk.yellow('\n🔄 Processing templates...'));
+      console.log(chalk.yellow("\n🔄 Processing templates..."));
       await processTemplates(config);
 
-      console.log(chalk.bold.green('\n🎉 Operation completed successfully!'));
+      console.log(chalk.bold.green("\n🎉 Operation completed successfully!"));
     } catch (error) {
       console.error(
-        chalk.red('❌ An error occurred:'),
+        chalk.red("❌ An error occurred:"),
         chalk.gray(error instanceof Error ? error.message : String(error))
       );
       process.exit(1);
