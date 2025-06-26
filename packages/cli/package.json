@@ -1,6 +1,6 @@
 {
   "name": "react-usekit",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "CLI tool for react-usekit",
   "type": "module",
   "exports": {
@@ -15,7 +15,11 @@
     "clean": "rm -rf dist",
     "test": "echo \"No tests specified\" && exit 0"
   },
-  "files": ["dist", "templates", "README.md"],
+  "files": [
+    "dist",
+    "templates",
+    "README.md"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -31,7 +35,13 @@
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9"
   },
-  "keywords": ["react", "hooks", "cli", "utilities", "typescript"],
+  "keywords": [
+    "react",
+    "hooks",
+    "cli",
+    "utilities",
+    "typescript"
+  ],
   "author": "Brijeshkumar Yadav",
   "license": "MIT",
   "engines": {

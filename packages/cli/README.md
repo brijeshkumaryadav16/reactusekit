@@ -1,147 +1,83 @@
-# react-usekit CLI
+# 📦 react-usekit
 
-A command-line interface to add reusable React hooks and utilities to your project with ease.
+> **Drop-in React hooks and utility functions — zero boilerplate, maximum productivity.**
 
-## Installation
+A developer-friendly CLI that instantly adds battle-tested React hooks and JavaScript/TypeScript utilities to your project.
 
-Install globally via npm:
-
-```bash
-npm install -g react-usekit
-```
-
-Or use with npx (recommended):
+## 🚀 Quick Start
 
 ```bash
+# Use with npx (recommended)
 npx react-usekit init
-```
 
-## Usage
-
-### Initialize Command
-
-The `init` command is the main command that helps you add hooks or utilities to your project:
-
-```bash
+# Or install globally
+npm install -g react-usekit
 react-usekit init
 ```
 
-This interactive command will guide you through:
+## ⚡ Usage
 
-1. **Type Selection**: Choose between adding `hooks` or `utils`
-2. **Language Choice**: Select `TypeScript` or `JavaScript`
-3. **File Placement**: Specify where to place the files (default: `src/hooks` for hooks, `src/lib`
-   for utils)
-4. **Template Selection**: Multi-select from available templates
-
-### Examples
-
-#### Adding React Hooks
+Run the interactive CLI in your React project:
 
 ```bash
-npx react-usekit init
-# Select: hooks
-# Select: TypeScript
-# Path: src/hooks (or custom path)
-# Select: useLocalStorage, useDebounce, useFetch
+$ react-usekit init
+🚀 React UseKit CLI - Template Generator
+
+? What would you like to add? › 🪝 hooks
+? Choose language: › TypeScript
+? Enter relative directory to place files (default: src/hooks): src/hooks
+? Select hooks to add: › ◉ useLocalStorage
+                         ◉ useToggle
+                         ◉ useAsync
+                         ◯ useDebounce
+
+📋 Operation Summary:
+   Type: hooks
+   Language: TypeScript (.ts)
+   Destination: src/hooks
+   Items: useLocalStorage, useToggle, useAsync
+
+? Proceed with the operation? › Yes
+
+🔄 Processing templates...
+📁 Created directory: src/hooks
+✅ Hook 'useLocalStorage' added to src/hooks/useLocalStorage.ts
+✅ Hook 'useToggle' added to src/hooks/useToggle.ts
+✅ Hook 'useAsync' added to src/hooks/useAsync.ts
+
+📊 Summary: 3 successful, 0 skipped
+
+🎉 Operation completed successfully!
 ```
 
-This will create individual hook files:
+## 📦 What You Get
 
-- `src/hooks/useLocalStorage.ts`
-- `src/hooks/useDebounce.ts`
-- `src/hooks/useFetch.ts`
+### 🪝 **8 React Hooks**
 
-#### Adding Utilities
+`useLocalStorage` • `useToggle` • `useAsync` • `useDebounce` • `useClickOutside` • `useEventListener` • `useInterval` • `useWindowSize`
 
-```bash
-npx react-usekit init
-# Select: utils
-# Select: JavaScript
-# Path: src/lib (or custom path)
-# Select: formatDate, debounce, throttle
-```
+### 🛠️ **8 Utility Functions**
 
-This will append all selected utilities to a single file:
+`capitalize` • `truncateText` • `formatCurrency` • `formatDate` • `isEmpty` • `deepClone` • `slugify` • `generateId`
 
-- `src/lib/utils.js` (with all utilities combined)
+### ✨ **Features**
 
-## Features
+- ✅ **TypeScript & JavaScript** - Full support for both
+- ✅ **Zero Dependencies** - Copy code, not packages
+- ✅ **Interactive CLI** - Beautiful prompts and validation
+- ✅ **Smart Organization** - Follows React best practices
 
-### 🎯 Interactive CLI
+## � Requirements
 
-- Easy-to-use prompts for selecting options
-- Multi-select support for choosing multiple templates
-- Smart defaults with customization options
+- **Node.js** 18.0.0+
+- **React** 16.8+ (for hooks)
 
-### 📁 Flexible File Organization
+## � Full Documentation
 
-- Custom directory paths for file placement
-- Relative path validation
-- Automatic directory creation
+For detailed examples, all available templates, and advanced usage:
 
-### 🔧 Language Support
+**👉 [Complete Documentation](https://github.com/brijeshkumaryadav16/react-usekit?tab=readme-ov-file)**
 
-- TypeScript (.ts files)
-- JavaScript (.js files)
-- Consistent template structure
+## 📄 License
 
-### 📦 Template Management
-
-- Hooks: Individual files for each hook
-- Utils: Combined utilities in a single file
-- Duplicate file detection and warnings
-
-### 🛡️ Error Handling
-
-- Graceful error handling with clear messages
-- Operation cancellation support
-- File existence checks
-
-## File Structure
-
-When you run the CLI, it will organize files as follows:
-
-### For Hooks:
-
-```
-src/hooks/
-├── useLocalStorage.ts
-├── useDebounce.ts
-└── useFetch.ts
-```
-
-### For Utils:
-
-```
-src/lib/
-└── utils.ts  # Contains all selected utilities
-```
-
-## CLI Options
-
-### Commands
-
-- `init` - Initialize and add hooks or utilities to your project
-
-### Global Options
-
-- `-V, --version` - Display version number
-- `-h, --help` - Display help information
-
-## Requirements
-
-- Node.js 16 or higher
-- A React project (the CLI doesn't validate this, but templates are React-specific)
-
-## Contributing
-
-This CLI is part of the react-usekit monorepo. Contributions are welcome!
-
-## License
-
-MIT © [Brijeshkumar Yadav](https://www.linkedin.com/in/brijeshkumaryadav16/)
-
-## Repository
-
-[GitHub - react-usekit](https://github.com/brijeshkumaryadav16/react-usekit)
+MIT © [Brijeshkumar Yadav](https://github.com/brijeshkumaryadav16)
