@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://www.react-usekit.com/sitemap.xml
+Sitemap: https://react-usekit.vercel.app/sitemap.xml
 
 # Disallow crawling of API routes
 Disallow: /api/
