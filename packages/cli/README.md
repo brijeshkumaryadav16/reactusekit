@@ -21,7 +21,7 @@ Run the interactive CLI in your React project:
 
 ```bash
 $ react-usekit init
-🚀 React UseKit CLI - Template Generator
+🚀 React UseKit CLI - Hooks and Utils Generator
 
 ? What would you like to add? › 🪝 hooks
 ? Choose language: › TypeScript
@@ -76,7 +76,7 @@ $ react-usekit init
 
 For detailed examples, all available templates, and advanced usage:
 
-**👉 [Complete Documentation](https://www.react-usekit.com)**
+**👉 [Complete Documentation](https://react-usekit.vercel.app)**
 
 ## 📄 License
 
