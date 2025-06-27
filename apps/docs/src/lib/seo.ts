@@ -15,8 +15,7 @@ export function generateSEOMetadata(): Metadata {
   const title = "react-usekit - Essential React Hooks & Utilities";
   const description =
     "The essential collection of 8 React hooks and 8 utility functions every developer needs. Production-ready, zero dependencies, TypeScript first. Copy, paste, own your code.";
-  const url =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://react-usekit.vercel.app";
+  const url = "https://react-usekit.vercel.app";
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "react-usekit";
 
   return {
