@@ -1,277 +1,402 @@
 ---
-title: React Hooks
-description: 8 essential React hooks for common patterns and functionality
+title: Hooks
+description: 8 essential React hooks for common patterns
 ---
 
-import { Card, Cards } from "fumadocs-ui/components/card"; import { Callout } from
-"fumadocs-ui/components/callout";
+import { Callout } from "fumadocs-ui/components/callout";
 
-# 🪝 React Hooks
+# React Hooks
 
-<Callout title="Production-Ready Hooks">
-  All hooks are battle-tested, optimized, and follow React best practices. They
-  include TypeScript support and handle edge cases you might miss in custom
-  implementations.
+<Callout>
+  Production-ready React hooks that solve common problems. Each hook is
+  copy-pasted directly into your project - no dependencies, just code you own.
 </Callout>
 
 ## Available Hooks
 
-<Cards>
-  <Card
-    title="useLocalStorage"
-    href="/docs/hooks/use-local-storage"
-    description="Persist state in localStorage with automatic sync"
-  >
-    <div className="flex gap-2 mt-2">
-      <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">State</span>
-      <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Storage</span>
-    </div>
-  </Card>
+- **useLocalStorage** - Persist state in localStorage with automatic sync
+- **useToggle** - Boolean state with toggle, set true/false functions
+- **useDebounce** - Delay value updates until after specified delay
+- **useAsync** - Handle async operations with loading, error states
+- **useClickOutside** - Detect clicks outside specific elements
+- **useEventListener** - Add/remove event listeners with cleanup
+- **useWindowSize** - Track browser window dimensions with resize
+- **useInterval** - Set up intervals that automatically clean up
 
-{" "} <Card title="useAsync" href="/docs/hooks/use-async" description="Handle async operations with
-loading, error, and data states"
+---
 
->
+## useLocalStorage
 
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">
-      API
-    </span>
-    <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">
-      Loading
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="useToggle" href="/docs/hooks/use-toggle" description="Boolean state with toggle,
-setTrue, and setFalse methods"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
-      State
-    </span>
-    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
-      UI
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="useDebounce" href="/docs/hooks/use-debounce" description="Debounce values with
-configurable delay"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
-      Performance
-    </span>
-    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
-      Input
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="useClickOutside" href="/docs/hooks/use-click-outside" description="Detect clicks
-outside target elements"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
-      UI
-    </span>
-    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
-      Events
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="useEventListener" href="/docs/hooks/use-event-listener" description="Add/remove
-event listeners with automatic cleanup"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-      Events
-    </span>
-    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-      DOM
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="useWindowSize" href="/docs/hooks/use-window-size" description="Track window
-dimensions with debounce"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
-      Responsive
-    </span>
-    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
-      Layout
-    </span>
-  </div>
-</Card>
-
-<Card title="useInterval" href="/docs/hooks/use-interval" description="setInterval with cleanup and
-pause/resume controls"
-
->
-
-    <div className="flex gap-2 mt-2">
-      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Timer</span>
-      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Animation</span>
-    </div>
-
-  </Card>
-</Cards>
-
-## Hook Categories
-
-### 🏪 State Management
-
-Hooks for managing and persisting component state.
-
-- **useLocalStorage** - Sync state with localStorage
-- **useToggle** - Boolean state with convenience methods
-
-### 📡 Async & Data
-
-Hooks for handling asynchronous operations and data fetching.
-
-- **useAsync** - Complete async operation management
-- **useDebounce** - Delay expensive operations
-
-### 🎯 UI & Interaction
-
-Hooks for user interface and interaction patterns.
-
-- **useClickOutside** - Modal and dropdown patterns
-- **useEventListener** - Custom event handling
-- **useWindowSize** - Responsive design patterns
-
-### ⏰ Timing & Effects
-
-Hooks for timing-based operations and side effects.
-
-- **useInterval** - Declarative intervals with controls
-
-## Quick Examples
-
-### Simple State with Persistence
+**Save data that persists between page refreshes**
 
 ```tsx
-import { useLocalStorage } from './hooks/useLocalStorage';
+const [name, setName] = useLocalStorage("username", "");
+```
 
-function UserPreferences() {
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
+**What it does:** Stores data in the browser's localStorage so it survives page refreshes and browser restarts.
+
+**Basic Example:**
+
+```tsx
+function UserProfile() {
+  const [name, setName] = useLocalStorage("name", "");
 
   return (
-    <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-      Current theme: {theme}
-    </button>
+    <input
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      placeholder="Your name (automatically saved)"
+    />
   );
 }
 ```
 
-### API Data Fetching
+**Advanced Example:**
 
 ```tsx
-import { useAsync } from './hooks/useAsync';
+function ShoppingCart() {
+  const [cart, setCart] = useLocalStorage("cart", []);
 
-function UserProfile({ userId }) {
-  const {
-    data: user,
-    loading,
-    error,
-  } = useAsync(() => fetch(`/api/users/${userId}`).then(res => res.json()), {
-    immediate: true,
-  });
+  const addItem = (item) => setCart([...cart, item]);
+  const removeItem = (id) => setCart(cart.filter((item) => item.id !== id));
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  return <div>Hello, {user?.name}!</div>;
+  return (
+    <div>
+      <p>Items in cart: {cart.length}</p>
+      <button onClick={() => addItem({ id: Date.now(), name: "Product" })}>
+        Add Item
+      </button>
+    </div>
+  );
 }
 ```
 
-### Modal with Click Outside
+---
+
+## useToggle
+
+**Easily manage boolean (true/false) states**
 
 ```tsx
-import { useToggle } from './hooks/useToggle';
-import { useClickOutside } from './hooks/useClickOutside';
+const [isOpen, toggle, setTrue, setFalse] = useToggle(false);
+```
 
+**What it does:** Provides convenient functions to toggle, set true, or set false for boolean values.
+
+**Basic Example:**
+
+```tsx
 function Modal() {
-  const [isOpen, { toggle, setFalse }] = useToggle();
-  const modalRef = useClickOutside(setFalse);
+  const [isOpen, toggle, open, close] = useToggle(false);
 
   return (
-    <>
-      <button onClick={toggle}>Open Modal</button>
+    <div>
+      <button onClick={open}>Open Modal</button>
       {isOpen && (
-        <div className="modal-overlay">
-          <div ref={modalRef} className="modal">
-            <h2>Modal Content</h2>
-            <button onClick={setFalse}>Close</button>
-          </div>
+        <div className="modal">
+          <p>Modal content</p>
+          <button onClick={close}>Close</button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 ```
 
-## Best Practices
-
-<Callout type="info" title="Hook Guidelines">
-  - Always follow the [Rules of
-  Hooks](https://react.dev/reference/rules/rules-of-hooks) - Use TypeScript for
-  better development experience - Handle loading and error states in async
-  operations - Clean up side effects properly (most hooks handle this
-  automatically)
-</Callout>
-
-### Performance Tips
-
-1. **useDebounce** - Use for expensive operations like API calls
-2. **useCallback** - Combine with hooks that accept callback dependencies
-3. **useMemo** - Memoize expensive computations that depend on hook values
-4. **useWindowSize** - Use debouncing to avoid excessive re-renders
-
-### Common Patterns
+**Advanced Example:**
 
 ```tsx
-// Combine hooks for powerful patterns
-function SearchComponent() {
-  const [query, setQuery] = useLocalStorage('searchQuery', '');
-  const debouncedQuery = useDebounce(query, 300);
+function Sidebar() {
+  const [isCollapsed, toggleCollapsed] = useToggle(false);
+  const [isDarkMode, toggleDarkMode] = useToggle(false);
 
-  const { data: results, loading } = useAsync(() => searchAPI(debouncedQuery), {
-    immediate: debouncedQuery.length > 2,
+  return (
+    <aside
+      className={`sidebar ${isCollapsed ? "collapsed" : ""} ${
+        isDarkMode ? "dark" : ""
+      }`}
+    >
+      <button onClick={toggleCollapsed}>
+        {isCollapsed ? "Expand" : "Collapse"}
+      </button>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? "Light Mode" : "Dark Mode"}
+      </button>
+    </aside>
+  );
+}
+```
+
+---
+
+## useDebounce
+
+**Delay updates until user stops typing**
+
+```tsx
+const debouncedValue = useDebounce(value, 300);
+```
+
+**What it does:** Waits for a pause before updating the value. Perfect for search inputs to avoid making too many API calls.
+
+**Basic Example:**
+
+```tsx
+function SearchBox() {
+  const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 500);
+
+  useEffect(() => {
+    if (debouncedSearch) {
+      console.log("Searching for:", debouncedSearch);
+      // Make API call here
+    }
+  }, [debouncedSearch]);
+
+  return (
+    <input
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      placeholder="Search... (waits 500ms after you stop typing)"
+    />
+  );
+}
+```
+
+---
+
+## useAsync
+
+**Handle API calls and loading states**
+
+```tsx
+const { data, loading, error, execute } = useAsync(asyncFunction);
+```
+
+**What it does:** Manages the common pattern of loading data from APIs with loading and error states.
+
+**Basic Example:**
+
+```tsx
+function UserList() {
+  const {
+    data: users,
+    loading,
+    error,
+  } = useAsync(() => fetch("/api/users").then((res) => res.json()));
+
+  if (loading) return <div>Loading users...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <ul>
+      {users?.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+**Advanced Example:**
+
+```tsx
+function WeatherWidget() {
+  const [city, setCity] = useState("New York");
+
+  const {
+    data: weather,
+    loading,
+    error,
+    execute,
+  } = useAsync(
+    () => fetch(`/api/weather?city=${city}`).then((res) => res.json()),
+    [city] // Re-run when city changes
+  );
+
+  return (
+    <div>
+      <input
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="Enter city name"
+      />
+      <button onClick={execute}>Refresh Weather</button>
+
+      {loading && <p>Loading weather...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {weather && <p>Temperature: {weather.temp}°F</p>}
+    </div>
+  );
+}
+```
+
+---
+
+## useClickOutside
+
+**Detect when user clicks outside an element**
+
+```tsx
+const ref = useClickOutside(() => setIsOpen(false));
+```
+
+**What it does:** Calls a function when the user clicks anywhere outside the referenced element.
+
+**Basic Example:**
+
+```tsx
+function Dropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useClickOutside(() => setIsOpen(false));
+
+  return (
+    <div ref={ref}>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle Dropdown</button>
+      {isOpen && (
+        <div className="dropdown">
+          <p>Dropdown content</p>
+          <p>Click outside to close</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+---
+
+## useEventListener
+
+**Add keyboard shortcuts and event listeners**
+
+```tsx
+useEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModal();
+});
+```
+
+**What it does:** Safely adds event listeners that are automatically cleaned up when the component unmounts.
+
+**Basic Example:**
+
+```tsx
+function EscapeToClose() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setIsOpen(false);
+    }
   });
 
   return (
     <div>
-      <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search..." />
-      {loading && <div>Searching...</div>}
-      {results?.map(item => (
-        <div key={item.id}>{item.title}</div>
-      ))}
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      {isOpen && (
+        <div className="modal">
+          <p>Press Escape to close</p>
+          <button onClick={() => setIsOpen(false)}>Close</button>
+        </div>
+      )}
     </div>
   );
 }
 ```
 
-## Getting Started
+---
 
-1. **Install react-usekit**: See [Installation Guide](/docs/installation)
-2. **Generate hooks**: Run `react-usekit init` and select hooks
-3. **Import and use**: Start building with your new hooks
-4. **Explore examples**: Check out [Examples](/docs/examples) for inspiration
+## useWindowSize
 
-Ready to dive deeper? Pick a hook from the list above or start with the most popular ones:
-`useLocalStorage`, `useAsync`, and `useToggle`.
+**Track browser window dimensions**
+
+```tsx
+const { width, height } = useWindowSize();
+```
+
+**What it does:** Provides the current window size and updates when the user resizes their browser.
+
+**Basic Example:**
+
+```tsx
+function ResponsiveComponent() {
+  const { width, height } = useWindowSize();
+
+  return (
+    <div>
+      <p>
+        Window size: {width} x {height}
+      </p>
+      {width < 768 ? <div>Mobile Layout</div> : <div>Desktop Layout</div>}
+    </div>
+  );
+}
+```
+
+---
+
+## useInterval
+
+**Run code repeatedly with proper cleanup**
+
+```tsx
+useInterval(() => {
+  console.log("This runs every second");
+}, 1000);
+```
+
+**What it does:** A safe way to use setInterval in React that automatically cleans up when the component unmounts.
+
+**Basic Example:**
+
+```tsx
+function Timer() {
+  const [count, setCount] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+
+  useInterval(
+    () => {
+      setCount(count + 1);
+    },
+    isRunning ? 1000 : null
+  ); // Pass null to pause
+
+  return (
+    <div>
+      <p>Timer: {count} seconds</p>
+      <button onClick={() => setIsRunning(!isRunning)}>
+        {isRunning ? "Pause" : "Start"}
+      </button>
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
+}
+```
+
+**Advanced Example:**
+
+```tsx
+function AutoSave() {
+  const [content, setContent] = useState("");
+  const [lastSaved, setLastSaved] = useState(null);
+
+  useInterval(() => {
+    if (content) {
+      // Auto-save every 30 seconds
+      localStorage.setItem("draft", content);
+      setLastSaved(new Date().toLocaleTimeString());
+    }
+  }, 30000);
+
+  return (
+    <div>
+      <textarea
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="Start typing... auto-saves every 30 seconds"
+      />
+      {lastSaved && <p>Last saved: {lastSaved}</p>}
+    </div>
+  );
+}
+```

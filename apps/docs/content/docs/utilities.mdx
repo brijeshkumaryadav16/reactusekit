@@ -1,425 +1,573 @@
 ---
-title: Utility Functions
-description: 8 essential JavaScript/TypeScript utilities for common operations
+title: Utilities
+description: Essential utility functions for common operations
 ---
 
-import { Card, Cards } from "fumadocs-ui/components/card"; import { Callout } from
-"fumadocs-ui/components/callout";
+import { Callout } from "fumadocs-ui/components/callout";
 
-# 🛠️ Utility Functions
+# Utility Functions
 
-<Callout title="Production-Ready Utils">
-  All utilities are optimized, well-tested, and include comprehensive TypeScript
-  support. They handle edge cases and provide consistent behavior across
-  different environments.
+<Callout>
+  Production-ready utility functions that solve common problems. Each function
+  is copy-pasted directly into your project - no dependencies, just code you
+  own.
 </Callout>
 
 ## Available Utilities
 
-<Cards>
-  <Card
-    title="formatCurrency"
-    href="/docs/utilities/format-currency"
-    description="Format numbers as currency with locale support"
-  >
-    <div className="flex gap-2 mt-2">
-      <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">Formatting</span>
-      <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-700/10">i18n</span>
-    </div>
-  </Card>
+- **capitalize** - Make the first letter of a string uppercase
+- **formatCurrency** - Format numbers as currency with locale support
+- **isEmpty** - Check if values are empty (null, undefined, empty objects/arrays)
+- **truncateText** - Truncate text with ellipsis at specified length
+- **formatDate** - Format dates with customizable patterns
+- **slugify** - Convert strings to URL-friendly slugs
+- **generateId** - Generate unique identifiers for keys and IDs
+- **deepClone** - Deep clone objects and arrays safely
 
-{" "} <Card title="isEmpty" href="/docs/utilities/is-empty" description="Check if values are empty
-(objects, arrays, strings)"
+---
 
->
+## capitalize
 
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
-      Validation
-    </span>
-    <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10">
-      Type Checking
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="deepClone" href="/docs/utilities/deep-clone" description="Deep copy objects and
-arrays safely"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
-      Objects
-    </span>
-    <span className="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
-      Immutability
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="slugify" href="/docs/utilities/slugify" description="Create URL-friendly slugs
-from text"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-      Text
-    </span>
-    <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-      URL
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="capitalize" href="/docs/utilities/capitalize" description="Capitalize the first
-letter of strings"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-      Text
-    </span>
-    <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-      Formatting
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="truncateText" href="/docs/utilities/truncate-text" description="Truncate text
-with ellipsis support"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
-      Text
-    </span>
-    <span className="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10">
-      UI
-    </span>
-  </div>
-</Card>
-
-{" "} <Card title="formatDate" href="/docs/utilities/format-date" description="Consistent date
-formatting with options"
-
->
-
-  <div className="flex gap-2 mt-2">
-    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
-      Date
-    </span>
-    <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10">
-      i18n
-    </span>
-  </div>
-</Card>
-
-<Card title="generateId" href="/docs/utilities/generate-id" description="Generate unique
-identifiers"
-
->
-
-    <div className="flex gap-2 mt-2">
-      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">ID</span>
-      <span className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-700/10">Random</span>
-    </div>
-
-  </Card>
-</Cards>
-
-## Utility Categories
-
-### 📝 Text & Formatting
-
-Utilities for text manipulation and formatting.
-
-- **capitalize** - Capitalize first letter of strings
-- **truncateText** - Truncate long text with ellipsis
-- **slugify** - Create URL-friendly slugs
-
-### 💰 Data Formatting
-
-Utilities for formatting data for display.
-
-- **formatCurrency** - Currency formatting with locale
-- **formatDate** - Date formatting with locale
-
-### ✅ Validation & Checking
-
-Utilities for data validation and type checking.
-
-- **isEmpty** - Check if values are empty/falsy
-
-### 🔧 Data Manipulation
-
-Utilities for working with complex data structures.
-
-- **deepClone** - Deep copy objects and arrays
-- **generateId** - Generate unique identifiers
-
-## Quick Examples
-
-### Text Processing Pipeline
+**Make the first letter of a string uppercase**
 
 ```tsx
-import { capitalize, truncateText, slugify } from './lib/utils';
+capitalize("hello world"); // "Hello world"
+```
 
-function BlogPostCard({ post }) {
-  const title = capitalize(post.title);
-  const excerpt = truncateText(post.content, 150);
-  const slug = slugify(post.title);
+**What it does:** Converts the first character of a string to uppercase while keeping the rest unchanged.
+
+**Basic Example:**
+
+```tsx
+function UserGreeting({ username }) {
+  return <h1>Hello, {capitalize(username)}!</h1>;
+}
+
+// Usage: <UserGreeting username="john" /> → "Hello, John!"
+```
+
+**Advanced Example:**
+
+```tsx
+function ProductList({ products }) {
+  return (
+    <div>
+      {products.map((product) => (
+        <div key={product.id}>
+          <h3>{capitalize(product.category)}</h3>
+          <p>{capitalize(product.name)}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Converts: "smartphones" → "Smartphones", "laptops" → "Laptops"
+```
+
+---
+
+## formatCurrency
+
+**Format numbers as currency with locale support**
+
+```tsx
+formatCurrency(99.99); // "$99.99"
+formatCurrency(99.99, "EUR"); // "€99.99"
+```
+
+**What it does:** Converts numbers into properly formatted currency strings with the correct symbols and decimal places.
+
+**Basic Example:**
+
+```tsx
+function PriceDisplay({ price }) {
+  return <span className="price">{formatCurrency(price)}</span>;
+}
+
+// Usage: <PriceDisplay price={29.99} /> → "$29.99"
+```
+
+**Advanced Example:**
+
+```tsx
+function InternationalPricing({ product, userLocale }) {
+  const currencyMap = {
+    US: "USD",
+    EU: "EUR",
+    UK: "GBP",
+    JP: "JPY",
+  };
 
   return (
-    <article>
-      <h2>{title}</h2>
-      <p>{excerpt}</p>
-      <a href={`/blog/${slug}`}>Read more →</a>
-    </article>
+    <div className="pricing">
+      <h3>{product.name}</h3>
+      <p>Price: {formatCurrency(product.price, currencyMap[userLocale])}</p>
+      <p>Tax: {formatCurrency(product.price * 0.1, currencyMap[userLocale])}</p>
+      <p>
+        Total: {formatCurrency(product.price * 1.1, currencyMap[userLocale])}
+      </p>
+    </div>
   );
 }
 ```
 
-### Form Validation
+---
+
+## isEmpty
+
+**Check if values are empty (null, undefined, empty objects/arrays)**
 
 ```tsx
-import { isEmpty, formatCurrency } from './lib/utils';
+isEmpty(null); // true
+isEmpty([]); // true
+isEmpty({}); // true
+isEmpty("hello"); // false
+```
 
-function ProductForm({ product, onSave }) {
+**What it does:** Safely checks if a value is empty, handling all the edge cases (null, undefined, empty arrays, empty objects, empty strings).
+
+**Basic Example:**
+
+```tsx
+function UserProfile({ user }) {
+  if (isEmpty(user)) {
+    return <div>No user data available</div>;
+  }
+
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+```
+
+**Advanced Example:**
+
+```tsx
+function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
 
-  const validate = () => {
+  const validateForm = () => {
     const newErrors = {};
 
-    if (isEmpty(product.name)) {
-      newErrors.name = 'Product name is required';
+    if (isEmpty(form.name.trim())) {
+      newErrors.name = "Name is required";
     }
-
-    if (isEmpty(product.price) || product.price <= 0) {
-      newErrors.price = 'Valid price is required';
+    if (isEmpty(form.email.trim())) {
+      newErrors.email = "Email is required";
+    }
+    if (isEmpty(form.message.trim())) {
+      newErrors.message = "Message is required";
     }
 
     setErrors(newErrors);
-    return isEmpty(newErrors);
+    return isEmpty(newErrors); // Form is valid if no errors
   };
 
-  const handleSubmit = () => {
-    if (validate()) {
-      onSave({
-        ...product,
-        formattedPrice: formatCurrency(product.price, 'USD'),
-      });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log("Form submitted:", form);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
-        value={product.name}
-        onChange={e => setProduct({ ...product, name: e.target.value })}
-        placeholder="Product name"
+        value={form.name}
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
+        placeholder="Name"
       />
       {errors.name && <span className="error">{errors.name}</span>}
 
-      <input
-        type="number"
-        value={product.price}
-        onChange={e => setProduct({ ...product, price: parseFloat(e.target.value) })}
-        placeholder="Price"
-      />
-      {errors.price && <span className="error">{errors.price}</span>}
-
-      <button type="submit">Save Product</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
 ```
 
-### Data Processing
+---
+
+## truncateText
+
+**Truncate text with ellipsis**
 
 ```tsx
-import { deepClone, generateId, isEmpty } from './lib/utils';
+truncateText("This is a very long text", 10); // "This is a..."
+```
 
-function useShoppingCart() {
-  const [cart, setCart] = useState([]);
+**What it does:** Shortens text to a specified length and adds "..." at the end if the text was longer than the limit.
 
-  const addItem = product => {
-    setCart(prevCart => {
-      const newCart = deepClone(prevCart);
-      const existingItem = newCart.find(item => item.productId === product.id);
+**Basic Example:**
 
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        newCart.push({
-          id: generateId(),
-          productId: product.id,
-          name: product.name,
-          price: product.price,
-          quantity: 1,
-        });
-      }
+```tsx
+function ProductCard({ product }) {
+  return (
+    <div className="card">
+      <h3>{truncateText(product.name, 20)}</h3>
+      <p>{truncateText(product.description, 100)}</p>
+    </div>
+  );
+}
 
-      return newCart;
-    });
+// Long product names and descriptions are automatically shortened
+```
+
+**Advanced Example:**
+
+```tsx
+function CommentList({ comments }) {
+  const [expandedComments, setExpandedComments] = useState(new Set());
+
+  const toggleComment = (commentId) => {
+    const newExpanded = new Set(expandedComments);
+    if (newExpanded.has(commentId)) {
+      newExpanded.delete(commentId);
+    } else {
+      newExpanded.add(commentId);
+    }
+    setExpandedComments(newExpanded);
   };
 
-  const removeItem = itemId => {
-    setCart(prevCart => prevCart.filter(item => item.id !== itemId));
-  };
-
-  const isCartEmpty = isEmpty(cart);
-
-  return { cart, addItem, removeItem, isCartEmpty };
-}
-```
-
-## Best Practices
-
-<Callout type="info" title="Usage Guidelines">
-  - Import only the utilities you need to keep bundle size small - Use
-  TypeScript for better type safety and IDE support - Consider performance
-  implications for large datasets - Handle edge cases appropriately in your
-  application logic
-</Callout>
-
-### Performance Tips
-
-1. **Tree Shaking** - Import individual functions:
-
-   ```tsx
-   // ✅ Good - tree-shakeable
-   import { formatCurrency } from './lib/utils';
-
-   // ❌ Avoid - imports entire module
-   import * as utils from './lib/utils';
-   ```
-
-2. **Memoization** - Cache expensive operations:
-
-   ```tsx
-   const memoizedSlug = useMemo(() => slugify(title), [title]);
-   ```
-
-3. **Batch Operations** - Process arrays efficiently:
-   ```tsx
-   // ✅ Process once
-   const processedItems = items.map(item => ({
-     ...item,
-     slug: slugify(item.title),
-     excerpt: truncateText(item.content, 100),
-   }));
-   ```
-
-### Common Patterns
-
-#### Validation Chain
-
-```tsx
-function validateUser(user) {
-  const errors = [];
-
-  if (isEmpty(user.name)) errors.push('Name is required');
-  if (isEmpty(user.email)) errors.push('Email is required');
-  if (isEmpty(user.phone)) errors.push('Phone is required');
-
-  return isEmpty(errors) ? null : errors;
-}
-```
-
-#### Data Transformation Pipeline
-
-```tsx
-function processArticles(articles) {
-  return articles
-    .filter(article => !isEmpty(article.title))
-    .map(article => ({
-      ...article,
-      id: article.id || generateId(),
-      slug: slugify(article.title),
-      title: capitalize(article.title),
-      excerpt: truncateText(article.content, 200),
-      publishedAt: formatDate(new Date(article.publishedAt)),
-    }));
-}
-```
-
-## Integration Examples
-
-### With Forms
-
-```tsx
-import { isEmpty, capitalize } from './lib/utils';
-
-function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState({});
-
-  const validate = () => {
-    const newErrors = {};
-    Object.keys(form).forEach(key => {
-      if (isEmpty(form[key])) {
-        newErrors[key] = `${capitalize(key)} is required`;
-      }
-    });
-    setErrors(newErrors);
-    return isEmpty(newErrors);
-  };
-
-  // ... rest of component
-}
-```
-
-### With Data Display
-
-```tsx
-import { formatCurrency, formatDate, truncateText } from './lib/utils';
-
-function OrderSummary({ order }) {
   return (
     <div>
-      <h3>Order #{order.id}</h3>
-      <p>{formatDate(order.createdAt)}</p>
-      <p>Total: {formatCurrency(order.total, order.currency)}</p>
-      {order.notes && <p>{truncateText(order.notes, 100)}</p>}
+      {comments.map((comment) => (
+        <div key={comment.id} className="comment">
+          <h4>{comment.author}</h4>
+          <p>
+            {expandedComments.has(comment.id)
+              ? comment.text
+              : truncateText(comment.text, 150)}
+            {comment.text.length > 150 && (
+              <button onClick={() => toggleComment(comment.id)}>
+                {expandedComments.has(comment.id) ? "Show less" : "Show more"}
+              </button>
+            )}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
 ```
 
-## Getting Started
+---
 
-1. **Install react-usekit**: See [Installation Guide](/docs/installation)
-2. **Generate utilities**: Run `react-usekit init` and select utilities
-3. **Import and use**: Start using utilities in your components
-4. **Explore examples**: Check out [Examples](/docs/examples) for more patterns
+## formatDate
 
-## File Organization
+**Format dates with customizable patterns**
 
-react-usekit generates utilities in a single file for easy management:
-
-```
-src/
-├── lib/
-│   └── utils.ts          # All utilities in one file
-└── components/
-    └── MyComponent.tsx   # Import: import { formatCurrency } from '../lib/utils'
+```tsx
+formatDate(new Date()); // "Jan 1, 2024"
+formatDate(new Date(), "short"); // "1/1/24"
 ```
 
-Or you can organize them separately:
+**What it does:** Converts Date objects into human-readable strings with various formatting options.
 
-```
-src/
-├── lib/
-│   ├── formatCurrency.ts
-│   ├── isEmpty.ts
-│   └── slugify.ts
-└── components/
-    └── MyComponent.tsx   # Import: import { formatCurrency } from '../lib/formatCurrency'
+**Basic Example:**
+
+```tsx
+function BlogPost({ post }) {
+  return (
+    <article>
+      <h2>{post.title}</h2>
+      <p className="meta">Published on {formatDate(post.publishedAt)}</p>
+      <div>{post.content}</div>
+    </article>
+  );
+}
 ```
 
-Ready to explore? Pick a utility from the list above or check out our [Examples](/docs/examples)
-section for real-world usage patterns!
+**Advanced Example:**
+
+```tsx
+function EventCalendar({ events }) {
+  const groupEventsByDate = (events) => {
+    return events.reduce((groups, event) => {
+      const dateKey = formatDate(event.date, "short");
+      if (!groups[dateKey]) groups[dateKey] = [];
+      groups[dateKey].push(event);
+      return groups;
+    }, {});
+  };
+
+  const groupedEvents = groupEventsByDate(events);
+
+  return (
+    <div className="calendar">
+      {Object.entries(groupedEvents).map(([date, dayEvents]) => (
+        <div key={date} className="day">
+          <h3>{date}</h3>
+          {dayEvents.map((event) => (
+            <div key={event.id} className="event">
+              <span className="time">{formatDate(event.date, "time")}</span>
+              <span className="title">{event.title}</span>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+---
+
+## slugify
+
+**Convert strings to URL-friendly slugs**
+
+```tsx
+slugify("Hello World!"); // "hello-world"
+slugify("My Blog Post #1"); // "my-blog-post-1"
+```
+
+**What it does:** Converts any string into a URL-safe slug by removing special characters, converting to lowercase, and replacing spaces with hyphens.
+
+**Basic Example:**
+
+```tsx
+function BlogLink({ title }) {
+  const slug = slugify(title);
+
+  return <a href={`/blog/${slug}`}>{title}</a>;
+}
+
+// "How to Learn React" → "/blog/how-to-learn-react"
+```
+
+**Advanced Example:**
+
+```tsx
+function ContentManager() {
+  const [articles, setArticles] = useState([]);
+  const [newTitle, setNewTitle] = useState("");
+
+  const addArticle = () => {
+    const slug = slugify(newTitle);
+    const newArticle = {
+      id: generateId(),
+      title: newTitle,
+      slug: slug,
+      url: `/articles/${slug}`,
+      createdAt: new Date(),
+    };
+
+    setArticles([...articles, newArticle]);
+    setNewTitle("");
+  };
+
+  return (
+    <div>
+      <input
+        value={newTitle}
+        onChange={(e) => setNewTitle(e.target.value)}
+        placeholder="Article title"
+      />
+      <p>URL preview: /articles/{slugify(newTitle)}</p>
+      <button onClick={addArticle}>Add Article</button>
+
+      <div className="articles">
+        {articles.map((article) => (
+          <div key={article.id}>
+            <h3>{article.title}</h3>
+            <a href={article.url}>View Article</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## generateId
+
+**Generate unique identifiers**
+
+```tsx
+const id = generateId(); // "abc123def"
+const longId = generateId(16); // "abc123def456ghi7"
+```
+
+**What it does:** Creates random, unique strings that can be used as IDs, keys, or temporary identifiers.
+
+**Basic Example:**
+
+```tsx
+function TodoList() {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
+
+  const addTodo = () => {
+    if (newTodo.trim()) {
+      setTodos([
+        ...todos,
+        {
+          id: generateId(),
+          text: newTodo,
+          completed: false,
+        },
+      ]);
+      setNewTodo("");
+    }
+  };
+
+  return (
+    <div>
+      <input
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+        placeholder="Add a todo"
+      />
+      <button onClick={addTodo}>Add</button>
+
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+**Advanced Example:**
+
+```tsx
+function FileUploader() {
+  const [uploads, setUploads] = useState([]);
+
+  const handleFileSelect = (files) => {
+    const newUploads = Array.from(files).map((file) => ({
+      id: generateId(),
+      file,
+      progress: 0,
+      status: "pending",
+      uploadedAt: null,
+    }));
+
+    setUploads((prev) => [...prev, ...newUploads]);
+
+    // Start uploading each file
+    newUploads.forEach((upload) => {
+      uploadFile(upload.id, upload.file);
+    });
+  };
+
+  const uploadFile = async (uploadId, file) => {
+    // Simulate file upload with progress
+    for (let progress = 0; progress <= 100; progress += 10) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      setUploads((prev) =>
+        prev.map((upload) =>
+          upload.id === uploadId
+            ? {
+                ...upload,
+                progress,
+                status: progress === 100 ? "completed" : "uploading",
+              }
+            : upload
+        )
+      );
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="file"
+        multiple
+        onChange={(e) => handleFileSelect(e.target.files)}
+      />
+
+      <div className="uploads">
+        {uploads.map((upload) => (
+          <div key={upload.id} className="upload-item">
+            <span>{upload.file.name}</span>
+            <div className="progress">
+              <div
+                className="progress-bar"
+                style={{ width: `${upload.progress}%` }}
+              />
+            </div>
+            <span>{upload.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## deepClone
+
+**Deep clone objects and arrays safely**
+
+```tsx
+const original = { user: { name: "John", preferences: { theme: "dark" } } };
+const cloned = deepClone(original);
+```
+
+**What it does:** Creates a completely independent copy of complex objects and arrays, including nested structures.
+
+**Basic Example:**
+
+```tsx
+function UserSettings() {
+  const [settings, setSettings] = useState({
+    profile: { name: "John", email: "john@example.com" },
+    preferences: { theme: "light", notifications: true },
+  });
+
+  const [tempSettings, setTempSettings] = useState(null);
+
+  const startEditing = () => {
+    // Create a deep clone for editing without affecting original
+    setTempSettings(deepClone(settings));
+  };
+
+  const saveChanges = () => {
+    setSettings(tempSettings);
+    setTempSettings(null);
+  };
+
+  const cancelChanges = () => {
+    setTempSettings(null);
+  };
+
+  return (
+    <div>
+      {tempSettings ? (
+        <div>
+          <h3>Editing Settings</h3>
+          <input
+            value={tempSettings.profile.name}
+            onChange={(e) =>
+              setTempSettings({
+                ...tempSettings,
+                profile: { ...tempSettings.profile, name: e.target.value },
+              })
+            }
+          />
+          <button onClick={saveChanges}>Save</button>
+          <button onClick={cancelChanges}>Cancel</button>
+        </div>
+      ) : (
+        <div>
+          <h3>Current Settings</h3>
+          <p>Name: {settings.profile.name}</p>
+          <button onClick={startEditing}>Edit</button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
