@@ -1,8 +1,0 @@
-# Ignore commits from automated bots
-# This file tells git to ignore certain commits when calculating blame/contributors
-
-# Add commit hashes from dependabot and actions-user here
-# You can find these with: git log --oneline --author="dependabot"
-# Example format:
-# abc123def456  # dependabot commit
-# 789xyz012abc  # actions-user commit
