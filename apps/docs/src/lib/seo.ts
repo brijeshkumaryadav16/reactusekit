@@ -25,6 +25,9 @@ export function generateSEOMetadata(): Metadata {
       default: title,
     },
     description,
+    verification: {
+      google: "ECDucOQdERyOKZRKFJg2lfebeUMOyRJ_7AajhOTGvgo",
+    },
     keywords: [
       "React",
       "hooks",
