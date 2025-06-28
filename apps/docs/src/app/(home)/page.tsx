@@ -7,11 +7,12 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            React Hooks & Utilities
+            react-usekit
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Copy battle-tested code directly into your project. No npm packages,
-            just code you own.
+            Instantly scaffold production-ready React hooks and utilities into
+            your project with a single command. No dependencies, no
+            boilerplate—just proven, reusable code.
           </p>
 
           {/* CTA Buttons */}
