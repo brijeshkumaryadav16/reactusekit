@@ -1,6 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
-// Hook to detect clicks outside a target element
+/**
+ * Custom hook to detect clicks outside the element.
+ * @param callback - Function to call when a click outside the element is detected.
+ * @returns A ref to attach to the element you want to monitor for outside clicks.
+ */
+
 export function useClickOutside(callback) {
   const ref = useRef(null);
 
@@ -10,8 +15,8 @@ export function useClickOutside(callback) {
         callback();
       }
     }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, [callback]);
 
   return ref;
