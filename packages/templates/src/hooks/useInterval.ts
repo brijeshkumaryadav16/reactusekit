@@ -1,84 +1,27 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from "react";
 
-// Hook for using setInterval with declarative API and automatic cleanup
-export function useInterval(
-  callback: () => void,
-  delay: number | null,
-  options: {
-    immediate?: boolean;
-  } = {}
-): {
-  start: () => void;
-  stop: () => void;
-  toggle: () => void;
-  reset: () => void;
-} {
-  const savedCallback = useRef<() => void>();
-  const intervalId = useRef<NodeJS.Timeout | null>(null);
-  const [isActive, setIsActive] = useState<boolean>(delay !== null);
+/**
+ * A custom hook that sets up an interval to call a callback function at specified intervals.
+ * @param callback - The function to be called at each interval.
+ * @param delay - The time in milliseconds between each call. If null, the interval is not set.
+ */
 
-  // Remember the latest callback
+export function useInterval(callback: () => void, delay: number | null): void {
+  const savedCallback = useRef<() => void>(callback);
+
+  // Remember the latest callback if it changes.
   useEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 
-  // Execute callback immediately if specified
   useEffect(() => {
-    if (options.immediate && delay !== null) {
-      savedCallback.current?.();
-    }
-  }, [options.immediate, delay]);
-
-  // Set up the interval
-  useEffect(() => {
-    if (delay !== null) {
-      intervalId.current = setInterval(() => {
-        savedCallback.current?.();
-      }, delay);
-
-      return () => {
-        if (intervalId.current) {
-          clearInterval(intervalId.current);
-          intervalId.current = null;
-        }
-      };
+    if (delay === null || delay < 0) {
+      return;
     }
 
-    return () => {
-      if (intervalId.current) {
-        clearInterval(intervalId.current);
-        intervalId.current = null;
-      }
-    };
+    const tick = () => savedCallback.current();
+    const id = setInterval(tick, delay);
+
+    return () => clearInterval(id);
   }, [delay]);
-
-  const start = useCallback(() => {
-    setIsActive(true);
-  }, []);
-
-  const stop = useCallback(() => {
-    setIsActive(false);
-    if (intervalId.current) {
-      clearInterval(intervalId.current);
-      intervalId.current = null;
-    }
-  }, []);
-
-  const toggle = useCallback(() => {
-    setIsActive((prev: boolean) => !prev);
-  }, []);
-
-  const reset = useCallback(() => {
-    stop();
-    if (options.immediate) {
-      savedCallback.current?.();
-    }
-  }, [stop, options.immediate]);
-
-  return {
-    start,
-    stop,
-    toggle,
-    reset,
-  };
 }
