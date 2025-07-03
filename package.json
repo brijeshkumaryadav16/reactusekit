@@ -1,7 +1,7 @@
 {
   "name": "react-usekit",
   "version": "1.0.0",
-  "description": "Drop-in React hooks and utility functions — zero boilerplate, maximum productivity",
+  "description": "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.",
   "homepage": "https://react-usekit.vercel.app",
   "repository": {
     "type": "git",
