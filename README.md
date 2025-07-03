@@ -1,5 +1,7 @@
 # react-usekit
 
+[![npm](https://img.shields.io/npm/v/react-usekit)](https://www.npmjs.com/package/react-usekit)
+
 Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.
 
 ## Documentation
