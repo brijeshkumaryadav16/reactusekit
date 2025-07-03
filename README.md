@@ -6,6 +6,10 @@ Instantly scaffold production-ready React hooks and utilities into your project 
 
 Visit https://react-usekit.vercel.app to view the documentation.
 
+## Roadmap
+
+Check out our [project roadmap](ROADMAP.md) to see upcoming features and current progress.
+
 ## Contributing
 
 Please read the [contributing guide](/CONTRIBUTING.md).
