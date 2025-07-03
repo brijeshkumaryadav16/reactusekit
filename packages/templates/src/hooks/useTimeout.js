@@ -1,15 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 /**
- * A custom hook that sets up an interval to call a callback function at specified intervals.
- * @param callback - The function to be called at each interval.
- * @param delay - The time in milliseconds between each call. If null, the interval is not set.
+ * A custom hook that sets up an timeout to call a callback function at specified intervals.
+ * @param callback - The function to be called at each timeout.
+ * @param delay - The time in milliseconds between each call. If null, the timeout is not set.
  */
 
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-export function useInterval(callback, delay) {
+export function useTimeout(callback, delay) {
   const savedCallback = useRef(callback);
 
   // Remember the latest callback if it changes.
@@ -23,8 +23,8 @@ export function useInterval(callback, delay) {
     }
 
     const tick = () => savedCallback.current();
-    const id = setInterval(tick, delay);
+    const id = setTimeout(tick, delay);
 
-    return () => clearInterval(id);
+    return () => clearTimeout(id);
   }, [delay]);
 }

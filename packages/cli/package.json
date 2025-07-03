@@ -1,6 +1,6 @@
 {
   "name": "react-usekit",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "Drop-in React hooks and utility functions — zero boilerplate, maximum productivity",
   "homepage": "https://react-usekit.vercel.app",
   "repository": {
@@ -25,7 +25,6 @@
   },
   "files": [
     "dist",
-    "templates",
     "README.md"
   ],
   "publishConfig": {

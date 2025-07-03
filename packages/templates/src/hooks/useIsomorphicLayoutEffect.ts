@@ -8,6 +8,5 @@ import { useEffect, useLayoutEffect } from "react";
  * @returns {void}
  */
 
-export const useIsomorphicLayoutEffect = {
-  return: typeof window !== "undefined" ? useLayoutEffect : useEffect,
-};
+export const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;

@@ -6,31 +6,33 @@
 
 - [x] Build CLI with `init` command
 - [x] Interactive flow for hooks/utils selection
-- [ ] Complete all planned hooks and utilities
+- [x] Complete all planned hooks
+- [x] Complete all planned utilities
 
 ### Hooks
 
-- [ ] useBoolean
-- [ ] useDebounceValue
-- [ ] useDebounceFun
-- [ ] useClickOutside
-- [ ] useIsomorphicLayoutEffect
-- [ ] useInterval
-- [ ] useTimeout
-- [ ] useEventListener
-- [ ] useWindowSize
-- [ ] useLocalStorage
+- [x] useBoolean
+- [x] useDebounceValue
+- [x] useDebounceFun
+- [x] useClickOutside
+- [x] useIsomorphicLayoutEffect
+- [x] useInterval
+- [x] useTimeout
+- [x] useEventListener
+- [x] useIsMobile
+- [x] useLocalStorage
 
 ### Utilities
 
-- [ ] capitalize
-- [ ] formatCurrency
-- [ ] isEmpty
-- [ ] truncateText
-- [ ] formatDate
-- [ ] slugify
-- [ ] generateId
-- [ ] deepClone
+- [x] capitalize
+- [x] formatCurrency
+- [x] isEmpty
+- [x] truncateText
+- [x] formatDate
+- [x] slugify
+- [x] generateId
+- [x] deepClone
+- [x] isURLValid
 
 ### Documentation
 

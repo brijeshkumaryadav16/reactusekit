@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 /**
  * A custom hook that sets up an interval to call a callback function at specified intervals.
@@ -6,11 +6,14 @@ import { useEffect, useRef } from "react";
  * @param delay - The time in milliseconds between each call. If null, the interval is not set.
  */
 
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export function useInterval(callback: () => void, delay: number | null): void {
   const savedCallback = useRef<() => void>(callback);
 
   // Remember the latest callback if it changes.
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 

@@ -1,4 +1,9 @@
-// Check if a value is empty (null, undefined, empty string, array, or object)
+/**
+ * Check if a value is empty (null, undefined, empty string, array, or object).
+ * @param value - The value to check.
+ * @returns True if the value is empty, false otherwise.
+ */
+
 export function isEmpty(value: any): boolean {
   // null or undefined
   if (value == null) {
@@ -6,7 +11,7 @@ export function isEmpty(value: any): boolean {
   }
 
   // String (including whitespace-only strings)
-  if (typeof value === 'string') {
+  if (typeof value === "string") {
     return value.trim().length === 0;
   }
 
@@ -16,7 +21,7 @@ export function isEmpty(value: any): boolean {
   }
 
   // Object (plain objects only)
-  if (typeof value === 'object' && value.constructor === Object) {
+  if (typeof value === "object" && value.constructor === Object) {
     return Object.keys(value).length === 0;
   }
 

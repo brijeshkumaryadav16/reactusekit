@@ -1,7 +1,12 @@
-// Create a deep copy of objects and arrays, handling nested structures safely
+/**
+ * Create a deep copy of objects and arrays, handling nested structures safely.
+ * @param obj - The object or array to clone.
+ * @returns A deep copy of the input object.
+ */
+
 export function deepClone<T>(obj: T): T {
   // Handle null, undefined, and primitive types
-  if (obj === null || typeof obj !== 'object') {
+  if (obj === null || typeof obj !== "object") {
     return obj;
   }
 
@@ -12,7 +17,7 @@ export function deepClone<T>(obj: T): T {
 
   // Handle Arrays
   if (Array.isArray(obj)) {
-    return obj.map(item => deepClone(item)) as T;
+    return obj.map((item) => deepClone(item)) as T;
   }
 
   // Handle RegExp
@@ -21,7 +26,7 @@ export function deepClone<T>(obj: T): T {
   }
 
   // Handle Objects
-  if (typeof obj === 'object') {
+  if (typeof obj === "object") {
     const cloned = {} as T;
 
     for (const key in obj) {
