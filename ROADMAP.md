@@ -10,12 +10,12 @@
 
 ### Hooks
 
-- [x] useBoolean
-- [x] useDebounceValue
-- [x] useDebounceFun
-- [x] useClickOutside
-- [x] useIsomorphicLayoutEffect
-- [x] useInterval
+- [ ] useBoolean
+- [ ] useDebounceValue
+- [ ] useDebounceFun
+- [ ] useClickOutside
+- [ ] useIsomorphicLayoutEffect
+- [ ] useInterval
 - [ ] useTimeout
 - [ ] useEventListener
 - [ ] useWindowSize
