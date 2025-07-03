@@ -1,0 +1,131 @@
+---
+title: capitalize
+description: Capitalize the first letter of a string while keeping the rest unchanged.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+# capitalize
+
+Capitalize the first letter of a string while keeping the rest unchanged.
+
+## Installation
+
+```bash
+npx react-usekit@latest init # Select capitalize from the utilities list
+```
+
+## Usage
+
+```tsx
+import { capitalize } from "./utils/capitalize";
+
+function App() {
+  const text = "hello world";
+  const capitalizedText = capitalize(text);
+
+  return (
+    <div>
+      <p>Original: {text}</p>
+      <p>Capitalized: {capitalizedText}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter | Type     | Description              |
+| --------- | -------- | ------------------------ |
+| `str`     | `string` | The string to capitalize |
+
+### Returns
+
+| Type     | Description                                  |
+| -------- | -------------------------------------------- |
+| `string` | The string with the first letter capitalized |
+
+## Examples
+
+### Basic Usage
+
+```tsx
+import { capitalize } from "./utils/capitalize";
+
+console.log(capitalize("hello")); // "Hello"
+console.log(capitalize("world")); // "World"
+console.log(capitalize("JAVASCRIPT")); // "JAVASCRIPT"
+console.log(capitalize("react")); // "React"
+```
+
+### User Name Display
+
+```tsx
+import { capitalize } from "./utils/capitalize";
+
+function UserProfile({ user }) {
+  return (
+    <div>
+      <h2>
+        Welcome, {capitalize(user.firstName)} {capitalize(user.lastName)}!
+      </h2>
+    </div>
+  );
+}
+```
+
+### Form Field Labels
+
+```tsx
+import { capitalize } from "./utils/capitalize";
+
+function DynamicForm({ fields }) {
+  return (
+    <form>
+      {fields.map((field) => (
+        <div key={field.name}>
+          <label>{capitalize(field.name)}</label>
+          <input type={field.type} name={field.name} />
+        </div>
+      ))}
+    </form>
+  );
+}
+```
+
+## Source
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tab value="TypeScript">
+    ```typescript
+    /**
+     * Capitalize the first letter of a string.
+     * @param str - The string to capitalize.
+     * @returns The string with the first letter capitalized.
+     */
+    export function capitalize(str: string): string {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    ```
+  </Tab>
+  <Tab value="JavaScript">
+    ```javascript
+    /**
+     * Capitalize the first letter of a string.
+     * @param {string} str - The string to capitalize.
+     * @returns {string} The string with the first letter capitalized.
+     */
+    export function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Callout type="info">
+  This utility function is safe to use with empty strings and will return an
+  empty string if the input is empty.
+</Callout>

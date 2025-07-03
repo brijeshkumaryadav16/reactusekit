@@ -1,124 +1,111 @@
 ---
-title: Get Started
-description: Copy battle-tested React hooks and utilities into your project
+title: Introduction
+description: Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.
 ---
 
 import { Callout } from "fumadocs-ui/components/callout";
 import { Card, Cards } from "fumadocs-ui/components/card";
-
-# Get Started
-
-<Callout>
-  Copy production-ready React hooks and utilities directly into your project.
-  Zero dependencies, just code you own.
-</Callout>
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 ## Installation
 
-```bash
-# Global installation (recommended)
-npm install -g react-usekit
+<Tabs items={["npx (Recommended)", "Global Install"]}>
+  <Tab value="npx (Recommended)">
+    ```bash npx react-usekit@latest init ``` Use react-usekit without installing
+    it globally. Always gets the latest version.
+  </Tab>
+  <Tab value="Global Install">
+    ```bash npm install -g react-usekit@latest react-usekit init ``` Install
+    react-usekit globally for repeated use.
+  </Tab>
+</Tabs>
 
-# Or use npx (no installation)
-npx react-usekit init
-```
+## Quick Example
 
-## Quick Examples
+Let's add a `useBoolean` hook to your React project:
 
-### Add a React Hook
-
-Add a localStorage hook to your project in 30 seconds:
+### Step 1: Run the CLI
 
 ```bash
 cd your-react-project
-react-usekit init
-# Choose "hooks" → "TypeScript" → select "useLocalStorage" → done
+npx react-usekit@latest init
 ```
 
-Use it immediately:
+### Step 2: Follow the Interactive Prompts
+
+```bash
+? What would you like to add? › hooks
+? Choose language: › TypeScript
+? Enter relative directory to place files: › src/hooks
+? Select hooks to add: › ✓ useBoolean
+✅ Hook 'useBoolean' added to src/hooks/useBoolean.ts
+```
+
+### Step 3: Use It in Your Component
 
 ```tsx
-import { useLocalStorage } from "./src/hooks/useLocalStorage";
+import { useBoolean } from "./src/hooks/useBoolean";
 
-function App() {
-  const [name, setName] = useLocalStorage("username", "");
+function ToggleExample() {
+  const { value: isVisible, toggle, setTrue, setFalse } = useBoolean(false);
 
   return (
-    <input
-      value={name}
-      onChange={(e) => setName(e.target.value)}
-      placeholder="Type here (auto-saved to localStorage)"
-    />
+    <div>
+      <button onClick={toggle}>{isVisible ? "Hide" : "Show"} Content</button>
+
+      {isVisible && (
+        <div>
+          <p>This content is toggleable!</p>
+          <button onClick={setFalse}>Hide</button>
+        </div>
+      )}
+    </div>
   );
 }
 ```
 
-### Add a Utility Function
+## What You Get
 
-Add utility functions to your project in 30 seconds:
+### ✅ Production-Ready Code
 
-```bash
-cd your-react-project
-react-usekit init
-# Choose "utilities" → "TypeScript" → select "formatCurrency" → done
-```
+Every hook and utility is battle-tested and production-ready. No prototypes or experimental code.
 
-Use it immediately:
+### ✅ Zero Dependencies
 
-```tsx
-import { formatCurrency } from "./src/utils/formatCurrency";
+The code is self-contained with no runtime dependencies. You own the code completely.
 
-function ProductPrice({ price }) {
-  return <span>{formatCurrency(price)}</span>; // $1,234.56
-}
-```
+### ✅ TypeScript & JavaScript
 
-## Available Hooks and Utilities
+Full support for both TypeScript and JavaScript with proper types and JSDoc comments.
 
-### React Hooks
+### ✅ Consistent Patterns
 
-- **useLocalStorage** - Persist state in localStorage with automatic sync
-- **useToggle** - Boolean state with toggle, set true/false functions
-- **useDebounce** - Delay value updates until after specified delay
-- **useAsync** - Handle async operations with loading, error states
-- **useClickOutside** - Detect clicks outside specific elements
-- **useEventListener** - Add/remove event listeners with cleanup
-- **useWindowSize** - Track browser window dimensions with resize
-- **useInterval** - Set up intervals that automatically clean up
+All hooks and utilities follow consistent patterns and best practices.
 
-### Utility Functions
+## Available Hooks & Utilities
 
-- **capitalize** - Make the first letter of a string uppercase
-- **formatCurrency** - Format numbers as currency with locale support
-- **isEmpty** - Check if values are empty (null, undefined, empty objects/arrays)
-- **truncateText** - Truncate text with ellipsis at specified length
-- **formatDate** - Format dates with customizable patterns
-- **slugify** - Convert strings to URL-friendly slugs
-- **generateId** - Generate unique identifiers for keys and IDs
-- **deepClone** - Deep clone objects and arrays safely
+<Cards>
+  <Card title="🪝 Hooks" href="/docs/hooks/use-boolean">
+    10 production-ready React hooks for common use cases like state management,
+    side effects, and more.
+  </Card>
+  <Card title="🛠️ Utilities" href="/docs/utilities/capitalize">
+    9 utility functions for common operations like string manipulation,
+    validation, and formatting.
+  </Card>
+</Cards>
 
-### Features
+## CLI Features
 
-- **JavaScript & TypeScript** - Both versions included for every hook and utility
-- **Zero Dependencies** - Just copy the code you need, no package.json bloat
-
-## Requirements
-
-- Node.js 18+
-- React 16.8+ (for hooks)
-- Works with: Create React App, Vite, Next.js, custom Webpack
+- **Interactive prompts** - Easy-to-use interface with clear options
+- **Smart path validation** - Prevents common path-related errors
+- **Duplicate detection** - Won't overwrite existing files without confirmation
+- **Beautiful output** - Clear progress indicators and success messages
+- **Cross-platform** - Works on Windows, macOS, and Linux
 
 ## Next Steps
 
-<Cards>
-  <Card
-    title="Hooks Reference"
-    href="/docs/hooks"
-    description="Complete guide to all React hooks with examples"
-  />
-  <Card
-    title="Utilities Reference"
-    href="/docs/utilities"
-    description="Complete guide to all utility functions with examples"
-  />
-</Cards>
+1. **Try it out** - Run `npx react-usekit@latest init` in your project
+2. **Browse hooks** - Check out the [useBoolean hook](/docs/hooks/use-boolean)
+3. **Explore utilities** - See the [capitalize utility](/docs/utilities/capitalize)
+4. **Give feedback** - Found a bug or have suggestions? Open an issue on [GitHub](https://github.com/brijeshkumaryadav16/react-usekit)

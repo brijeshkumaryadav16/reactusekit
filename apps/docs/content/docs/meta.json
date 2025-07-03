@@ -1,4 +1,11 @@
 {
   "title": "react-usekit",
-  "pages": ["index", "hooks", "utilities"]
+  "pages": [
+    "---Guide---",
+    "index",
+    "---Hooks---",
+    "hooks/use-boolean",
+    "---Utils---",
+    "utils/capitalize"
+  ]
 }

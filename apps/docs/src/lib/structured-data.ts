@@ -3,7 +3,8 @@ export function generateOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "react-usekit",
-    description: "Essential React Hooks & Utilities for modern web development",
+    description:
+      "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.",
     url: "https://react-usekit.vercel.app",
     logo: "https://react-usekit.vercel.app/favicon.svg",
     sameAs: [
@@ -18,14 +19,16 @@ export function generateWebsiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "react-usekit",
-    description: "Essential React Hooks & Utilities",
-    url: "https://www.react-usekit.vercel.app",
+    alternateName: "react usekit",
+    description:
+      "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.",
+    url: "https://react-usekit.vercel.app",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
         urlTemplate:
-          "https://www.react-usekit.vercel.app/docs?search={search_term_string}",
+          "https://react-usekit.vercel.app/docs?search={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -37,11 +40,12 @@ export function generateSoftwareSchema() {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "react-usekit",
+    alternateName: "react usekit CLI",
     description:
-      "The essential collection of 8 React hooks and 8 utility functions every developer needs. Production-ready, zero dependencies, TypeScript first.",
-    url: "https://www.react-usekit.vercel.app",
+      "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.",
+    url: "https://react-usekit.vercel.app",
     downloadUrl: "https://www.npmjs.com/package/react-usekit",
-    softwareVersion: "1.0.0", // Update with actual version
+    softwareVersion: "1.0.0-alpha.11",
     programmingLanguage: ["TypeScript", "JavaScript"],
     operatingSystem: "Any",
     applicationCategory: "DeveloperApplication",
@@ -52,9 +56,9 @@ export function generateSoftwareSchema() {
     },
     author: {
       "@type": "Organization",
-      name: "react-usekit",
+      name: "react-usekit team",
     },
     keywords:
-      "React, hooks, utilities, TypeScript, JavaScript, frontend, development",
+      "react-usekit, react usekit, React CLI, React hooks, React utilities, useLocalStorage, useDebounce, TypeScript, JavaScript, CLI tool",
   };
 }

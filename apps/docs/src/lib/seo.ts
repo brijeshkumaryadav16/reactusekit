@@ -12,11 +12,11 @@ export function generateFaviconMetadata(): Metadata["icons"] {
 }
 
 export function generateSEOMetadata(): Metadata {
-  const title = "react-usekit - Essential React Hooks & Utilities";
+  const title = "react-usekit - Production-Ready React Hooks & Utilities CLI";
   const description =
-    "The essential collection of 8 React hooks and 8 utility functions every developer needs. Production-ready, zero dependencies, TypeScript first. Copy, paste, own your code.";
+    "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.";
   const url = "https://react-usekit.vercel.app";
-  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "react-usekit";
+  const siteName = "react-usekit";
 
   return {
     metadataBase: new URL(url),
@@ -29,26 +29,32 @@ export function generateSEOMetadata(): Metadata {
       google: "ECDucOQdERyOKZRKFJg2lfebeUMOyRJ_7AajhOTGvgo",
     },
     keywords: [
-      "React",
-      "hooks",
-      "utilities",
-      "TypeScript",
-      "JavaScript",
-      "frontend",
-      "development",
-      "production-ready",
-      "zero-dependencies",
-      "copy-paste",
+      "react-usekit",
+      "react usekit",
+      "React CLI",
+      "React hooks CLI",
+      "React utilities CLI",
+      "React hooks generator",
+      "React hooks",
+      "React utilities",
       "useLocalStorage",
-      "useAsync",
       "useDebounce",
-      "React components",
-      "developer tools",
-      "UI library",
-      "utility functions",
-      "custom hooks",
+      "useClickOutside",
+      "TypeScript hooks",
+      "JavaScript hooks",
+      "React development tools",
+      "React productivity",
+      "copy paste React hooks",
+      "React hook library",
+      "React utility functions",
+      "frontend development",
+      "zero dependencies",
+      "production ready hooks",
+      "React scaffolding",
+      "React boilerplate",
+      "custom React hooks",
     ],
-    authors: [{ name: "react-usekit", url }],
+    authors: [{ name: "react-usekit team", url }],
     creator: "react-usekit",
     publisher: "react-usekit",
     robots: {
@@ -74,7 +80,7 @@ export function generateSEOMetadata(): Metadata {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "react-usekit - Essential React Hooks & Utilities",
+          alt: "react-usekit - Production-Ready React Hooks & Utilities CLI",
         },
       ],
     },
