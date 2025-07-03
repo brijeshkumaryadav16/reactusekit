@@ -1,6 +1,3 @@
-### `.github/ISSUE_TEMPLATE/new-utility.md`:
-
-````markdown
 ---
 name: New Utility Request
 about: Request a new utility function
@@ -18,4 +15,3 @@ Brief description of what this utility should do.
 // Example usage
 const result = utilityName(params);
 ```
-````
