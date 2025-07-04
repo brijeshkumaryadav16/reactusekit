@@ -1,7 +1,7 @@
 name: Bug Report
 description: File a bug report to help us improve
-title: '[Bug]: '
-labels: ['bug', 'triage']
+title: "[bug]: "
+labels: ["bug"]
 assignees: []
 body:
   - type: markdown
@@ -38,6 +38,15 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: affected-components
+    attributes:
+      label: Affected Hooks and Utils
+      description: Which hooks or utilities are affected by this bug?
+      placeholder: e.g. useLocalStorage, capitalize, CLI tool
+    validations:
+      required: true
+
   - type: textarea
     id: environment
     attributes:
@@ -59,10 +68,12 @@ body:
       description: Add any other context about the problem here, including screenshots if applicable.
 
   - type: checkboxes
-    id: terms
+    id: before-submitting
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our Code of Conduct
+      label: Before submitting
+      description: By submitting this issue, you agree to follow our Contributing Guidelines.
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I've made research efforts and searched the documentation
+          required: true
+        - label: I've searched for existing issues
           required: true
