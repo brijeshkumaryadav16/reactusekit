@@ -1,5 +1,12 @@
+import BooleanHook from "./components/boolean-hook";
+
 function App() {
-  return <>Hello Vite + React!</>;
+  return (
+    <>
+      {/* useBoolean hook example */}
+      <BooleanHook />
+    </>
+  );
 }
 
 export default App;
