@@ -14,6 +14,8 @@
   "scripts": {
     "dev:docs": "pnpm -F docs dev",
     "build:docs": "pnpm -F docs build",
+    "dev:testing": "pnpm -F testing dev",
+    "build:testing": "pnpm -F testing build",
     "build:cli": "pnpm -F react-usekit build",
     "link:cli": "cd packages/cli && pnpm link --global",
     "unlink:cli": "pnpm remove -g react-usekit",
