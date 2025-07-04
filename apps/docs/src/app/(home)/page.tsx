@@ -12,6 +12,7 @@ import {
   Package,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -44,63 +45,74 @@ export default function HomePage() {
       <div className="min-h-screen">
         {/* Hero Section */}
         <div className="container mx-auto px-6 py-20">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-black dark:text-white">
-              react-usekit
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-              Instantly scaffold production-ready React hooks and utilities into
-              your project with a single command. No dependencies, no
-              boilerplate—just proven, reusable code.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl text-fd-primary md:text-6xl font-bold tracking-tight mb-6">
+                ReactUsekit
+              </h1>
+              <h1 className="text-3xl md:text-6xl font-bold tracking-tight mb-6 text-black dark:text-white">
+                Save time writing common logic.
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed">
+                Build and install reusable React hooks and utilities with a
+                single command. Open Source. Open Code.
+              </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <Link
-                href="/docs"
-                className="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-black dark:bg-white dark:text-black border rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                Get Started
-              </Link>
-              <Link
-                href="https://github.com/brijeshkumaryadav16/react-usekit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 text-sm font-semibold text-foreground bg-card border-2 border-border rounded-lg hover:bg-accent hover:border-accent-foreground transition-all duration-200 shadow-md hover:shadow-lg"
-              >
-                <Github className="w-4 h-4 mr-2" />
-                View on GitHub
-              </Link>
+              {/* CTA Buttons */}
+              <div className="flex items-center space-x-4">
+                <Link
+                  href="/docs"
+                  className="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-black dark:bg-white dark:text-black border rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  Get Started
+                </Link>
+                <Link
+                  href="https://github.com/brijeshkumaryadav16/react-usekit"
+                  className="inline-flex items-center px-6 py-3 text-sm font-semibold text-black dark:text-white border rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  View on Github
+                </Link>
+              </div>
             </div>
+            <div className="hidden md:justify-center md:items-center md:flex">
+              <Image
+                src="/images/react.png"
+                alt="React Usekit Hero Image"
+                width={300}
+                height={300}
+              />
+            </div>
+          </div>
+        </div>
 
-            {/* Terminal Example */}
-            <div className="max-w-2xl mx-auto mb-20">
-              <div className="rounded-xl bg-slate-950 dark:bg-slate-900 border border-slate-800 dark:border-slate-700 p-6 text-left shadow-2xl overflow-hidden">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500 shadow-sm"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-sm"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm"></div>
-                  </div>
-                  <span className="text-slate-400 text-sm font-medium">
-                    Terminal
-                  </span>
+        {/* Terminal Example */}
+        {/* <div className="container mx-auto px-6 py-20">
+          <div className="max-w-2xl mx-auto mb-20">
+            <div className="rounded-xl bg-slate-950 dark:bg-slate-900 border border-slate-800 dark:border-slate-700 p-6 text-left shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500 shadow-sm"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-sm"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm"></div>
                 </div>
-                <pre className="text-sm font-mono overflow-x-auto">
-                  <code className="text-green-400 block">
-                    {`$ npx react-usekit@latest init
+                <span className="text-slate-400 text-sm font-medium">
+                  Terminal
+                </span>
+              </div>
+              <pre className="text-sm font-mono overflow-x-auto">
+                <code className="text-green-400 block">
+                  {`$ npx react-usekit@latest init
 
 ✨ Welcome to react-usekit!
 📦 Choose: hooks → TypeScript → src/hooks
 🎯 Select: useBoolean, useLocalStorage, useClickOutside
 
 ✅ Done! 3 hooks ready in src/hooks/`}
-                  </code>
-                </pre>
-              </div>
+                </code>
+              </pre>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Features Section */}
         <div className="container mx-auto px-6 py-20">
@@ -114,7 +126,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
             {/* Feature Card 1 */}
             <div className="group bg-transparent border border-border/50 rounded-xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-300">
               <div className="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl mb-6">
@@ -262,34 +274,6 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer CTA */}
-        <div className="container mx-auto px-6 py-20 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black dark:text-white">
-              Ready to supercharge your React development?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-              Join thousands of developers who are building faster with
-              react-usekit
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/docs"
-                className="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-black dark:bg-white dark:text-black border rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                Get Started Now
-              </Link>
-              <Link
-                href="/docs/hooks/use-boolean"
-                className="inline-flex items-center px-6 py-3 text-sm font-semibold text-foreground bg-transparent border border-border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200"
-              >
-                <Code className="w-4 h-4 mr-2" />
-                View Example Hook
-              </Link>
             </div>
           </div>
         </div>
