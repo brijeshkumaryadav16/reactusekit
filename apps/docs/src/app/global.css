@@ -5,10 +5,11 @@
 @theme inline {
   --color-fd-primary: var(--ui-color);
 }
+
 :root {
-  --ui-color: hsl(190.91deg 65.35% 60.39%);
+  --ui-color: hsl(187, 84%, 60%);
 }
 
 .dark {
-  --ui-color: hsl(190.91deg 65.35% 60.39%);
+  --color-fd-primary: var(--ui-color);
 }
