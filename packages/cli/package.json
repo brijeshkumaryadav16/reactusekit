@@ -1,6 +1,6 @@
 {
   "name": "react-usekit",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "description": "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.",
   "homepage": "https://react-usekit.vercel.app",
   "repository": {
@@ -43,11 +43,19 @@
     "@types/prompts": "^2.4.9"
   },
   "keywords": [
+    "react-usekit",
     "react",
     "hooks",
     "cli",
     "utilities",
-    "typescript"
+    "typescript",
+    "react-hooks",
+    "scaffold",
+    "generator",
+    "boilerplate",
+    "development-tools",
+    "zero-dependencies",
+    "production-ready"
   ],
   "author": "Brijeshkumar Yadav",
   "license": "MIT",
