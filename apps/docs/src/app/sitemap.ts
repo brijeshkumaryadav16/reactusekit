@@ -4,8 +4,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://react-usekit.vercel.app";
   const lastModified = new Date();
 
+  // Hook pages
+  const hooks = [
+    "use-boolean",
+    "use-click-outside",
+    "use-debounce-value",
+    "use-debounce-fun",
+    "use-event-listener",
+    "use-interval",
+    "use-is-mobile",
+    "use-isomorphic-layout-effect",
+    "use-local-storage",
+    "use-timeout",
+  ];
+
+  // Utility pages
+  const utils = [
+    "capitalize",
+    "deep-clone",
+    "format-currency",
+    "format-date",
+    "generate-id",
+    "is-empty",
+    "is-url-valid",
+    "slugify",
+    "truncate-text",
+  ];
+
   // Static pages
-  return [
+  const staticPages = [
     {
       url: baseUrl,
       lastModified,
@@ -18,17 +45,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/docs/hooks`,
-      lastModified,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/docs/utilities`,
-      lastModified,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
   ];
+
+  // Hook pages
+  const hookPages = hooks.map((hook) => ({
+    url: `${baseUrl}/docs/hooks/${hook}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  // Utility pages
+  const utilPages = utils.map((util) => ({
+    url: `${baseUrl}/docs/utils/${util}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...hookPages, ...utilPages];
 }
