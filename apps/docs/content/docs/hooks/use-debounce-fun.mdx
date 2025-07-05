@@ -1,0 +1,46 @@
+---
+title: useDebounceFun
+description: A custom hook that debounces a function.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+```tsx
+import { useDebounceFun } from "./hooks/useDebounceFun";
+
+function App() {
+  const handleSearch = (query: string) => {
+    console.log("Searching for:", query);
+  };
+
+  const debouncedSearch = useDebounceFun(handleSearch, 500);
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Search..."
+        onChange={(e) => debouncedSearch(e.target.value)}
+      />
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter | Type                       | Description                        |
+| --------- | -------------------------- | ---------------------------------- |
+| `func`    | `(...args: any[]) => void` | The function to debounce           |
+| `delay`   | `number`                   | The debounce delay in milliseconds |
+
+### Returns
+
+| Name                | Type | Description                         |
+| ------------------- | ---- | ----------------------------------- |
+| `debouncedFunction` | `T`  | A debounced version of the function |

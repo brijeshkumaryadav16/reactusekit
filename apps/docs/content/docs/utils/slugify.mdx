@@ -1,0 +1,40 @@
+---
+title: slugify
+description: Convert a string to a URL-friendly slug.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+```tsx
+import { slugify } from "./utils/slugify";
+
+function App() {
+  const title = "Hello World! This is a Test";
+  const slug = slugify(title);
+
+  return (
+    <div>
+      <p>Original: {title}</p>
+      <p>Slugified: {slug}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter | Type     | Default | Description           |
+| --------- | -------- | ------- | --------------------- |
+| `text`    | `string` | -       | The text to slugify   |
+| `options` | `object` | `{}`    | Configuration options |
+
+### Returns
+
+| Type     | Description         |
+| -------- | ------------------- |
+| `string` | A URL-friendly slug |

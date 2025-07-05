@@ -1,0 +1,39 @@
+---
+title: generateId
+description: Generate unique identifiers for various use cases.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+```tsx
+import { generateId } from "./utils/generateId";
+
+function App() {
+  const id1 = generateId();
+  const id2 = generateId({ length: 12, prefix: "user_" });
+
+  return (
+    <div>
+      <p>Default ID: {id1}</p>
+      <p>Custom ID: {id2}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter | Type     | Default | Description                             |
+| --------- | -------- | ------- | --------------------------------------- |
+| `options` | `object` | `{}`    | Configuration options for ID generation |
+
+### Returns
+
+| Type     | Description                   |
+| -------- | ----------------------------- |
+| `string` | A generated unique identifier |

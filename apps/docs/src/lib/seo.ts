@@ -12,9 +12,9 @@ export function generateFaviconMetadata(): Metadata["icons"] {
 }
 
 export function generateSEOMetadata(): Metadata {
-  const title = "react-usekit - Production-Ready React Hooks & Utilities CLI";
+  const title = "react-usekit";
   const description =
-    "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.";
+    "ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command.";
   const url = "https://react-usekit.vercel.app";
   const siteName = "react-usekit";
 
@@ -53,10 +53,20 @@ export function generateSEOMetadata(): Metadata {
       "React scaffolding",
       "React boilerplate",
       "custom React hooks",
+      "how to create React hooks",
+      "React hook examples",
+      "best React hooks library",
+      "React development CLI tool",
+      "scaffold React hooks",
+      "React hooks boilerplate generator",
+      "custom hooks React TypeScript",
+      "React utility library",
+      "React hooks npm package",
+      "free React hooks",
     ],
-    authors: [{ name: "react-usekit team", url }],
-    creator: "react-usekit",
-    publisher: "react-usekit",
+    authors: [{ name: "Brijeshkumar Yadav", url }],
+    creator: "Brijeshkumar Yadav",
+    publisher: "Brijeshkumar Yadav - react-usekit",
     robots: {
       index: true,
       follow: true,
@@ -75,26 +85,23 @@ export function generateSEOMetadata(): Metadata {
       title,
       description,
       siteName,
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "react-usekit - Production-Ready React Hooks & Utilities CLI",
-        },
-      ],
+      // images: [
+      //   {
+      //     url: "/og-image.png",
+      //     width: 1200,
+      //     height: 630,
+      //     alt: "react-usekit - Production-Ready React Hooks & Utilities CLI",
+      //   },
+      // ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og-image.png"],
-      creator: "@reactusekit", // Update with your actual Twitter handle
+      // images: ["/og-image.png"],
+      // creator: "@reactusekit", // Uncomment if you have a Twitter handle
     },
     icons: generateFaviconMetadata(),
     manifest: "/manifest.json",
-    other: {
-      "google-site-verification": "your-google-verification-code", // Add your actual verification code
-    },
   };
 }
