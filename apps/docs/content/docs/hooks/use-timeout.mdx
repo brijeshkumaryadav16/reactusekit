@@ -1,0 +1,58 @@
+---
+title: useTimeout
+description: A custom hook that sets up a timeout to call a callback function after a specified delay.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+```tsx
+import { useTimeout } from "./hooks/useTimeout";
+import { useState } from "react";
+
+function DelayedMessage() {
+  const [showMessage, setShowMessage] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+
+  useTimeout(
+    () => {
+      setShowMessage(true);
+    },
+    isActive ? 3000 : null
+  );
+
+  return (
+    <div>
+      {showMessage ? (
+        <p>This message appeared after 3 seconds!</p>
+      ) : (
+        <p>Waiting for message...</p>
+      )}
+      <button onClick={() => setIsActive(!isActive)}>
+        {isActive ? "Cancel" : "Start"} Timeout
+      </button>
+      <button onClick={() => setShowMessage(false)}>Reset</button>
+    </div>
+  );
+}
+```
+
+<Callout type="info">
+  Pass `null` as the delay to cancel the timeout. The hook automatically cleans
+  up the timeout when the component unmounts.
+</Callout>
+
+## API
+
+### Parameters
+
+| Parameter  | Type             | Description                                                                             |
+| ---------- | ---------------- | --------------------------------------------------------------------------------------- |
+| `callback` | `() => void`     | The function to be called after the delay                                               |
+| `delay`    | `number \| null` | The time in milliseconds before calling the function. If null, the timeout is cancelled |
+
+### Returns
+
+This hook doesn't return anything.

@@ -5,7 +5,24 @@
     "index",
     "---Hooks---",
     "hooks/use-boolean",
+    "hooks/use-click-outside",
+    "hooks/use-debounce-value",
+    "hooks/use-debounce-fun",
+    "hooks/use-event-listener",
+    "hooks/use-interval",
+    "hooks/use-is-mobile",
+    "hooks/use-isomorphic-layout-effect",
+    "hooks/use-local-storage",
+    "hooks/use-timeout",
     "---Utils---",
-    "utils/capitalize"
+    "utils/capitalize",
+    "utils/deep-clone",
+    "utils/format-currency",
+    "utils/format-date",
+    "utils/generate-id",
+    "utils/is-empty",
+    "utils/is-url-valid",
+    "utils/slugify",
+    "utils/truncate-text"
   ]
 }

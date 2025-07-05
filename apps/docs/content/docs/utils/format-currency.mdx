@@ -1,0 +1,41 @@
+---
+title: formatCurrency
+description: Format a number as currency with locale support.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+```tsx
+import { formatCurrency } from "./utils/formatCurrency";
+
+function App() {
+  const price = 1234.56;
+  const formattedPrice = formatCurrency(price, "USD", "en-US");
+
+  return (
+    <div>
+      <p>Original: {price}</p>
+      <p>Formatted: {formattedPrice}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter  | Type     | Default   | Description                      |
+| ---------- | -------- | --------- | -------------------------------- |
+| `amount`   | `number` | -         | The number to format as currency |
+| `currency` | `string` | `"USD"`   | The currency code                |
+| `locale`   | `string` | `"en-US"` | The locale string                |
+
+### Returns
+
+| Type     | Description                   |
+| -------- | ----------------------------- |
+| `string` | The formatted currency string |

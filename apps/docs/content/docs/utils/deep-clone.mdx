@@ -1,0 +1,39 @@
+---
+title: deepClone
+description: Create a deep copy of objects and arrays, handling nested structures safely.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+```tsx
+import { deepClone } from "./utils/deepClone";
+
+function App() {
+  const original = { name: "John", hobbies: ["reading", "coding"] };
+  const cloned = deepClone(original);
+
+  return (
+    <div>
+      <p>Original: {JSON.stringify(original)}</p>
+      <p>Cloned: {JSON.stringify(cloned)}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter | Type | Description                  |
+| --------- | ---- | ---------------------------- |
+| `obj`     | `T`  | The object or array to clone |
+
+### Returns
+
+| Type | Description                     |
+| ---- | ------------------------------- |
+| `T`  | A deep copy of the input object |

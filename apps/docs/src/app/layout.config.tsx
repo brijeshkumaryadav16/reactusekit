@@ -9,7 +9,7 @@ import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
  */
 export const baseOptions: BaseLayoutProps = {
   nav: {
-    title: <h1 className="font-bold">react-usekit</h1>,
+    title: <h1 className="font-bold text-fd-primary text-xl">react-usekit</h1>,
   },
   links: [],
   githubUrl: "https://github.com/brijeshkumaryadav16/react-usekit",

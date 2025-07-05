@@ -1,3 +1,35 @@
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "tailwindcss";
+@import "fumadocs-ui/css/vitepress.css";
+@import "fumadocs-ui/css/preset.css";
+
+@theme inline {
+  --color-fd-primary: var(--ui-color);
+}
+
+:root {
+  --ui-color: hsl(187, 84%, 60%);
+}
+
+.dark {
+  --color-fd-primary: var(--ui-color);
+}
+
+/* Terminal animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.terminal-line {
+  animation: fade-in 0.3s ease-out;
+}
+
+.text-magenta-400 {
+  color: rgb(232 121 249);
+}
