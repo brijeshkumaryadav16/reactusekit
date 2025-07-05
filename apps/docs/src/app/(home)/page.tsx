@@ -120,11 +120,10 @@ export default function HomePage() {
               <Code2 className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             </div>
             <h3 className="text-xl font-semibold mb-4 text-foreground">
-              TypeScript + JavaScript Support
+              TypeScript or JavaScript Support
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Written in TypeScript with full type definitions — works
-              seamlessly in both JS and TS projects.
+              Get TypeScript or JavaScript code based on your project setup — no extra configuration needed.
             </p>
           </div>
 
