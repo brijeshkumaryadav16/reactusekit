@@ -54,22 +54,28 @@ function ToggleExample() {
 
 ## Available Hooks & Utilities
 
-<Cards>
-  <Card title="🪝 Hooks" href="/docs/hooks/use-boolean">
-    10 production-ready React hooks for common use cases like state management,
-    side effects, and more.
-  </Card>
-  <Card title="🛠️ Utilities" href="/docs/utilities/capitalize">
-    9 utility functions for common operations like string manipulation,
-    validation, and formatting.
-  </Card>
-</Cards>
+### 🔁 Hooks
 
-## CLI Features
+- `useBoolean` - A custom hook that manages a boolean state.
+- `useDebounceValue` - A custom hook that debounces a value.
+- `useDebounceFun` - A custom hook that debounces a function.
+- `useClickOutside` - Custom hook to detect clicks outside the element.
+- `useIsomorphicLayoutEffect` - A custom hook that provides a cross-platform compatible `useLayoutEffect`.
+- `useInterval` - A custom hook that sets up an interval to call a callback function at specified intervals.
+- `useTimeout` - A custom hook that sets up an timeout to call a callback function at specified intervals.
+- `useEventListener` - A custom hook that adds an event listener to a specified element or the window.
+- `useIsMobile` - A custom hook that manages a boolean state.
+- `useLocalStorage` - A custom hook that manages state synchronized with localStorage.
 
-- **Interactive prompts** - Easy-to-use interface with clear options
-- **Smart path validation** - Prevents common path-related errors
-- **Duplicate detection** - Won't overwrite existing files without confirmation
-- **Beautiful output** - Clear progress indicators and success messages
-- **Cross-platform** - Works on Windows, macOS, and Linux
+### 🧮 Utilities
+
+- `capitalize` - Capitalize the first letter of a string.
+- `formatCurrency` - Format a number as currency with locale support.
+- `isEmpty` - Check if a value is empty (null, undefined, empty string, array, or object).
+- `truncateText` - Truncate text to a maximum length with ellipsis.
+- `formatDate` - Format a date with locale support.
+- `slugify` - Convert a string to a URL-friendly slug.
+- `generateId` - Generate unique identifiers for various use cases.
+- `deepClone` - Create a deep copy of objects and arrays, handling nested structures safely.
+- `isURLValid` - Check if a string is a valid URL.
 
