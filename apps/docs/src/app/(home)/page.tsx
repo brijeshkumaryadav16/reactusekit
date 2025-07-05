@@ -1,9 +1,4 @@
 import {
-  generateOrganizationSchema,
-  generateSoftwareSchema,
-  generateWebsiteSchema,
-} from "@/lib/structured-data";
-import {
   Code2,
   Eye,
   FileCode,
@@ -18,32 +13,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-  const softwareSchema = generateSoftwareSchema();
-
   return (
     <>
-      {/* Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(softwareSchema),
-        }}
-      />
-
       <div className="min-h-screen flex items-center">
         {/* Hero Section */}
         <div className="container mx-auto px-6 py-20">
