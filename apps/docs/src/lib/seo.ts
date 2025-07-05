@@ -14,7 +14,7 @@ export function generateFaviconMetadata(): Metadata["icons"] {
 export function generateSEOMetadata(): Metadata {
   const title = "react-usekit";
   const description =
-    "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.";
+    "ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command.";
   const url = "https://react-usekit.vercel.app";
   const siteName = "react-usekit";
 
