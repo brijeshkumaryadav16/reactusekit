@@ -1,4 +1,9 @@
 import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/ui/terminal";
+import {
   Code2,
   Eye,
   FileCode,
@@ -9,8 +14,59 @@ import {
   TerminalSquare,
   Wrench,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+
+function AnimatedTerminal() {
+  return (
+    <Terminal className="w-full max-w-lg">
+      <TypingAnimation delay={0} duration={40}>
+        $ npx react-usekit@latest init
+      </TypingAnimation>
+
+      <AnimatedSpan delay={1500} className="text-cyan-400">
+        🚀 React UseKit CLI v1.0.0
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={2200} className="text-gray-400">
+        ? What would you like to add? › 🪝 hooks
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={2900} className="text-gray-400">
+        ? Choose language: › TypeScript
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={3600} className="text-gray-400">
+        ? Select hooks to add:
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={4000} className="ml-2 text-green-400">
+        ◉ useBoolean
+      </AnimatedSpan>
+      <AnimatedSpan delay={4150} className="ml-2 text-green-400">
+        ◉ useLocalStorage
+      </AnimatedSpan>
+      <AnimatedSpan delay={4300} className="ml-2 text-gray-600">
+        ◯ useClickOutside
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={5000} className="text-yellow-400">
+        🔄 Installing templates...
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={5800} className="text-green-400">
+        ✓ useBoolean → src/hooks/useBoolean.ts
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={6200} className="text-green-400">
+        ✓ useLocalStorage → src/hooks/useLocalStorage.ts
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={6800} className="text-green-400 font-semibold">
+        🎉 Operation completed successfully!
+      </AnimatedSpan>
+    </Terminal>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -49,12 +105,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="hidden md:justify-center md:items-center md:flex">
-              <Image
-                src="/images/react.png"
-                alt="React Usekit Hero Image"
-                width={300}
-                height={300}
-              />
+              <AnimatedTerminal />
             </div>
           </div>
         </div>
@@ -123,7 +174,8 @@ export default function HomePage() {
               TypeScript or JavaScript Support
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Get TypeScript or JavaScript code based on your project setup — no extra configuration needed.
+              Get TypeScript or JavaScript code based on your project setup — no
+              extra configuration needed.
             </p>
           </div>
 
