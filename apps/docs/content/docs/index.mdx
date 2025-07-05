@@ -1,33 +1,19 @@
 ---
 title: Introduction
-description: Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.
+description: ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command. It helps you scaffold commonly used logic quickly, cleanly, and consistently — all while keeping your codebase boilerplate-free.
 ---
 
 import { Callout } from "fumadocs-ui/components/callout";
 import { Card, Cards } from "fumadocs-ui/components/card";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-## Installation
-
-<Tabs items={["npx (Recommended)", "Global Install"]}>
-  <Tab value="npx (Recommended)">
-    ```bash npx react-usekit@latest init ``` Use react-usekit without installing
-    it globally. Always gets the latest version.
-  </Tab>
-  <Tab value="Global Install">
-    ```bash npm install -g react-usekit@latest react-usekit init ``` Install
-    react-usekit globally for repeated use.
-  </Tab>
-</Tabs>
-
-## Quick Example
+## Getting Started
 
 Let's add a `useBoolean` hook to your React project:
 
 ### Step 1: Run the CLI
 
 ```bash
-cd your-react-project
 npx react-usekit@latest init
 ```
 
@@ -36,9 +22,11 @@ npx react-usekit@latest init
 ```bash
 ? What would you like to add? › hooks
 ? Choose language: › TypeScript
-? Enter relative directory to place files: › src/hooks
-? Select hooks to add: › ✓ useBoolean
-✅ Hook 'useBoolean' added to src/hooks/useBoolean.ts
+? Enter relative directory to place files (default: src/hooks): src/hooks
+? Select hooks to add: › ◉ useBoolean
+                         ◯ useClickOutside
+
+✅ Hook 'useBoolean' added to src/hooks
 ```
 
 ### Step 3: Use It in Your Component
@@ -64,24 +52,6 @@ function ToggleExample() {
 }
 ```
 
-## What You Get
-
-### ✅ Production-Ready Code
-
-Every hook and utility is battle-tested and production-ready. No prototypes or experimental code.
-
-### ✅ Zero Dependencies
-
-The code is self-contained with no runtime dependencies. You own the code completely.
-
-### ✅ TypeScript & JavaScript
-
-Full support for both TypeScript and JavaScript with proper types and JSDoc comments.
-
-### ✅ Consistent Patterns
-
-All hooks and utilities follow consistent patterns and best practices.
-
 ## Available Hooks & Utilities
 
 <Cards>
@@ -103,9 +73,3 @@ All hooks and utilities follow consistent patterns and best practices.
 - **Beautiful output** - Clear progress indicators and success messages
 - **Cross-platform** - Works on Windows, macOS, and Linux
 
-## Next Steps
-
-1. **Try it out** - Run `npx react-usekit@latest init` in your project
-2. **Browse hooks** - Check out the [useBoolean hook](/docs/hooks/use-boolean)
-3. **Explore utilities** - See the [capitalize utility](/docs/utilities/capitalize)
-4. **Give feedback** - Found a bug or have suggestions? Open an issue on [GitHub](https://github.com/brijeshkumaryadav16/react-usekit)

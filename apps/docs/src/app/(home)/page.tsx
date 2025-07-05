@@ -3,7 +3,17 @@ import {
   generateSoftwareSchema,
   generateWebsiteSchema,
 } from "@/lib/structured-data";
-import { Check, Code, Download, FileCode, Package, Zap } from "lucide-react";
+import {
+  Code2,
+  Eye,
+  FileCode,
+  Package,
+  Puzzle,
+  Rocket,
+  ShieldCheck,
+  TerminalSquare,
+  Wrench,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -60,6 +70,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="https://github.com/brijeshkumaryadav16/react-usekit"
+                  target="_blank"
                   className="inline-flex items-center px-6 py-3 text-sm font-semibold text-black dark:text-white border rounded-full"
                 >
                   View on Github
@@ -92,86 +103,124 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
           {/* Feature Card 1 */}
-          <div className="group bg-transparent border border-border/50 rounded-xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-300">
-            <div className="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl mb-6">
-              <Zap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <Puzzle className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
             <h3 className="text-xl font-semibold mb-4 text-foreground">
-              Lightning Fast
+              Modular by Design
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Get working code in seconds. No more copying from tutorials or
-              debugging broken snippets.
+              Pick only what you need — 10+ hooks and 9+ utilities, individually
+              installable via CLI.
             </p>
           </div>
 
           {/* Feature Card 2 */}
-          <div className="group bg-transparent border border-border/50 rounded-xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-300">
-            <div className="flex items-center justify-center w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl mb-6">
-              <Package className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <Package className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+            </div>
+            <h3 className="text-xl font-semibold mb-4 text-foreground">
+              Built for Modern React
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Crafted for React 18+. Fully functional-component and hooks
+              compatible.
+            </p>
+          </div>
+
+          {/* Feature Card 3 */}
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <FileCode className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+            </div>
+            <h3 className="text-xl font-semibold mb-4 text-foreground">
+              Fully Tree Shakeable
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Install only the logic you use — keep your bundle lean and fast.
+            </p>
+          </div>
+
+          {/* Feature Card 4 */}
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <Code2 className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+            </div>
+            <h3 className="text-xl font-semibold mb-4 text-foreground">
+              TypeScript + JavaScript Support
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Written in TypeScript with full type definitions — works
+              seamlessly in both JS and TS projects.
+            </p>
+          </div>
+
+          {/* Feature Card 5 */}
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <ShieldCheck className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             </div>
             <h3 className="text-xl font-semibold mb-4 text-foreground">
               Zero Dependencies
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Own your code. No runtime dependencies, no package bloat. Just
-              clean, optimized source code.
+              No runtime dependencies. Clean, dependency-free code you can trust
+              and maintain.
             </p>
           </div>
 
-          {/* Feature Card 3 */}
-          <div className="group bg-transparent border border-border/50 rounded-xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-300">
-            <div className="flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl mb-6">
-              <FileCode className="w-6 h-6 text-green-600 dark:text-green-400" />
+          {/* Feature Card 6 */}
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <Wrench className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             </div>
             <h3 className="text-xl font-semibold mb-4 text-foreground">
-              TypeScript Ready
+              Customizable & Extendable
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Full TypeScript support with JavaScript alternatives. Perfect type
-              safety and IntelliSense.
+              Hooks are copied directly into your project — inspect, modify, and
+              own them fully.
             </p>
           </div>
-
-          {/* Feature Card 4 */}
-          <div className="group bg-transparent border border-border/50 rounded-xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-300">
-            <div className="flex items-center justify-center w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl mb-6">
-              <Check className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+          {/* Feature Card 7 */}
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <Rocket className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             </div>
             <h3 className="text-xl font-semibold mb-4 text-foreground">
               Production Ready
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Battle-tested hooks and utilities used in real applications.
-              Performance optimized and reliable.
+              Manually tested and optimized hooks and utilities — built for real
+              apps.
             </p>
           </div>
-
-          {/* Feature Card 5 */}
-          <div className="group bg-transparent border border-border/50 rounded-xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-300">
-            <div className="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl mb-6">
-              <Code className="w-6 h-6 text-red-600 dark:text-red-400" />
-            </div>
-            <h3 className="text-xl font-semibold mb-4 text-foreground">
-              Self-Contained
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Every hook and utility is completely self-contained. Copy, modify,
-              and adapt to your needs.
-            </p>
-          </div>
-
-          {/* Feature Card 6 */}
-          <div className="group bg-transparent border border-border/50 rounded-xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-all duration-300">
+          {/* Feature Card 8 */}
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
             <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
-              <Download className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+              <TerminalSquare className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             </div>
             <h3 className="text-xl font-semibold mb-4 text-foreground">
-              CLI Powered
+              CLI Powered Developer Experience
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Interactive CLI with smart defaults. Works with any React project
-              setup or framework.
+              Scaffold any hook or utility using npx react-usekit. No
+              boilerplate. No setup.
+            </p>
+          </div>
+          {/* Feature Card 9 */}
+          <div className="group bg-transparent border border-border/50 rounded-xl p-8 transition-all duration-300">
+            <div className="flex items-center justify-center w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl mb-6">
+              <Eye className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+            </div>
+            <h3 className="text-xl font-semibold mb-4 text-foreground">
+              Self-Contained & Readable
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Every function is fully self-contained. Easily understand, extend,
+              or debug any hook.
             </p>
           </div>
         </div>
