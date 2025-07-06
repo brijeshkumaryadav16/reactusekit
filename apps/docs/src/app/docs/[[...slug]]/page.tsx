@@ -1,13 +1,15 @@
-import { source } from '@/lib/source';
+import { createMetadata } from "@/lib/metadata";
+import { source } from "@/lib/source";
+import { getMDXComponents } from "@/mdx-components";
+import { createRelativeLink } from "fumadocs-ui/mdx";
 import {
-  DocsPage,
   DocsBody,
   DocsDescription,
+  DocsPage,
   DocsTitle,
-} from 'fumadocs-ui/page';
-import { notFound } from 'next/navigation';
-import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { getMDXComponents } from '@/mdx-components';
+} from "fumadocs-ui/page";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -39,14 +41,19 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>;
-}) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
+  params: Promise<{ slug: string[] }>;
+}): Promise<Metadata> {
+  const { slug = [] } = await props.params;
+  const page = source.getPage(slug);
   if (!page) notFound();
 
-  return {
+  const description = page.data.description;
+
+  return createMetadata({
     title: page.data.title,
-    description: page.data.description,
-  };
+    description,
+    openGraph: {
+      url: `/docs/${page.slugs.join("/")}`,
+    },
+  });
 }
