@@ -1,67 +1,28 @@
-import { MetadataRoute } from "next";
+import { baseUrl } from "@/lib/metadata";
+import { source } from "@/lib/source";
+import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://react-usekit.vercel.app";
-  const lastModified = new Date();
+export const revalidate = false;
 
-  // Hook pages
-  const hooks = [
-    "use-boolean",
-    "use-click-outside",
-    "use-debounce-value",
-    "use-debounce-fun",
-    "use-event-listener",
-    "use-interval",
-    "use-is-mobile",
-    "use-isomorphic-layout-effect",
-    "use-local-storage",
-    "use-timeout",
-  ];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const url = (path: string): string => new URL(path, baseUrl).toString();
 
-  // Utility pages
-  const utils = [
-    "capitalize",
-    "deep-clone",
-    "format-currency",
-    "format-date",
-    "generate-id",
-    "is-empty",
-    "is-url-valid",
-    "slugify",
-    "truncate-text",
-  ];
-
-  // Static pages
-  const staticPages = [
+  return [
     {
-      url: baseUrl,
-      lastModified,
-      changeFrequency: "monthly" as const,
+      url: url("/"),
+      changeFrequency: "monthly",
       priority: 1,
     },
-    {
-      url: `${baseUrl}/docs`,
-      lastModified,
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    },
+    ...(await Promise.all(
+      source.getPages().map(async (page) => {
+        const { lastModified } = page.data;
+        return {
+          url: url(page.url),
+          lastModified: lastModified ? new Date(lastModified) : undefined,
+          changeFrequency: "weekly",
+          priority: 0.5,
+        } as MetadataRoute.Sitemap[number];
+      })
+    )),
   ];
-
-  // Hook pages
-  const hookPages = hooks.map((hook) => ({
-    url: `${baseUrl}/docs/hooks/${hook}`,
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
-
-  // Utility pages
-  const utilPages = utils.map((util) => ({
-    url: `${baseUrl}/docs/utils/${util}`,
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...hookPages, ...utilPages];
 }

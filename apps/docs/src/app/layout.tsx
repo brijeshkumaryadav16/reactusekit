@@ -1,17 +1,25 @@
-import { generateSEOMetadata } from '@/lib/seo';
-import { Analytics } from '@vercel/analytics/react';
+import { baseUrl, createMetadata } from "@/lib/metadata";
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { RootProvider } from 'fumadocs-ui/provider';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import type { ReactNode } from 'react';
-import './global.css';
+import { RootProvider } from "fumadocs-ui/provider";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import type { ReactNode } from "react";
+import "./global.css";
 
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 
-export const metadata: Metadata = generateSEOMetadata();
+export const metadata: Metadata = createMetadata({
+  title: {
+    default: "react-usekit",
+    template: "%s | react-usekit",
+  },
+  description:
+    "ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command.",
+  metadataBase: baseUrl,
+});
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -19,7 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <body className="flex flex-col min-h-screen">
         <RootProvider>{children}</RootProvider>
         <Analytics />
-        <SpeedInsights/>
+        <SpeedInsights />
       </body>
     </html>
   );

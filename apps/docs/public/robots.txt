@@ -1,18 +1,6 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
+Host: https://react-usekit.vercel.app
+
 Sitemap: https://react-usekit.vercel.app/sitemap.xml
-
-# Disallow crawling of API routes
-Disallow: /api/
-
-# Allow crawling of documentation
-Allow: /docs/
-Allow: /docs/*
-
-# Allow crawling of main pages
-Allow: /
-Allow: /docs
-Allow: /docs/hooks
-Allow: /docs/utilities
