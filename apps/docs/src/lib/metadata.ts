@@ -29,6 +29,6 @@ export function createMetadata(override: Metadata): Metadata {
 }
 
 export const baseUrl =
-  process.env.NODE_ENV === "development" || !process.env.VERCEL_URL
+  process.env.NODE_ENV === "development"
     ? new URL("http://localhost:3000")
-    : new URL(`https://${process.env.VERCEL_URL}`);
+    : new URL("https://react-usekit.vercel.app");
