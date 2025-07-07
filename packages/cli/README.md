@@ -1,16 +1,11 @@
-# react-usekit CLI
+# ReactUsekit CLI
 
-Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.
+ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command.
 
 ## Installation & Usage
 
 ```bash
-# Use directly with npx (recommended)
 npx react-usekit@latest init
-
-# Or install globally
-npm install -g react-usekit@latest
-react-usekit init
 ```
 
 Choose your hooks and utilities, select TypeScript or JavaScript, pick your destination folder, and get production-ready code instantly!
