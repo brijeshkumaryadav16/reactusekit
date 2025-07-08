@@ -1,6 +1,6 @@
 {
   "name": "react-usekit",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-beta.13",
   "description": "ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command.",
   "homepage": "https://react-usekit.vercel.app",
   "repository": {
