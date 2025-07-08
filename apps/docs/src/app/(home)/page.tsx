@@ -24,7 +24,7 @@ function AnimatedTerminal() {
       </TypingAnimation>
 
       <AnimatedSpan delay={1500} className="text-cyan-400">
-        🚀 React UseKit CLI v1.0.0
+        🚀 React UseKit CLI - Hooks and Utils Generator
       </AnimatedSpan>
 
       <AnimatedSpan delay={2200} className="text-gray-400">
