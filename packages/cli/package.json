@@ -1,7 +1,7 @@
 {
   "name": "react-usekit",
-  "version": "1.0.0-alpha.12",
-  "description": "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.",
+  "version": "1.0.0-alpha.13",
+  "description": "ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command.",
   "homepage": "https://react-usekit.vercel.app",
   "repository": {
     "type": "git",

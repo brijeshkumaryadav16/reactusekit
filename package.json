@@ -1,16 +1,7 @@
 {
-  "name": "react-usekit",
+  "name": "react-usekit-workspace",
+  "private": true,
   "version": "1.0.0",
-  "description": "Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.",
-  "homepage": "https://react-usekit.vercel.app",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brijeshkumaryadav16/react-usekit.git"
-  },
-  "bugs": {
-    "url": "https://github.com/brijeshkumaryadav16/react-usekit/issues"
-  },
-  "main": "index.js",
   "scripts": {
     "dev:docs": "pnpm -F docs dev",
     "build:docs": "pnpm -F docs build",
@@ -21,25 +12,6 @@
     "unlink:cli": "pnpm remove -g react-usekit",
     "clean": "rm -rf node_modules/.cache && rm -rf apps/docs/.next && rm -rf packages/*/dist"
   },
-  "keywords": [
-    "react",
-    "hooks",
-    "cli",
-    "utilities",
-    "typescript",
-    "javascript",
-    "frontend",
-    "development",
-    "zero-dependencies",
-    "boilerplate",
-    "productivity",
-    "open-source"
-  ],
-  "author": {
-    "name": "Brijeshkumar Yadav",
-    "url": "https://github.com/brijeshkumaryadav16"
-  },
-  "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
   },

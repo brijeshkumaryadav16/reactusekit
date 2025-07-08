@@ -8,7 +8,6 @@
 - [x] Interactive flow for hooks/utils selection
 - [x] Complete all planned hooks
 - [x] Complete all planned utils
-- [ ] Create a working example of each hooks and utils for testing
 
 ### Hooks
 
@@ -35,9 +34,9 @@
 - [x] deepClone
 - [x] isURLValid
 
-### Documentation
+### Documentation site
 
-- [ ]
+- [x] Build a responsive docs site with NextJS
 
 ## 🔮 Phase 2 - Future Plans
 

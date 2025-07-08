@@ -1,8 +1,9 @@
 # react-usekit
 
-[![npm](https://img.shields.io/badge/npm-react--usekit-red)](https://www.npmjs.com/package/react-usekit)
+[![npm version](https://img.shields.io/npm/v/react-usekit.svg)](https://www.npmjs.com/package/react-usekit)
+[![npm downloads](https://img.shields.io/npm/dt/react-usekit.svg)](https://www.npmjs.com/package/react-usekit)
 
-Instantly scaffold production-ready React hooks and utilities into your project with a single command. No dependencies, no boilerplate—just proven, reusable code.
+ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command.
 
 ## Documentation
 
