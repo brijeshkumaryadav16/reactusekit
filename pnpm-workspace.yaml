@@ -1,9 +1,6 @@
-packages:
-  - apps/*
-  - packages/*
-
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - '@vercel/speed-insights'
   - esbuild
+  - msw
   - sharp

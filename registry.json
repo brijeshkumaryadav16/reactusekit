@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [
+    {
+      "name": "use-boolean",
+      "description": "A custom hook to manage boolean state.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-boolean.ts",
+          "type": "registry:hook"
+        }
+      ]
+    }
+  ]
+}

@@ -1,23 +1,35 @@
 {
-  "name": "react-usekit-workspace",
+  "name": "react-usekit",
+  "version": "0.0.0",
   "private": true,
-  "version": "1.0.0",
   "scripts": {
-    "dev:docs": "pnpm -F docs dev",
-    "build:docs": "pnpm -F docs build",
-    "dev:testing": "pnpm -F testing dev",
-    "build:testing": "pnpm -F testing build",
-    "build:cli": "pnpm -F react-usekit build",
-    "link:cli": "cd packages/cli && pnpm link --global",
-    "unlink:cli": "pnpm remove -g react-usekit",
-    "clean": "rm -rf node_modules/.cache && rm -rf apps/docs/.next && rm -rf packages/*/dist"
+    "build": "next build",
+    "dev": "next dev --turbo",
+    "start": "next start",
+    "postinstall": "fumadocs-mdx",
+    "registry:build": "shadcn build"
   },
-  "engines": {
-    "node": ">=18.0.0"
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "fumadocs-core": "15.5.5",
+    "fumadocs-mdx": "11.6.9",
+    "fumadocs-ui": "15.5.5",
+    "lucide-react": "^0.525.0",
+    "motion": "^12.23.0",
+    "next": "15.3.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "shadcn": "^2.9.3"
   },
-  "packageManager": "pnpm@10.12.4",
   "devDependencies": {
-    "@types/node": "^24.0.4",
-    "typescript": "^5.3.2"
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "24.0.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.8.3"
   }
 }
