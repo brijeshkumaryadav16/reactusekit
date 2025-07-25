@@ -13,6 +13,94 @@
           "type": "registry:hook"
         }
       ]
+    },
+    {
+      "name": "use-click-outside",
+      "description": "A custom hook to detect clicks outside a specified element.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-click-outside.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce-fun",
+      "description": "A custom hook that debounces a function.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-debounce-fun.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce-value",
+      "description": "A custom hook that debounces a value.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-debounce-value.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-event-listener",
+      "description": "A custom hook to add and remove event listeners.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-event-listener.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-interval",
+      "description": "A custom hook to manage intervals.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-interval.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "description": "A custom hook to detect mobile devices.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-isomorphic-layout-effect",
+      "description": "A custom hook that works like useLayoutEffect but is compatible with server-side rendering.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-timeout",
+      "description": "A custom hook to manage timeouts.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-timeout.ts",
+          "type": "registry:hook"
+        }
+      ]
     }
   ]
 }
