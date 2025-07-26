@@ -1,80 +1,24 @@
 ---
 title: Introduction
-description: ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project with a single command. It helps you scaffold commonly used logic quickly, cleanly, and consistently — all while keeping your codebase boilerplate-free.
+description: Get the hooks and utilities that you can copy and paste into your apps.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Card, Cards } from "fumadocs-ui/components/card";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+React usekit is a collection of production-ready React hooks and utilities that you can copy and paste into your apps.
 
-## Getting Started
+It features essential hooks for state management, API calls, form handling, and common UI patterns that every React developer needs.
 
-Let's add a `useBoolean` hook to your React project:
+## Philosophy
 
-### Step 1: Run the CLI
+**I believe that great React code should be simple, reusable, and performant.** Most developers end up writing the same custom hooks repeatedly across different projects.
 
-```bash
-npx react-usekit@latest init
-```
+React usekit solves this by providing battle-tested implementations that you can:
 
-### Step 2: Follow the Interactive Prompts
+- Copy directly into your project
+- Customize to fit your exact needs
+- Use without adding dependencies
 
-```bash
-? What would you like to add? › hooks
-? Choose language: › TypeScript
-? Enter relative directory to place files (default: src/hooks): src/hooks
-? Select hooks to add: › ◉ useBoolean
-                         ◯ useClickOutside
+**No more reinventing the wheel.** Instead of spending time writing `useLocalStorage` for the hundredth time, just copy it from React usekit and focus on building your actual product.
 
-✅ Hook 'useBoolean' added to src/hooks
-```
+**TypeScript-first approach.** Every hook comes with comprehensive type definitions, giving you a better developer experience and catching errors before they reach production.
 
-### Step 3: Use It in Your Component
-
-```tsx
-import { useBoolean } from "./src/hooks/useBoolean";
-
-function ToggleExample() {
-  const { value: isVisible, toggle, setTrue, setFalse } = useBoolean(false);
-
-  return (
-    <div>
-      <button onClick={toggle}>{isVisible ? "Hide" : "Show"} Content</button>
-
-      {isVisible && (
-        <div>
-          <p>This content is toggleable!</p>
-          <button onClick={setFalse}>Hide</button>
-        </div>
-      )}
-    </div>
-  );
-}
-```
-
-## Available Hooks & Utilities
-
-### Hooks
-
-- `useBoolean` - A custom hook that manages a boolean state.
-- `useDebounceValue` - A custom hook that debounces a value.
-- `useDebounceFun` - A custom hook that debounces a function.
-- `useClickOutside` - Custom hook to detect clicks outside the element.
-- `useIsomorphicLayoutEffect` - A custom hook that provides a cross-platform compatible `useLayoutEffect`.
-- `useInterval` - A custom hook that sets up an interval to call a callback function at specified intervals.
-- `useTimeout` - A custom hook that sets up an timeout to call a callback function at specified intervals.
-- `useEventListener` - A custom hook that adds an event listener to a specified element or the window.
-- `useIsMobile` - A custom hook that manages a boolean state.
-- `useLocalStorage` - A custom hook that manages state synchronized with localStorage.
-
-### Utils
-
-- `capitalize` - Capitalize the first letter of a string.
-- `formatCurrency` - Format a number as currency with locale support.
-- `isEmpty` - Check if a value is empty (null, undefined, empty string, array, or object).
-- `truncateText` - Truncate text to a maximum length with ellipsis.
-- `formatDate` - Format a date with locale support.
-- `slugify` - Convert a string to a URL-friendly slug.
-- `generateId` - Generate unique identifiers for various use cases.
-- `deepClone` - Create a deep copy of objects and arrays, handling nested structures safely.
-- `isURLValid` - Check if a string is a valid URL.
+The copy-paste approach means you own the code completely. No version conflicts, no breaking changes from updates, no bundle bloat from unused features.
