@@ -13,8 +13,8 @@ const inter = Inter({
 
 export const metadata: Metadata = createMetadata({
   title: {
-    default: "react-usekit",
-    template: "%s | react-usekit",
+    default: "React usekit",
+    template: "%s | React usekit",
   },
   description:
     "Build and install reusable React hooks and utilities with a single command. Open Source. Open Code.",
