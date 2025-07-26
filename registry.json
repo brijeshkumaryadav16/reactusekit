@@ -9,7 +9,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-boolean.ts",
+          "path": "src/registry/new-york/hooks/use-boolean.ts",
           "type": "registry:hook"
         }
       ]
@@ -20,7 +20,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-click-outside.ts",
+          "path": "src/registry/new-york/hooks/use-click-outside.ts",
           "type": "registry:hook"
         }
       ]
@@ -31,7 +31,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-debounce-fun.ts",
+          "path": "src/registry/new-york/hooks/use-debounce-fun.ts",
           "type": "registry:hook"
         }
       ]
@@ -42,7 +42,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-debounce-value.ts",
+          "path": "src/registry/new-york/hooks/use-debounce-value.ts",
           "type": "registry:hook"
         }
       ]
@@ -53,7 +53,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-event-listener.ts",
+          "path": "src/registry/new-york/hooks/use-event-listener.ts",
           "type": "registry:hook"
         }
       ]
@@ -64,7 +64,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-interval.ts",
+          "path": "src/registry/new-york/hooks/use-interval.ts",
           "type": "registry:hook"
         }
       ]
@@ -75,7 +75,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-mobile.ts",
+          "path": "src/registry/new-york/hooks/use-mobile.ts",
           "type": "registry:hook"
         }
       ]
@@ -86,7 +86,7 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-isomorphic-layout-effect.ts",
+          "path": "src/registry/new-york/hooks/use-isomorphic-layout-effect.ts",
           "type": "registry:hook"
         }
       ]
@@ -97,8 +97,52 @@
       "type": "registry:hook",
       "files": [
         {
-          "path": "registry/new-york/hooks/use-timeout.ts",
+          "path": "src/registry/new-york/hooks/use-timeout.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "capitalize",
+      "description": "A utility function to capitalize the first letter of a string.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/capitalize.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "is-empty",
+      "description": "A utility function to check if a value is empty (null, undefined, empty string, array, or object).",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/is-empty.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "is-valid-url",
+      "description": "A utility function to check if a string is a valid URL.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/is-valid-url.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "truncate-text",
+      "description": "A utility function to truncate text to a maximum length with ellipsis.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/truncate-text.ts",
+          "type": "registry:lib"
         }
       ]
     }
