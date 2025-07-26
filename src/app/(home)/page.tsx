@@ -32,8 +32,9 @@ export default async function HomePage() {
             </h1>
 
             <p className="text-base text-fd-muted-foreground leading-relaxed">
-              10+ React Hooks and 10+ Utilities to enhance your development
-              experience.
+              15+ production-ready React hooks and utilities built with
+              TypeScript <br /> and modern best practices. Copy, paste, and ship
+              faster than ever.
             </p>
           </div>
 
