@@ -62,7 +62,9 @@
       "name": "use-event-listener",
       "description": "A custom hook to add and remove event listeners.",
       "type": "registry:hook",
-      "registryDependencies": ["use-isomorphic-layout-effect"],
+      "registryDependencies": [
+        "https://react-usekit.vercel.app/r/use-isomorphic-layout-effect.json"
+      ],
       "files": [
         {
           "path": "src/registry/new-york/hooks/use-event-listener.ts",
