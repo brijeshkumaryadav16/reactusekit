@@ -1,0 +1,46 @@
+---
+title: isEmpty
+description: Check if a value is empty (null, undefined, empty string, array, or object).
+---
+
+## Installation
+
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/is-empty.json"
+```
+
+## Usage
+
+```tsx
+import { isEmpty } from "@/lib/is-empty";
+
+function App() {
+  const emptyString = "";
+  const emptyArray = [];
+  const emptyObject = {};
+  const nonEmpty = "hello";
+
+  return (
+    <div>
+      <p>Empty string: {isEmpty(emptyString) ? "true" : "false"}</p>
+      <p>Empty array: {isEmpty(emptyArray) ? "true" : "false"}</p>
+      <p>Empty object: {isEmpty(emptyObject) ? "true" : "false"}</p>
+      <p>Non-empty string: {isEmpty(nonEmpty) ? "true" : "false"}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter | Type  | Description        |
+| --------- | ----- | ------------------ |
+| `value`   | `any` | The value to check |
+
+### Returns
+
+| Type      | Description                                 |
+| --------- | ------------------------------------------- |
+| `boolean` | True if the value is empty, false otherwise |

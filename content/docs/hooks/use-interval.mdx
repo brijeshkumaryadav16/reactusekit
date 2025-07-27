@@ -1,0 +1,57 @@
+---
+title: useInterval
+description: A custom hook that sets up an interval to call a callback function at specified intervals.
+---
+
+## Installation
+
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-interval.json"
+```
+
+## Usage
+
+```tsx
+import { useInterval } from "@/hooks/useInterval";
+import { useState } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+  const [isRunning, setIsRunning] = useState(true);
+
+  useInterval(
+    () => {
+      setCount(count + 1);
+    },
+    isRunning ? 1000 : null
+  );
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setIsRunning(!isRunning)}>
+        {isRunning ? "Pause" : "Start"}
+      </button>
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
+}
+```
+
+<Callout type="info">
+  Pass `null` as the delay to pause the interval. The hook automatically cleans
+  up the interval when the component unmounts.
+</Callout>
+
+## API
+
+### Parameters
+
+| Parameter  | Type             | Description                                                             |
+| ---------- | ---------------- | ----------------------------------------------------------------------- |
+| `callback` | `() => void`     | The function to be called at each interval                              |
+| `delay`    | `number \| null` | The time in milliseconds between calls. If null, the interval is paused |
+
+### Returns
+
+This hook doesn't return anything.

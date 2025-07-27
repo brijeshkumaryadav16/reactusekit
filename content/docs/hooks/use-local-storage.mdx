@@ -1,0 +1,70 @@
+---
+title: useLocalStorage
+description: A custom hook that manages state synchronized with localStorage.
+---
+
+## Installation
+
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-local-storage.json"
+```
+
+## Usage
+
+```tsx
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+
+function App() {
+  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [name, setName, removeName] = useLocalStorage("userName", "");
+
+  return (
+    <div>
+      <div>
+        <label>Theme: </label>
+        <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+      <div>
+        <label>Name: </label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button onClick={removeName}>Clear</button>
+      </div>
+      <p>Current theme: {theme}</p>
+      <p>Hello, {name || "Guest"}!</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter      | Type     | Default | Description                          |
+| -------------- | -------- | ------- | ------------------------------------ |
+| `key`          | `string` | -       | The localStorage key to use          |
+| `initialValue` | `T`      | -       | The initial value if no value exists |
+| `options`      | `object` | `{}`    | Configuration options                |
+
+### Options
+
+| Option                | Type      | Default | Description                                   |
+| --------------------- | --------- | ------- | --------------------------------------------- |
+| `serializer`          | `object`  | JSON    | Custom serializer with read/write methods     |
+| `syncData`            | `boolean` | `true`  | Whether to sync data across tabs              |
+| `initializeWithValue` | `boolean` | `true`  | Whether to initialize with localStorage value |
+
+### Returns
+
+| Name          | Type                                    | Description                               |
+| ------------- | --------------------------------------- | ----------------------------------------- |
+| `value`       | `T`                                     | The current value                         |
+| `setValue`    | `(value: T \| ((val: T) => T)) => void` | Function to set the value                 |
+| `removeValue` | `() => void`                            | Function to remove the value from storage |

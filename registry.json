@@ -1,0 +1,184 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [
+    {
+      "name": "use-boolean",
+      "description": "A custom hook to manage boolean state.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-boolean.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-click-outside",
+      "description": "A custom hook to detect clicks outside a specified element.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-click-outside.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-copy-to-clipboard",
+      "description": "A custom hook to copy text to the clipboard.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-copy-to-clipboard.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce-fun",
+      "description": "A custom hook that debounces a function.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-debounce-fun.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce-value",
+      "description": "A custom hook that debounces a value.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-debounce-value.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-event-listener",
+      "description": "A custom hook to add and remove event listeners.",
+      "type": "registry:hook",
+      "registryDependencies": ["use-isomorphic-layout-effect"],
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-event-listener.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-interval",
+      "description": "A custom hook to manage intervals.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-interval.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-is-mobile",
+      "description": "A custom hook to detect mobile devices.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-is-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-isomorphic-layout-effect",
+      "description": "A custom hook that works like useLayoutEffect but is compatible with server-side rendering.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-local-storage",
+      "description": "A custom hook to manage local storage state.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-local-storage.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-timeout",
+      "description": "A custom hook to manage timeouts.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-timeout.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "capitalize",
+      "description": "A utility function to capitalize the first letter of a string.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/capitalize.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "is-empty",
+      "description": "A utility function to check if a value is empty (null, undefined, empty string, array, or object).",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/is-empty.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "is-valid-url",
+      "description": "A utility function to check if a string is a valid URL.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/is-valid-url.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "slugify",
+      "description": "A utility function to convert a string into a URL-friendly slug.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/slugify.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "truncate-text",
+      "description": "A utility function to truncate text to a maximum length with ellipsis.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/truncate-text.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

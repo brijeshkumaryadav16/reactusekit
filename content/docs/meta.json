@@ -1,0 +1,25 @@
+{
+  "title": "react-usekit",
+  "pages": [
+    "---Get Started---",
+    "index",
+    "---Hooks---",
+    "hooks/use-boolean",
+    "hooks/use-click-outside",
+    "hooks/use-copy-to-clipboard",
+    "hooks/use-debounce-fun",
+    "hooks/use-debounce-value",
+    "hooks/use-event-listener",
+    "hooks/use-interval",
+    "hooks/use-is-mobile",
+    "hooks/use-isomorphic-layout-effect",
+    "hooks/use-local-storage",
+    "hooks/use-timeout",
+    "---Helpers---",
+    "helpers/capitalize",
+    "helpers/is-empty",
+    "helpers/is-url-valid",
+    "helpers/slugify",
+    "helpers/truncate-text"
+  ]
+}

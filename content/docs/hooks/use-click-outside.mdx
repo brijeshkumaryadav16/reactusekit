@@ -1,0 +1,53 @@
+---
+title: useClickOutside
+description: Custom hook to detect clicks outside the element.
+---
+
+## Installation
+
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-click-outside.json"
+```
+
+## Usage
+
+```tsx
+import { useClickOutside } from "@/hooks/useClickOutside";
+import { useState } from "react";
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useClickOutside<HTMLDivElement>(() => {
+    setIsOpen(false);
+  });
+
+  return (
+    <div ref={dropdownRef}>
+      <button onClick={() => setIsOpen(!isOpen)}>
+        Menu {isOpen ? "▼" : "▶"}
+      </button>
+      {isOpen && (
+        <div>
+          <p>Option 1</p>
+          <p>Option 2</p>
+          <p>Option 3</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter  | Type         | Description                                       |
+| ---------- | ------------ | ------------------------------------------------- |
+| `callback` | `() => void` | Function to call when a click outside is detected |
+
+### Returns
+
+| Name  | Type           | Description                               |
+| ----- | -------------- | ----------------------------------------- |
+| `ref` | `RefObject<T>` | A ref to attach to the element to monitor |

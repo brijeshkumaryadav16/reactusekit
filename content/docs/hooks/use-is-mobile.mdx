@@ -1,0 +1,54 @@
+---
+title: useIsMobile
+description: A custom hook that detects if the current viewport is mobile-sized.
+---
+
+## Installation
+
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-is-mobile.json"
+```
+
+## Usage
+
+```tsx
+import { useIsMobile } from "@/hooks/useIsMobile";
+
+function ResponsiveComponent() {
+  const isMobile = useIsMobile();
+
+  return (
+    <div>
+      <p>Device type: {isMobile ? "Mobile" : "Desktop"}</p>
+      {isMobile ? (
+        <div>
+          <h2>Mobile View</h2>
+          <p>Simplified mobile interface</p>
+        </div>
+      ) : (
+        <div>
+          <h2>Desktop View</h2>
+          <p>Full desktop interface with sidebar</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+<Callout type="info">
+  The hook uses a breakpoint of 768px to determine mobile vs desktop. It
+  automatically updates when the window is resized.
+</Callout>
+
+## API
+
+### Parameters
+
+This hook doesn't accept any parameters.
+
+### Returns
+
+| Type      | Description                                                             |
+| --------- | ----------------------------------------------------------------------- |
+| `boolean` | Returns `true` if viewport is mobile-sized (< 768px), `false` otherwise |
