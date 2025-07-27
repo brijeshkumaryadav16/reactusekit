@@ -7,7 +7,7 @@
  * @returns True if the URL is valid, false otherwise.
  */
 
-export function isURLValid(
+export function isValidURL(
   url: string,
   options: {
     allowRelative?: boolean;

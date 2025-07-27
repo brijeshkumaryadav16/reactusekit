@@ -1,5 +1,5 @@
 ---
-title: isURLValid
+title: isValidURL
 description: Check if a string is a valid URL.
 ---
 
@@ -15,7 +15,7 @@ shadcn@latest add "https://react-usekit.vercel.app/r/is-valid-url.json"
 ## Usage
 
 ```tsx
-import { isURLValid } from "@/lib/is-valid-url";
+import { isValidURL } from "@/lib/is-valid-url";
 
 function App() {
   const validURL = "https://example.com";
@@ -24,10 +24,10 @@ function App() {
   return (
     <div>
       <p>
-        {validURL}: {isURLValid(validURL) ? "Valid" : "Invalid"}
+        {validURL}: {isValidURL(validURL) ? "Valid" : "Invalid"}
       </p>
       <p>
-        {invalidURL}: {isURLValid(invalidURL) ? "Valid" : "Invalid"}
+        {invalidURL}: {isValidURL(invalidURL) ? "Valid" : "Invalid"}
       </p>
     </div>
   );
