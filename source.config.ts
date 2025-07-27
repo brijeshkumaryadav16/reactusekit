@@ -23,6 +23,32 @@ export default defineConfig({
       parseMdx: true,
     },
     remarkNpmOptions: {
+      packageManagers: [
+        {
+          name: "pnpm",
+          command: (command) => {
+            return command.replace(/^npm install /, "pnpm dlx ");
+          },
+        },
+        {
+          name: "npm",
+          command: (command) => {
+            return command.replace(/^npm install /, "npx ");
+          },
+        },
+        {
+          name: "yarn",
+          command: (command) => {
+            return command.replace(/^npm install /, "yarn ");
+          },
+        },
+        {
+          name: "bun",
+          command: (command) => {
+            return command.replace(/^npm install /, "bunx --bun ");
+          },
+        },
+      ],
       persist: {
         id: "package-manager",
       },
