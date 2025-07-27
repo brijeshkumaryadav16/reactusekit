@@ -1,8 +1,8 @@
-# react-usekit
+# React usekit
 
 [![License](https://img.shields.io/npm/l/react-usekit.svg)](LICENSE)
 
-ReactUsekit is a developer-friendly CLI that lets you install reusable React hooks and JavaScript/TypeScript utility functions into your project
+React usekit is a collection of production-ready React Hooks and Helpers that you can copy and paste into your apps.
 
 ## Documentation
 
