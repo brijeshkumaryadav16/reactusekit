@@ -18,7 +18,7 @@
     "---Helpers---",
     "helpers/capitalize",
     "helpers/is-empty",
-    "helpers/is-url-valid",
+    "helpers/is-valid-url",
     "helpers/slugify",
     "helpers/truncate-text"
   ]
