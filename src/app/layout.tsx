@@ -18,7 +18,7 @@ export const metadata: Metadata = createMetadata({
     template: "%s | React usekit",
   },
   description:
-    "Build and install reusable React hooks and utilities with a single command. Open Source. Open Code.",
+    "Build and install reusable React hooks and Helpers with a single command. Open Source. Open Code.",
   metadataBase: baseUrl,
 });
 
