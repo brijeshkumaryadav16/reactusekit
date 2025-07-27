@@ -26,15 +26,15 @@ export default async function HomePage() {
         <div className="max-w-4xl mx-auto px-6 py-20 flex flex-col items-center text-center">
           <div className="mb-12 space-y-5">
             <h1 className="text-xl md:text-3xl lg:text-5xl font-bold">
-              Instant React Hooks and Utilities
+              Instant React Hooks and Helpers
               <br />
               Just Copy, Paste & Done
             </h1>
 
             <p className="text-base text-fd-muted-foreground leading-relaxed">
-              15+ production-ready React hooks and utilities built with
-              TypeScript <br /> and modern best practices. Copy, paste, and ship
-              faster than ever.
+              15+ production-ready React hooks and Helpers built with TypeScript{" "}
+              <br /> and modern best practices. Copy, paste, and ship faster
+              than ever.
             </p>
           </div>
 
