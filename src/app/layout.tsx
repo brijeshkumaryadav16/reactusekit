@@ -18,7 +18,7 @@ export const metadata: Metadata = createMetadata({
     template: "%s | React usekit",
   },
   description:
-    "Build and install reusable React hooks and Helpers with a single command. Open Source. Open Code.",
+    "React usekit is a collection of production-ready React Hooks and Helpers that you can copy and paste into your apps.",
   metadataBase: baseUrl,
 });
 
