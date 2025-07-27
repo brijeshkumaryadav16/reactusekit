@@ -3,23 +3,16 @@ title: useIsMobile
 description: A custom hook that detects if the current viewport is mobile-sized.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-is-mobile.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useIsMobile
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useIsMobile } from "./hooks/useIsMobile";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 function ResponsiveComponent() {
   const isMobile = useIsMobile();

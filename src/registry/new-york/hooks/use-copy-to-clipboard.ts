@@ -1,10 +1,15 @@
 import { useCallback, useState } from "react";
 
-type UseCopyToClipboardResult = {
+/**
+ * Custom hook to copy text to clipboard.
+ * @returns {Object} An object containing the copy function, copied state, and error state.
+ */
+
+interface UseCopyToClipboardResult {
   copy: (text: string) => Promise<boolean>;
   copied: boolean;
   error: string | null;
-};
+}
 
 export function useCopyToClipboard(): UseCopyToClipboardResult {
   const [copied, setCopied] = useState(false);

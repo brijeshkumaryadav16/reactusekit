@@ -3,23 +3,16 @@ title: useTimeout
 description: A custom hook that sets up a timeout to call a callback function after a specified delay.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-timeout.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useTimeout
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useTimeout } from "./hooks/useTimeout";
+import { useTimeout } from "@/hooks/useTimeout";
 import { useState } from "react";
 
 function DelayedMessage() {

@@ -3,23 +3,16 @@ title: useInterval
 description: A custom hook that sets up an interval to call a callback function at specified intervals.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-interval.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useInterval
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useInterval } from "./hooks/useInterval";
+import { useInterval } from "@/hooks/useInterval";
 import { useState } from "react";
 
 function Timer() {

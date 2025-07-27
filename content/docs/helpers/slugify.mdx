@@ -3,23 +3,16 @@ title: slugify
 description: Convert a string to a URL-friendly slug.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/slugify.json"
 ```
-
-<Callout type="info">
-  Select: utils → TypeScript or JavaScript → path -> slugify
-</Callout>
 
 ## Usage
 
 ```tsx
-import { slugify } from "./utils/slugify";
+import { slugify } from "@/lib/slugify";
 
 function App() {
   const title = "Hello World! This is a Test";

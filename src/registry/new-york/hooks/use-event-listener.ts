@@ -1,4 +1,5 @@
-import { RefObject, useEffect, useLayoutEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
+import { useIsomorphicLayoutEffect } from "./use-isomorphic-layout-effect";
 
 /**
  * A custom hook that adds an event listener to a specified element or the window.
@@ -7,9 +8,6 @@ import { RefObject, useEffect, useLayoutEffect, useRef } from "react";
  * @param element - The element to attach the event listener to. Defaults to `window`.
  * @param options - Options for the event listener.
  */
-
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 function useEventListener<K extends keyof MediaQueryListEventMap>(
   eventName: K,

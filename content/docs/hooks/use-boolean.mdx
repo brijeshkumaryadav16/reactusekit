@@ -3,23 +3,16 @@ title: useBoolean
 description: A custom hook that manages a boolean state.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-boolean.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useBoolean
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useBoolean } from "./hooks/useBoolean";
+import { useBoolean } from "@/hooks/useBoolean";
 
 function App() {
   const { value, setTrue, setFalse, toggle } = useBoolean(false);

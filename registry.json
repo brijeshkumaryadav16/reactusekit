@@ -26,6 +26,17 @@
       ]
     },
     {
+      "name": "use-copy-to-clipboard",
+      "description": "A custom hook to copy text to the clipboard.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-copy-to-clipboard.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
       "name": "use-debounce-fun",
       "description": "A custom hook that debounces a function.",
       "type": "registry:hook",
@@ -51,6 +62,7 @@
       "name": "use-event-listener",
       "description": "A custom hook to add and remove event listeners.",
       "type": "registry:hook",
+      "registryDependencies": ["use-isomorphic-layout-effect"],
       "files": [
         {
           "path": "src/registry/new-york/hooks/use-event-listener.ts",
@@ -70,12 +82,12 @@
       ]
     },
     {
-      "name": "use-mobile",
+      "name": "use-is-mobile",
       "description": "A custom hook to detect mobile devices.",
       "type": "registry:hook",
       "files": [
         {
-          "path": "src/registry/new-york/hooks/use-mobile.ts",
+          "path": "src/registry/new-york/hooks/use-is-mobile.ts",
           "type": "registry:hook"
         }
       ]
@@ -87,6 +99,17 @@
       "files": [
         {
           "path": "src/registry/new-york/hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-local-storage",
+      "description": "A custom hook to manage local storage state.",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/registry/new-york/hooks/use-local-storage.ts",
           "type": "registry:hook"
         }
       ]
@@ -131,6 +154,17 @@
       "files": [
         {
           "path": "src/registry/new-york/lib/is-valid-url.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "slugify",
+      "description": "A utility function to convert a string into a URL-friendly slug.",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/registry/new-york/lib/slugify.ts",
           "type": "registry:lib"
         }
       ]

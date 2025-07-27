@@ -3,23 +3,16 @@ title: useDebounceFun
 description: A custom hook that debounces a function.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-debounce-fun.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useDebounceFun
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useDebounceFun } from "./hooks/useDebounceFun";
+import { useDebounceFun } from "@/hooks/useDebounceFun";
 
 function App() {
   const handleSearch = (query: string) => {

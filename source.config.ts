@@ -19,6 +19,13 @@ export const docs = defineDocs({
 export default defineConfig({
   lastModifiedTime: "git",
   mdxOptions: {
-    // MDX options
+    remarkCodeTabOptions: {
+      parseMdx: true,
+    },
+    remarkNpmOptions: {
+      persist: {
+        id: "package-manager",
+      },
+    },
   },
 });

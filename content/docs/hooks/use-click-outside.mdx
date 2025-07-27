@@ -3,23 +3,16 @@ title: useClickOutside
 description: Custom hook to detect clicks outside the element.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-click-outside.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useClickOutside
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useClickOutside } from "./hooks/useClickOutside";
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { useState } from "react";
 
 function App() {

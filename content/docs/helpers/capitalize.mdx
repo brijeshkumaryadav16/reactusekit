@@ -8,18 +8,14 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/capitalize.json"
 ```
-
-<Callout type="info">
-  Select: utils → TypeScript or JavaScript → path -> capitalize
-</Callout>
 
 ## Usage
 
 ```tsx
-import { capitalize } from "./utils/capitalize";
+import { capitalize } from "@/lib/capitalize";
 
 function App() {
   const text = "hello world";

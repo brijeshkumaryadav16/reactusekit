@@ -3,23 +3,16 @@ title: truncateText
 description: Truncate text to a maximum length with ellipsis.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/truncate-text.json"
 ```
-
-<Callout type="info">
-  Select: utils → TypeScript or JavaScript → path -> truncateText
-</Callout>
 
 ## Usage
 
 ```tsx
-import { truncateText } from "./utils/truncateText";
+import { truncateText } from "@/lib/truncate-text";
 
 function App() {
   const longText = "This is a very long text that needs to be truncated";

@@ -3,23 +3,16 @@ title: isEmpty
 description: Check if a value is empty (null, undefined, empty string, array, or object).
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/is-empty.json"
 ```
-
-<Callout type="info">
-  Select: utils → TypeScript or JavaScript → path -> isEmpty
-</Callout>
 
 ## Usage
 
 ```tsx
-import { isEmpty } from "./utils/isEmpty";
+import { isEmpty } from "@/lib/is-empty";
 
 function App() {
   const emptyString = "";

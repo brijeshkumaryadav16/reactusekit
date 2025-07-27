@@ -3,23 +3,16 @@ title: useIsomorphicLayoutEffect
 description: A custom hook that provides a cross-platform compatible useLayoutEffect.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-isomorphic-layout-effect.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useIsomorphicLayoutEffect
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useIsomorphicLayoutEffect } from "./hooks/useIsomorphicLayoutEffect";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { useState, useRef } from "react";
 
 function App() {

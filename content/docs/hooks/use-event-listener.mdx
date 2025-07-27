@@ -3,23 +3,16 @@ title: useEventListener
 description: A custom hook that adds an event listener to a specified element or the window.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-event-listener.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useEventListener
-</Callout>
 
 ## Usage
 
 ```tsx
-import useEventListener from "./hooks/useEventListener";
+import useEventListener from "@/hooks/useEventListener";
 import { useState } from "react";
 
 function App() {

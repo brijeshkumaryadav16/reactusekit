@@ -3,23 +3,16 @@ title: useLocalStorage
 description: A custom hook that manages state synchronized with localStorage.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-
 ## Installation
 
-```bash
-npx react-usekit@latest init
+```package-install
+shadcn@latest add "https://react-usekit.vercel.app/r/use-local-storage.json"
 ```
-
-<Callout type="info">
-  Select: hooks → TypeScript or JavaScript → path -> useLocalStorage
-</Callout>
 
 ## Usage
 
 ```tsx
-import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 function App() {
   const [theme, setTheme] = useLocalStorage("theme", "light");
