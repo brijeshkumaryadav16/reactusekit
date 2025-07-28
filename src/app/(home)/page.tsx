@@ -2,6 +2,8 @@ import { Icons } from "@/components/ui/icon";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const getGithubData = async () => {
   try {
     const response = await fetch(
