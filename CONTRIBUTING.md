@@ -1,6 +1,6 @@
 # Contributing to react-usekit
 
-Thank you for your interest in contributing to **react-usekit**! We welcome all contributions—whether it’s a new hook, a bug fix, documentation improvement, or a suggestion.
+Thank you for your interest in contributing to **react-usekit**! We welcome all contributions—whether it’s a new hook, new helpers, a bug fix, documentation improvement, or a suggestion.
 
 Please read this guide before submitting a pull request.
 
