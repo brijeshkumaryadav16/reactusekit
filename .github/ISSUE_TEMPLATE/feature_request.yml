@@ -19,20 +19,14 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: feature-type
+  - type: input
+    id: feature-hooks-and-helpers
     attributes:
-      label: What type of feature is this?
-      multiple: false
-      options:
-        - New React Hook
-        - New Utility Function
-        - CLI Enhancement
-        - Documentation Improvement
-        - Developer Experience
-        - Other
+      label: Affected Hooks and Helpers
+      description: Is this feature request relevant to any of the already existing hooks or helpers?
+      placeholder: e.g. useBoolean, useClickOutside...
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: additional-context
