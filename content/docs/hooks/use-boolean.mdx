@@ -20,14 +20,13 @@ description: A custom hook that manages a boolean state.
   <TabsContent value="manual">
     Copy and paste the following code into your project.
 
-    ```tsx title="hooks/use-boolean.ts" collapse
+    ```ts title="hooks/use-boolean.ts"
     import { useCallback, useState } from "react";
 
     /**
      * A custom hook that manages a boolean state.
      * @param defaultValue The initial value of the boolean state.
      */
-
     export function useBoolean(defaultValue = false) {
       if (typeof defaultValue !== "boolean") {
         throw new Error("defaultValue must be `true` or `false`");
@@ -48,9 +47,7 @@ description: A custom hook that manages a boolean state.
 
       return { value, setValue, setTrue, setFalse, toggle };
     }
-
     ```
-    Update the import paths to match your project setup.
 
   </TabsContent>
 </CodeTabs>
