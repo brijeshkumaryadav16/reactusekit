@@ -1,8 +1,8 @@
-# React usekit
+# ReactUseKit
 
-React usekit is a collection of production-ready React Hooks and Helpers that you can copy and paste into your apps.
+React Hooks & Helpers Collection - Copy, Paste, or Install with shadcn CLI
 
-[See the website](https://react-usekit.vercel.app)
+[See the website](https://reactusekit.dev)
 
 ## Contributing
 
