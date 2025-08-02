@@ -27,16 +27,15 @@ export default async function HomePage() {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto px-6 py-20 flex flex-col items-center text-center">
           <div className="mb-12 space-y-5">
-            <h1 className="text-xl md:text-3xl lg:text-5xl font-bold">
-              Instant React Hooks and Helpers
-              <br />
-              Just Copy, Paste & Done
+            <h1 className="text-base md:text-2xl lg:text-4xl font-bold">
+              React Hooks & Helpers Collection <br />
+              Copy, Paste, or Install with shadcn CLI
             </h1>
 
-            <p className="text-base text-fd-muted-foreground leading-relaxed">
-              15+ production-ready React hooks and Helpers built with TypeScript{" "}
-              <br /> and modern best practices. Copy, paste, and ship faster
-              than ever.
+            <p className="text-sm md:text-base text-fd-muted-foreground leading-relaxed">
+              A collection of reusable React hooks and helpers that you can
+              easily copy and paste into your apps or add directly through the
+              shadcn CLI. Built with TypeScript and modern best practices.
             </p>
           </div>
 
