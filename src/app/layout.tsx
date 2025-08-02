@@ -13,11 +13,11 @@ const inter = Inter({
 
 export const metadata: Metadata = createMetadata({
   title: {
-    default: "React usekit",
-    template: "%s | React usekit",
+    default: "Reactusekit",
+    template: "%s | Reactusekit",
   },
   description:
-    "React usekit is a collection of production-ready React Hooks and Helpers that you can copy and paste into your apps.",
+    "React Hooks & Helpers Collection - Copy, Paste, or Install with shadcn CLI",
   metadataBase: baseUrl,
 });
 
