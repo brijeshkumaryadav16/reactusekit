@@ -1,6 +1,6 @@
-# Contributing to react-usekit
+# Contributing to ReactUseKit
 
-Thank you for your interest in contributing to **react-usekit**! We welcome all contributions—whether it’s a new hook, new helpers, a bug fix, documentation improvement, or a suggestion.
+Thank you for your interest in contributing to **ReactUseKit**! We welcome all contributions—whether it’s a new hook, new helpers, a bug fix, documentation improvement, or a suggestion.
 
 Please read this guide before submitting a pull request.
 
@@ -8,7 +8,7 @@ Please read this guide before submitting a pull request.
 
 ## About this repository
 
-- **react-usekit** is a production-ready React Hooks and Helpers.
+- **ReactUseKit** is a production-ready React Hooks and Helpers.
 - We use `pnpm` for development
 - The codebase is TypeScript-first and uses [Fumadocs](https://fumadocs.dev/).
 - We use shadcn registry for cli
@@ -34,13 +34,13 @@ public/                       # Static assets and registry JSON
 ### 1. Fork and Clone
 
 ```bash
-git clone https://github.com/brijeshkumaryadav16/react-usekit.git
+git clone https://github.com/brijeshkumaryadav16/reactusekit.git
 ```
 
 ### 2. Navigate to project
 
 ```bash
-cd react-usekit
+cd reactusekit
 ```
 
 ### 3. Create a Branch
@@ -72,7 +72,7 @@ pnpm registry:build
 Then try installing any hooks/helper from the registry in a new project using the `shadcn add` command:
 
 ```bash
-pnpm dlx shadcn@latest add http://localhost:3000/r/<hooks-and-helpers-name>.json
+pnpm dlx shadcn@latest add http://localhost:3000/r/[hooks/helper-name].json
 ```
 
 ---

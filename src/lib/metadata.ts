@@ -3,15 +3,12 @@ import type { Metadata } from "next/types";
 export function createMetadata(override: Metadata): Metadata {
   return {
     ...override,
-    verification: {
-      google: "ECDucOQdERyOKZRKFJg2lfebeUMOyRJ_7AajhOTGvgo",
-    },
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: "https://react-usekit.vercel.app",
+      url: "https://www.reactusekit.dev",
       images: [],
-      siteName: "react-usekit",
+      siteName: "ReactUseKit",
       ...override.openGraph,
     },
     twitter: {
@@ -31,4 +28,4 @@ export function createMetadata(override: Metadata): Metadata {
 export const baseUrl =
   process.env.NODE_ENV === "development"
     ? new URL("http://localhost:3000")
-    : new URL("https://react-usekit.vercel.app");
+    : new URL("https://www.reactusekit.dev");
