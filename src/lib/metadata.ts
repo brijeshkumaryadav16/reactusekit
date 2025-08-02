@@ -8,7 +8,7 @@ export function createMetadata(override: Metadata): Metadata {
       description: override.description ?? undefined,
       url: "https://www.reactusekit.dev",
       images: [],
-      siteName: "Reactusekit",
+      siteName: "ReactUseKit",
       ...override.openGraph,
     },
     twitter: {

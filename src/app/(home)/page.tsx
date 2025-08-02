@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 const getGithubData = async () => {
   try {
     const response = await fetch(
-      "https://api.github.com/repos/brijeshkumaryadav16/react-usekit"
+      "https://api.github.com/repos/brijeshkumaryadav16/reactusekit"
     );
     const data = await response.json();
     const star = data.stargazers_count;
@@ -42,13 +42,13 @@ export default async function HomePage() {
           {/* CTA Buttons */}
           <div className="flex md:flex-row flex-col gap-5 items-center">
             <Link
-              href="/docs"
+              href="/docs/installation"
               className="px-6 py-3 text-sm font-semibold bg-fd-foreground text-fd-background border rounded-full"
             >
               Get Started
             </Link>
             <Link
-              href="https://github.com/brijeshkumaryadav16/react-usekit"
+              href="https://github.com/brijeshkumaryadav16/reactusekit"
               target="_blank"
               className="inline-flex items-center px-6 py-3 text-sm font-semibold border rounded-full gap-1"
             >
