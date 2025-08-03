@@ -5,14 +5,32 @@ description: A custom hook that manages a boolean state.
 
 ## Installation
 
-```package-install
-shadcn@latest add "https://react-usekit.vercel.app/r/use-boolean.json"
-```
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    ```package-install
+    npx shadcn@latest add https://reactusekit.dev/r/use-boolean.json
+    ```
+  </TabsContent>
+
+  <TabsContent value="manual">
+    Copy and paste the following code into your project.
+
+    <CodePreview registryFilePath="hooks/use-boolean.ts" location="hooks/use-boolean.ts" />
+
+    Update the import paths to match your project setup.
+
+  </TabsContent>
+</CodeTabs>
 
 ## Usage
 
 ```tsx
-import { useBoolean } from "@/hooks/useBoolean";
+import { useBoolean } from "@/hooks/use-boolean";
 
 function App() {
   const { value, setTrue, setFalse, toggle } = useBoolean(false);
@@ -28,7 +46,7 @@ function App() {
 }
 ```
 
-## API
+## API Reference
 
 ### Parameters
 

@@ -5,14 +5,32 @@ description: A custom hook to copy text to the clipboard in React applications.
 
 ## Installation
 
-```package-install
-shadcn@latest add "https://react-usekit.vercel.app/r/use-copy-to-clipboard.json"
-```
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    ```package-install
+    npx shadcn@latest add https://reactusekit.dev/r/use-copy-to-clipboard.json
+    ```
+  </TabsContent>
+  
+  <TabsContent value="manual">
+    Copy and paste the following code into your project.
+
+    <CodePreview registryFilePath="hooks/use-copy-to-clipboard.ts" location="hooks/use-copy-to-clipboard.ts" />
+
+    Update the import paths to match your project setup.
+
+  </TabsContent>
+</CodeTabs>
 
 ## Usage
 
 ```tsx
-import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 function App() {
   const { copy, copied, error } = useCopyToClipboard();

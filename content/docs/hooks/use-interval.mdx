@@ -5,14 +5,34 @@ description: A custom hook that sets up an interval to call a callback function 
 
 ## Installation
 
-```package-install
-shadcn@latest add "https://react-usekit.vercel.app/r/use-interval.json"
-```
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    ```package-install
+    npx shadcn@latest add https://reactusekit.dev/r/use-interval.json
+    ```
+  </TabsContent>
+  
+  <TabsContent value="manual">
+    Copy and paste the following code into your project.
+
+    <CodePreview registryFilePath="hooks/use-isomorphic-layout-effect.ts" location="hooks/use-isomorphic-layout-effect.ts" />
+
+    <CodePreview registryFilePath="hooks/use-interval.ts" location="hooks/use-interval.ts" />
+
+    Update the import paths to match your project setup.
+
+  </TabsContent>
+</CodeTabs>
 
 ## Usage
 
 ```tsx
-import { useInterval } from "@/hooks/useInterval";
+import { useInterval } from "@/hooks/use-interval";
 import { useState } from "react";
 
 function Timer() {

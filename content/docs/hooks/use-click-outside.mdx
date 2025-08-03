@@ -5,18 +5,37 @@ description: Custom hook to detect clicks outside the element.
 
 ## Installation
 
-```package-install
-shadcn@latest add "https://react-usekit.vercel.app/r/use-click-outside.json"
-```
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    ```package-install
+    npx shadcn@latest add https://reactusekit.dev/r/use-click-outside.json
+    ```
+  </TabsContent>
+  
+  <TabsContent value="manual">
+    Copy and paste the following code into your project.
+
+    <CodePreview registryFilePath="hooks/use-click-outside.ts" location="hooks/use-click-outside.ts" />
+
+    Update the import paths to match your project setup.
+
+  </TabsContent>
+</CodeTabs>
 
 ## Usage
 
 ```tsx
-import { useClickOutside } from "@/hooks/useClickOutside";
+import { useClickOutside } from "@/hooks/use-click-outside";
 import { useState } from "react";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+
   const dropdownRef = useClickOutside<HTMLDivElement>(() => {
     setIsOpen(false);
   });

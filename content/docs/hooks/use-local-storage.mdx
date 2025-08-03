@@ -5,14 +5,32 @@ description: A custom hook that manages state synchronized with localStorage.
 
 ## Installation
 
-```package-install
-shadcn@latest add "https://react-usekit.vercel.app/r/use-local-storage.json"
-```
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    ```package-install
+    npx shadcn@latest add https://reactusekit.dev/r/use-local-storage.json
+    ```
+  </TabsContent>
+  
+   <TabsContent value="manual">
+    Copy and paste the following code into your project.
+
+    <CodePreview registryFilePath="hooks/use-local-storage.ts" location="hooks/use-local-storage.ts" />
+
+    Update the import paths to match your project setup.
+
+  </TabsContent>
+</CodeTabs>
 
 ## Usage
 
 ```tsx
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useLocalStorage } from "@/hooks/use-local-storage";
 
 function App() {
   const [theme, setTheme] = useLocalStorage("theme", "light");
@@ -43,15 +61,58 @@ function App() {
 }
 ```
 
+## Custom Serializer Example
+
+```tsx
+import { useLocalStorage } from "@/hooks/use-local-storage";
+
+type InstallationType = "cli" | "manual";
+
+function ConfigExample() {
+  // Store raw string values without JSON quotes
+  const [installType, setInstallType] = useLocalStorage<InstallationType>(
+    "installationType",
+    "cli",
+    {
+      serializer: {
+        read: (value: string) => (value === "manual" ? "manual" : "cli"),
+        write: (value: InstallationType) => value, // Stores "cli" instead of "\"cli\""
+      },
+    }
+  );
+
+  // Custom serializer for dates
+  const [lastLogin, setLastLogin] = useLocalStorage("lastLogin", new Date(), {
+    serializer: {
+      read: (value: string) => new Date(value),
+      write: (value: Date) => value.toISOString(),
+    },
+  });
+
+  return (
+    <div>
+      <p>Install Type: {installType}</p>
+      <button onClick={() => setInstallType("manual")}>Set Manual</button>
+      <button onClick={() => setInstallType("cli")}>Set CLI</button>
+
+      <p>Last Login: {lastLogin.toLocaleString()}</p>
+      <button onClick={() => setLastLogin(new Date())}>
+        Update Login Time
+      </button>
+    </div>
+  );
+}
+```
+
 ## API
 
 ### Parameters
 
-| Parameter      | Type     | Default | Description                          |
-| -------------- | -------- | ------- | ------------------------------------ |
-| `key`          | `string` | -       | The localStorage key to use          |
-| `initialValue` | `T`      | -       | The initial value if no value exists |
-| `options`      | `object` | `{}`    | Configuration options                |
+| Parameter      | Type     | Description                          |
+| -------------- | -------- | ------------------------------------ |
+| `key`          | `string` | The localStorage key to use          |
+| `initialValue` | `T`      | The initial value if no value exists |
+| `options`      | `object` | Configuration options                |
 
 ### Options
 

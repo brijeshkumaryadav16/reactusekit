@@ -5,14 +5,32 @@ description: A custom hook that debounces a function.
 
 ## Installation
 
-```package-install
-shadcn@latest add "https://react-usekit.vercel.app/r/use-debounce-fun.json"
-```
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    ```package-install
+    npx shadcn@latest add https://reactusekit.dev/r/use-debounce-fun.json
+    ```
+  </TabsContent>
+  
+   <TabsContent value="manual">
+    Copy and paste the following code into your project.
+
+    <CodePreview registryFilePath="hooks/use-debounce-fun.ts" location="hooks/use-debounce-fun.ts" />
+
+    Update the import paths to match your project setup.
+
+  </TabsContent>
+</CodeTabs>
 
 ## Usage
 
 ```tsx
-import { useDebounceFun } from "@/hooks/useDebounceFun";
+import { useDebounceFun } from "@/hooks/use-debounce-fun";
 
 function App() {
   const handleSearch = (query: string) => {
