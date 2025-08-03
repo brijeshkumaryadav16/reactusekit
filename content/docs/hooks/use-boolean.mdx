@@ -13,41 +13,16 @@ description: A custom hook that manages a boolean state.
   
   <TabsContent value="cli">
     ```package-install
-    npx shadcn@latest add https://react-usekit.vercel.app/r/use-boolean.json
+    npx shadcn@latest add https://reactusekit.dev/r/use-boolean.json
     ```
   </TabsContent>
-  
+
   <TabsContent value="manual">
     Copy and paste the following code into your project.
 
-    ```ts title="hooks/use-boolean.ts"
-    import { useCallback, useState } from "react";
+    <CodePreview registryFilePath="hooks/use-boolean.ts" location="hooks/use-boolean.ts" />
 
-    /**
-     * A custom hook that manages a boolean state.
-     * @param defaultValue The initial value of the boolean state.
-     */
-    export function useBoolean(defaultValue = false) {
-      if (typeof defaultValue !== "boolean") {
-        throw new Error("defaultValue must be `true` or `false`");
-      }
-      const [value, setValue] = useState(defaultValue);
-
-      const setTrue = useCallback(() => {
-        setValue(true);
-      }, []);
-
-      const setFalse = useCallback(() => {
-        setValue(false);
-      }, []);
-
-      const toggle = useCallback(() => {
-        setValue((x) => !x);
-      }, []);
-
-      return { value, setValue, setTrue, setFalse, toggle };
-    }
-    ```
+    Update the import paths to match your project setup.
 
   </TabsContent>
 </CodeTabs>
@@ -55,10 +30,10 @@ description: A custom hook that manages a boolean state.
 ## Usage
 
 ```tsx
-import { useBoolean } from "@/hooks/use-boolean"; // [!code highlight]
+import { useBoolean } from "@/hooks/use-boolean";
 
 function App() {
-  const { value, setTrue, setFalse, toggle } = useBoolean(false); // [!code highlight]
+  const { value, setTrue, setFalse, toggle } = useBoolean(false);
 
   return (
     <div>

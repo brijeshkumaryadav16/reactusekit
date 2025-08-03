@@ -13,44 +13,18 @@ description: A custom hook that sets up an interval to call a callback function 
   
   <TabsContent value="cli">
     ```package-install
-    npx shadcn@latest add https://react-usekit.vercel.app/r/use-interval.json
+    npx shadcn@latest add https://reactusekit.dev/r/use-interval.json
     ```
   </TabsContent>
   
   <TabsContent value="manual">
     Copy and paste the following code into your project.
 
-    ```ts title="hooks/use-interval.ts"
-    import { useEffect, useLayoutEffect, useRef } from "react";
+    <CodePreview registryFilePath="hooks/use-isomorphic-layout-effect.ts" location="hooks/use-isomorphic-layout-effect.ts" />
 
-    /**
-     * A custom hook that sets up an interval to call a callback function at specified intervals.
-     * @param callback - The function to be called at each interval.
-     * @param delay - The time in milliseconds between each call. If null, the interval is not set.
-     */
-    const useIsomorphicLayoutEffect =
-      typeof window !== "undefined" ? useLayoutEffect : useEffect;
+    <CodePreview registryFilePath="hooks/use-interval.ts" location="hooks/use-interval.ts" />
 
-    export function useInterval(callback: () => void, delay: number | null): void {
-      const savedCallback = useRef<() => void>(callback);
-
-      // Remember the latest callback if it changes.
-      useIsomorphicLayoutEffect(() => {
-        savedCallback.current = callback;
-      }, [callback]);
-
-      useEffect(() => {
-        if (delay === null || delay < 0) {
-          return;
-        }
-
-        const tick = () => savedCallback.current();
-        const id = setInterval(tick, delay);
-
-        return () => clearInterval(id);
-      }, [delay]);
-    }
-    ```
+    Update the import paths to match your project setup.
 
   </TabsContent>
 </CodeTabs>
@@ -58,7 +32,7 @@ description: A custom hook that sets up an interval to call a callback function 
 ## Usage
 
 ```tsx
-import { useInterval } from "@/hooks/useInterval";
+import { useInterval } from "@/hooks/use-interval";
 import { useState } from "react";
 
 function Timer() {

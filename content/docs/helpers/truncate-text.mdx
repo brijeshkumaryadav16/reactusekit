@@ -13,24 +13,16 @@ description: Truncate text to a maximum length with ellipsis.
   
   <TabsContent value="cli">
     ```package-install
-    npx shadcn@latest add https://react-usekit.vercel.app/r/truncate-text.json
+    npx shadcn@latest add https://reactusekit.dev/r/truncate-text.json
     ```
   </TabsContent>
   
-  <TabsContent value="manual">
+   <TabsContent value="manual">
     Copy and paste the following code into your project.
 
-    ```ts title="lib/truncate-text.ts"
-    /**
-     * Truncate text to a maximum length with ellipsis.
-     * @param text - The text to truncate.
-     * @param maxLength - Maximum length before truncation.
-     * @returns The truncated text with ellipsis if needed.
-     */
-    export function truncateText(text: string, maxLength: number): string {
-      return text.length > maxLength ? text.slice(0, maxLength) + "…" : text;
-    }
-    ```
+    <CodePreview registryFilePath="lib/truncate-text.ts" location="lib/truncate-text.ts" />
+
+    Update the import paths to match your project setup.
 
   </TabsContent>
 </CodeTabs>

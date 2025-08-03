@@ -1,13 +1,11 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useIsomorphicLayoutEffect } from "./use-isomorphic-layout-effect";
 
 /**
  * A custom hook that sets up an timeout to call a callback function at specified intervals.
  * @param callback - The function to be called at each timeout.
  * @param delay - The time in milliseconds between each call. If null, the timeout is not set.
  */
-
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export function useTimeout(callback: () => void, delay: number | null): void {
   const savedCallback = useRef(callback);

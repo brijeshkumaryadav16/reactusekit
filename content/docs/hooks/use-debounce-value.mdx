@@ -13,38 +13,16 @@ description: A custom hook that debounces a value.
   
   <TabsContent value="cli">
     ```package-install
-    npx shadcn@latest add https://react-usekit.vercel.app/r/use-debounce-value.json
+    npx shadcn@latest add https://reactusekit.dev/r/use-debounce-value.json
     ```
   </TabsContent>
-  
+
   <TabsContent value="manual">
     Copy and paste the following code into your project.
 
-    ```ts title="hooks/use-debounce-value.ts"
-    import { useEffect, useState } from "react";
+    <CodePreview registryFilePath="hooks/use-debounce-value.ts" location="hooks/use-debounce-value.ts" />
 
-    /**
-     * A custom hook that debounces a value.
-     * @param value The value to debounce.
-     * @param delay The debounce delay in milliseconds.
-     * @returns The debounced value.
-     */
-    export function useDebounceValue<T>(value: T, delay: number): T {
-      const [debouncedValue, setDebouncedValue] = useState(value);
-
-      useEffect(() => {
-        const handler = setTimeout(() => {
-          setDebouncedValue(value);
-        }, delay);
-
-        return () => {
-          clearTimeout(handler);
-        };
-      }, [value, delay]);
-
-      return debouncedValue;
-    }
-    ```
+    Update the import paths to match your project setup.
 
   </TabsContent>
 </CodeTabs>
@@ -52,7 +30,7 @@ description: A custom hook that debounces a value.
 ## Usage
 
 ```tsx
-import { useDebounceValue } from "@/hooks/useDebounceValue";
+import { useDebounceValue } from "@/hooks/use-debounce-value";
 import { useState } from "react";
 
 function App() {

@@ -4,6 +4,7 @@ import * as TabsComponents from "fumadocs-ui/components/tabs";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import * as icons from "lucide-react";
 import type { MDXComponents } from "mdx/types";
+import CodePreview from "./components/ui/code-preview";
 import {
   CodeTabs,
   TabsContent,
@@ -23,6 +24,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     TabsList,
     TabsTrigger,
     TabsContent,
+    CodePreview,
     ...components,
   };
 }

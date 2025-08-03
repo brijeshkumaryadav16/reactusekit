@@ -13,47 +13,25 @@ description: A custom hook that detects if the current viewport is mobile-sized.
   
   <TabsContent value="cli">
     ```package-install
-    npx shadcn@latest add https://react-usekit.vercel.app/r/use-is-mobile.json
+    npx shadcn@latest add https://reactusekit.dev/r/use-is-mobile.json
     ```
   </TabsContent>
   
   <TabsContent value="manual">
     Copy and paste the following code into your project.
 
-    ```ts title="hooks/use-is-mobile.ts"
-    import { useEffect, useState } from "react";
+    <CodePreview registryFilePath="hooks/use-is-mobile.ts" location="hooks/use-is-mobile.ts" />
 
-    /**
-     * A custom hook that detects if the current viewport is mobile-sized.
-     * It uses a media query to determine if the width is less than 768 pixels.
-     * @returns {boolean} - Returns true if the viewport is mobile-sized, false otherwise.
-     */
-    const MOBILE_BREAKPOINT = 768;
-
-    export function useIsMobile() {
-      const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
-
-      useEffect(() => {
-        const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-        const onChange = () => {
-          setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-        };
-        mql.addEventListener("change", onChange);
-        setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-        return () => mql.removeEventListener("change", onChange);
-      }, []);
-
-      return !!isMobile;
-    }
-    ```
+    Update the import paths to match your project setup.
 
   </TabsContent>
+
 </CodeTabs>
 
 ## Usage
 
 ```tsx
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 
 function ResponsiveComponent() {
   const isMobile = useIsMobile();

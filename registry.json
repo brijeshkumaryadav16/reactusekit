@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
+  "name": "ReactUsekit",
+  "homepage": "https://reactusekit.dev",
   "items": [
     {
       "name": "use-boolean",
@@ -63,7 +63,7 @@
       "description": "A custom hook to add and remove event listeners.",
       "type": "registry:hook",
       "registryDependencies": [
-        "https://react-usekit.vercel.app/r/use-isomorphic-layout-effect.json"
+        "https://reactusekit.dev/r/use-isomorphic-layout-effect.json"
       ],
       "files": [
         {
@@ -76,6 +76,9 @@
       "name": "use-interval",
       "description": "A custom hook to manage intervals.",
       "type": "registry:hook",
+      "registryDependencies": [
+        "https://reactusekit.dev/r/use-isomorphic-layout-effect.json"
+      ],
       "files": [
         {
           "path": "src/registry/new-york/hooks/use-interval.ts",
@@ -120,6 +123,9 @@
       "name": "use-timeout",
       "description": "A custom hook to manage timeouts.",
       "type": "registry:hook",
+      "registryDependencies": [
+        "https://reactusekit.dev/r/use-isomorphic-layout-effect.json"
+      ],
       "files": [
         {
           "path": "src/registry/new-york/hooks/use-timeout.ts",
