@@ -30,21 +30,21 @@ description: A custom hook to copy text to the clipboard in React applications.
 ## Usage
 
 ```tsx
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 
 function App() {
-  const { copy, copied, error } = useCopyToClipboard();
+  const { copy, copied, error } = useCopyToClipboard()
 
   const handleCopy = () => {
-    copy("Hello from clipboard!");
-  };
+    copy("Hello from clipboard!")
+  }
 
   return (
     <div>
       <button onClick={handleCopy}>{copied ? "Copied!" : "Copy Text"}</button>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
-  );
+  )
 }
 ```
 

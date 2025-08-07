@@ -7,7 +7,13 @@
     "dev": "next dev --turbo",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
-    "registry:build": "shadcn build"
+    "registry:build": "shadcn build",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md,mdx}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md,mdx}\"",
+    "check": "pnpm lint && pnpm format:check",
+    "fix": "pnpm lint:fix && pnpm format"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
@@ -26,12 +32,19 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.1.11",
     "@types/mdx": "^2.0.13",
     "@types/node": "24.0.4",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.6",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3"
   }

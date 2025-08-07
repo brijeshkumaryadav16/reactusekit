@@ -30,12 +30,12 @@ description: A custom hook that debounces a value.
 ## Usage
 
 ```tsx
-import { useDebounceValue } from "@/hooks/use-debounce-value";
-import { useState } from "react";
+import { useDebounceValue } from "@/hooks/use-debounce-value"
+import { useState } from "react"
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchTerm = useDebounceValue(searchTerm, 500);
+  const [searchTerm, setSearchTerm] = useState("")
+  const debouncedSearchTerm = useDebounceValue(searchTerm, 500)
 
   return (
     <div>
@@ -48,7 +48,7 @@ function App() {
       <p>Current: {searchTerm}</p>
       <p>Debounced: {debouncedSearchTerm}</p>
     </div>
-  );
+  )
 }
 ```
 

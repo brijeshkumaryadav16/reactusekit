@@ -32,19 +32,19 @@ description: A custom hook that sets up an interval to call a callback function 
 ## Usage
 
 ```tsx
-import { useInterval } from "@/hooks/use-interval";
-import { useState } from "react";
+import { useInterval } from "@/hooks/use-interval"
+import { useState } from "react"
 
 function Timer() {
-  const [count, setCount] = useState(0);
-  const [isRunning, setIsRunning] = useState(true);
+  const [count, setCount] = useState(0)
+  const [isRunning, setIsRunning] = useState(true)
 
   useInterval(
     () => {
-      setCount(count + 1);
+      setCount(count + 1)
     },
     isRunning ? 1000 : null
-  );
+  )
 
   return (
     <div>
@@ -54,7 +54,7 @@ function Timer() {
       </button>
       <button onClick={() => setCount(0)}>Reset</button>
     </div>
-  );
+  )
 }
 ```
 

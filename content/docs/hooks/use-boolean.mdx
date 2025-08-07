@@ -30,10 +30,10 @@ description: A custom hook that manages a boolean state.
 ## Usage
 
 ```tsx
-import { useBoolean } from "@/hooks/use-boolean";
+import { useBoolean } from "@/hooks/use-boolean"
 
 function App() {
-  const { value, setTrue, setFalse, toggle } = useBoolean(false);
+  const { value, setTrue, setFalse, toggle } = useBoolean(false)
 
   return (
     <div>
@@ -42,7 +42,7 @@ function App() {
       <button onClick={setFalse}>Set False</button>
       <button onClick={toggle}>Toggle</button>
     </div>
-  );
+  )
 }
 ```
 

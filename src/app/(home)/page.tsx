@@ -1,38 +1,38 @@
-import { Icons } from "@/components/ui/icon";
-import { NumberTicker } from "@/components/ui/number-ticker";
-import Link from "next/link";
+import { Icons } from "@/components/ui/icon"
+import { NumberTicker } from "@/components/ui/number-ticker"
+import Link from "next/link"
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 
 const getGithubData = async () => {
   try {
     const response = await fetch(
       "https://api.github.com/repos/brijeshkumaryadav16/reactusekit"
-    );
-    const data = await response.json();
-    const star = data.stargazers_count;
-    return star;
+    )
+    const data = await response.json()
+    const star = data.stargazers_count
+    return star
   } catch (error) {
-    console.error("Error fetching GitHub data:", error);
-    return 0;
+    console.error("Error fetching GitHub data:", error)
+    return 0
   }
-};
+}
 
 export default async function HomePage() {
-  const star = await getGithubData();
+  const star = await getGithubData()
 
   return (
     <>
-      <div className="min-h-[calc(100vh-4rem)] flex items-center">
+      <div className="flex min-h-[calc(100vh-4rem)] items-center">
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto px-6 py-20 flex flex-col items-center text-center">
+        <div className="mx-auto flex max-w-4xl flex-col items-center px-6 py-20 text-center">
           <div className="mb-12 space-y-5">
-            <h1 className="text-base md:text-2xl lg:text-4xl font-bold">
+            <h1 className="text-base font-bold md:text-2xl lg:text-4xl">
               React Hooks & Helpers Collection <br />
               Copy, Paste, or Install with shadcn CLI
             </h1>
 
-            <p className="text-sm md:text-base text-fd-muted-foreground leading-relaxed">
+            <p className="text-fd-muted-foreground text-sm leading-relaxed md:text-base">
               A collection of reusable React hooks and helpers that you can
               easily copy and paste into your apps or add directly through the
               shadcn CLI. Built with TypeScript and modern best practices.
@@ -40,19 +40,19 @@ export default async function HomePage() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex md:flex-row flex-col gap-5 items-center">
+          <div className="flex flex-col items-center gap-5 md:flex-row">
             <Link
               href="/docs/installation"
-              className="px-6 py-3 text-sm font-semibold bg-fd-foreground text-fd-background border rounded-full"
+              className="bg-fd-foreground text-fd-background rounded-full border px-6 py-3 text-sm font-semibold"
             >
               Get Started
             </Link>
             <Link
               href="https://github.com/brijeshkumaryadav16/reactusekit"
               target="_blank"
-              className="inline-flex items-center px-6 py-3 text-sm font-semibold border rounded-full gap-1"
+              className="inline-flex items-center gap-1 rounded-full border px-6 py-3 text-sm font-semibold"
             >
-              <Icons.gitHub className="w-4 h-4" /> Star on GitHub
+              <Icons.gitHub className="h-4 w-4" /> Star on GitHub
               <span>
                 🌟 <NumberTicker value={star} className="font-display" />
               </span>
@@ -61,5 +61,5 @@ export default async function HomePage() {
         </div>
       </div>
     </>
-  );
+  )
 }

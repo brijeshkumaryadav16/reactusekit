@@ -30,19 +30,19 @@ description: A custom hook that provides a cross-platform compatible useLayoutEf
 ## Usage
 
 ```tsx
-import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
-import { useState, useRef } from "react";
+import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect"
+import { useState, useRef } from "react"
 
 function App() {
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const elementRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const elementRef = useRef<HTMLDivElement>(null)
 
   useIsomorphicLayoutEffect(() => {
     if (elementRef.current) {
-      const { offsetWidth, offsetHeight } = elementRef.current;
-      setDimensions({ width: offsetWidth, height: offsetHeight });
+      const { offsetWidth, offsetHeight } = elementRef.current
+      setDimensions({ width: offsetWidth, height: offsetHeight })
     }
-  }, []);
+  }, [])
 
   return (
     <div>
@@ -56,7 +56,7 @@ function App() {
         Dimensions: {dimensions.width} x {dimensions.height}
       </p>
     </div>
-  );
+  )
 }
 ```
 

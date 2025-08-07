@@ -30,11 +30,11 @@ description: A custom hook that manages state synchronized with localStorage.
 ## Usage
 
 ```tsx
-import { useLocalStorage } from "@/hooks/use-local-storage";
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 function App() {
-  const [theme, setTheme] = useLocalStorage("theme", "light");
-  const [name, setName, removeName] = useLocalStorage("userName", "");
+  const [theme, setTheme] = useLocalStorage("theme", "light")
+  const [name, setName, removeName] = useLocalStorage("userName", "")
 
   return (
     <div>
@@ -57,16 +57,16 @@ function App() {
       <p>Current theme: {theme}</p>
       <p>Hello, {name || "Guest"}!</p>
     </div>
-  );
+  )
 }
 ```
 
 ## Custom Serializer Example
 
 ```tsx
-import { useLocalStorage } from "@/hooks/use-local-storage";
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
-type InstallationType = "cli" | "manual";
+type InstallationType = "cli" | "manual"
 
 function ConfigExample() {
   // Store raw string values without JSON quotes
@@ -79,7 +79,7 @@ function ConfigExample() {
         write: (value: InstallationType) => value, // Stores "cli" instead of "\"cli\""
       },
     }
-  );
+  )
 
   // Custom serializer for dates
   const [lastLogin, setLastLogin] = useLocalStorage("lastLogin", new Date(), {
@@ -87,7 +87,7 @@ function ConfigExample() {
       read: (value: string) => new Date(value),
       write: (value: Date) => value.toISOString(),
     },
-  });
+  })
 
   return (
     <div>
@@ -100,7 +100,7 @@ function ConfigExample() {
         Update Login Time
       </button>
     </div>
-  );
+  )
 }
 ```
 

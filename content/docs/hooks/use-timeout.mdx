@@ -32,19 +32,19 @@ description: A custom hook that sets up a timeout to call a callback function af
 ## Usage
 
 ```tsx
-import { useTimeout } from "@/hooks/use-timeout";
-import { useState } from "react";
+import { useTimeout } from "@/hooks/use-timeout"
+import { useState } from "react"
 
 function DelayedMessage() {
-  const [showMessage, setShowMessage] = useState(false);
-  const [isActive, setIsActive] = useState(true);
+  const [showMessage, setShowMessage] = useState(false)
+  const [isActive, setIsActive] = useState(true)
 
   useTimeout(
     () => {
-      setShowMessage(true);
+      setShowMessage(true)
     },
     isActive ? 3000 : null
-  );
+  )
 
   return (
     <div>
@@ -58,7 +58,7 @@ function DelayedMessage() {
       </button>
       <button onClick={() => setShowMessage(false)}>Reset</button>
     </div>
-  );
+  )
 }
 ```
 
