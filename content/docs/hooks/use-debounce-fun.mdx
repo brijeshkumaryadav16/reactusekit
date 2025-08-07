@@ -30,14 +30,14 @@ description: A custom hook that debounces a function.
 ## Usage
 
 ```tsx
-import { useDebounceFun } from "@/hooks/use-debounce-fun";
+import { useDebounceFun } from "@/hooks/use-debounce-fun"
 
 function App() {
   const handleSearch = (query: string) => {
-    console.log("Searching for:", query);
-  };
+    console.log("Searching for:", query)
+  }
 
-  const debouncedSearch = useDebounceFun(handleSearch, 500);
+  const debouncedSearch = useDebounceFun(handleSearch, 500)
 
   return (
     <div>
@@ -47,7 +47,7 @@ function App() {
         onChange={(e) => debouncedSearch(e.target.value)}
       />
     </div>
-  );
+  )
 }
 ```
 

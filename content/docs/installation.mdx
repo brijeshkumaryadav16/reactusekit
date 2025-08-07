@@ -25,21 +25,21 @@ npx shadcn@latest add https://reactusekit.dev/r/[hooks/helper-name].json
 ### Hooks
 
 ```tsx
-import { useBoolean } from "@/hooks/use-boolean";
+import { useBoolean } from "@/hooks/use-boolean"
 
 function MyComponent() {
-  const { value, toggle } = useBoolean(false);
+  const { value, toggle } = useBoolean(false)
 
-  return <button onClick={toggle}>{value ? "ON" : "OFF"}</button>;
+  return <button onClick={toggle}>{value ? "ON" : "OFF"}</button>
 }
 ```
 
 ### Helpers
 
 ```tsx
-import { capitalize } from "@/lib/capitalize";
+import { capitalize } from "@/lib/capitalize"
 
 function Example() {
-  return <h1>{capitalize("hello world")}</h1>;
+  return <h1>{capitalize("hello world")}</h1>
 }
 ```

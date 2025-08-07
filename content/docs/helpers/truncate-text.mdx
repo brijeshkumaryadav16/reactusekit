@@ -30,18 +30,18 @@ description: Truncate text to a maximum length with ellipsis.
 ## Usage
 
 ```tsx
-import { truncateText } from "@/lib/truncate-text";
+import { truncateText } from "@/lib/truncate-text"
 
 function App() {
-  const longText = "This is a very long text that needs to be truncated";
-  const shortText = truncateText(longText, 20);
+  const longText = "This is a very long text that needs to be truncated"
+  const shortText = truncateText(longText, 20)
 
   return (
     <div>
       <p>Original: {longText}</p>
       <p>Truncated: {shortText}</p>
     </div>
-  );
+  )
 }
 ```
 

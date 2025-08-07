@@ -30,15 +30,15 @@ description: Custom hook to detect clicks outside the element.
 ## Usage
 
 ```tsx
-import { useClickOutside } from "@/hooks/use-click-outside";
-import { useState } from "react";
+import { useClickOutside } from "@/hooks/use-click-outside"
+import { useState } from "react"
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const dropdownRef = useClickOutside<HTMLDivElement>(() => {
-    setIsOpen(false);
-  });
+    setIsOpen(false)
+  })
 
   return (
     <div ref={dropdownRef}>
@@ -53,7 +53,7 @@ function App() {
         </div>
       )}
     </div>
-  );
+  )
 }
 ```
 

@@ -32,22 +32,22 @@ description: A custom hook that adds an event listener to a specified element or
 ## Usage
 
 ```tsx
-import { useEventListener } from "@/hooks/use-event-listener";
-import { useState } from "react";
+import { useEventListener } from "@/hooks/use-event-listener"
+import { useState } from "react"
 
 function App() {
-  const [lastKey, setLastKey] = useState("");
+  const [lastKey, setLastKey] = useState("")
 
   useEventListener("keydown", (event) => {
-    setLastKey(event.key);
-  });
+    setLastKey(event.key)
+  })
 
   return (
     <div>
       <p>Press any key...</p>
       <p>Last key pressed: {lastKey}</p>
     </div>
-  );
+  )
 }
 ```
 
