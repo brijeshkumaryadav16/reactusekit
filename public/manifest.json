@@ -1,7 +1,7 @@
 {
-  "name": "react-usekit",
-  "short_name": "react-usekit",
-  "description": "Essential React Hooks & Utilities",
+  "name": "ReactUseKit",
+  "short_name": "ReactUseKit",
+  "description": "A collection of React hooks and utilities",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -25,7 +25,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["developer", "utilities", "productivity"],
+  "categories": ["developer", "productivity"],
   "lang": "en-US",
   "dir": "ltr",
   "orientation": "portrait-primary"
