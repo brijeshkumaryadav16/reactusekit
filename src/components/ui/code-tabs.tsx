@@ -32,6 +32,7 @@ export function TabsTrigger({
           ? "border-fd-primary text-fd-primary"
           : "text-fd-muted-foreground hover:text-fd-foreground border-transparent"
       }`}
+      aria-selected={isActive}
     >
       {children}
     </button>

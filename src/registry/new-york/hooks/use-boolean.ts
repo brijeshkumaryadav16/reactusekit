@@ -9,9 +9,6 @@ export function useBoolean(defaultValue = false) {
   if (typeof defaultValue !== "boolean") {
     throw new Error("defaultValue must be `true` or `false`")
   }
-  if (typeof defaultValue !== "boolean") {
-    throw new Error("defaultValue must be `true` or `false`")
-  }
   const [value, setValue] = useState(defaultValue)
 
   const setTrue = useCallback(() => {
