@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://react-usekit.vercel.app/sitemap.xml
+Sitemap: https://reactusekit.dev/sitemap.xml
