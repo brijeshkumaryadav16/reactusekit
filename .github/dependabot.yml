@@ -1,6 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/" # Root where package.json & pnpm-lock.yaml live
     schedule:
-      interval: "weekly"
+      interval: "weekly" # Weekly keeps noise low; change to daily if desired
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 5
