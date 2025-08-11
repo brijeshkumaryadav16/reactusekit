@@ -6,14 +6,14 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: "https://www.reactusekit.dev",
+      url: override.openGraph?.url ?? baseUrl,
       images: [],
       siteName: "ReactUseKit",
       ...override.openGraph,
     },
     twitter: {
       card: "summary_large_image",
-      creator: "",
+      creator: "@brijeshkumar16_",
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       images: "",

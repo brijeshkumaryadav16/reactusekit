@@ -53,7 +53,10 @@ export async function generateMetadata(props: {
     title: page.data.title,
     description,
     openGraph: {
-      url: `/docs/${page.slugs.join("/")}`,
+      url: page.url,
+    },
+    alternates: {
+      canonical: page.url,
     },
   })
 }

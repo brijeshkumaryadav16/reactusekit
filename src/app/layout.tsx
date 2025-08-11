@@ -19,6 +19,9 @@ export const metadata: Metadata = createMetadata({
   description:
     "React Hooks & Helpers Collection - Copy, Paste, or Install with shadcn CLI",
   metadataBase: baseUrl,
+  alternates: {
+    canonical: "/",
+  },
 })
 
 export default function Layout({ children }: { children: ReactNode }) {
