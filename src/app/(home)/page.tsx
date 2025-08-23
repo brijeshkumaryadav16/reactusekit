@@ -22,8 +22,8 @@ export default async function HomePage() {
   const star = await getGithubData()
 
   return (
-    <>
-      <div className="flex min-h-[calc(100vh-4rem)] items-center">
+    <section>
+      <div className="flex min-h-[calc(100vh-6rem)] items-center">
         {/* Hero Section */}
         <div className="mx-auto flex max-w-4xl flex-col items-center px-6 py-20 text-center">
           <div className="mb-12 space-y-5">
@@ -60,6 +60,29 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
-    </>
+
+      {/* Footer */}
+      <div className="flex items-center justify-center text-xs">
+        <p>
+          Built by{" "}
+          <Link
+            href="https://x.com/brijeshkumar16_"
+            target="_blank"
+            className="underline underline-offset-2"
+          >
+            Brijeshkumar Yadav
+          </Link>
+          . Inspired by{" "}
+          <Link
+            href="https://ui.shadcn.com"
+            target="_blank"
+            className="underline underline-offset-2"
+          >
+            shadcn
+          </Link>
+          .
+        </p>
+      </div>
+    </section>
   )
 }
