@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/" # Root where package.json & pnpm-lock.yaml live
     schedule:
-      interval: "weekly" # Weekly keeps noise low; change to daily if desired
+      interval: "daily" # Changed to daily for more frequent updates
     commit-message:
       prefix: "deps"
     labels:
