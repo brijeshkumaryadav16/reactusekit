@@ -1,10 +1,8 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/" # Root where package.json & pnpm-lock.yaml live
+    directory: "/"
     schedule:
-      interval: "daily" # Changed to daily for more frequent updates
-    commit-message:
-      prefix: "deps"
+      interval: "daily"
     labels:
       - "dependencies"
