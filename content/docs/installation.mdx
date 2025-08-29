@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: How to install and use ReactUseKit hooks and helpers in your project
+description: How to install and use ReactUseKit hooks and helpers in your project?
 ---
 
 ## Quick Start
@@ -9,17 +9,7 @@ ReactUseKit provides two installation methods: **CLI Installation** (recommended
 
 ## CLI Installation (Recommended)
 
-### Method 1: Direct Installation
-
-Install individual hooks and helpers directly using the shadcn CLI:
-
-```package-install
-npx shadcn@latest add https://reactusekit.dev/r/[name].json
-```
-
-### Method 2: Namespace Configuration (shadcn CLI v3+)
-
-For easier management and multiple installations, configure a custom registry in your `components.json`:
+1. Add the `@reactusekit` registry to your `components.json`
 
 ```json title="components.json"
 {
@@ -29,7 +19,7 @@ For easier management and multiple installations, configure a custom registry in
 }
 ```
 
-Then install hooks and helpers using the namespace:
+2. Start adding hooks and helpers.
 
 ```package-install
 npx shadcn@latest add @reactusekit/use-boolean
@@ -45,43 +35,6 @@ If you prefer manual control or can't use the CLI:
    - **Hooks:** `src/hooks/[name].ts`
    - **Helpers:** `src/lib/[name].ts`
 4. **Paste** the code and save the file
-
-## Usage Examples
-
-### Using Hooks
-
-```tsx
-import { useBoolean } from "@/hooks/use-boolean"
-
-function ToggleComponent() {
-  const { value, toggle, setTrue, setFalse } = useBoolean(false)
-
-  return (
-    <div>
-      <p>Status: {value ? "ON" : "OFF"}</p>
-      <button onClick={toggle}>Toggle</button>
-      <button onClick={setTrue}>Turn ON</button>
-      <button onClick={setFalse}>Turn OFF</button>
-    </div>
-  )
-}
-```
-
-### Using Helpers
-
-```tsx
-import { capitalize } from "@/lib/capitalize"
-
-function ExampleComponent() {
-  const title = capitalize("hello world")
-
-  return (
-    <div>
-      <h1>{title}</h1>
-    </div>
-  )
-}
-```
 
 ## Prerequisites
 
