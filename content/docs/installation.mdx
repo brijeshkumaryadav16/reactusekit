@@ -3,43 +3,88 @@ title: Installation
 description: How to install and use ReactUseKit hooks and helpers in your project
 ---
 
-### CLI Installation
+## Quick Start
 
-Use the shadcn CLI to quickly install hooks and helpers
+ReactUseKit provides two installation methods: **CLI Installation** (recommended) and **Copy & Paste**.
+
+## CLI Installation (Recommended)
+
+### Method 1: Direct Installation
+
+Install individual hooks and helpers directly using the shadcn CLI:
 
 ```package-install
-npx shadcn@latest add https://reactusekit.dev/r/[hooks/helper-name].json
+npx shadcn@latest add https://reactusekit.dev/r/[name].json
 ```
 
-### Copy Paste
+### Method 2: Namespace Configuration (shadcn CLI v3+)
 
-1. Browse to the hook or helper documentation page
-2. Copy the source code
-3. Create a new file in your project:
-   - Hooks: `src/hooks/[hook-name].ts`
-   - Helpers: `src/lib/[helper-name].ts`
-4. Paste the code and save
+For easier management and multiple installations, configure a custom registry in your `components.json`:
 
-## Usage
+```json title="components.json"
+{
+  "registries": {
+    "@reactusekit": "https://reactusekit.dev/r/{name}.json"
+  }
+}
+```
 
-### Hooks
+Then install hooks and helpers using the namespace:
+
+```package-install
+npx shadcn@latest add @reactusekit/use-boolean
+```
+
+## Manual Installation (Copy & Paste)
+
+If you prefer manual control or can't use the CLI:
+
+1. **Browse** to the hook or helper documentation page
+2. **Copy** the manual code from the documentation
+3. **Create** a new file in your project:
+   - **Hooks:** `src/hooks/[name].ts`
+   - **Helpers:** `src/lib/[name].ts`
+4. **Paste** the code and save the file
+
+## Usage Examples
+
+### Using Hooks
 
 ```tsx
 import { useBoolean } from "@/hooks/use-boolean"
 
-function MyComponent() {
-  const { value, toggle } = useBoolean(false)
+function ToggleComponent() {
+  const { value, toggle, setTrue, setFalse } = useBoolean(false)
 
-  return <button onClick={toggle}>{value ? "ON" : "OFF"}</button>
+  return (
+    <div>
+      <p>Status: {value ? "ON" : "OFF"}</p>
+      <button onClick={toggle}>Toggle</button>
+      <button onClick={setTrue}>Turn ON</button>
+      <button onClick={setFalse}>Turn OFF</button>
+    </div>
+  )
 }
 ```
 
-### Helpers
+### Using Helpers
 
 ```tsx
 import { capitalize } from "@/lib/capitalize"
 
-function Example() {
-  return <h1>{capitalize("hello world")}</h1>
+function ExampleComponent() {
+  const title = capitalize("hello world")
+
+  return (
+    <div>
+      <h1>{title}</h1>
+    </div>
+  )
 }
 ```
+
+## Prerequisites
+
+- **React 18+** (required for modern hook patterns)
+- **TypeScript** (recommended for type safety)
+- **shadcn/ui setup** (for CLI installation method)
