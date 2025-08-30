@@ -1,22 +1,43 @@
 ---
-title: Introduction
-description: ReactUseKit - A collection of reusable React hooks and helpers
+title: Installation
+description: How to install and use ReactUseKit hooks and helpers in your project?
 ---
 
-## Why ReactUseKit?
+### Quick Start
 
-**Most hook libraries require installation.** We're different. Get exactly what you need without the bloat.
+ReactUseKit provides two installation methods: **CLI Installation** (recommended) and **Copy & Paste**.
 
-**Two simple ways to use:**
+#### CLI Installation (Recommended)
 
-- Install via shadcn CLI integration
-- Copy-paste directly into your project
+1. Add the `@reactusekit` registry to your `components.json`
 
-**Benefits:**
+```json title="components.json"
+{
+  "registries": {
+    "@reactusekit": "https://reactusekit.dev/r/{name}.json"
+  }
+}
+```
 
-- ✅ **Zero dependencies** - No bundle bloat
-- ✅ **TypeScript-first** - Full type safety
-- ✅ **Your code** - Customize however you want
-- ✅ **Production-ready** - Battle-tested implementations
+2. Start adding hooks and helpers.
 
-Instead of adding another dependency, you own the code completely. No version conflicts, no breaking changes, no vendor lock-in.
+```package-install
+npx shadcn@latest add @reactusekit/use-boolean
+```
+
+#### Manual Installation (Copy & Paste)
+
+If you prefer manual control or can't use the CLI:
+
+1. **Browse** to the hook or helper documentation page
+2. **Copy** the manual code from the documentation
+3. **Create** a new file in your project:
+   - **Hooks:** `src/hooks/[name].ts`
+   - **Helpers:** `src/lib/[name].ts`
+4. **Paste** the code and save the file
+
+### Prerequisites
+
+- **React 18+** (required for modern hook patterns)
+- **TypeScript** (recommended for type safety)
+- **shadcn/ui setup** (for CLI installation method)

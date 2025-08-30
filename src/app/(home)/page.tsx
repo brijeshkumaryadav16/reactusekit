@@ -1,5 +1,6 @@
 import { Icons } from "@/components/ui/icon"
 import { NumberTicker } from "@/components/ui/number-ticker"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 export const dynamic = "force-dynamic"
@@ -42,10 +43,11 @@ export default async function HomePage() {
           {/* CTA Buttons */}
           <div className="flex flex-col items-center gap-5 md:flex-row">
             <Link
-              href="/docs/installation"
-              className="bg-fd-foreground text-fd-background rounded-full border px-6 py-3 text-sm font-semibold"
+              href="/docs"
+              className="bg-fd-foreground text-fd-background flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold"
             >
               Get Started
+              <ArrowRight className="size-4" />
             </Link>
             <Link
               href="https://github.com/brijeshkumaryadav16/reactusekit"
