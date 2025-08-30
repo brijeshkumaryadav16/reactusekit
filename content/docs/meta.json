@@ -3,7 +3,6 @@
   "pages": [
     "---Get Started---",
     "index",
-    "installation",
     "---Hooks---",
     "hooks/use-boolean",
     "hooks/use-click-outside",
