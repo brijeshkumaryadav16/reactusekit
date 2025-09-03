@@ -8,7 +8,7 @@ import {
   DocsPage,
   DocsTitle,
 } from "fumadocs-ui/page"
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 export default async function Page(props: {

@@ -1,7 +1,7 @@
 "use client"
 
 import { useConfig } from "@/hooks/use-config"
-import * as React from "react"
+import type * as React from "react"
 
 export function CodeTabs({ children }: { children: React.ReactNode }) {
   return <div className="relative mt-6 w-full">{children}</div>
@@ -26,6 +26,7 @@ export function TabsTrigger({
 
   return (
     <button
+      type="button"
       onClick={() => setInstallationType(value)}
       className={`rounded-t-lg border-b-2 px-3 py-1.5 text-sm font-medium transition-colors ${
         isActive

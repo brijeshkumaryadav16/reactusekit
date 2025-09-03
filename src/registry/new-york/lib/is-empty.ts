@@ -4,7 +4,7 @@
  * @returns True if the value is empty, false otherwise.
  */
 
-export function isEmpty(value: any): boolean {
+export function isEmpty(value: unknown): boolean {
   // null or undefined
   if (value == null) {
     return true

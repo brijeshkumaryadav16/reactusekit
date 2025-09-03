@@ -48,7 +48,7 @@ function useEventCallback<Args extends unknown[], Return>(
   })
 
   return useCallback((...args: Args) => {
-    return ref.current!(...args)
+    return ref.current?.(...args)
   }, [])
 }
 
