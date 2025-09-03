@@ -30,7 +30,7 @@ export function slugify(
   }
 
   // Replace accented characters with their base equivalents
-  slug = slug.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  slug = slug.normalize("NFD").replace(/\p{M}/gu, "")
 
   if (strict) {
     // Strict mode: only keep alphanumeric characters and separators

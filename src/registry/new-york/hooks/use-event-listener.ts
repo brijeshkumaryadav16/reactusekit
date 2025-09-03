@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from "react"
+import { type RefObject, useEffect, useRef } from "react"
 import { useIsomorphicLayoutEffect } from "./use-isomorphic-layout-effect"
 
 /**
@@ -44,7 +44,7 @@ function useEventListener<
   KW extends keyof WindowEventMap,
   KH extends keyof HTMLElementEventMap,
   KM extends keyof MediaQueryListEventMap,
-  T extends HTMLElement | MediaQueryList | void = void,
+  T extends HTMLElement | MediaQueryList | undefined = undefined,
 >(
   eventName: KW | KH | KM,
   handler: (

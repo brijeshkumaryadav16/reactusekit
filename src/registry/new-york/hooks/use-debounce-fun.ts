@@ -7,7 +7,7 @@ import { useCallback, useRef } from "react"
  * @returns A debounced version of the function.
  */
 
-export function useDebounceFun<T extends (...args: any[]) => void>(
+export function useDebounceFun<T extends (...args: unknown[]) => void>(
   func: T,
   delay: number
 ): T {
