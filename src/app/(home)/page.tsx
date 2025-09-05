@@ -1,26 +1,26 @@
-import { Icons } from "@/components/ui/icon"
-import { NumberTicker } from "@/components/ui/number-ticker"
-import { ArrowRight } from "lucide-react"
-import Link from "next/link"
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Icons } from "@/components/ui/icon";
+import { NumberTicker } from "@/components/ui/number-ticker";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 const getGithubData = async () => {
   try {
     const response = await fetch(
-      "https://api.github.com/repos/brijeshkumaryadav16/reactusekit"
-    )
-    const data = await response.json()
-    const star = data.stargazers_count
-    return star
+      "https://api.github.com/repos/brijeshkumaryadav16/reactusekit",
+    );
+    const data = await response.json();
+    const star = data.stargazers_count;
+    return star;
   } catch (error) {
-    console.error("Error fetching GitHub data:", error)
-    return 0
+    console.error("Error fetching GitHub data:", error);
+    return 0;
   }
-}
+};
 
 export default async function HomePage() {
-  const star = await getGithubData()
+  const star = await getGithubData();
 
   return (
     <section>
@@ -86,5 +86,5 @@ export default async function HomePage() {
         </p>
       </div>
     </section>
-  )
+  );
 }
