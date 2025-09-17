@@ -744,8 +744,8 @@ packages:
   '@open-draft/until@2.1.0':
     resolution: {integrity: sha512-U69T3ItWHvLwGg5eJ0n3I62nWuE6ilHlmz7zM0npLBRvPRd7e6NYmg54vvRtP5mZG7kZqZCFVdsTWo7BPtBujg==}
 
-  '@orama/orama@3.1.13':
-    resolution: {integrity: sha512-O0hdKt4K31i8fpq8Bw5RfdPVAqm0EdduBUcluPo2MRcfCOwUEf5JlnvRhf/J0ezOYOD8jQ/LumYZxOVi/XK/BA==}
+  '@orama/orama@3.1.14':
+    resolution: {integrity: sha512-Iq4RxYC7y0pA/hLgcUGpYYs5Vze4qNmJk0Qi1uIrg2bHGpm6A06nbjWcH9h4HQsddkDFFlanLj/zYBH3Sxdb4w==}
     engines: {node: '>= 20.0.0'}
 
   '@radix-ui/number@1.1.1':
@@ -3835,7 +3835,7 @@ snapshots:
 
   '@open-draft/until@2.1.0': {}
 
-  '@orama/orama@3.1.13': {}
+  '@orama/orama@3.1.14': {}
 
   '@radix-ui/number@1.1.1': {}
 
@@ -4874,7 +4874,7 @@ snapshots:
   fumadocs-core@15.7.11(@types/react@19.1.12)(next@15.5.3(@babel/core@7.28.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.1
-      '@orama/orama': 3.1.13
+      '@orama/orama': 3.1.14
       '@shikijs/rehype': 3.12.2
       '@shikijs/transformers': 3.12.2
       github-slugger: 2.0.0
@@ -4901,7 +4901,7 @@ snapshots:
   fumadocs-core@15.7.13(@types/react@19.1.12)(next@15.5.3(@babel/core@7.28.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.1
-      '@orama/orama': 3.1.13
+      '@orama/orama': 3.1.14
       '@shikijs/rehype': 3.12.2
       '@shikijs/transformers': 3.12.2
       github-slugger: 2.0.0
