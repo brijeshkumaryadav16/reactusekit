@@ -21,7 +21,7 @@
     "clsx": "^2.1.1",
     "fumadocs-core": "^15.8.0",
     "fumadocs-mdx": "^12.0.1",
-    "fumadocs-ui": "^15.8.0",
+    "fumadocs-ui": "^15.8.2",
     "lucide-react": "^0.544.0",
     "motion": "^12.23.22",
     "next": "^15.5.4",
