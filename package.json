@@ -8,12 +8,10 @@
     "start": "next start",
     "postinstall": "fumadocs-mdx",
     "registry:build": "shadcn build",
-    "lint": "biome lint .",
-    "lint:fix": "biome lint --write .",
-    "format": "biome format --write .",
-    "format:check": "biome format .",
-    "check": "biome check .",
-    "check:fix": "biome check --write ."
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "format": "biome format",
+    "format:fix": "biome format --write"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
