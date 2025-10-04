@@ -43,7 +43,7 @@ importers:
         version: 19.1.1(react@19.1.1)
       shadcn:
         specifier: ^3.3.1
-        version: 3.3.1(@types/node@24.5.2)(typescript@5.9.2)
+        version: 3.3.1(@types/node@24.6.2)(typescript@5.9.2)
       shiki:
         specifier: ^3.13.0
         version: 3.13.0
@@ -61,8 +61,8 @@ importers:
         specifier: ^2.0.13
         version: 2.0.13
       '@types/node':
-        specifier: ^24.5.2
-        version: 24.5.2
+        specifier: ^24.6.2
+        version: 24.6.2
       '@types/react':
         specifier: ^19.1.13
         version: 19.1.13
@@ -1263,8 +1263,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@24.5.2':
-    resolution: {integrity: sha512-FYxk1I7wPv3K2XBaoyH2cTnocQEu8AOZ60hPbsyukMPLv5/5qr7V1i8PLHdl6Zf87I+xZXFvPCXYjiTFq+YSDQ==}
+  '@types/node@24.6.2':
+    resolution: {integrity: sha512-d2L25Y4j+W3ZlNAeMKcy7yDsK425ibcAOO2t7aPTz6gNMH0z2GThtwENCDc0d/Pw9wgyRqE5Px1wkV7naz8ang==}
 
   '@types/react-dom@19.1.9':
     resolution: {integrity: sha512-qXRuZaOsAdXKFyOhRBg6Lqqc0yay13vN7KrIg4L7N4aaHN68ma9OK3NE1BoDFgFOTfM7zg+3/8+2n8rLUH3OKQ==}
@@ -3072,8 +3072,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@7.12.0:
-    resolution: {integrity: sha512-goOacqME2GYyOZZfb5Lgtu+1IDmAlAEu5xnD3+xTzS10hT0vzpf0SPjkXwAw9Jm+4n/mQGDP3LO8CPbYROeBfQ==}
+  undici-types@7.13.0:
+    resolution: {integrity: sha512-Ov2Rr9Sx+fRgagJ5AX0qvItZG/JKKoBRAVITs1zk7IqZGTJUwgUr7qoYBpWwakpWilTZFM98rG/AFRocu10iIQ==}
 
   unicorn-magic@0.3.0:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
@@ -3667,31 +3667,31 @@ snapshots:
 
   '@inquirer/ansi@1.0.0': {}
 
-  '@inquirer/confirm@5.1.18(@types/node@24.5.2)':
+  '@inquirer/confirm@5.1.18(@types/node@24.6.2)':
     dependencies:
-      '@inquirer/core': 10.2.2(@types/node@24.5.2)
-      '@inquirer/type': 3.0.8(@types/node@24.5.2)
+      '@inquirer/core': 10.2.2(@types/node@24.6.2)
+      '@inquirer/type': 3.0.8(@types/node@24.6.2)
     optionalDependencies:
-      '@types/node': 24.5.2
+      '@types/node': 24.6.2
 
-  '@inquirer/core@10.2.2(@types/node@24.5.2)':
+  '@inquirer/core@10.2.2(@types/node@24.6.2)':
     dependencies:
       '@inquirer/ansi': 1.0.0
       '@inquirer/figures': 1.0.13
-      '@inquirer/type': 3.0.8(@types/node@24.5.2)
+      '@inquirer/type': 3.0.8(@types/node@24.6.2)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.5.2
+      '@types/node': 24.6.2
 
   '@inquirer/figures@1.0.13': {}
 
-  '@inquirer/type@3.0.8(@types/node@24.5.2)':
+  '@inquirer/type@3.0.8(@types/node@24.6.2)':
     optionalDependencies:
-      '@types/node': 24.5.2
+      '@types/node': 24.6.2
 
   '@isaacs/balanced-match@4.0.1': {}
 
@@ -4343,9 +4343,9 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@24.5.2':
+  '@types/node@24.6.2':
     dependencies:
-      undici-types: 7.12.0
+      undici-types: 7.13.0
 
   '@types/react-dom@19.1.9(@types/react@19.1.13)':
     dependencies:
@@ -5771,11 +5771,11 @@ snapshots:
 
   ms@2.1.3: {}
 
-  msw@2.11.2(@types/node@24.5.2)(typescript@5.9.2):
+  msw@2.11.2(@types/node@24.6.2)(typescript@5.9.2):
     dependencies:
       '@bundled-es-modules/cookie': 2.0.1
       '@bundled-es-modules/statuses': 1.0.1
-      '@inquirer/confirm': 5.1.18(@types/node@24.5.2)
+      '@inquirer/confirm': 5.1.18(@types/node@24.6.2)
       '@mswjs/interceptors': 0.39.6
       '@open-draft/deferred-promise': 2.2.0
       '@open-draft/until': 2.1.0
@@ -6206,7 +6206,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@3.3.1(@types/node@24.5.2)(typescript@5.9.2):
+  shadcn@3.3.1(@types/node@24.6.2)(typescript@5.9.2):
     dependencies:
       '@antfu/ni': 25.0.0
       '@babel/core': 7.28.4
@@ -6227,7 +6227,7 @@ snapshots:
       fuzzysort: 3.1.0
       https-proxy-agent: 7.0.6
       kleur: 4.1.5
-      msw: 2.11.2(@types/node@24.5.2)(typescript@5.9.2)
+      msw: 2.11.2(@types/node@24.6.2)(typescript@5.9.2)
       node-fetch: 3.3.2
       ora: 8.2.0
       postcss: 8.5.6
@@ -6460,7 +6460,7 @@ snapshots:
 
   typescript@5.9.2: {}
 
-  undici-types@7.12.0: {}
+  undici-types@7.13.0: {}
 
   unicorn-magic@0.3.0: {}
 
