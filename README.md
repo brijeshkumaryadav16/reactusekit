@@ -2,7 +2,7 @@
 
 React Hooks & Helpers Collection - Copy, Paste, or Install with shadcn CLI
 
-[See the website](https://reactusekit.dev)
+[See the website](https://reactusekit.vercel.app)
 
 ## Contributing
 
