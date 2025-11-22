@@ -18,7 +18,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "fumadocs-core": "^15.8.5",
-    "fumadocs-mdx": "^13.0.5",
+    "fumadocs-mdx": "^13.0.8",
     "fumadocs-ui": "^15.8.5",
     "lucide-react": "^0.548.0",
     "motion": "^12.23.24",
@@ -26,18 +26,18 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "shadcn": "^3.5.0",
-    "shiki": "^3.14.0",
-    "tailwind-merge": "^3.3.1"
+    "shiki": "^3.15.0",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.2",
-    "@tailwindcss/postcss": "^4.1.16",
+    "@biomejs/biome": "^2.3.7",
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^24.9.1",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.16",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3"
   }
 }

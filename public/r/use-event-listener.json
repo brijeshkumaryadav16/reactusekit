@@ -4,7 +4,7 @@
   "type": "registry:hook",
   "description": "A custom hook to add and remove event listeners.",
   "registryDependencies": [
-    "https://reactusekit.dev/r/use-isomorphic-layout-effect.json"
+    "https://reactusekit.vercel.app/r/use-isomorphic-layout-effect.json"
   ],
   "files": [
     {
