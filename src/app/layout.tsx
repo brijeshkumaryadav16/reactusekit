@@ -21,6 +21,9 @@ export const metadata: Metadata = createMetadata({
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "ECDucOQdERyOKZRKFJg2lfebeUMOyRJ_7AajhOTGvgo",
+  },
 });
 
 export default function Layout({ children }: LayoutProps<"/">) {
