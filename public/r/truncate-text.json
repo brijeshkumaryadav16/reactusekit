@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "truncate-text",
-  "type": "registry:lib",
   "description": "A utility function to truncate text to a maximum length with ellipsis.",
   "files": [
     {
@@ -9,5 +8,6 @@
       "content": "/**\n * Truncate text to a maximum length with ellipsis.\n * @param text - The text to truncate.\n * @param maxLength - Maximum length before truncation.\n * @returns The truncated text with ellipsis if needed.\n */\n\nexport function truncateText(text: string, maxLength: number): string {\n  return text.length > maxLength ? `${text.slice(0, maxLength)}…` : text;\n}\n",
       "type": "registry:lib"
     }
-  ]
+  ],
+  "type": "registry:lib"
 }
