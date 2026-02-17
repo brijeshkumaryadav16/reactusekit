@@ -62,29 +62,6 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <div className="flex items-center justify-center text-xs">
-        <p>
-          Built by{" "}
-          <Link
-            href="https://x.com/brijeshkumar16_"
-            target="_blank"
-            className="underline underline-offset-2"
-          >
-            Brijeshkumar Yadav
-          </Link>
-          . Inspired by{" "}
-          <Link
-            href="https://ui.shadcn.com"
-            target="_blank"
-            className="underline underline-offset-2"
-          >
-            shadcn
-          </Link>
-          .
-        </p>
-      </div>
     </section>
   );
 }
