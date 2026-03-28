@@ -1,4 +1,4 @@
-# ReactUseKit
+# ReactUseKit &middot; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub Repo Views](https://gitviews.com/repo/brijeshmarch16/reactusekit.svg?label=views&style=flat&label-color=%23555&color=%234c1)
 
 React Hooks & Helpers Collection - Copy, Paste, or Install with shadcn CLI
 
