@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,6 +14,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "types": ["node"],
+    "noUncheckedSideEffectImports": false,
     "paths": {
       "@/.source": ["./.source/server.ts"],
       "@/*": ["./src/*"]
